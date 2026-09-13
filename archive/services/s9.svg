@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="战略咨询">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C1A2E"/>
+      <stop offset="50%" stop-color="#1B3A5F"/>
+      <stop offset="100%" stop-color="#2A5A8C"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="520" cy="70" r="115" fill="#7DD3FC" fill-opacity="0.1"/>
+  <circle cx="90" cy="290" r="85" fill="#FFFFFF" fill-opacity="0.06"/>
+  <!-- chess / strategy path -->
+  <polyline points="160,260 240,180 300,210 380,100 460,140" fill="none" stroke="#93C5FD" stroke-width="3" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="160" cy="260" r="10" fill="#BFDBFE" fill-opacity="0.8"/>
+  <circle cx="240" cy="180" r="10" fill="#60A5FA" fill-opacity="0.8"/>
+  <circle cx="300" cy="210" r="10" fill="#93C5FD" fill-opacity="0.8"/>
+  <circle cx="380" cy="100" r="14" fill="#DBEAFE" fill-opacity="0.9"/>
+  <circle cx="460" cy="140" r="10" fill="#60A5FA" fill-opacity="0.7"/>
+  <polygon points="380,70 392,95 420,95 398,112 406,140 380,124 354,140 362,112 340,95 368,95" fill="#E0F2FE" fill-opacity="0.55"/>
+  <text x="48" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="4">战略</text>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="760" viewBox="0 0 750 760" role="img" aria-label="园区共建 · 企业共生 主视觉（手机）">
+  <defs>
+    <linearGradient id="mbg3" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#0a1b2a"/>
+      <stop offset="0.5" stop-color="#123049"/>
+      <stop offset="1" stop-color="#16505c"/>
+    </linearGradient>
+    <radialGradient id="mglow3" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#49b3a8" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#49b3a8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mb3a" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f6f83"/>
+      <stop offset="1" stop-color="#16403f"/>
+    </linearGradient>
+    <linearGradient id="mb3b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3d7f8c"/>
+      <stop offset="1" stop-color="#1b4a4f"/>
+    </linearGradient>
+    <pattern id="mgrid3" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#8fd8cf" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <pattern id="mwin3" width="14" height="20" patternUnits="userSpaceOnUse">
+      <rect x="3" y="5" width="7" height="9" fill="#e8f6e9" fill-opacity="0.42"/>
+    </pattern>
+    <clipPath id="mcampus3">
+      <rect x="64" y="472" width="104" height="288" rx="6"/>
+      <rect x="186" y="416" width="92" height="344" rx="6"/>
+      <rect x="296" y="506" width="146" height="254" rx="6"/>
+      <rect x="460" y="392" width="104" height="368" rx="6"/>
+      <rect x="582" y="488" width="168" height="272" rx="6"/>
+    </clipPath>
+  </defs>
+
+  <rect width="750" height="760" fill="url(#mbg3)"/>
+  <rect width="750" height="760" fill="url(#mgrid3)"/>
+  <circle cx="560" cy="600" r="310" fill="url(#mglow3)"/>
+
+  <g>
+    <rect x="64" y="472" width="104" height="288" rx="6" fill="url(#mb3a)"/>
+    <rect x="186" y="416" width="92" height="344" rx="6" fill="url(#mb3b)"/>
+    <rect x="296" y="506" width="146" height="254" rx="6" fill="url(#mb3a)"/>
+    <rect x="460" y="392" width="104" height="368" rx="6" fill="url(#mb3b)"/>
+    <rect x="582" y="488" width="168" height="272" rx="6" fill="url(#mb3a)"/>
+  </g>
+  <g clip-path="url(#mcampus3)" opacity="0.34">
+    <rect x="50" y="370" width="700" height="400" fill="url(#mwin3)"/>
+  </g>
+
+  <g fill="#49b3a8" fill-opacity="0.5">
+    <circle cx="120" cy="722" r="30"/>
+    <circle cx="180" cy="742" r="20"/>
+    <circle cx="392" cy="726" r="26"/>
+    <circle cx="668" cy="736" r="24"/>
+  </g>
+  <g fill="#2f8f7d" fill-opacity="0.72">
+    <circle cx="540" cy="742" r="22"/>
+    <circle cx="256" cy="736" r="18"/>
+  </g>
+
+  <g stroke="#7fd6c6" stroke-opacity="0.42" stroke-width="1.4" fill="none" stroke-linecap="round">
+    <path d="M110 320 L280 258 L450 312 L620 246"/>
+    <path d="M280 258 L390 356 L520 402"/>
+  </g>
+  <g fill="#a9e6d8">
+    <circle cx="110" cy="320" r="5" fill-opacity="0.55"/>
+    <circle cx="280" cy="258" r="7" fill-opacity="0.85"/>
+    <circle cx="390" cy="356" r="5.5" fill-opacity="0.65"/>
+    <circle cx="450" cy="312" r="6" fill-opacity="0.75"/>
+    <circle cx="520" cy="402" r="5" fill-opacity="0.6"/>
+    <circle cx="620" cy="246" r="5" fill-opacity="0.6"/>
+  </g>
+  <g fill="#f2ce8c">
+    <circle cx="280" cy="258" r="2.6"/>
+    <circle cx="450" cy="312" r="2.4"/>
+  </g>
+</svg>

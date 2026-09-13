@@ -1,0 +1,480 @@
+/* 全站控件与导航统一层：共享语义 token，不按页面复制按钮视觉。 */
+:root :is(.button, .showcase-button) {
+  min-height: var(--control-height);
+  padding: 9px 19px;
+  gap: 10px;
+  border-radius: var(--control-radius);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition:
+    background 0.18s,
+    box-shadow 0.18s,
+    border-color 0.18s,
+    transform 0.18s;
+}
+:root :is(.button.primary, .showcase-button),
+.showcase-search button {
+  color: #fff;
+  background: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 85%, black);
+  box-shadow: var(--shadow-control);
+}
+:root :is(.button.primary, .showcase-button):hover,
+.showcase-search button:hover {
+  background: var(--color-primary-hover);
+  box-shadow: var(--shadow-control-hover);
+  transform: translateY(-1px);
+}
+:root :is(.button, .showcase-button):active,
+.showcase-search button:active {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 3px rgb(16 42 80 / 15%);
+}
+:root :is(.button, .showcase-button):disabled {
+  transform: none;
+  box-shadow: none;
+}
+:root .button.secondary {
+  color: var(--color-primary-deep);
+  background: #fff;
+  border-color: var(--color-border);
+  box-shadow: 0 2px 4px rgb(21 44 78 / 3%);
+}
+:root .button.secondary:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary-line);
+  box-shadow: 0 3px 9px rgb(21 44 78 / 6%);
+}
+.showcase-search {
+  height: 42px;
+  border-radius: var(--control-radius);
+  border: 1px solid var(--color-primary-line);
+  background: #fdfefe;
+  box-shadow: 0 2px 5px rgb(22 45 78 / 3%);
+}
+.showcase-search:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-soft);
+}
+.showcase-search button {
+  height: calc(100% - 6px);
+  margin-right: 3px;
+  padding: 0 24px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition:
+    background 0.18s,
+    box-shadow 0.18s;
+}
+.app-shell
+  .field
+  :is(input:not([type="checkbox"]):not([type="radio"]), textarea, select),
+:root .input,
+.catalogue-search,
+.filter-row select {
+  border-radius: var(--control-radius);
+}
+.icon-button {
+  border-radius: var(--control-radius);
+  transition:
+    background 0.18s,
+    color 0.18s;
+}
+.icon-button:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+/* Header 的高度也供首页吸顶专题导航使用，避免两层导航重叠。 */
+.utility-bar {
+  height: var(--utility-height);
+  background: #f4f6fa;
+  font-size: 10px;
+  border-color: #e9edf3;
+}
+.utility-inner > div {
+  gap: 18px;
+}
+.utility-inner button,
+.utility-map {
+  font-size: 10px;
+}
+.utility-map:hover {
+  color: var(--color-primary);
+}
+.site-header {
+  background: rgb(255 255 255 / 97%);
+  border-color: #e5ebf3;
+  box-shadow:
+    0 2px 5px rgb(23 48 82 / 3%),
+    0 7px 20px rgb(23 48 82 / 3%);
+  backdrop-filter: blur(14px);
+}
+.site-header .header-inner {
+  height: var(--header-height);
+  gap: 22px;
+}
+.brand {
+  gap: 8px;
+}
+.brand > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.brand strong {
+  font-size: 15px;
+  line-height: 19px;
+  letter-spacing: 0.15px;
+  white-space: nowrap;
+}
+.brand small {
+  font-size: 8px;
+  line-height: 10px;
+  letter-spacing: 0.6px;
+  margin: 0;
+}
+.brand .brand-mark {
+  width: 32px;
+  height: 32px;
+  font-size: 23px;
+  border-radius: 7px;
+  background: var(--color-primary);
+  box-shadow: var(--shadow-control);
+}
+.site-header .primary-nav {
+  gap: 8px;
+  margin-inline: auto;
+  align-items: center;
+}
+.site-header .primary-nav > a {
+  height: 34px;
+  padding: 0 9px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    color 0.18s,
+    background 0.18s;
+}
+.site-header .primary-nav > a:hover {
+  background: #f5f8fc;
+  color: var(--color-primary);
+}
+.site-header .primary-nav > a.active {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: inset 0 1px 0 #ffffffa6;
+}
+.site-header .primary-nav > a.active::after {
+  content: none;
+}
+.site-header .header-actions {
+  gap: 13px;
+  flex-shrink: 0;
+}
+.site-header .header-enterprise {
+  min-height: 34px;
+  padding: 7px 12px;
+  font-size: 12px;
+  gap: 7px;
+}
+.site-header .header-enterprise svg {
+  width: 14px;
+  height: 14px;
+}
+.site-header .login-link {
+  font-size: 12px;
+  font-weight: 500;
+}
+.site-header .user-link {
+  font-size: 12px;
+  gap: 5px;
+}
+.site-header .user-link span {
+  max-width: 54px;
+}
+.site-header .signout {
+  margin-left: -8px;
+  width: 27px;
+}
+.site-header .menu-toggle {
+  display: none;
+}
+.nav-dismiss {
+  display: none;
+}
+.blank-module-page {
+  min-height: calc(
+    100dvh - var(--header-height) - var(--utility-height) - 230px
+  );
+  background: #f5f7fa;
+}
+.app-shell:has(.blank-module-page) .site-footer {
+  margin-top: 0;
+}
+
+/* 保持 V2 原有构图，只细化表面、边线、字距和层级。媒体缺省底仍是纯色。 */
+.showcase-home .showcase-heading h2,
+.showcase-home .market-heading h2 {
+  letter-spacing: -0.35px;
+  font-weight: 600;
+}
+.showcase-home .hero-editorial h1 {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.showcase-home .hero-action {
+  border-color: #6684b5;
+}
+.showcase-entry {
+  border-bottom-color: #e9edf4;
+}
+.showcase-home .showcase-campaigns {
+  border-radius: 7px;
+  border-color: #e8dece;
+  box-shadow:
+    0 2px 3px rgb(91 69 35 / 2%),
+    0 8px 24px rgb(91 69 35 / 4%);
+}
+.showcase-home .campaigns-heading {
+  background: #f1e7d7;
+}
+.showcase-home .coupon-amount {
+  color: #986545;
+}
+.showcase-home .campaign-coupon:hover {
+  background: #fbf3e7;
+}
+.showcase-home .showcase-section-nav {
+  box-shadow: 0 3px 12px rgb(20 45 80 / 3%);
+}
+.showcase-home .capability-tabs {
+  border-radius: 7px 7px 0 0;
+  background: #fafbfd;
+}
+.showcase-home .capability-tabs button[aria-pressed="true"] {
+  background: var(--color-primary-soft);
+}
+.showcase-home .capability-feature {
+  border-radius: 0 0 7px 7px;
+  box-shadow: var(--shadow-panel);
+}
+.showcase-home .resource-layout {
+  border-radius: 7px;
+  box-shadow: var(--shadow-panel);
+}
+/* 顶部主导航：logo 与登录 / 账号区分列两侧边缘，不被内容容器宽度限制 */
+.app-shell > .site-header .container,
+.app-shell:has(.showcase-home) > .site-header .container {
+  width: 100%;
+  max-width: none;
+  padding-inline: 32px;
+}
+@media (max-width: 767px) {
+  .app-shell > .site-header .container,
+  .app-shell:has(.showcase-home) > .site-header .container {
+    padding-inline: 16px;
+  }
+}
+
+/* 首页精选服务与企业服务大厅共用同一套卡片边框/圆角/投影 */
+:is(.showcase-home .market-service-grid, .service-v2-grid) .service-card {
+  border-color: #e4e9f0;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgb(20 45 80 / 3%);
+}
+:is(.showcase-home .market-service-grid, .service-v2-grid) .service-card:hover {
+  border-color: #bdcfe8;
+  box-shadow:
+    0 3px 7px rgb(20 45 80 / 5%),
+    0 9px 22px rgb(20 45 80 / 8%);
+}
+.showcase-home .market-categories button {
+  border-radius: var(--control-radius);
+}
+.showcase-home .market-categories button[aria-pressed="true"] {
+  background: var(--color-primary);
+  box-shadow: var(--shadow-control);
+}
+.showcase-home .growth-campaign {
+  border-radius: 7px;
+  box-shadow: var(--shadow-panel);
+}
+.showcase-home .ecosystem-partners > div {
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgb(20 45 80 / 3%);
+}
+.showcase-home .ecosystem-join strong {
+  font-weight: 600;
+  letter-spacing: 0.1px;
+}
+
+@media (max-width: 1279px) {
+  .site-header .header-inner {
+    gap: 14px;
+  }
+  .site-header .primary-nav {
+    gap: 3px;
+  }
+  .site-header .primary-nav > a {
+    padding-inline: 7px;
+    font-size: 12px;
+  }
+  .site-header .brand strong {
+    font-size: 14px;
+  }
+  .site-header .header-actions {
+    gap: 10px;
+  }
+}
+@media (max-width: 1099px) {
+  .site-header .primary-nav {
+    display: none;
+  }
+  .site-header .menu-toggle {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+  }
+  .site-header .header-actions {
+    margin-left: auto;
+  }
+  .site-header .header-enterprise {
+    display: inline-flex;
+  }
+  .site-header .primary-nav.is-open {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    padding: 14px 20px;
+    margin: 0;
+    height: auto;
+    gap: 6px;
+    background: #fff;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-primary-line);
+    box-shadow: 0 12px 24px rgb(17 41 75 / 9%);
+  }
+  .site-header .primary-nav.is-open > a {
+    justify-content: center;
+    height: 37px;
+    font-size: 13px;
+  }
+  .nav-dismiss {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    background: rgb(18 36 59 / 12%);
+  }
+}
+@media (max-width: 639px) {
+  :root {
+    --header-height: 54px;
+    --utility-height: 22px;
+  }
+  .site-header .header-inner {
+    gap: 10px;
+  }
+  .site-header .brand strong {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .site-header .brand small {
+    font-size: 7px;
+    line-height: 9px;
+    letter-spacing: 0.3px;
+  }
+  .site-header .brand-mark {
+    width: 29px;
+    height: 29px;
+    font-size: 21px;
+    border-radius: 6px;
+  }
+  .site-header .header-enterprise {
+    display: none;
+  }
+  .site-header .login-link {
+    font-size: 11px;
+  }
+  .site-header .header-actions {
+    gap: 9px;
+  }
+  .site-header .primary-nav.is-open {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 12px 16px;
+  }
+  .utility-inner {
+    font-size: 9px;
+  }
+  .utility-inner > div {
+    gap: 10px;
+  }
+  .utility-inner button,
+  .utility-map {
+    font-size: 9px;
+  }
+  :root :is(.button, .showcase-button) {
+    min-height: 40px;
+    padding: 9px 15px;
+    font-size: 12px;
+  }
+  .showcase-home .hero-action {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root :is(.button, .showcase-button),
+  .showcase-search button,
+  .site-header .primary-nav > a {
+    transition: none;
+  }
+}
+
+/* 客户确认：顶部导航采用下划线选中态。 */
+.site-header .primary-nav > a.active {
+  background: transparent;
+  box-shadow: none;
+}
+.site-header .primary-nav > a.active::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  left: 10px;
+  right: 10px;
+  bottom: -10px;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+@media (max-width: 1099px) {
+  .site-header .primary-nav.is-open > a.active::after {
+    bottom: 2px;
+    left: 25%;
+    right: 25%;
+  }
+}
+
+/* 最新客户要求：纯色按钮，撤回渐变与内高光。 */
+:root :is(.button.primary, .showcase-button),
+.showcase-search button {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+:root :is(.button.primary, .showcase-button):hover,
+.showcase-search button:hover {
+  background: var(--color-primary-hover);
+}
+:root .button.secondary {
+  background: white;
+  box-shadow: 0 2px 4px rgb(21 44 78 / 3%);
+}
+.site-header .brand-mark {
+  background: var(--color-primary);
+}

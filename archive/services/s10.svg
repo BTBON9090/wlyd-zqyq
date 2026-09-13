@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="数字化">
+  <defs>
+    <linearGradient id="bg" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#042F2E"/>
+      <stop offset="50%" stop-color="#0F766E"/>
+      <stop offset="100%" stop-color="#134E4A"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="560" cy="80" r="120" fill="#5EEAD4" fill-opacity="0.12"/>
+  <circle cx="60" cy="280" r="90" fill="#FFFFFF" fill-opacity="0.06"/>
+  <rect x="480" y="240" width="110" height="70" rx="8" fill="#FFFFFF" fill-opacity="0.05"/>
+  <!-- network nodes -->
+  <circle cx="220" cy="120" r="16" fill="#99F6E4" fill-opacity="0.8"/>
+  <circle cx="340" cy="90" r="20" fill="#CCFBF1" fill-opacity="0.85"/>
+  <circle cx="420" cy="160" r="14" fill="#5EEAD4" fill-opacity="0.75"/>
+  <circle cx="280" cy="200" r="18" fill="#2DD4BF" fill-opacity="0.7"/>
+  <circle cx="380" cy="240" r="12" fill="#99F6E4" fill-opacity="0.65"/>
+  <line x1="220" y1="120" x2="340" y2="90" stroke="#99F6E4" stroke-width="2" stroke-opacity="0.5"/>
+  <line x1="340" y1="90" x2="420" y2="160" stroke="#99F6E4" stroke-width="2" stroke-opacity="0.5"/>
+  <line x1="220" y1="120" x2="280" y2="200" stroke="#5EEAD4" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="280" y1="200" x2="380" y2="240" stroke="#5EEAD4" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="420" y1="160" x2="380" y2="240" stroke="#99F6E4" stroke-width="2" stroke-opacity="0.4"/>
+  <line x1="340" y1="90" x2="280" y2="200" stroke="#CCFBF1" stroke-width="1.5" stroke-opacity="0.35"/>
+  <text x="48" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="4">数字</text>
+</svg>

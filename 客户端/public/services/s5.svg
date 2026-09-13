@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="品牌设计">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#1E1B4B"/>
+      <stop offset="40%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="560" cy="40" r="100" fill="#38BDF8" fill-opacity="0.15"/>
+  <circle cx="100" cy="300" r="90" fill="#FFFFFF" fill-opacity="0.06"/>
+  <rect x="480" y="220" width="120" height="80" rx="10" fill="#FFFFFF" fill-opacity="0.05"/>
+  <!-- abstract brand mark -->
+  <polygon points="320,90 380,160 320,230 260,160" fill="#7DD3FC" fill-opacity="0.35" stroke="#E0F2FE" stroke-width="2"/>
+  <circle cx="320" cy="160" r="32" fill="#F0F9FF" fill-opacity="0.9"/>
+  <circle cx="320" cy="160" r="14" fill="#0284C7"/>
+  <line x1="200" y1="280" x2="440" y2="280" stroke="#BAE6FD" stroke-width="2" stroke-opacity="0.4"/>
+  <text x="48" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="4">品牌</text>
+</svg>

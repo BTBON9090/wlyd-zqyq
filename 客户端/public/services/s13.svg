@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="出海跨境">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0B1D36"/>
+      <stop offset="50%" stop-color="#0B4F6C"/>
+      <stop offset="100%" stop-color="#087E8B"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="100" cy="80" r="100" fill="#5EEAD4" fill-opacity="0.1"/>
+  <circle cx="560" cy="280" r="110" fill="#FFFFFF" fill-opacity="0.07"/>
+  <rect x="460" y="40" width="120" height="70" rx="8" fill="#FFFFFF" fill-opacity="0.05"/>
+  <!-- globe arcs + route -->
+  <circle cx="320" cy="160" r="85" fill="none" stroke="#99F6E4" stroke-width="2.5" stroke-opacity="0.7"/>
+  <ellipse cx="320" cy="160" rx="40" ry="85" fill="none" stroke="#5EEAD4" stroke-width="1.5" stroke-opacity="0.5"/>
+  <ellipse cx="320" cy="160" rx="85" ry="28" fill="none" stroke="#CCFBF1" stroke-width="1.5" stroke-opacity="0.45"/>
+  <path d="M200 200 Q280 120 400 140 Q460 150 480 100" fill="none" stroke="#F0FDFA" stroke-width="2.5" stroke-opacity="0.7" stroke-dasharray="6 4"/>
+  <polygon points="480,100 465,108 472,95" fill="#ECFEFF" fill-opacity="0.9"/>
+  <text x="48" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="4">出海</text>
+</svg>

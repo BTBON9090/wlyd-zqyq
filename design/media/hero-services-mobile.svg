@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="760" viewBox="0 0 750 760" role="img" aria-label="企业服务 · 专业同行 主视觉（手机）">
+  <defs>
+    <linearGradient id="mbg2" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#0c1a2d"/>
+      <stop offset="0.52" stop-color="#14324f"/>
+      <stop offset="1" stop-color="#1d4a7d"/>
+    </linearGradient>
+    <radialGradient id="mglow2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#5b9ae4" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#5b9ae4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mp2a" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#3f7dbd"/>
+      <stop offset="1" stop-color="#1e4a76"/>
+    </linearGradient>
+    <linearGradient id="mp2b" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#2c5f95"/>
+      <stop offset="1" stop-color="#16324f"/>
+    </linearGradient>
+    <linearGradient id="mp2c" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#234f80"/>
+      <stop offset="1" stop-color="#122942"/>
+    </linearGradient>
+    <pattern id="mgrid2" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#9dc0e8" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="750" height="760" fill="url(#mbg2)"/>
+  <rect width="750" height="760" fill="url(#mgrid2)"/>
+  <circle cx="440" cy="560" r="320" fill="url(#mglow2)"/>
+
+  <g fill="none" stroke="#8fc0f5" stroke-opacity="0.16">
+    <circle cx="400" cy="560" r="250" stroke-width="1.5"/>
+    <circle cx="400" cy="560" r="300" stroke-width="1" stroke-dasharray="6 12"/>
+  </g>
+
+  <g>
+    <g transform="rotate(-3 380 480)">
+      <rect x="196" y="382" width="322" height="196" rx="12" fill="url(#mp2c)" stroke="#7fb3f0" stroke-opacity="0.2"/>
+    </g>
+    <g transform="rotate(2 380 520)">
+      <rect x="286" y="418" width="330" height="200" rx="12" fill="url(#mp2b)" stroke="#9ec7f5" stroke-opacity="0.22"/>
+    </g>
+    <g transform="rotate(-1.2 360 540)">
+      <rect x="96" y="452" width="382" height="228" rx="14" fill="url(#mp2a)" stroke="#bcdcff" stroke-opacity="0.3"/>
+      <g fill="#e4f0ff" fill-opacity="0.5">
+        <rect x="130" y="490" width="126" height="10" rx="5"/>
+        <rect x="130" y="516" width="208" height="7" rx="3.5" fill-opacity="0.32"/>
+        <rect x="130" y="532" width="166" height="7" rx="3.5" fill-opacity="0.32"/>
+      </g>
+      <g fill="#cfe4ff" fill-opacity="0.26">
+        <rect x="130" y="566" width="150" height="32" rx="6"/>
+        <rect x="294" y="566" width="150" height="32" rx="6"/>
+      </g>
+      <g fill="#f2ce8c" fill-opacity="0.85">
+        <rect x="130" y="622" width="72" height="9" rx="4.5"/>
+      </g>
+      <g fill="#e4f0ff" fill-opacity="0.22">
+        <rect x="220" y="622" width="112" height="9" rx="4.5"/>
+      </g>
+    </g>
+  </g>
+
+  <g stroke="#8fc0f5" stroke-opacity="0.4" stroke-width="1.4" fill="none">
+    <path d="M96 292 L214 344 L330 300"/>
+    <path d="M214 344 L268 424"/>
+  </g>
+  <g fill="#a9cdfb">
+    <circle cx="96" cy="292" r="5" fill-opacity="0.6"/>
+    <circle cx="214" cy="344" r="7" fill-opacity="0.85"/>
+    <circle cx="268" cy="424" r="5" fill-opacity="0.6"/>
+    <circle cx="330" cy="300" r="5.5" fill-opacity="0.7"/>
+  </g>
+  <circle cx="214" cy="344" r="2.8" fill="#f2ce8c"/>
+</svg>

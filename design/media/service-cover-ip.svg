@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="商标注册全程代办 服务封面">
+  <defs>
+    <linearGradient id="ipbg" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#1f4e8c"/>
+      <stop offset="0.55" stop-color="#1b4074"/>
+      <stop offset="1" stop-color="#15305a"/>
+    </linearGradient>
+    <radialGradient id="ipglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8fc0f5" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#8fc0f5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="iptile" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#67a4e8"/>
+      <stop offset="1" stop-color="#2f6cc4"/>
+    </linearGradient>
+    <linearGradient id="ipsheet" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#ipbg)"/>
+  <circle cx="560" cy="300" r="330" fill="url(#ipglow)"/>
+  <path d="M900 0 L900 600 L360 600 Z" fill="#ffffff" fill-opacity="0.04"/>
+
+  <!-- 申请材料 -->
+  <g transform="rotate(-6 300 300)">
+    <rect x="108" y="104" width="360" height="392" rx="18" fill="url(#ipsheet)" stroke="#bcd8f7" stroke-opacity="0.28"/>
+    <g fill="#e8f2ff">
+      <rect x="150" y="168" width="150" height="16" rx="8" fill-opacity="0.42"/>
+      <rect x="150" y="212" width="272" height="12" rx="6" fill-opacity="0.2"/>
+      <rect x="150" y="240" width="228" height="12" rx="6" fill-opacity="0.2"/>
+      <rect x="150" y="268" width="252" height="12" rx="6" fill-opacity="0.2"/>
+      <rect x="150" y="322" width="120" height="12" rx="6" fill-opacity="0.28"/>
+      <rect x="150" y="350" width="196" height="12" rx="6" fill-opacity="0.2"/>
+      <rect x="150" y="400" width="164" height="34" rx="8" fill-opacity="0.14"/>
+    </g>
+  </g>
+
+  <!-- 商标图样 -->
+  <g transform="rotate(4 560 320)">
+    <rect x="430" y="196" width="260" height="260" rx="36" fill="url(#iptile)" stroke="#cfe4ff" stroke-opacity="0.34"/>
+    <circle cx="560" cy="326" r="58" fill="none" stroke="#ffffff" stroke-opacity="0.88" stroke-width="14"/>
+    <circle cx="560" cy="326" r="16" fill="#ffffff" fill-opacity="0.95"/>
+    <rect x="470" y="404" width="180" height="14" rx="7" fill="#dcebff" fill-opacity="0.5"/>
+  </g>
+
+  <!-- 受理/核准印记 -->
+  <g>
+    <circle cx="726" cy="452" r="54" fill="#f2ce8c" fill-opacity="0.85"/>
+    <circle cx="726" cy="452" r="38" fill="none" stroke="#8a5a12" stroke-opacity="0.35" stroke-width="6"/>
+    <path d="M704 452 l16 18 l30 -34" fill="none" stroke="#8a5a12" stroke-opacity="0.75" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

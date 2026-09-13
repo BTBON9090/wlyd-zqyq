@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="560" viewBox="0 0 1920 560" role="img" aria-label="企业服务 · 专业同行 主视觉">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1a2d"/>
+      <stop offset="0.48" stop-color="#14324f"/>
+      <stop offset="1" stop-color="#1d4a7d"/>
+    </linearGradient>
+    <radialGradient id="glow2a" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#5b9ae4" stop-opacity="0.46"/>
+      <stop offset="1" stop-color="#5b9ae4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2b" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f2ce8c" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#f2ce8c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panelFront" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#3f7dbd"/>
+      <stop offset="1" stop-color="#1e4a76"/>
+    </linearGradient>
+    <linearGradient id="panelMid" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#2c5f95"/>
+      <stop offset="1" stop-color="#16324f"/>
+    </linearGradient>
+    <linearGradient id="panelBack" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#234f80"/>
+      <stop offset="1" stop-color="#122942"/>
+    </linearGradient>
+    <pattern id="grid2" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0V72" fill="none" stroke="#9dc0e8" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1920" height="560" fill="url(#bg2)"/>
+  <rect width="1920" height="560" fill="url(#grid2)"/>
+  <circle cx="1500" cy="170" r="340" fill="url(#glow2a)"/>
+  <circle cx="1240" cy="470" r="280" fill="url(#glow2b)"/>
+
+  <!-- 背后的专业服务能力环 -->
+  <g fill="none" stroke="#8fc0f5" stroke-opacity="0.18">
+    <circle cx="1520" cy="280" r="248" stroke-width="1.5"/>
+    <circle cx="1520" cy="280" r="300" stroke-width="1" stroke-dasharray="6 12"/>
+  </g>
+
+  <!-- 服务方案卡片层 -->
+  <g>
+    <g transform="rotate(-3 1500 300)">
+      <rect x="1300" y="150" width="330" height="212" rx="12" fill="url(#panelBack)" stroke="#7fb3f0" stroke-opacity="0.22"/>
+    </g>
+    <g transform="rotate(2 1440 320)">
+      <rect x="1408" y="196" width="342" height="220" rx="12" fill="url(#panelMid)" stroke="#9ec7f5" stroke-opacity="0.24"/>
+    </g>
+    <g transform="rotate(-1.2 1300 340)">
+      <rect x="1148" y="228" width="372" height="238" rx="14" fill="url(#panelFront)" stroke="#bcdcff" stroke-opacity="0.32"/>
+      <!-- 卡片内容示意：服务条目 -->
+      <g fill="#e4f0ff" fill-opacity="0.5">
+        <rect x="1182" y="266" width="132" height="10" rx="5"/>
+        <rect x="1182" y="292" width="216" height="7" rx="3.5" fill-opacity="0.32"/>
+        <rect x="1182" y="308" width="182" height="7" rx="3.5" fill-opacity="0.32"/>
+      </g>
+      <g fill="#cfe4ff" fill-opacity="0.28">
+        <rect x="1182" y="344" width="150" height="34" rx="6"/>
+        <rect x="1344" y="344" width="150" height="34" rx="6"/>
+      </g>
+      <g fill="#f2ce8c" fill-opacity="0.85">
+        <rect x="1182" y="404" width="74" height="9" rx="4.5"/>
+      </g>
+      <g fill="#e4f0ff" fill-opacity="0.22">
+        <rect x="1276" y="404" width="118" height="9" rx="4.5"/>
+      </g>
+      <!-- 交付进度刻度 -->
+      <g stroke="#f2ce8c" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round">
+        <path d="M1182 430h54"/>
+        <path d="M1240 430h54" stroke-opacity="0.3"/>
+        <path d="M1298 430h54" stroke-opacity="0.3"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 服务供给连接点 -->
+  <g stroke="#8fc0f5" stroke-opacity="0.4" stroke-width="1.4" fill="none">
+    <path d="M900 300 L1080 348 L1200 300"/>
+    <path d="M1080 348 L1160 452"/>
+    <path d="M1080 348 L1080 236"/>
+  </g>
+  <g fill="#a9cdfb">
+    <circle cx="900" cy="300" r="5" fill-opacity="0.6"/>
+    <circle cx="1080" cy="236" r="6" fill-opacity="0.75"/>
+    <circle cx="1080" cy="348" r="7" fill-opacity="0.9"/>
+    <circle cx="1160" cy="452" r="5" fill-opacity="0.6"/>
+    <circle cx="1200" cy="300" r="5.5" fill-opacity="0.7"/>
+  </g>
+  <circle cx="1080" cy="348" r="3" fill="#f2ce8c"/>
+
+  <rect x="0" y="548" width="1920" height="1.5" fill="#8fc0f5" fill-opacity="0.24"/>
+</svg>

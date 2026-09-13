@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="合同审查与起草 服务封面">
+  <defs>
+    <linearGradient id="legbg" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#5b5ea6"/>
+      <stop offset="0.55" stop-color="#454787"/>
+      <stop offset="1" stop-color="#2f3068"/>
+    </linearGradient>
+    <radialGradient id="legglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#a9b0f5" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#a9b0f5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="legsheet" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#legbg)"/>
+  <circle cx="560" cy="280" r="330" fill="url(#legglow)"/>
+  <path d="M900 0 L900 600 L360 600 Z" fill="#ffffff" fill-opacity="0.045"/>
+
+  <!-- 合同文本 -->
+  <g transform="rotate(-4 320 300)">
+    <rect x="126" y="98" width="368" height="404" rx="18" fill="url(#legsheet)" stroke="#d5d8ff" stroke-opacity="0.28"/>
+    <g fill="#eef0ff">
+      <rect x="166" y="150" width="168" height="16" rx="8" fill-opacity="0.46"/>
+      <rect x="166" y="200" width="288" height="11" rx="5.5" fill-opacity="0.2"/>
+      <rect x="166" y="228" width="248" height="11" rx="5.5" fill-opacity="0.2"/>
+      <rect x="166" y="256" width="266" height="11" rx="5.5" fill-opacity="0.2"/>
+      <rect x="166" y="300" width="288" height="11" rx="5.5" fill-opacity="0.2"/>
+      <rect x="166" y="328" width="204" height="11" rx="5.5" fill-opacity="0.2"/>
+    </g>
+    <rect x="166" y="378" width="150" height="34" rx="8" fill="#f2ce8c" fill-opacity="0.72"/>
+    <rect x="334" y="378" width="120" height="34" rx="8" fill="#ffffff" fill-opacity="0.14"/>
+  </g>
+
+  <!-- 审核放大镜 -->
+  <g stroke="#ffffff" stroke-opacity="0.62" fill="none" stroke-linecap="round">
+    <circle cx="620" cy="286" r="94" stroke-width="24"/>
+    <path d="M688 356 l78 80" stroke-width="30"/>
+  </g>
+  <circle cx="620" cy="286" r="94" fill="#ffffff" fill-opacity="0.08"/>
+
+  <!-- 用印 -->
+  <g transform="rotate(-12 704 470)">
+    <circle cx="704" cy="470" r="62" fill="none" stroke="#f2ce8c" stroke-opacity="0.92" stroke-width="10"/>
+    <path d="M704 428 l13 27 l30 4 l-22 21 l5 30 l-26 -14 l-26 14 l5 -30 l-22 -21 l30 -4 z" fill="#f2ce8c" fill-opacity="0.85"/>
+  </g>
+</svg>

@@ -1,0 +1,69 @@
+{
+  "banners": [
+    {
+      "id": "platform",
+      "label": "政企协同 · 产业互联",
+      "title": "汇聚产业好资源",
+      "emphasis": "成就企业好生意",
+      "description": "连接园区、企业与专业服务商，让服务、商机与成长在这里相遇。",
+      "image": "media/banners/hero-platform.webp",
+      "mobileImage": "media/banners/hero-platform-mobile.webp",
+      "imageOnly": false,
+      "actionLabel": "发现平台服务",
+      "target": "capabilities"
+    },
+    {
+      "id": "services",
+      "label": "企业服务 · 专业同行",
+      "title": "经营中的每个需求",
+      "emphasis": "都有专业力量回应",
+      "description": "工商财税、知识产权、品牌设计与数字化服务，按需寻找合适的合作伙伴。",
+      "image": "media/banners/hero-services.webp",
+      "mobileImage": "media/banners/hero-services-mobile.webp",
+      "imageOnly": false,
+      "actionLabel": "进入企业服务",
+      "target": "services"
+    },
+    {
+      "id": "park",
+      "label": "园区共建 · 企业共生",
+      "title": "从一家企业",
+      "emphasis": "到一个产业生态",
+      "description": "聚合产业信息与上下游资源，拓展企业之间的连接与合作。",
+      "image": "media/banners/hero-park.webp",
+      "mobileImage": "media/banners/hero-park-mobile.webp",
+      "imageOnly": false,
+      "actionLabel": "办理企业入驻",
+      "target": "onboarding"
+    }
+  ],
+  "capabilityImages": {
+    "services": "",
+    "logistics": "",
+    "ai": "",
+    "finance": "",
+    "trade": "",
+    "news": ""
+  },
+  "campaignImage": "",
+  "resourceImages": {
+    "enterprise": "",
+    "industry": "",
+    "supply": ""
+  },
+  "partnerImages": {
+    "本地服务商": "",
+    "金融机构": "",
+    "科研院所": "",
+    "物流企业": "",
+    "科技公司": ""
+  },
+  "businessImages": {
+    "finance": "",
+    "trade": "",
+    "logistics": ""
+  },
+  "productImages": {},
+  "serviceBannerImage": "",
+  "authImage": ""
+}

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" role="img" aria-label="代理记账报税 服务封面">
+  <defs>
+    <linearGradient id="finbg" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#2b7f6d"/>
+      <stop offset="0.55" stop-color="#1e6357"/>
+      <stop offset="1" stop-color="#14443f"/>
+    </linearGradient>
+    <radialGradient id="finglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7fe3c9" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#7fe3c9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="finsheet" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.07"/>
+    </linearGradient>
+    <linearGradient id="finbar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9fe8d3"/>
+      <stop offset="1" stop-color="#4bb79a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#finbg)"/>
+  <circle cx="620" cy="260" r="330" fill="url(#finglow)"/>
+  <path d="M900 0 L900 600 L380 600 Z" fill="#ffffff" fill-opacity="0.04"/>
+
+  <!-- 账册 -->
+  <g transform="rotate(-5 300 310)">
+    <rect x="104" y="118" width="366" height="384" rx="18" fill="url(#finsheet)" stroke="#c8f0e2" stroke-opacity="0.26"/>
+    <g fill="#ffffff">
+      <rect x="142" y="162" width="132" height="15" rx="7.5" fill-opacity="0.45"/>
+      <rect x="142" y="204" width="290" height="10" rx="5" fill-opacity="0.16"/>
+    </g>
+    <g fill="#ffffff" fill-opacity="0.3">
+      <rect x="142" y="240" width="86" height="58" rx="10"/>
+      <rect x="244" y="240" width="86" height="58" rx="10"/>
+      <rect x="346" y="240" width="86" height="58" rx="10"/>
+      <rect x="142" y="314" width="86" height="58" rx="10"/>
+      <rect x="244" y="314" width="86" height="58" rx="10"/>
+      <rect x="346" y="314" width="86" height="58" rx="10"/>
+    </g>
+    <rect x="142" y="392" width="188" height="18" rx="9" fill="#f2ce8c" fill-opacity="0.72"/>
+  </g>
+
+  <!-- 申报数据 -->
+  <g transform="rotate(3 660 330)">
+    <rect x="524" y="150" width="272" height="356" rx="20" fill="#ffffff" fill-opacity="0.1" stroke="#c8f0e2" stroke-opacity="0.22"/>
+    <g>
+      <rect x="566" y="336" width="38" height="118" rx="10" fill="url(#finbar)"/>
+      <rect x="620" y="288" width="38" height="166" rx="10" fill="url(#finbar)"/>
+      <rect x="674" y="236" width="38" height="218" rx="10" fill="url(#finbar)"/>
+      <rect x="728" y="188" width="38" height="266" rx="10" fill="#f2ce8c" fill-opacity="0.9"/>
+    </g>
+    <rect x="566" y="198" width="120" height="14" rx="7" fill="#ffffff" fill-opacity="0.4"/>
+    <rect x="566" y="478" width="200" height="12" rx="6" fill="#ffffff" fill-opacity="0.2"/>
+  </g>
+</svg>

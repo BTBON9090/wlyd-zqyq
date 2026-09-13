@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="560" viewBox="0 0 1920 560" role="img" aria-label="政企协同 · 产业互联 主视觉">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1a2c"/>
+      <stop offset="0.5" stop-color="#12304f"/>
+      <stop offset="1" stop-color="#1a4874"/>
+    </linearGradient>
+    <radialGradient id="glowCool" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4d8fdc" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#4d8fdc" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowWarm" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f2ce8c" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#f2ce8c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="towerA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b5e93"/>
+      <stop offset="1" stop-color="#16385c"/>
+    </linearGradient>
+    <linearGradient id="towerB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22507f"/>
+      <stop offset="1" stop-color="#102944"/>
+    </linearGradient>
+    <linearGradient id="towerC" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a74ad"/>
+      <stop offset="1" stop-color="#1b4267"/>
+    </linearGradient>
+    <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0V72" fill="none" stroke="#9dc0e8" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <pattern id="windows" width="14" height="20" patternUnits="userSpaceOnUse">
+      <rect x="3" y="5" width="6" height="9" fill="#cfe3ff" fill-opacity="0.5"/>
+    </pattern>
+    <clipPath id="skyline">
+      <rect x="1064" y="196" width="76" height="364"/>
+      <rect x="1152" y="120" width="58" height="440"/>
+      <rect x="1222" y="268" width="92" height="292"/>
+      <rect x="1326" y="176" width="64" height="384"/>
+      <rect x="1402" y="316" width="46" height="244"/>
+      <rect x="1460" y="96" width="98" height="464"/>
+      <rect x="1570" y="228" width="62" height="332"/>
+      <rect x="1644" y="148" width="82" height="412"/>
+      <rect x="1738" y="290" width="52" height="270"/>
+      <rect x="1802" y="72" width="118" height="488"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1920" height="560" fill="url(#bg)"/>
+  <rect width="1920" height="560" fill="url(#grid)"/>
+  <circle cx="1560" cy="150" r="360" fill="url(#glowCool)"/>
+  <circle cx="1180" cy="470" r="300" fill="url(#glowWarm)"/>
+
+  <!-- 园区天际线 -->
+  <g>
+    <rect x="1064" y="196" width="76" height="364" fill="url(#towerB)"/>
+    <rect x="1152" y="120" width="58" height="440" fill="url(#towerA)"/>
+    <rect x="1222" y="268" width="92" height="292" fill="url(#towerB)"/>
+    <rect x="1326" y="176" width="64" height="384" fill="url(#towerC)"/>
+    <rect x="1402" y="316" width="46" height="244" fill="url(#towerB)"/>
+    <rect x="1460" y="96" width="98" height="464" fill="url(#towerA)"/>
+    <rect x="1570" y="228" width="62" height="332" fill="url(#towerC)"/>
+    <rect x="1644" y="148" width="82" height="412" fill="url(#towerB)"/>
+    <rect x="1738" y="290" width="52" height="270" fill="url(#towerA)"/>
+    <rect x="1802" y="72" width="118" height="488" fill="url(#towerC)"/>
+  </g>
+  <g clip-path="url(#skyline)" opacity="0.5">
+    <rect x="1040" y="60" width="900" height="500" fill="url(#windows)"/>
+  </g>
+  <!-- 楼体亮边 -->
+  <g fill="#9ec7f5" fill-opacity="0.28">
+    <rect x="1064" y="196" width="3" height="364"/>
+    <rect x="1152" y="120" width="3" height="440"/>
+    <rect x="1222" y="268" width="3" height="292"/>
+    <rect x="1326" y="176" width="3" height="384"/>
+    <rect x="1460" y="96" width="3" height="464"/>
+    <rect x="1570" y="228" width="3" height="332"/>
+    <rect x="1644" y="148" width="3" height="412"/>
+    <rect x="1802" y="72" width="3" height="488"/>
+  </g>
+
+  <!-- 产业互联网络 -->
+  <g stroke-linecap="round">
+    <g stroke="#7fb3f0" stroke-opacity="0.5" stroke-width="1.6" fill="none">
+      <path d="M700 400 L900 322 L1120 372 L1330 268 L1520 318"/>
+      <path d="M900 322 L1010 210 L1210 250"/>
+      <path d="M1120 372 L1230 452 L1450 420"/>
+      <path d="M1330 268 L1400 160 L1620 205"/>
+    </g>
+    <g fill="#a9cdfb">
+      <circle cx="700" cy="400" r="5" fill-opacity="0.75"/>
+      <circle cx="900" cy="322" r="7" fill-opacity="0.9"/>
+      <circle cx="1010" cy="210" r="5.5" fill-opacity="0.7"/>
+      <circle cx="1120" cy="372" r="6" fill-opacity="0.85"/>
+      <circle cx="1210" cy="250" r="5" fill-opacity="0.65"/>
+      <circle cx="1230" cy="452" r="6" fill-opacity="0.7"/>
+      <circle cx="1330" cy="268" r="7.5" fill-opacity="0.9"/>
+      <circle cx="1400" cy="160" r="5" fill-opacity="0.6"/>
+      <circle cx="1450" cy="420" r="5.5" fill-opacity="0.65"/>
+      <circle cx="1520" cy="318" r="6.5" fill-opacity="0.8"/>
+      <circle cx="1620" cy="205" r="5" fill-opacity="0.6"/>
+    </g>
+    <g fill="#f2ce8c">
+      <circle cx="900" cy="322" r="2.6"/>
+      <circle cx="1330" cy="268" r="2.8"/>
+      <circle cx="1520" cy="318" r="2.4"/>
+    </g>
+  </g>
+
+  <!-- 地平线光带 -->
+  <rect x="0" y="548" width="1920" height="1.5" fill="#8fc0f5" fill-opacity="0.28"/>
+</svg>

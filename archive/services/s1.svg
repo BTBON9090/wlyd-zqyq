@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="商标知产">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1F3A"/>
+      <stop offset="55%" stop-color="#1A4B8C"/>
+      <stop offset="100%" stop-color="#2E6DB4"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5EB3F6" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="520" cy="60" r="120" fill="#7EC8FF" fill-opacity="0.12"/>
+  <circle cx="80" cy="300" r="90" fill="#FFFFFF" fill-opacity="0.08"/>
+  <rect x="40" y="40" width="140" height="90" rx="8" fill="#FFFFFF" fill-opacity="0.06"/>
+  <!-- seal / trademark badge -->
+  <circle cx="320" cy="175" r="78" fill="none" stroke="#A8D4FF" stroke-width="3" stroke-opacity="0.85"/>
+  <circle cx="320" cy="175" r="62" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.4"/>
+  <polygon points="320,120 335,160 378,160 343,186 356,228 320,202 284,228 297,186 262,160 305,160" fill="url(#accent)"/>
+  <rect x="250" y="250" width="140" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.25"/>
+  <text x="48" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="4">知产</text>
+</svg>

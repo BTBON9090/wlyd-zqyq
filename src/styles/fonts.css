@@ -1,0 +1,161 @@
+/**
+ * 字体层定义
+ *
+ * 1. 阿里巴巴普惠体 3.0 —— 主要中文/英文字体（免费商用）
+ *    全部字重：Thin(100)、Light(300)、Regular(400)、Medium(500)、
+ *             SemiBold(600)、Bold(700)、ExtraBold(800)、Heavy(900)
+ *
+ * 2. D-DIN PRO Exp —— 金额数字字体（SIL OFL 1.1）
+ *    保留字体名为 "D-DIN PRO Exp"，字体文件未修改
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   阿里巴巴普惠体 3.0
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "Alibaba PuHuiTi 3";
+  src: url("/fonts/alibaba-puhuiti/AlibabaPuHuiTi-3-35-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi 3";
+  src: url("/fonts/alibaba-puhuiti/AlibabaPuHuiTi-3-45-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi 3";
+  src: url("/fonts/alibaba-puhuiti/AlibabaPuHuiTi-3-55-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi 3";
+  src: url("/fonts/alibaba-puhuiti/AlibabaPuHuiTi-3-65-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi 3";
+  src: url("/fonts/alibaba-puhuiti/AlibabaPuHuiTi-3-75-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi 3";
+  src: url("/fonts/alibaba-puhuiti/AlibabaPuHuiTi-3-85-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi 3";
+  src: url("/fonts/alibaba-puhuiti/AlibabaPuHuiTi-3-95-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alibaba PuHuiTi 3";
+  src: url("/fonts/alibaba-puhuiti/AlibabaPuHuiTi-3-105-Heavy.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   D-DIN PRO Exp —— 金额数字专用
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "D-DIN PRO Exp";
+  src: url("/fonts/d-din/D-DIN-PRO-Exp-300-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "D-DIN PRO Exp";
+  src: url("/fonts/d-din/D-DIN-PRO-Exp-400-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "D-DIN PRO Exp";
+  src: url("/fonts/d-din/D-DIN-PRO-Exp-500-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "D-DIN PRO Exp";
+  src: url("/fonts/d-din/D-DIN-PRO-Exp-600-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "D-DIN PRO Exp";
+  src: url("/fonts/d-din/D-DIN-PRO-Exp-700-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "D-DIN PRO Exp";
+  src: url("/fonts/d-din/D-DIN-PRO-Exp-800-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "D-DIN PRO Exp";
+  src: url("/fonts/d-din/D-DIN-PRO-Exp-900-Heavy.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   金额展示位样式
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 金额展示位：只替换数字字形，不改尺寸、颜色与布局 */
+.num,
+.price,
+.product-price strong,
+.product-quantity strong,
+.detail-price strong,
+.summary-price,
+.trade-product strong,
+.coupon-amount strong {
+  font-family: var(--font-num);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* 卡片金额用 semibold */
+.price {
+  font-weight: 600;
+}

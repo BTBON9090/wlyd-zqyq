@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="UI设计">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="50%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#0E4D6B"/>
+      <stop offset="100%" stop-color="#0891B2"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="70" cy="80" r="85" fill="#22D3EE" fill-opacity="0.12"/>
+  <circle cx="560" cy="260" r="120" fill="#FFFFFF" fill-opacity="0.06"/>
+  <!-- UI frame -->
+  <rect x="180" y="70" width="280" height="200" rx="12" fill="#FFFFFF" fill-opacity="0.08" stroke="#A5F3FC" stroke-width="2" stroke-opacity="0.5"/>
+  <rect x="200" y="95" width="100" height="14" rx="4" fill="#67E8F9" fill-opacity="0.6"/>
+  <rect x="200" y="125" width="240" height="50" rx="6" fill="#ECFEFF" fill-opacity="0.15"/>
+  <rect x="200" y="190" width="70" height="50" rx="6" fill="#22D3EE" fill-opacity="0.35"/>
+  <rect x="285" y="190" width="70" height="50" rx="6" fill="#67E8F9" fill-opacity="0.3"/>
+  <rect x="370" y="190" width="70" height="50" rx="6" fill="#A5F3FC" fill-opacity="0.25"/>
+  <circle cx="420" cy="102" r="8" fill="#67E8F9" fill-opacity="0.7"/>
+  <text x="48" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="4">界面</text>
+</svg>

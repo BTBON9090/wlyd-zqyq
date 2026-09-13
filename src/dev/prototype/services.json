@@ -1,0 +1,3118 @@
+[
+  {
+    "id": "x1-name",
+    "categoryId": "ip",
+    "category": "知识产权",
+    "categoryL2": "商标专利",
+    "categoryL3": "商标注册",
+    "name": "高新技术企业认定申报辅导与研发费用加计扣除全流程代办及后续抽查应对服务",
+    "desc": "检索评估 · 递交申请 · 异议答辩",
+    "overview": "检索评估 · 递交申请 · 异议答辩",
+    "price": "1,280 起",
+    "priceMin": 1280,
+    "provider": "万联知产",
+    "image": "media/services/service-cover-ip.webp",
+    "features": ["近似检索", "材料撰写", "进度跟踪"],
+    "delivery": "15–30 个工作日",
+    "tone": "t1",
+    "hot": true,
+    "publishedAt": "2026-08-28",
+    "rating": 4.9,
+    "providerRating": 4.8,
+    "salesCount": 12345,
+    "published": {
+      "id": "x1-name-s1",
+      "shop": {
+        "id": "x1-name-shop-wanlian",
+        "name": "万联知产",
+        "intro": "万联知产专注知识产权代理与维权，深耕园区制造与科技企业商标、专利与版权业务，材料一次齐、进度可查。",
+        "phone": "400-820-1180",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["严选服务商", "园区入驻", "保证金已缴", "及时回复"],
+        "score": 4.8,
+        "halfYearDeals": 326,
+        "employerCount": 148,
+        "completeRate": 99,
+        "introImages": [
+          {
+            "id": "x1-name-wl-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "x1-name-wl-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "知识产权",
+      "categoryL2": "商标专利",
+      "categoryL3": "商标注册",
+      "name": "高新技术企业认定申报辅导与研发费用加计扣除全流程代办及后续抽查应对服务",
+      "intro": "检索评估 · 递交申请 · 异议答辩",
+      "serviceAreaLabel": "全国",
+      "coverUrl": "media/services/service-cover-ip.webp",
+      "media": [
+        {
+          "id": "x1-name-s1-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "x1-name-s1-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "x1-name-s1-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "x1-name-s1-v1",
+          "name": "基础检索版",
+          "sellingPoints": "近似检索 · 材料代写 · 递交受理",
+          "highlights": ["近似检索报告", "材料代写", "网申递交", "受理回执"],
+          "price": 980,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 20,
+          "deliveryStandard": "完成近似检索报告与申请材料递交，交付受理回执。",
+          "phases": []
+        },
+        {
+          "id": "x1-name-s1-v2",
+          "name": "全程代办版",
+          "sellingPoints": "异议答辩协同 · 进度专属跟进",
+          "highlights": [
+            "近似检索",
+            "材料撰写递交",
+            "补正协同",
+            "进度专属跟进",
+            "异议阶段咨询"
+          ],
+          "price": 1280,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 30,
+          "deliveryStandard": "含检索、递交、补正协同与进度跟踪至初审通知。",
+          "phases": []
+        },
+        {
+          "id": "x1-name-s1-v3",
+          "name": "加急辅导版",
+          "sellingPoints": "优先排期 · 一次补正辅导",
+          "highlights": ["优先排期", "加急递交", "一次补正辅导", "专属顾问"],
+          "price": 1980,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 15,
+          "deliveryStandard": "优先排期撰写与递交，含一次补正辅导。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 商标近似检索与可行性评估\n2. 申请书与说明书撰写\n3. 网申递交与补正协同\n4. 关键节点进度反馈\n\n【服务说明】\n不含异议答辩代理诉讼费用（可另询）。",
+      "detailGuarantee": "工作日 2 小时内响应；递交后进度可查；官方补正通知 1 个工作日内同步。平台托管付款，节点验收后结算。",
+      "detailImages": [
+        {
+          "id": "x1-name-s1-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "x1-name-s1-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "x1-name-case-s1-1",
+          "categoryPath": "知识产权 / 商标专利 / 商标注册",
+          "title": "某智能装备品牌 3 类商标注册",
+          "intro": "15 个工作日完成递交，初审一次通过。",
+          "coverUrl": ""
+        },
+        {
+          "id": "x1-name-case-s1-2",
+          "categoryPath": "知识产权 / 商标专利 / 商标注册",
+          "title": "园区科技企业商标组合布局",
+          "intro": "主商标 + 系列商标分批申报，规避近似风险。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "x1-name-s1-f1",
+          "question": "是否含刻章？",
+          "answer": "不含，可另询代办。"
+        },
+        {
+          "id": "x1-name-s1-f2",
+          "question": "多久出受理回执？",
+          "answer": "材料齐全通常 3–7 个工作日完成递交并取得回执。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "x1-name-s1-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「商标注册全程代办」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "商标注册全程代办"
+        },
+        {
+          "id": "x1-name-s1-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "商标注册全程代办"
+        },
+        {
+          "id": "x1-name-s1-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在万联知产采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 12345,
+      "rating": 4.9
+    }
+  },
+  {
+    "id": "x2-desc",
+    "categoryId": "ip",
+    "category": "知识产权",
+    "categoryL2": "商标专利",
+    "categoryL3": "商标注册",
+    "name": "商标注册全程代办",
+    "desc": "前期近似检索与可注册性评估 · 申请材料撰写与递交 · 官方进度跟踪与补正答复 · 异议答辩辅导 · 驳回复审策略建议 · 后续续展提醒",
+    "overview": "前期近似检索与可注册性评估 · 申请材料撰写与递交 · 官方进度跟踪与补正答复 · 异议答辩辅导 · 驳回复审策略建议 · 后续续展提醒",
+    "price": "1,280 起",
+    "priceMin": 1280,
+    "provider": "万联知产",
+    "image": "media/services/service-cover-ip.webp",
+    "features": [
+      "近似检索与可注册性评估",
+      "申请材料撰写与递交",
+      "官方进度跟踪与补正答复",
+      "异议答辩辅导"
+    ],
+    "delivery": "15–30 个工作日",
+    "tone": "t1",
+    "hot": true,
+    "publishedAt": "2026-08-28",
+    "rating": 4.9,
+    "providerRating": 4.8,
+    "salesCount": 12345,
+    "published": {
+      "id": "x2-desc-s1",
+      "shop": {
+        "id": "x2-desc-shop-wanlian",
+        "name": "万联知产",
+        "intro": "万联知产专注知识产权代理与维权，深耕园区制造与科技企业商标、专利与版权业务，材料一次齐、进度可查。",
+        "phone": "400-820-1180",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["严选服务商", "园区入驻", "保证金已缴", "及时回复"],
+        "score": 4.8,
+        "halfYearDeals": 326,
+        "employerCount": 148,
+        "completeRate": 99,
+        "introImages": [
+          {
+            "id": "x2-desc-wl-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "x2-desc-wl-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "知识产权",
+      "categoryL2": "商标专利",
+      "categoryL3": "商标注册",
+      "name": "商标注册全程代办",
+      "intro": "前期近似检索与可注册性评估 · 申请材料撰写与递交 · 官方进度跟踪与补正答复 · 异议答辩辅导 · 驳回复审策略建议 · 后续续展提醒",
+      "serviceAreaLabel": "全国",
+      "coverUrl": "media/services/service-cover-ip.webp",
+      "media": [
+        {
+          "id": "x2-desc-s1-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "x2-desc-s1-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "x2-desc-s1-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "x2-desc-s1-v1",
+          "name": "基础检索版",
+          "sellingPoints": "近似检索 · 材料代写 · 递交受理",
+          "highlights": ["近似检索报告", "材料代写", "网申递交", "受理回执"],
+          "price": 980,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 20,
+          "deliveryStandard": "完成近似检索报告与申请材料递交，交付受理回执。",
+          "phases": []
+        },
+        {
+          "id": "x2-desc-s1-v2",
+          "name": "全程代办版",
+          "sellingPoints": "异议答辩协同 · 进度专属跟进",
+          "highlights": [
+            "近似检索",
+            "材料撰写递交",
+            "补正协同",
+            "进度专属跟进",
+            "异议阶段咨询"
+          ],
+          "price": 1280,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 30,
+          "deliveryStandard": "含检索、递交、补正协同与进度跟踪至初审通知。",
+          "phases": []
+        },
+        {
+          "id": "x2-desc-s1-v3",
+          "name": "加急辅导版",
+          "sellingPoints": "优先排期 · 一次补正辅导",
+          "highlights": ["优先排期", "加急递交", "一次补正辅导", "专属顾问"],
+          "price": 1980,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 15,
+          "deliveryStandard": "优先排期撰写与递交，含一次补正辅导。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 商标近似检索与可行性评估\n2. 申请书与说明书撰写\n3. 网申递交与补正协同\n4. 关键节点进度反馈\n\n【服务说明】\n不含异议答辩代理诉讼费用（可另询）。",
+      "detailGuarantee": "工作日 2 小时内响应；递交后进度可查；官方补正通知 1 个工作日内同步。平台托管付款，节点验收后结算。",
+      "detailImages": [
+        {
+          "id": "x2-desc-s1-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "x2-desc-s1-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "x2-desc-case-s1-1",
+          "categoryPath": "知识产权 / 商标专利 / 商标注册",
+          "title": "某智能装备品牌 3 类商标注册",
+          "intro": "15 个工作日完成递交，初审一次通过。",
+          "coverUrl": ""
+        },
+        {
+          "id": "x2-desc-case-s1-2",
+          "categoryPath": "知识产权 / 商标专利 / 商标注册",
+          "title": "园区科技企业商标组合布局",
+          "intro": "主商标 + 系列商标分批申报，规避近似风险。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "x2-desc-s1-f1",
+          "question": "是否含刻章？",
+          "answer": "不含，可另询代办。"
+        },
+        {
+          "id": "x2-desc-s1-f2",
+          "question": "多久出受理回执？",
+          "answer": "材料齐全通常 3–7 个工作日完成递交并取得回执。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "x2-desc-s1-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「商标注册全程代办」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "商标注册全程代办"
+        },
+        {
+          "id": "x2-desc-s1-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "商标注册全程代办"
+        },
+        {
+          "id": "x2-desc-s1-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在万联知产采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 12345,
+      "rating": 4.9
+    }
+  },
+  {
+    "id": "x3-company",
+    "categoryId": "ip",
+    "category": "知识产权",
+    "categoryL2": "商标专利",
+    "categoryL3": "商标注册",
+    "name": "商标注册全程代办",
+    "desc": "检索评估 · 递交申请 · 异议答辩",
+    "overview": "检索评估 · 递交申请 · 异议答辩",
+    "price": "1,280 起",
+    "priceMin": 1280,
+    "provider": "上海万联易达知识产权代理有限公司第一分公司",
+    "image": "media/services/service-cover-ip.webp",
+    "features": ["近似检索", "材料撰写", "进度跟踪"],
+    "delivery": "15–30 个工作日",
+    "tone": "t1",
+    "hot": true,
+    "publishedAt": "2026-08-28",
+    "rating": 4.9,
+    "providerRating": 4.8,
+    "salesCount": 12345,
+    "published": {
+      "id": "x3-company-s1",
+      "shop": {
+        "id": "x3-company-shop-wanlian",
+        "name": "上海万联易达知识产权代理有限公司第一分公司",
+        "intro": "万联知产专注知识产权代理与维权，深耕园区制造与科技企业商标、专利与版权业务，材料一次齐、进度可查。",
+        "phone": "400-820-1180",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["严选服务商", "园区入驻", "保证金已缴", "及时回复"],
+        "score": 4.8,
+        "halfYearDeals": 326,
+        "employerCount": 148,
+        "completeRate": 99,
+        "introImages": [
+          {
+            "id": "x3-company-wl-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "x3-company-wl-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "知识产权",
+      "categoryL2": "商标专利",
+      "categoryL3": "商标注册",
+      "name": "商标注册全程代办",
+      "intro": "检索评估 · 递交申请 · 异议答辩",
+      "serviceAreaLabel": "全国",
+      "coverUrl": "media/services/service-cover-ip.webp",
+      "media": [
+        {
+          "id": "x3-company-s1-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "x3-company-s1-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "x3-company-s1-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "x3-company-s1-v1",
+          "name": "基础检索版",
+          "sellingPoints": "近似检索 · 材料代写 · 递交受理",
+          "highlights": ["近似检索报告", "材料代写", "网申递交", "受理回执"],
+          "price": 980,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 20,
+          "deliveryStandard": "完成近似检索报告与申请材料递交，交付受理回执。",
+          "phases": []
+        },
+        {
+          "id": "x3-company-s1-v2",
+          "name": "全程代办版",
+          "sellingPoints": "异议答辩协同 · 进度专属跟进",
+          "highlights": [
+            "近似检索",
+            "材料撰写递交",
+            "补正协同",
+            "进度专属跟进",
+            "异议阶段咨询"
+          ],
+          "price": 1280,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 30,
+          "deliveryStandard": "含检索、递交、补正协同与进度跟踪至初审通知。",
+          "phases": []
+        },
+        {
+          "id": "x3-company-s1-v3",
+          "name": "加急辅导版",
+          "sellingPoints": "优先排期 · 一次补正辅导",
+          "highlights": ["优先排期", "加急递交", "一次补正辅导", "专属顾问"],
+          "price": 1980,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 15,
+          "deliveryStandard": "优先排期撰写与递交，含一次补正辅导。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 商标近似检索与可行性评估\n2. 申请书与说明书撰写\n3. 网申递交与补正协同\n4. 关键节点进度反馈\n\n【服务说明】\n不含异议答辩代理诉讼费用（可另询）。",
+      "detailGuarantee": "工作日 2 小时内响应；递交后进度可查；官方补正通知 1 个工作日内同步。平台托管付款，节点验收后结算。",
+      "detailImages": [
+        {
+          "id": "x3-company-s1-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "x3-company-s1-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "x3-company-case-s1-1",
+          "categoryPath": "知识产权 / 商标专利 / 商标注册",
+          "title": "某智能装备品牌 3 类商标注册",
+          "intro": "15 个工作日完成递交，初审一次通过。",
+          "coverUrl": ""
+        },
+        {
+          "id": "x3-company-case-s1-2",
+          "categoryPath": "知识产权 / 商标专利 / 商标注册",
+          "title": "园区科技企业商标组合布局",
+          "intro": "主商标 + 系列商标分批申报，规避近似风险。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "x3-company-s1-f1",
+          "question": "是否含刻章？",
+          "answer": "不含，可另询代办。"
+        },
+        {
+          "id": "x3-company-s1-f2",
+          "question": "多久出受理回执？",
+          "answer": "材料齐全通常 3–7 个工作日完成递交并取得回执。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "x3-company-s1-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「商标注册全程代办」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "商标注册全程代办"
+        },
+        {
+          "id": "x3-company-s1-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "商标注册全程代办"
+        },
+        {
+          "id": "x3-company-s1-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在万联知产采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 12345,
+      "rating": 4.9
+    }
+  },
+  {
+    "id": "s1",
+    "categoryId": "ip",
+    "category": "知识产权",
+    "categoryL2": "商标专利",
+    "categoryL3": "商标注册",
+    "name": "商标注册全程代办",
+    "desc": "检索评估 · 递交申请 · 异议答辩",
+    "overview": "覆盖商标近似检索、申请材料撰写、官方进度跟踪与异议答辩辅导，适合首次注册与品牌布局企业。",
+    "price": "980 起",
+    "priceMin": 980,
+    "provider": "万联知产",
+    "image": "media/services/service-cover-ip.webp",
+    "features": ["近似检索", "材料撰写", "进度跟踪"],
+    "delivery": "15–30 个工作日",
+    "tone": "t1",
+    "hot": true,
+    "publishedAt": "2026-08-28",
+    "rating": 4.9,
+    "providerRating": 4.8,
+    "salesCount": 12345,
+    "published": {
+      "id": "s1",
+      "shop": {
+        "id": "shop-wanlian",
+        "name": "万联知产",
+        "intro": "万联知产专注知识产权代理与维权，深耕园区制造与科技企业商标、专利与版权业务，材料一次齐、进度可查。",
+        "phone": "400-820-1180",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["严选服务商", "园区入驻", "保证金已缴", "及时回复"],
+        "score": 4.8,
+        "halfYearDeals": 326,
+        "employerCount": 148,
+        "completeRate": 99,
+        "introImages": [
+          {
+            "id": "wl-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "wl-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "知识产权",
+      "categoryL2": "商标专利",
+      "categoryL3": "商标注册",
+      "name": "商标注册全程代办",
+      "intro": "含近似检索、材料撰写递交与进度跟踪，支持异议阶段协同。",
+      "serviceAreaLabel": "全国",
+      "coverUrl": "media/services/service-cover-ip.webp",
+      "media": [
+        {
+          "id": "s1-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s1-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s1-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s1-v1",
+          "name": "基础检索版",
+          "sellingPoints": "近似检索 · 材料代写 · 递交受理",
+          "highlights": ["近似检索报告", "材料代写", "网申递交", "受理回执"],
+          "price": 980,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 20,
+          "deliveryStandard": "完成近似检索报告与申请材料递交，交付受理回执。",
+          "phases": []
+        },
+        {
+          "id": "s1-v2",
+          "name": "全程代办版",
+          "sellingPoints": "异议答辩协同 · 进度专属跟进",
+          "highlights": [
+            "近似检索",
+            "材料撰写递交",
+            "补正协同",
+            "进度专属跟进",
+            "异议阶段咨询"
+          ],
+          "price": 1280,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 30,
+          "deliveryStandard": "含检索、递交、补正协同与进度跟踪至初审通知。",
+          "phases": []
+        },
+        {
+          "id": "s1-v3",
+          "name": "加急辅导版",
+          "sellingPoints": "优先排期 · 一次补正辅导",
+          "highlights": ["优先排期", "加急递交", "一次补正辅导", "专属顾问"],
+          "price": 1980,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 15,
+          "deliveryStandard": "优先排期撰写与递交，含一次补正辅导。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 商标近似检索与可行性评估\n2. 申请书与说明书撰写\n3. 网申递交与补正协同\n4. 关键节点进度反馈\n\n【服务说明】\n不含异议答辩代理诉讼费用（可另询）。",
+      "detailGuarantee": "工作日 2 小时内响应；递交后进度可查；官方补正通知 1 个工作日内同步。平台托管付款，节点验收后结算。",
+      "detailImages": [
+        {
+          "id": "s1-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s1-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "case-s1-1",
+          "categoryPath": "知识产权 / 商标专利 / 商标注册",
+          "title": "某智能装备品牌 3 类商标注册",
+          "intro": "15 个工作日完成递交，初审一次通过。",
+          "coverUrl": ""
+        },
+        {
+          "id": "case-s1-2",
+          "categoryPath": "知识产权 / 商标专利 / 商标注册",
+          "title": "园区科技企业商标组合布局",
+          "intro": "主商标 + 系列商标分批申报，规避近似风险。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s1-f1",
+          "question": "是否含刻章？",
+          "answer": "不含，可另询代办。"
+        },
+        {
+          "id": "s1-f2",
+          "question": "多久出受理回执？",
+          "answer": "材料齐全通常 3–7 个工作日完成递交并取得回执。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s1-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「商标注册全程代办」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "商标注册全程代办"
+        },
+        {
+          "id": "s1-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "商标注册全程代办"
+        },
+        {
+          "id": "s1-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在万联知产采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 12345,
+      "rating": 4.9
+    }
+  },
+  {
+    "id": "s2",
+    "categoryId": "finance_tax",
+    "category": "工商财税",
+    "categoryL2": "代理记账",
+    "categoryL3": "一般纳税人记账",
+    "name": "代理记账 · 报税",
+    "desc": "月度账务 · 增值税申报 · 汇算清缴",
+    "overview": "面向一般纳税人的月度账务处理、增值税及附加税申报、汇算清缴辅导，含专属财务顾问答疑。",
+    "price": "680 / 次",
+    "priceMin": 680,
+    "provider": "正衡会计",
+    "image": "media/services/service-cover-finance.webp",
+    "features": ["凭证整理", "纳税申报", "财务咨询"],
+    "delivery": "按月服务",
+    "tone": "t2",
+    "hot": true,
+    "publishedAt": "2026-08-20",
+    "rating": 4.8,
+    "providerRating": 4.7,
+    "salesCount": 25680,
+    "published": {
+      "id": "s2",
+      "shop": {
+        "id": "shop-zhengheng",
+        "name": "正衡会计",
+        "intro": "工商财税一体化服务，熟悉园区政策与申报节奏，为入驻企业提供记账报税与顾问答疑。",
+        "phone": "400-821-2266",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["严选服务商", "财税资质", "企业"],
+        "score": 4.7,
+        "halfYearDeals": 512,
+        "employerCount": 220,
+        "completeRate": 98,
+        "introImages": [
+          {
+            "id": "zh-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "zh-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "工商财税",
+      "categoryL2": "代理记账",
+      "categoryL3": "一般纳税人记账",
+      "name": "代理记账 · 报税",
+      "intro": "月度账务 · 增值税申报 · 汇算清缴",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "media/services/service-cover-finance.webp",
+      "media": [
+        {
+          "id": "s2-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s2-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s2-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s2-v1",
+          "name": "标准版",
+          "sellingPoints": "凭证整理 · 纳税申报 · 财务咨询",
+          "highlights": ["凭证整理", "纳税申报", "财务咨询"],
+          "price": 680,
+          "unit": "次",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 7,
+          "deliveryStandard": "按约定完成「代理记账 · 报税」交付，含：凭证整理、纳税申报、财务咨询。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 凭证整理\n2. 纳税申报\n3. 财务咨询\n\n【交付说明】\n按月服务\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s2-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s2-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s2-case-1",
+          "categoryPath": "工商财税 / 代理记账 / 一般纳税人记账",
+          "title": "代理记账 · 报税 · 园区客户案例",
+          "intro": "为园区企业完成「代理记账 · 报税」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s2-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s2-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s2-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「代理记账 · 报税」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "代理记账 · 报税"
+        },
+        {
+          "id": "s2-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "代理记账 · 报税"
+        },
+        {
+          "id": "s2-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在正衡会计采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 25680,
+      "rating": 4.8
+    }
+  },
+  {
+    "id": "s3",
+    "categoryId": "legal",
+    "category": "法律服务",
+    "categoryL2": "合同事务",
+    "categoryL3": "合同审查与起草",
+    "name": "合同审查与起草",
+    "desc": "采购 / 劳动 / 保密协议专业审阅",
+    "overview": "针对采购、劳动、保密等常见合同提供风险标注、条款优化与电子签章对接，降低履约纠纷。",
+    "price": "800 / 项",
+    "priceMin": 800,
+    "provider": "临港律所",
+    "image": "media/services/service-cover-legal.webp",
+    "features": ["风险标注", "条款优化", "电子签章"],
+    "delivery": "3–5 个工作日",
+    "tone": "t3",
+    "publishedAt": "2026-08-10",
+    "rating": 4.7,
+    "providerRating": 4.6,
+    "salesCount": 38000,
+    "published": {
+      "id": "s3",
+      "shop": {
+        "id": "shop-lingang",
+        "name": "临港律所",
+        "intro": "商事合同与劳动合规团队，服务园区企业日常法务与专项审查。",
+        "phone": "021-5888-6600",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["律师事务所", "园区合作", "专业靠谱"],
+        "score": 4.9,
+        "halfYearDeals": 186,
+        "employerCount": 96,
+        "completeRate": 100,
+        "introImages": [
+          {
+            "id": "lg-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "lg-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "法律服务",
+      "categoryL2": "合同事务",
+      "categoryL3": "合同审查与起草",
+      "name": "合同审查与起草",
+      "intro": "采购 / 劳动 / 保密协议专业审阅",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "media/services/service-cover-legal.webp",
+      "media": [
+        {
+          "id": "s3-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s3-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s3-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s3-v1",
+          "name": "标准版",
+          "sellingPoints": "风险标注 · 条款优化 · 电子签章",
+          "highlights": ["风险标注", "条款优化", "电子签章"],
+          "price": 800,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 3,
+          "deliveryStandard": "按约定完成「合同审查与起草」交付，含：风险标注、条款优化、电子签章。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 风险标注\n2. 条款优化\n3. 电子签章\n\n【交付说明】\n3–5 个工作日\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s3-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s3-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s3-case-1",
+          "categoryPath": "法律服务 / 合同事务 / 合同审查与起草",
+          "title": "合同审查与起草 · 园区客户案例",
+          "intro": "为园区企业完成「合同审查与起草」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s3-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s3-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s3-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「合同审查与起草」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "合同审查与起草"
+        },
+        {
+          "id": "s3-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "合同审查与起草"
+        },
+        {
+          "id": "s3-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在临港律所采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 38000,
+      "rating": 4.7
+    }
+  },
+  {
+    "id": "s4",
+    "categoryId": "hr",
+    "category": "人力资源",
+    "categoryL2": "社保公积金",
+    "categoryL3": "代缴代办",
+    "name": "社保公积金代缴",
+    "desc": "参保增减员 · 公积金缴存 · 台账",
+    "overview": "支持多城市参保增减员、公积金缴存与台账同步，适合用工波动较大的制造与服务业企业。",
+    "price": "30 / 件",
+    "priceMin": 30,
+    "provider": "园服人力",
+    "image": "",
+    "features": ["合规申报", "异动办理", "月度报表"],
+    "delivery": "T+1 办理",
+    "tone": "t4",
+    "publishedAt": "2026-08-05",
+    "rating": 4.6,
+    "providerRating": 4.5,
+    "salesCount": 980,
+    "published": {
+      "id": "s4",
+      "shop": {
+        "id": "shop-yuanfu",
+        "name": "园服人力",
+        "intro": "社保公积金与用工合规代办，覆盖园区入驻企业增减员与台账管理。",
+        "phone": "400-600-7788",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["人力资源", "及时回复"],
+        "score": 4.6,
+        "halfYearDeals": 410,
+        "employerCount": 180,
+        "completeRate": 97,
+        "introImages": [
+          {
+            "id": "yf-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "yf-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "人力资源",
+      "categoryL2": "社保公积金",
+      "categoryL3": "代缴代办",
+      "name": "社保公积金代缴",
+      "intro": "参保增减员 · 公积金缴存 · 台账",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s4-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s4-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s4-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s4-v1",
+          "name": "标准版",
+          "sellingPoints": "合规申报 · 异动办理 · 月度报表",
+          "highlights": ["合规申报", "异动办理", "月度报表"],
+          "price": 30,
+          "unit": "件",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 1,
+          "deliveryStandard": "按约定完成「社保公积金代缴」交付，含：合规申报、异动办理、月度报表。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 合规申报\n2. 异动办理\n3. 月度报表\n\n【交付说明】\nT+1 办理\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s4-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s4-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s4-case-1",
+          "categoryPath": "人力资源 / 社保公积金 / 代缴代办",
+          "title": "社保公积金代缴 · 园区客户案例",
+          "intro": "为园区企业完成「社保公积金代缴」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s4-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s4-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s4-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「社保公积金代缴」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "社保公积金代缴"
+        },
+        {
+          "id": "s4-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "社保公积金代缴"
+        },
+        {
+          "id": "s4-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在园服人力采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 980,
+      "rating": 4.6
+    }
+  },
+  {
+    "id": "s5",
+    "categoryId": "brand",
+    "category": "品牌与设计",
+    "categoryL2": "视觉设计",
+    "categoryL3": "品牌物料",
+    "name": "宣传物料策划与设计",
+    "desc": "画册 / 海报 / 展会物料一体化设计",
+    "overview": "从创意策划到视觉设计与印刷对接，覆盖企业画册、海报与展会物料，统一品牌视觉语言。",
+    "price": "2,000 / 项",
+    "priceMin": 2000,
+    "provider": "象限设计",
+    "image": "",
+    "features": ["创意策划", "视觉设计", "印刷对接"],
+    "delivery": "7–10 个工作日",
+    "tone": "t1",
+    "hot": true,
+    "publishedAt": "2026-08-22",
+    "rating": 4.8,
+    "providerRating": 4.9,
+    "salesCount": 510,
+    "published": {
+      "id": "s5",
+      "shop": {
+        "id": "shop-xiangxian",
+        "name": "象限设计",
+        "intro": "品牌视觉与数字产品设计工作室，服务官网、小程序与管理后台体验升级。",
+        "phone": "400-900-3311",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["设计严选", "回头客多", "保证金已缴"],
+        "score": 4.8,
+        "halfYearDeals": 94,
+        "employerCount": 52,
+        "completeRate": 98,
+        "introImages": [
+          {
+            "id": "xx-i1",
+            "name": "作品墙",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "xx-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "品牌与设计",
+      "categoryL2": "视觉设计",
+      "categoryL3": "品牌物料",
+      "name": "宣传物料策划与设计",
+      "intro": "画册 / 海报 / 展会物料一体化设计",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s5-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s5-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s5-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s5-v1",
+          "name": "标准版",
+          "sellingPoints": "创意策划 · 视觉设计 · 印刷对接",
+          "highlights": ["创意策划", "视觉设计", "印刷对接"],
+          "price": 2000,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 7,
+          "deliveryStandard": "按约定完成「宣传物料策划与设计」交付，含：创意策划、视觉设计、印刷对接。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 创意策划\n2. 视觉设计\n3. 印刷对接\n\n【交付说明】\n7–10 个工作日\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s5-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s5-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s5-case-1",
+          "categoryPath": "品牌与设计 / 视觉设计 / 品牌物料",
+          "title": "宣传物料策划与设计 · 园区客户案例",
+          "intro": "为园区企业完成「宣传物料策划与设计」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s5-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s5-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s5-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「宣传物料策划与设计」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "宣传物料策划与设计"
+        },
+        {
+          "id": "s5-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "宣传物料策划与设计"
+        },
+        {
+          "id": "s5-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在象限设计采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 510,
+      "rating": 4.8
+    }
+  },
+  {
+    "id": "s6",
+    "categoryId": "brand",
+    "category": "品牌与设计",
+    "categoryL2": "数字产品设计",
+    "categoryL3": "UI 界面设计",
+    "name": "UI 界面设计",
+    "desc": "Web / 小程序 / 管理后台界面设计",
+    "overview": "提供 Web、小程序与管理后台的交互原型、视觉规范与切图交付，适配多端一致性体验。",
+    "price": "8,000 起",
+    "priceMin": 8000,
+    "provider": "象限设计",
+    "image": "",
+    "features": ["交互原型", "视觉规范", "切图交付"],
+    "delivery": "按里程碑",
+    "tone": "t2",
+    "publishedAt": "2026-07-30",
+    "rating": 4.8,
+    "providerRating": 4.9,
+    "salesCount": 64,
+    "published": {
+      "id": "s6",
+      "shop": {
+        "id": "shop-xiangxian",
+        "name": "象限设计",
+        "intro": "品牌视觉与数字产品设计工作室，服务官网、小程序与管理后台体验升级。",
+        "phone": "400-900-3311",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["设计严选", "回头客多", "保证金已缴"],
+        "score": 4.8,
+        "halfYearDeals": 94,
+        "employerCount": 52,
+        "completeRate": 98,
+        "introImages": [
+          {
+            "id": "xx-i1",
+            "name": "作品墙",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "xx-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "品牌与设计",
+      "categoryL2": "数字产品设计",
+      "categoryL3": "UI 界面设计",
+      "name": "UI 界面设计",
+      "intro": "Web / 小程序 / 管理后台界面设计，含交互原型与视觉规范。",
+      "serviceAreaLabel": "全国（远程协作）",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s6-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s6-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s6-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s6-v1",
+          "name": "单端标准版",
+          "sellingPoints": "交互原型 · 视觉规范 · 切图交付",
+          "highlights": ["交互原型", "视觉规范", "切图交付", "1 轮集中修改"],
+          "price": 8000,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 21,
+          "deliveryStandard": "交付完整视觉稿、基础切图与组件说明。",
+          "phases": []
+        },
+        {
+          "id": "s6-v2",
+          "name": "双端里程碑版",
+          "sellingPoints": "Web + 小程序 · 分阶段验收 · 里程碑付款",
+          "highlights": [
+            "Web + 小程序双端",
+            "分阶段验收",
+            "里程碑付款",
+            "设计规范交付"
+          ],
+          "price": 16000,
+          "unit": "项",
+          "startAfterPayDays": 2,
+          "startDayType": "工作日",
+          "fulfillmentType": "installment_pay_installment_accept",
+          "deliveryCycleDays": 45,
+          "deliveryStandard": "按阶段交付原型、视觉与切图，并完成阶段验收。",
+          "phases": [
+            {
+              "id": "s6-v2-p1",
+              "name": "需求与原型",
+              "settleRatio": 30,
+              "deliveryCycleDays": 10,
+              "deliveryStandard": "交互原型与信息架构确认。"
+            },
+            {
+              "id": "s6-v2-p2",
+              "name": "视觉设计",
+              "settleRatio": 40,
+              "deliveryCycleDays": 20,
+              "deliveryStandard": "全量视觉稿与设计规范。"
+            },
+            {
+              "id": "s6-v2-p3",
+              "name": "切图交付",
+              "settleRatio": 30,
+              "deliveryCycleDays": 15,
+              "deliveryStandard": "切图、标注与走查修改一轮。"
+            }
+          ]
+        }
+      ],
+      "detailContent": "【服务内容】\n1. 需求访谈与信息架构\n2. 交互原型（可点击）\n3. 视觉设计与组件规范\n4. 切图与标注交付\n\n【协作方式】\n线上评审 + 飞书/钉钉沟通，关键节点当面或视频确认。",
+      "detailGuarantee": "工作日 4 小时内响应；每阶段含 1 轮集中修改；延期风险提前 3 天预警。",
+      "detailImages": [
+        {
+          "id": "s6-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s6-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "case-s6-1",
+          "categoryPath": "品牌与设计 / 数字产品设计 / UI 界面设计",
+          "title": "园区集采管理后台改版",
+          "intro": "统一组件库，缩短研发联调周期约 30%。",
+          "coverUrl": ""
+        },
+        {
+          "id": "case-s6-2",
+          "categoryPath": "品牌与设计 / 数字产品设计 / UI 界面设计",
+          "title": "企业服务小程序视觉升级",
+          "intro": "完成首页改版与下单流程优化，转化率提升。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s6-f1",
+          "question": "是否含前端开发？",
+          "answer": "默认不含开发，可另询联合交付。"
+        },
+        {
+          "id": "s6-f2",
+          "question": "分期如何付款？",
+          "answer": "双端里程碑版按阶段比例支付并验收，比例合计 100%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s6-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「UI 界面设计」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "UI 界面设计"
+        },
+        {
+          "id": "s6-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "UI 界面设计"
+        },
+        {
+          "id": "s6-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在象限设计采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 64,
+      "rating": 4.8
+    }
+  },
+  {
+    "id": "s7",
+    "categoryId": "software",
+    "category": "软件与信息化",
+    "categoryL2": "系统集成",
+    "categoryL3": "ERP 对接",
+    "name": "ERP 与集采平台对接",
+    "desc": "订单 / 库存 / 对账数据互通开发",
+    "overview": "打通 ERP 与园区集采平台的订单、库存与对账数据，含需求调研、接口开发与联调上线。",
+    "price": "80,000 起",
+    "priceMin": 80000,
+    "provider": "智造云科",
+    "image": "",
+    "features": ["需求调研", "接口开发", "联调上线"],
+    "delivery": "6–8 周",
+    "tone": "t3",
+    "publishedAt": "2026-08-01",
+    "rating": 4.7,
+    "providerRating": 4.6,
+    "salesCount": 28,
+    "published": {
+      "id": "s7",
+      "shop": {
+        "id": "shop-zhizao",
+        "name": "智造云科",
+        "intro": "工业软件与企业数字化实施服务商，擅长 ERP / 集采对接与路线图规划。",
+        "phone": "400-712-0909",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["数字化服务商", "园区入驻", "企业"],
+        "score": 4.7,
+        "halfYearDeals": 58,
+        "employerCount": 34,
+        "completeRate": 96,
+        "introImages": [
+          {
+            "id": "zz-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "zz-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "软件与信息化",
+      "categoryL2": "系统集成",
+      "categoryL3": "ERP 对接",
+      "name": "ERP 与集采平台对接",
+      "intro": "订单 / 库存 / 对账数据互通开发，按里程碑交付。",
+      "serviceAreaLabel": "华东 · 华南 · 西南重点园区",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s7-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s7-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s7-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s7-v1",
+          "name": "标准对接版",
+          "sellingPoints": "需求调研 · 接口开发 · 联调上线",
+          "highlights": ["需求调研", "接口开发", "联调上线", "文档移交"],
+          "price": 80000,
+          "unit": "项",
+          "startAfterPayDays": 3,
+          "startDayType": "工作日",
+          "fulfillmentType": "installment_pay_installment_accept",
+          "deliveryCycleDays": 56,
+          "deliveryStandard": "完成主数据与订单链路打通，提供联调报告。",
+          "phases": [
+            {
+              "id": "s7-v1-p1",
+              "name": "调研与方案",
+              "settleRatio": 30,
+              "deliveryCycleDays": 14,
+              "deliveryStandard": "接口清单与实施方案确认。"
+            },
+            {
+              "id": "s7-v1-p2",
+              "name": "开发与联调",
+              "settleRatio": 50,
+              "deliveryCycleDays": 28,
+              "deliveryStandard": "接口开发完成并通过联调用例。"
+            },
+            {
+              "id": "s7-v1-p3",
+              "name": "上线与移交",
+              "settleRatio": 20,
+              "deliveryCycleDays": 14,
+              "deliveryStandard": "生产验证、文档移交与培训。"
+            }
+          ]
+        },
+        {
+          "id": "s7-v2",
+          "name": "加急陪跑版",
+          "sellingPoints": "优先排期 · 上线陪跑一周",
+          "highlights": ["优先排期", "接口开发", "联调上线", "陪跑一周"],
+          "price": 120000,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 42,
+          "deliveryStandard": "含驻场/远程陪跑一周，优先排期联调。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 需求调研\n2. 接口开发\n3. 联调上线\n\n【交付说明】\n6–8 周\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s7-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s7-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "case-s7-1",
+          "categoryPath": "软件与信息化 / 系统集成 / ERP 对接",
+          "title": "制造企业 ERP ↔ 园区集采打通",
+          "intro": "订单与对账自动化，月结时效缩短 2 天。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s7-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s7-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s7-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「ERP 与集采平台对接」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "ERP 与集采平台对接"
+        },
+        {
+          "id": "s7-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "ERP 与集采平台对接"
+        },
+        {
+          "id": "s7-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在智造云科采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 28,
+      "rating": 4.7
+    }
+  },
+  {
+    "id": "s8",
+    "categoryId": "marketing",
+    "category": "营销推广",
+    "categoryL2": "内容运营",
+    "categoryL3": "短视频代运营",
+    "name": "短视频账号代运营",
+    "desc": "脚本策划 · 拍摄剪辑 · 投流优化",
+    "overview": "覆盖脚本策划、拍摄剪辑与投流优化，按月复盘数据，帮助企业账号持续获客。",
+    "price": "5,000 / 次",
+    "priceMin": 5000,
+    "provider": "新媒工场",
+    "image": "",
+    "features": ["内容策划", "数据分析", "月度复盘"],
+    "delivery": "按月服务",
+    "tone": "t4",
+    "publishedAt": "2026-08-18",
+    "rating": 4.6,
+    "providerRating": 4.4,
+    "salesCount": 230,
+    "published": {
+      "id": "s8",
+      "shop": {
+        "id": "shop-xinmei",
+        "name": "新媒工场",
+        "intro": "短视频与内容营销代运营团队，覆盖脚本、拍摄与投流优化。",
+        "phone": "400-555-1212",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["营销严选", "及时回复"],
+        "score": 4.5,
+        "halfYearDeals": 120,
+        "employerCount": 40,
+        "completeRate": 95,
+        "introImages": [
+          {
+            "id": "xm-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "xm-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "营销推广",
+      "categoryL2": "内容运营",
+      "categoryL3": "短视频代运营",
+      "name": "短视频账号代运营",
+      "intro": "脚本策划 · 拍摄剪辑 · 投流优化",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s8-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s8-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s8-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s8-v1",
+          "name": "标准版",
+          "sellingPoints": "内容策划 · 数据分析 · 月度复盘",
+          "highlights": ["内容策划", "数据分析", "月度复盘"],
+          "price": 5000,
+          "unit": "次",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 7,
+          "deliveryStandard": "按约定完成「短视频账号代运营」交付，含：内容策划、数据分析、月度复盘。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 内容策划\n2. 数据分析\n3. 月度复盘\n\n【交付说明】\n按月服务\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s8-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s8-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s8-case-1",
+          "categoryPath": "营销推广 / 内容运营 / 短视频代运营",
+          "title": "短视频账号代运营 · 园区客户案例",
+          "intro": "为园区企业完成「短视频账号代运营」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s8-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s8-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s8-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「短视频账号代运营」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "短视频账号代运营"
+        },
+        {
+          "id": "s8-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "短视频账号代运营"
+        },
+        {
+          "id": "s8-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在新媒工场采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 230,
+      "rating": 4.6
+    }
+  },
+  {
+    "id": "s9",
+    "categoryId": "consulting",
+    "category": "咨询培训",
+    "categoryL2": "管理咨询",
+    "categoryL3": "战略规划",
+    "name": "企业战略规划咨询",
+    "desc": "行业分析 · 业务组合 · 实施路径",
+    "overview": "通过高管访谈与竞品分析，输出业务组合建议与可落地实施路径，服务成长型企业管理层。",
+    "price": "30,000 / 项",
+    "priceMin": 30000,
+    "provider": "远策咨询",
+    "image": "",
+    "features": ["高管访谈", "竞品分析", "书面方案"],
+    "delivery": "4–6 周",
+    "tone": "t1",
+    "publishedAt": "2026-07-20",
+    "rating": 4.8,
+    "providerRating": 4.7,
+    "salesCount": 48,
+    "published": {
+      "id": "s9",
+      "shop": {
+        "id": "shop-yuance",
+        "name": "远策咨询",
+        "intro": "战略与管理咨询，服务成长型企业业务组合与实施路径设计。",
+        "phone": "400-333-7788",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["咨询严选", "企业"],
+        "score": 4.8,
+        "halfYearDeals": 42,
+        "employerCount": 28,
+        "completeRate": 99,
+        "introImages": [
+          {
+            "id": "yc-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "yc-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "咨询培训",
+      "categoryL2": "管理咨询",
+      "categoryL3": "战略规划",
+      "name": "企业战略规划咨询",
+      "intro": "行业分析 · 业务组合 · 实施路径",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s9-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s9-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s9-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s9-v1",
+          "name": "标准版",
+          "sellingPoints": "高管访谈 · 竞品分析 · 书面方案",
+          "highlights": ["高管访谈", "竞品分析", "书面方案"],
+          "price": 30000,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 4,
+          "deliveryStandard": "按约定完成「企业战略规划咨询」交付，含：高管访谈、竞品分析、书面方案。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 高管访谈\n2. 竞品分析\n3. 书面方案\n\n【交付说明】\n4–6 周\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s9-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s9-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s9-case-1",
+          "categoryPath": "咨询培训 / 管理咨询 / 战略规划",
+          "title": "企业战略规划咨询 · 园区客户案例",
+          "intro": "为园区企业完成「企业战略规划咨询」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s9-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s9-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s9-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「企业战略规划咨询」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "企业战略规划咨询"
+        },
+        {
+          "id": "s9-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "企业战略规划咨询"
+        },
+        {
+          "id": "s9-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在远策咨询采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 48,
+      "rating": 4.8
+    }
+  },
+  {
+    "id": "s10",
+    "categoryId": "consulting",
+    "category": "咨询培训",
+    "categoryL2": "数字化转型",
+    "categoryL3": "转型路线图",
+    "name": "数字化转型路线图",
+    "desc": "现状评估 · 系统选型 · 分阶段实施",
+    "overview": "评估企业数字化现状，给出系统选型建议与分阶段实施路线，可选实施陪跑服务。",
+    "price": "25,000 / 项",
+    "priceMin": 25000,
+    "provider": "智造云科",
+    "image": "",
+    "features": ["流程梳理", "ROI 测算", "实施陪跑"],
+    "delivery": "3–4 周",
+    "tone": "t2",
+    "publishedAt": "2026-08-08",
+    "rating": 4.6,
+    "providerRating": 4.6,
+    "salesCount": 72,
+    "published": {
+      "id": "s10",
+      "shop": {
+        "id": "shop-zhizao",
+        "name": "智造云科",
+        "intro": "工业软件与企业数字化实施服务商，擅长 ERP / 集采对接与路线图规划。",
+        "phone": "400-712-0909",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["数字化服务商", "园区入驻", "企业"],
+        "score": 4.7,
+        "halfYearDeals": 58,
+        "employerCount": 34,
+        "completeRate": 96,
+        "introImages": [
+          {
+            "id": "zz-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "zz-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "咨询培训",
+      "categoryL2": "数字化转型",
+      "categoryL3": "转型路线图",
+      "name": "数字化转型路线图",
+      "intro": "现状评估 · 系统选型 · 分阶段实施",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s10-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s10-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s10-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s10-v1",
+          "name": "标准版",
+          "sellingPoints": "流程梳理 · ROI 测算 · 实施陪跑",
+          "highlights": ["流程梳理", "ROI 测算", "实施陪跑"],
+          "price": 25000,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 3,
+          "deliveryStandard": "按约定完成「数字化转型路线图」交付，含：流程梳理、ROI 测算、实施陪跑。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 流程梳理\n2. ROI 测算\n3. 实施陪跑\n\n【交付说明】\n3–4 周\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s10-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s10-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s10-case-1",
+          "categoryPath": "咨询培训 / 数字化转型 / 转型路线图",
+          "title": "数字化转型路线图 · 园区客户案例",
+          "intro": "为园区企业完成「数字化转型路线图」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s10-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s10-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s10-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「数字化转型路线图」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "数字化转型路线图"
+        },
+        {
+          "id": "s10-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "数字化转型路线图"
+        },
+        {
+          "id": "s10-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在智造云科采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 72,
+      "rating": 4.6
+    }
+  },
+  {
+    "id": "s11",
+    "categoryId": "inspection",
+    "category": "检验检测",
+    "categoryL2": "质量检测",
+    "categoryL3": "第三方认证",
+    "name": "产品第三方检测认证",
+    "desc": "质量检测 · 报告出具 · 认证辅导",
+    "overview": "提供产品质量检测、合规报告出具与认证辅导，支持复检与整改建议。",
+    "price": "1,000 / 项",
+    "priceMin": 1000,
+    "provider": "华测检测",
+    "image": "",
+    "features": ["样品检测", "合规报告", "复检支持"],
+    "delivery": "7–15 个工作日",
+    "tone": "t3",
+    "publishedAt": "2026-08-12",
+    "rating": 4.5,
+    "providerRating": 4.8,
+    "salesCount": 155,
+    "published": {
+      "id": "s11",
+      "shop": {
+        "id": "shop-huace",
+        "name": "华测检测",
+        "intro": "第三方检测认证与合规辅导，出具权威检测报告。",
+        "phone": "400-6788-333",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["检测机构", "资质齐全"],
+        "score": 4.6,
+        "halfYearDeals": 210,
+        "employerCount": 130,
+        "completeRate": 98,
+        "introImages": [
+          {
+            "id": "hc-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "hc-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "检验检测",
+      "categoryL2": "质量检测",
+      "categoryL3": "第三方认证",
+      "name": "产品第三方检测认证",
+      "intro": "质量检测 · 报告出具 · 认证辅导",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s11-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s11-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s11-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s11-v1",
+          "name": "标准版",
+          "sellingPoints": "样品检测 · 合规报告 · 复检支持",
+          "highlights": ["样品检测", "合规报告", "复检支持"],
+          "price": 1000,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 7,
+          "deliveryStandard": "按约定完成「产品第三方检测认证」交付，含：样品检测、合规报告、复检支持。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 样品检测\n2. 合规报告\n3. 复检支持\n\n【交付说明】\n7–15 个工作日\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s11-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s11-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s11-case-1",
+          "categoryPath": "检验检测 / 质量检测 / 第三方认证",
+          "title": "产品第三方检测认证 · 园区客户案例",
+          "intro": "为园区企业完成「产品第三方检测认证」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s11-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s11-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s11-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「产品第三方检测认证」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "产品第三方检测认证"
+        },
+        {
+          "id": "s11-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "产品第三方检测认证"
+        },
+        {
+          "id": "s11-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在华测检测采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 155,
+      "rating": 4.5
+    }
+  },
+  {
+    "id": "s12",
+    "categoryId": "general",
+    "category": "企业综合",
+    "categoryL2": "安防消防",
+    "categoryL3": "消防验收咨询",
+    "name": "厂区消防验收咨询",
+    "desc": "规范解读 · 整改方案 · 验收陪同",
+    "overview": "解读消防验收规范，出具整改清单并陪同验收，帮助厂区快速通过合规检查。",
+    "price": "15,000 / 项",
+    "priceMin": 15000,
+    "provider": "安盾工程",
+    "image": "",
+    "features": ["现场勘查", "整改清单", "资料准备"],
+    "delivery": "2–3 周",
+    "tone": "t4",
+    "publishedAt": "2026-07-25",
+    "rating": 4.4,
+    "providerRating": 4.5,
+    "salesCount": 88,
+    "published": {
+      "id": "s12",
+      "shop": {
+        "id": "shop-andun",
+        "name": "安盾工程",
+        "intro": "消防与安防工程咨询服务，协助园区企业验收合规。",
+        "phone": "400-211-5566",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["工程咨询", "园区合作"],
+        "score": 4.5,
+        "halfYearDeals": 66,
+        "employerCount": 40,
+        "completeRate": 97,
+        "introImages": [
+          {
+            "id": "ad-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "ad-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "企业综合",
+      "categoryL2": "安防消防",
+      "categoryL3": "消防验收咨询",
+      "name": "厂区消防验收咨询",
+      "intro": "规范解读 · 整改方案 · 验收陪同",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s12-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s12-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s12-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s12-v1",
+          "name": "标准版",
+          "sellingPoints": "现场勘查 · 整改清单 · 资料准备",
+          "highlights": ["现场勘查", "整改清单", "资料准备"],
+          "price": 15000,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 2,
+          "deliveryStandard": "按约定完成「厂区消防验收咨询」交付，含：现场勘查、整改清单、资料准备。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 现场勘查\n2. 整改清单\n3. 资料准备\n\n【交付说明】\n2–3 周\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s12-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s12-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s12-case-1",
+          "categoryPath": "企业综合 / 安防消防 / 消防验收咨询",
+          "title": "厂区消防验收咨询 · 园区客户案例",
+          "intro": "为园区企业完成「厂区消防验收咨询」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s12-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s12-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s12-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「厂区消防验收咨询」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "厂区消防验收咨询"
+        },
+        {
+          "id": "s12-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "厂区消防验收咨询"
+        },
+        {
+          "id": "s12-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在安盾工程采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 88,
+      "rating": 4.4
+    }
+  },
+  {
+    "id": "s13",
+    "categoryId": "overseas",
+    "category": "出海企服",
+    "categoryL2": "海外主体",
+    "categoryL3": "公司注册与合规",
+    "name": "海外公司注册与合规",
+    "desc": "主体设立 · 银行开户 · 税务合规",
+    "overview": "覆盖海外主体设立、银行开户与税务合规辅导，提供属地选型建议与秘书服务。",
+    "price": "12,000 / 项",
+    "priceMin": 12000,
+    "provider": "跨境企服",
+    "image": "",
+    "features": ["属地选型", "材料代办", "秘书服务"],
+    "delivery": "15–30 个工作日",
+    "tone": "t1",
+    "publishedAt": "2026-08-15",
+    "rating": 4.7,
+    "providerRating": 4.6,
+    "salesCount": 110,
+    "published": {
+      "id": "s13",
+      "shop": {
+        "id": "shop-kuajing",
+        "name": "跨境企服",
+        "intro": "海外主体设立与跨境合规服务，覆盖开户与税务合规辅导。",
+        "phone": "400-188-6688",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["出海企服", "企业"],
+        "score": 4.7,
+        "halfYearDeals": 88,
+        "employerCount": 55,
+        "completeRate": 96,
+        "introImages": [
+          {
+            "id": "kj-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "kj-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "出海企服",
+      "categoryL2": "海外主体",
+      "categoryL3": "公司注册与合规",
+      "name": "海外公司注册与合规",
+      "intro": "主体设立 · 银行开户 · 税务合规",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s13-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s13-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s13-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s13-v1",
+          "name": "标准版",
+          "sellingPoints": "属地选型 · 材料代办 · 秘书服务",
+          "highlights": ["属地选型", "材料代办", "秘书服务"],
+          "price": 12000,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 15,
+          "deliveryStandard": "按约定完成「海外公司注册与合规」交付，含：属地选型、材料代办、秘书服务。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 属地选型\n2. 材料代办\n3. 秘书服务\n\n【交付说明】\n15–30 个工作日\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s13-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s13-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s13-case-1",
+          "categoryPath": "出海企服 / 海外主体 / 公司注册与合规",
+          "title": "海外公司注册与合规 · 园区客户案例",
+          "intro": "为园区企业完成「海外公司注册与合规」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s13-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s13-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s13-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「海外公司注册与合规」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "海外公司注册与合规"
+        },
+        {
+          "id": "s13-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "海外公司注册与合规"
+        },
+        {
+          "id": "s13-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在跨境企服采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 110,
+      "rating": 4.7
+    }
+  },
+  {
+    "id": "s14",
+    "categoryId": "finance_tax",
+    "category": "工商财税",
+    "categoryL2": "代理记账",
+    "categoryL3": "小规模纳税人记账",
+    "name": "小规模纳税人代记账",
+    "desc": "凭证编制 · 月度申报 · 年末汇算",
+    "overview": "专为小规模纳税人设计的代记账服务，含票据整理、月度申报与年末汇算、顾问答疑。",
+    "price": "1,000 / 次",
+    "priceMin": 1000,
+    "provider": "正衡会计",
+    "image": "",
+    "features": ["票据整理", "税务申报", "顾问答疑"],
+    "delivery": "7 天起服务",
+    "tone": "t2",
+    "hot": true,
+    "publishedAt": "2026-08-25",
+    "rating": 4.9,
+    "providerRating": 4.7,
+    "salesCount": 760,
+    "published": {
+      "id": "s14",
+      "shop": {
+        "id": "shop-zhengheng",
+        "name": "正衡会计",
+        "intro": "工商财税一体化服务，熟悉园区政策与申报节奏，为入驻企业提供记账报税与顾问答疑。",
+        "phone": "400-821-2266",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["严选服务商", "财税资质", "企业"],
+        "score": 4.7,
+        "halfYearDeals": 512,
+        "employerCount": 220,
+        "completeRate": 98,
+        "introImages": [
+          {
+            "id": "zh-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "zh-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "工商财税",
+      "categoryL2": "代理记账",
+      "categoryL3": "小规模纳税人记账",
+      "name": "小规模纳税人代记账",
+      "intro": "凭证编制 · 月度申报 · 年末汇算",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s14-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s14-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s14-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s14-v1",
+          "name": "标准版",
+          "sellingPoints": "票据整理 · 税务申报 · 顾问答疑",
+          "highlights": ["票据整理", "税务申报", "顾问答疑"],
+          "price": 1000,
+          "unit": "次",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 7,
+          "deliveryStandard": "按约定完成「小规模纳税人代记账」交付，含：票据整理、税务申报、顾问答疑。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 票据整理\n2. 税务申报\n3. 顾问答疑\n\n【交付说明】\n7 天起服务\n\n【适用对象】\n园区入驻企业及相关经营主体。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s14-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s14-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s14-case-1",
+          "categoryPath": "工商财税 / 代理记账 / 小规模纳税人记账",
+          "title": "小规模纳税人代记账 · 园区客户案例",
+          "intro": "为园区企业完成「小规模纳税人代记账」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s14-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s14-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s14-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「小规模纳税人代记账」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "小规模纳税人代记账"
+        },
+        {
+          "id": "s14-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "小规模纳税人代记账"
+        },
+        {
+          "id": "s14-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在正衡会计采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 760,
+      "rating": 4.9
+    }
+  }
+]

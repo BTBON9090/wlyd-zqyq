@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="短视频营销">
+  <defs>
+    <linearGradient id="bg" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#164E63"/>
+      <stop offset="45%" stop-color="#0E7490"/>
+      <stop offset="100%" stop-color="#155E75"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="80" cy="60" r="95" fill="#67E8F9" fill-opacity="0.12"/>
+  <circle cx="560" cy="300" r="100" fill="#FFFFFF" fill-opacity="0.07"/>
+  <rect x="40" y="220" width="100" height="60" rx="8" fill="#FFFFFF" fill-opacity="0.05"/>
+  <!-- phone / play -->
+  <rect x="260" y="55" width="120" height="220" rx="16" fill="#ECFEFF" fill-opacity="0.12" stroke="#A5F3FC" stroke-width="2.5" stroke-opacity="0.7"/>
+  <polygon points="300,140 300,210 355,175" fill="#F0FDFA" fill-opacity="0.85"/>
+  <circle cx="400" cy="100" r="18" fill="#22D3EE" fill-opacity="0.4"/>
+  <circle cx="430" cy="150" r="12" fill="#67E8F9" fill-opacity="0.35"/>
+  <circle cx="410" cy="200" r="22" fill="#A5F3FC" fill-opacity="0.25"/>
+  <text x="48" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="4">短视频</text>
+</svg>

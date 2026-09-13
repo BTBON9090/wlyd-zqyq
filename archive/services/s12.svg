@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="消防安全">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A0A0A"/>
+      <stop offset="35%" stop-color="#1E3A5F"/>
+      <stop offset="100%" stop-color="#0C4A6E"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="540" cy="60" r="120" fill="#7DD3FC" fill-opacity="0.1"/>
+  <circle cx="80" cy="300" r="90" fill="#FFFFFF" fill-opacity="0.06"/>
+  <rect x="40" y="40" width="110" height="70" rx="8" fill="#FFFFFF" fill-opacity="0.05"/>
+  <!-- shield + flame hint (cool blue safety) -->
+  <path d="M320 70 L400 105 L400 180 Q400 240 320 275 Q240 240 240 180 L240 105 Z" fill="#38BDF8" fill-opacity="0.2" stroke="#BAE6FD" stroke-width="2.5"/>
+  <path d="M320 120 Q300 160 310 200 Q320 170 340 185 Q350 145 320 120 Z" fill="#E0F2FE" fill-opacity="0.55"/>
+  <circle cx="320" cy="210" r="8" fill="#7DD3FC" fill-opacity="0.7"/>
+  <text x="48" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="4">消防</text>
+</svg>

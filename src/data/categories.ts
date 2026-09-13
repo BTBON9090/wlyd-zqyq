@@ -1,0 +1,88 @@
+import {
+  Certificate,
+  Calculator,
+  Scales,
+  UsersThree,
+  Desktop,
+  PenNib,
+  Megaphone,
+  ChartLineUp,
+  Flask,
+  Buildings,
+  GlobeHemisphereWest,
+  SquaresFour,
+} from "@phosphor-icons/react";
+export const categories = [
+  {
+    id: "all",
+    label: "全部服务",
+    icon: SquaresFour,
+    description: "发现适合您的专业服务",
+  },
+  {
+    id: "ip",
+    label: "知识产权",
+    icon: Certificate,
+    description: "商标注册 · 专利申请",
+  },
+  {
+    id: "finance_tax",
+    label: "工商财税",
+    icon: Calculator,
+    description: "企业开办 · 财税管理",
+  },
+  {
+    id: "legal",
+    label: "法律服务",
+    icon: Scales,
+    description: "合同审查 · 法律顾问",
+  },
+  {
+    id: "hr",
+    label: "人力资源",
+    icon: UsersThree,
+    description: "人才招聘 · 用工管理",
+  },
+  {
+    id: "software",
+    label: "软件与信息化",
+    icon: Desktop,
+    description: "系统开发 · 数字转型",
+  },
+  {
+    id: "brand",
+    label: "品牌与设计",
+    icon: PenNib,
+    description: "品牌策划 · 视觉设计",
+  },
+  {
+    id: "marketing",
+    label: "营销推广",
+    icon: Megaphone,
+    description: "内容运营 · 市场推广",
+  },
+  {
+    id: "consulting",
+    label: "咨询培训",
+    icon: ChartLineUp,
+    description: "管理咨询 · 企业培训",
+  },
+  {
+    id: "inspection",
+    label: "检验检测",
+    icon: Flask,
+    description: "质量检测 · 认证辅导",
+  },
+  {
+    id: "general",
+    label: "企业综合",
+    icon: Buildings,
+    description: "园区运营 · 安全管理",
+  },
+  {
+    id: "overseas",
+    label: "出海企服",
+    icon: GlobeHemisphereWest,
+    description: "海外布局 · 合规服务",
+  },
+];

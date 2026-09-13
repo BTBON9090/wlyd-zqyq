@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="检验检测">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0A2540"/>
+      <stop offset="50%" stop-color="#0C4A6E"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="70" cy="70" r="100" fill="#7DD3FC" fill-opacity="0.1"/>
+  <circle cx="560" cy="290" r="110" fill="#FFFFFF" fill-opacity="0.06"/>
+  <rect x="450" y="40" width="130" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.05"/>
+  <!-- flask / check -->
+  <path d="M290 70 L290 140 L240 240 Q320 270 400 240 L350 140 L350 70 Z" fill="#38BDF8" fill-opacity="0.25" stroke="#BAE6FD" stroke-width="2.5"/>
+  <ellipse cx="320" cy="70" rx="40" ry="10" fill="#E0F2FE" fill-opacity="0.4"/>
+  <circle cx="300" cy="190" r="8" fill="#7DD3FC" fill-opacity="0.7"/>
+  <circle cx="340" cy="210" r="6" fill="#A5F3FC" fill-opacity="0.6"/>
+  <polyline points="420,150 440,170 480,120" fill="none" stroke="#F0F9FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
+  <text x="48" y="318" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="4">检测</text>
+</svg>
