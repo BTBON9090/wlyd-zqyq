@@ -1691,3 +1691,63 @@
     height: 43px;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   全局工具栏 - 版本切换（可拖拽，最高层级）
+   ════════════════════════════════════════════════════════════════════ */
+.global-tools {
+  position: fixed;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid #e0e4ef;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.15);
+  padding: 4px;
+  font-size: 11px;
+  user-select: none;
+  touch-action: none;
+}
+.global-tools-handle {
+  cursor: grab;
+  padding: 6px 4px;
+  color: #a0a8c0;
+  font-size: 10px;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.global-tools-handle:active {
+  cursor: grabbing;
+}
+.global-tools-versions {
+  display: flex;
+  gap: 2px;
+}
+.global-tools-versions button {
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.global-tools-versions button:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+.global-tools-versions button.is-active {
+  background: linear-gradient(135deg, #6456f2 0%, #8b5cf6 100%);
+  color: #fff;
+}
+@media (max-width: 639px) {
+  .global-tools {
+    transform: scale(0.9);
+    transform-origin: left top;
+  }
+}

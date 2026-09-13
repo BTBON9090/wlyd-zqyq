@@ -21,6 +21,7 @@ import { site } from "../lib/config";
 import { navigation } from "../data/navigation";
 import { Brand, Modal } from "./ui";
 import { authCopy } from "../features/auth/authCopy";
+import { GlobalTools } from "./GlobalTools";
 
 const AuthPanel = lazy(() =>
   import("../features/auth/AuthPage").then((m) => ({ default: m.AuthPanel })),
@@ -341,6 +342,7 @@ export function Shell() {
           )}
         </Suspense>
       </Modal>
+      <GlobalTools />
     </div>
   );
 }

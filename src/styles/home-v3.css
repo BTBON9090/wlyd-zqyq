@@ -25,34 +25,25 @@
   z-index: 35;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 12px 8px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  box-shadow:
-    0 4px 20px -4px rgba(100, 86, 242, 0.1),
-    0 0 0 1px rgba(100, 86, 242, 0.06);
+  gap: 14px;
 }
 .v3-section-indicator button {
-  width: 20px;
-  height: 3px;
+  width: 16px;
+  height: 2px;
   border: 0;
-  border-radius: 2px;
+  border-radius: 1px;
   background: #d4d8e8;
   cursor: pointer;
   transition:
     width 0.3s ease,
-    background 0.3s ease,
-    box-shadow 0.3s ease;
+    background 0.3s ease;
 }
 .v3-section-indicator button:hover {
   background: #a8b0d0;
 }
 .v3-section-indicator button.is-active {
-  width: 28px;
+  width: 24px;
   background: var(--v3-purple);
-  box-shadow: 0 2px 8px -2px rgba(100, 86, 242, 0.5);
 }
 
 .v3-wide {

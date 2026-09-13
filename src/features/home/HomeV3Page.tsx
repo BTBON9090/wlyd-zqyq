@@ -47,12 +47,12 @@ function goToSection(id: string) {
 }
 
 const sectionIds = [
-  "v3-hero-title",
+  "v3-hero",
   "v3-capabilities",
   "v3-solutions",
   "v3-stories",
   "v3-quality",
-  "v3-partners-title",
+  "v3-partners",
 ] as const;
 
 export default function HomeV3Page() {
@@ -187,7 +187,7 @@ export default function HomeV3Page() {
         ))}
       </nav>
 
-      <section className="v3-hero" aria-labelledby="v3-hero-title">
+      <section id="v3-hero" className="v3-hero" aria-labelledby="v3-hero-title">
         <div className="v3-hero-halo" aria-hidden="true" />
         <div className="v3-wide v3-hero-main">
           <div className="v3-hero-copy">
@@ -659,7 +659,7 @@ export default function HomeV3Page() {
       </section>
 
       {/* 生态合作伙伴 */}
-      <section className="v3-partners v3-section v3-reveal" aria-labelledby="v3-partners-title">
+      <section id="v3-partners" className="v3-partners v3-section v3-reveal" aria-labelledby="v3-partners-title">
         <div className="v3-section-heading">
           <h2 id="v3-partners-title">生态合作伙伴</h2>
           <p>携手 200+ 专业伙伴，连接产业资源，共建服务生态</p>
