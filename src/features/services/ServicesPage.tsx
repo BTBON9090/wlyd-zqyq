@@ -23,17 +23,7 @@ import { ServiceCard } from "./ServiceCard";
 import { DemandComposer } from "./DemandComposer";
 import { loadHomeContent } from "../home/homeContent";
 
-/** 读取首页版本偏好，用于企业服务页面同步切换风格 */
-function getHomeVersion(): "v1" | "v2" | "v3" {
-  try {
-    const value = localStorage.getItem("park-home-version");
-    if (value === "v1" || value === "v2" || value === "v3") return value;
-  } catch {
-    /* ignore */
-  }
-  return "v3";
-}
-
+import { useDesignVersion } from "../../app/DesignVersion";
 export default function ServicesPage() {
   const location = useLocation();
   const hall = location.pathname.endsWith("/hall");
@@ -150,7 +140,7 @@ export default function ServicesPage() {
     }
     setPublish(true);
   }
-  const homeVersion = getHomeVersion();
+  const { version: homeVersion } = useDesignVersion();
   const isV3 = homeVersion === "v3";
   return (
     <div className={`commerce-container service-v2${isV3 ? " service-v3" : ""}`}>
@@ -241,9 +231,9 @@ export default function ServicesPage() {
               <div className="service-v2-hero">
                 <div className="service-promo">
                   <ContentImage
-                    src={content.data?.serviceBannerImage}
+                    src={isV3 ? "media/v3/customer-campus.webp" : content.data?.serviceBannerImage}
                     alt="企业服务运营宣传图"
-                    placeholder="企业服务 Banner · 待上传"
+                    placeholder="企业服务"
                     eager
                   />
                   <div>

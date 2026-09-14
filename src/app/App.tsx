@@ -8,7 +8,7 @@ import { site } from "../lib/config";
 const Home = lazy(() => import("../features/home/HomeEntry"));
 const Onboarding = lazy(() => import("../features/auth/OnboardingPage"));
 const Legal = lazy(() => import("../features/auth/LegalPage"));
-const Account = lazy(() => import("../features/account/AccountPage"));
+const Account = lazy(() => import("../features/account/AccountEntry"));
 const Services = lazy(() => import("../features/services/ServicesPage"));
 const Detail = lazy(() => import("../features/services/ServiceDetailPage"));
 const Request = lazy(() => import("../features/services/ServiceRequestPage"));

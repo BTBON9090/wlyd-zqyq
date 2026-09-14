@@ -6,6 +6,7 @@ import { IconContext } from "@phosphor-icons/react";
 import { AppProvider } from "./app/AppProvider";
 import { ErrorBoundary } from "./components/ui";
 import App from "./app/App";
+import { DesignVersionProvider } from "./app/DesignVersion";
 import "./styles/tokens.css";
 import "./styles/base.css";
 import "./styles/components.css";
@@ -17,6 +18,7 @@ import "./styles/controls.css";
 import "./styles/commerce-v2.css";
 // 金额字体层，最后导入以覆盖各页面既有的 font-weight
 import "./styles/fonts.css";
+import "./styles/v3-commerce.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: { staleTime: 120_000, retry: 1, refetchOnWindowFocus: false },
@@ -32,7 +34,7 @@ createRoot(document.getElementById("root")!).render(
             basename={import.meta.env.BASE_URL.replace(/\/$/, "") || undefined}
           >
             <AppProvider>
-              <App />
+              <DesignVersionProvider><App /></DesignVersionProvider>
             </AppProvider>
           </BrowserRouter>
         </IconContext.Provider>

@@ -16,7 +16,7 @@ export class ApiError extends Error {
     super(message);
   }
 }
-async function http<T>(
+export async function http<T>(
   path: string,
   schema: z.ZodType<T>,
   options: RequestInit = {},

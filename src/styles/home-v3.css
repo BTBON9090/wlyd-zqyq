@@ -500,6 +500,9 @@
   background: #e6eafaab;
   padding: 5px;
   border: 1px solid #fff9;
+  border-radius: 16px;
+}
+.home-v3 #v3-tab-ai {
   border-radius: 10px;
 }
 .v3-solution-tabs button {
@@ -835,7 +838,7 @@
   place-items: center;
   color: #7861f3;
   background: linear-gradient(145deg, #e7e4ff, #e3f4ff);
-  border-radius: 100px;
+  border-radius: 24px;
   margin-bottom: 24px;
 }
 .v3-quality-intro h2 {
@@ -1867,7 +1870,7 @@ html:has(.home-v3) {
 :is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .site-header .brand-mark {
   width: 34px;
   height: 34px;
-  border-radius: 11px;
+  border-radius: 8px;
   color: #fff;
   background: var(--v3-gradient);
   box-shadow: 0 8px 18px rgb(62 112 248 / 22%);
@@ -2172,7 +2175,7 @@ html:has(.home-v3) {
   :is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .site-header .brand-mark {
     width: 32px;
     height: 32px;
-    border-radius: 10px;
+    border-radius: 8px;
   }
 
   :is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .site-header .primary-nav {
@@ -2241,7 +2244,7 @@ html:has(.home-v3) {
 }
 
 :is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .site-header .button.header-enterprise.primary {
-  border-radius: 11px;
+  border-radius: 9px;
 }
 
 /* The shared modal primary action and all V3 CTAs share one bright gradient. */
@@ -2258,8 +2261,10 @@ html:has(.home-v3) {
 
 /* Keep the visual a supporting detail in the clear lower-right corner. */
 .v3-ai-symbol {
-  inset: auto -14% -18% auto;
-  width: 76%;
+  inset: auto;
+  left: 163px;
+  top: 168px;
+  width: 560px;
   height: 74%;
 }
 
@@ -2294,7 +2299,7 @@ html:has(.home-v3) {
 :is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .footer-main .brand-mark {
   width: 38px;
   height: 38px;
-  border-radius: 11px;
+  border-radius: 8px;
   box-shadow: none;
 }
 
@@ -2404,7 +2409,7 @@ html:has(.home-v3) {
 
 /* 搜索框 */
 .service-v3 .showcase-search {
-  border-radius: 12px;
+  border-radius: 10px;
   border-color: var(--v3-line);
   background: #f8f9fc;
 }
@@ -2414,7 +2419,7 @@ html:has(.home-v3) {
 }
 .service-v3 .showcase-search button:not(.service-clear) {
   background: var(--v3-gradient);
-  border-radius: 8px;
+  border-radius: 7px;
 }
 
 /* 发布需求按钮 */
@@ -2551,6 +2556,13 @@ html:has(.home-v3) {
 }
 
 /* 排序栏 */
+.service-v3 .service-sort {
+  border-radius: 10px;
+}
+.service-v3 .service-sort button {
+  border-radius: 6px;
+  font-size: 13px;
+}
 .service-v3 .service-sort button[aria-pressed="true"] {
   color: var(--v3-purple);
 }
@@ -2560,9 +2572,11 @@ html:has(.home-v3) {
    ════════════════════════════════════════════════════════════════════ */
 .service-v3 .service-card {
   border-radius: 18px;
-  border-color: var(--v3-line);
+  border-style: solid;
+  border-color: #000000;
+  border-width: 0px;
   background: #fff;
-  box-shadow: 0 4px 16px -4px rgba(100, 86, 242, 0.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   transition:
     transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.28s,
@@ -2578,9 +2592,10 @@ html:has(.home-v3) {
 
 /* 封面图 */
 .service-v3 .service-cover {
-  border-radius: 14px 14px 0 0;
+  border-radius: 0;
 }
 .service-v3 .service-cover > img {
+  border-radius: 0;
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .service-v3 .service-card:hover .service-cover > img {
@@ -2643,13 +2658,13 @@ html:has(.home-v3) {
   padding-top: 10px;
 }
 .service-v3 .provider-avatar {
-  background: linear-gradient(135deg, #eef0ff 0%, #e8f4ff 100%);
-  color: var(--v3-purple);
+  background: transparent;
+  color: var(--v3-muted);
   border-radius: 8px;
 }
 .service-v3 .provider-name {
   color: var(--v3-muted);
-  font-weight: 500;
+  font-weight: 400;
 }
 .service-v3 .service-consult {
   color: var(--v3-purple);
@@ -2677,7 +2692,7 @@ html:has(.home-v3) {
 /* 响应式调整 */
 @media (max-width: 1100px) {
   .service-v3 .service-card {
-    border-radius: 14px;
+    border-radius: 16px;
   }
 }
 @media (max-width: 767px) {
@@ -2685,9 +2700,9 @@ html:has(.home-v3) {
     border-radius: 12px;
   }
   .service-v3 .service-card {
-    border-radius: 12px;
+    border-radius: 14px;
   }
   .service-v3 .service-cover {
-    border-radius: 10px 10px 0 0;
+    border-radius: 0;
   }
 }

@@ -22,25 +22,15 @@ import { navigation } from "../data/navigation";
 import { Brand, Modal } from "./ui";
 import { authCopy } from "../features/auth/authCopy";
 import { GlobalTools } from "./GlobalTools";
+import { useDesignVersion } from "../app/DesignVersion";
 
 const AuthPanel = lazy(() =>
   import("../features/auth/AuthPage").then((m) => ({ default: m.AuthPanel })),
 );
 
-/** 读取首页版本偏好，用于全局样式切换 */
-function getHomeVersion(): "v1" | "v2" | "v3" {
-  try {
-    const value = localStorage.getItem("park-home-version");
-    if (value === "v1" || value === "v2" || value === "v3") return value;
-  } catch {
-    /* ignore */
-  }
-  return "v3";
-}
-
 export function Shell() {
   const { session, logout, toast, authRequest, openAuth, closeAuth } = useApp();
-  const [homeVersion, setHomeVersion] = useState(getHomeVersion);
+  const { version: homeVersion } = useDesignVersion();
   const location = useLocation();
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
@@ -52,18 +42,6 @@ export function Shell() {
   );
   const authText = authCopy(authRequest?.mode ?? "login", authOnboarding);
 
-  // 监听版本切换
-  useEffect(() => {
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === "park-home-version") setHomeVersion(getHomeVersion());
-    };
-    // 也监听同一页面的 localStorage 变化（storage 事件只在其他 tab 触发）
-    const checkVersion = () => setHomeVersion(getHomeVersion());
-    window.addEventListener("storage", onStorage);
-    // 每次路由变化时重新检查版本
-    checkVersion();
-    return () => window.removeEventListener("storage", onStorage);
-  }, [location.pathname]);
 
   useEffect(() => {
     setMenu(false);
@@ -115,7 +93,7 @@ export function Shell() {
     };
   }, []);
   return (
-    <div className={`app-shell${homeVersion === "v3" ? " shell-v3" : ""}`}>
+    <div className={`app-shell${homeVersion === "v3" ? " shell-v3" : ""}`} data-design-version={homeVersion}>
       <a href="#main-content" className="skip-link">
         跳转到主要内容
       </a>

@@ -6,7 +6,7 @@ import { Breadcrumb } from "../../components/Shell";
 import { ContentImage } from "../../components/ContentImage";
 import { EmptyState, Modal } from "../../components/ui";
 import { gateway } from "../../lib/api";
-import { DEMO } from "../../lib/config";
+import { useDesignVersion } from "../../app/DesignVersion";
 import { money } from "../../lib/publishedService";
 import type { Service } from "../../lib/models";
 export default function ServiceDetailPage() {
@@ -36,6 +36,7 @@ export default function ServiceDetailPage() {
   return <ServiceDetail key={serviceId} service={query.data} />;
 }
 function ServiceDetail({ service }: { service: Service }) {
+  const { version: designVersion } = useDesignVersion();
   const pub = service.published;
   useEffect(() => {
     const target = document.getElementById(window.location.hash.slice(1));
@@ -66,7 +67,7 @@ function ServiceDetail({ service }: { service: Service }) {
       ?.filter((s) => s.id !== service.id && s.provider === service.provider)
       .slice(0, 3) || [];
   return (
-    <div className="commerce-container product-detail-v2">
+    <div className={`commerce-container product-detail-v2${designVersion === "v3" ? " product-detail-v3" : ""}`}>
       <Breadcrumb
         items={[
           { label: "企业服务", to: "/services" },
@@ -141,7 +142,7 @@ function ServiceDetail({ service }: { service: Service }) {
                 </span>
               </>
             )}
-            {DEMO && <small>原型示例数据</small>}
+
           </div>
           <div className="product-price">
             <span>服务价格</span>
@@ -534,11 +535,7 @@ function ServiceDetail({ service }: { service: Service }) {
       >
         <div className="contact-merchant">
           <p>说明您的业务背景、服务范围与预期时间，便于商家准备方案。</p>
-          {DEMO ? (
-            <p className="notice">
-              当前为演示商家，未连接真实客服。您可以提交需求体验后续流程。
-            </p>
-          ) : pub?.shop.phone ? (
+          {pub?.shop.phone ? (
             <a
               className="merchant-phone"
               href={`tel:${pub.shop.phone.replace(/[^\d+\-]/g, "")}`}

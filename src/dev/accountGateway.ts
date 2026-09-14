@@ -1,0 +1,80 @@
+import { accountDataSchema, type AccountData, type AccountGateway, type Order } from "../features/account/accountModels";
+import { catalogue } from "./catalogue";
+import { mockGateway, demoControls } from "./mockGateway";
+import { readStored, writeStored } from "../lib/storage";
+
+function seed(): AccountData {
+  const ids = ["s6", "s7", "s3", "x1-name", "s2", "s9", "s1", "s5"];
+  const states: Order["status"][] = ["serving", "accepting", "completed", "signing", "completed", "pending", "closed", "completed"];
+  const orders: Order[] = ids.map((id, i) => {
+    const s = catalogue.find(item => item.id === id)!;
+    const total = [8000, 80000, 2400, 38000, 8160, 30000, 980, 6000][i];
+    const paid = [3000, 80000, 2400, 18000, 8160, 0, 980, 6000][i];
+    const day = String(12-i).padStart(2,"0");
+    return { id: `864005128910${43+i}`, serviceId: s.id, name: s.name, provider: s.provider, image: s.image, category: s.category,
+      spec: s.published?.versions[0]?.name || "标准服务", quantity: 1, total, paid, refunded: i === 6 ? 980 : i === 7 ? 2000 : 0,
+      createdAt: `2026-09-${day} 09:30:45`, deliveryDays: [15,30,7,60,30,20,10,15][i], phases: i < 2 ? 2 : 1, status: states[i],
+      progress: [{title:"订单已创建",date:`2026-09-${day} 09:30`,detail:"服务需求已提交，等待服务商确认。"}, ...(paid ? [{title:"服务方案已确认",date:`2026-09-${day} 14:20`,detail:"已确认服务范围、交付周期与费用安排。"}] : []), ...(states[i] === "accepting" || states[i] === "completed" ? [{title:"交付成果已提交",date:"2026-09-13 16:40",detail:"服务商已完成约定服务内容，提交交付成果。"}] : [])] };
+  });
+  const refunds = [
+    {id:"AF202609120089", orderId:orders[6].id, name:orders[6].name, provider:orders[6].provider, amount:980, reason:"企业业务调整，协商终止服务",note:"退款已原路退回。",createdAt:"2026-09-12 10:15:20",status:"refunded" as const},
+    {id:"AF202609130015", orderId:orders[0].id, name:orders[0].name, provider:orders[0].provider, amount:1000,reason:"交付范围与约定不一致",note:"已交付初稿，请补充具体修改项和相关材料后重新提交。",createdAt:"2026-09-13 14:10:00",status:"rejected" as const},
+    {id:"AF202609110031", orderId:orders[7].id,name:orders[7].name,provider:orders[7].provider,amount:2000,reason:"减少部分设计物料",note:"双方已确认调整范围，部分款项已退回。",createdAt:"2026-09-11 16:45:00",status:"refunded" as const},
+    {id:"AF202609100068",orderId:orders[2].id,name:orders[2].name,provider:orders[2].provider,amount:800,reason:"服务周期调整",note:"申请人已取消本次售后申请。",createdAt:"2026-09-10 14:30:10",status:"cancelled" as const},
+  ];
+  const invoices = [2,4,7].map((i, index) => ({id:`INV-${orders[i].id}`,orderId:orders[i].id,amount:orders[i].paid-orders[i].refunded,status:index === 1 ? "issued" as const : "available" as const,
+    ...(index === 1 ? {title:"河北启程科技有限公司",taxId:"91130100MA07Q8KJ3X",email:"finance@example.com",number:"26130900000000816240",issuedAt:"2026-09-13"} : {})}));
+  return { orders, refunds, invoices };
+}
+const keys = new Set<string>();
+async function current() {
+  if (!navigator.onLine) throw new Error("网络已断开，请联网后重试");
+  const user = await mockGateway.session();
+  if (!user) throw new Error("请登录后查看企业服务记录");
+  const key = `commerce-v3:${user.id}`;
+  const data = readStored(key, accountDataSchema, seed());
+  const receipts = await mockGateway.receipts();
+  for (const receipt of receipts) {
+    if (data.orders.some(order => order.id === receipt.id)) continue;
+    const s = catalogue.find(item => item.id === receipt.serviceId);
+    data.orders.unshift({id:receipt.id,serviceId:receipt.serviceId,name:receipt.serviceName,provider:s?.provider || "服务商",image:s?.image,category:s?.category || "企业服务",spec:receipt.versionName || "需求沟通",quantity:receipt.quantity || 1,total:(s?.priceMin || 0)*(receipt.quantity || 1),paid:0,refunded:0,createdAt:receipt.createdAt.replace("T"," ").slice(0,19),deliveryDays:0,phases:1,status:receipt.status === "closed" ? "closed" : "pending",progress:[{title:"需求已提交",date:receipt.createdAt.slice(0,10),detail:receipt.requirement}]});
+  }
+  return {key,data};
+}
+export const accountGateway: AccountGateway = {
+  load: async () => { const {data} = await current(); if (demoControls.fault === "error") throw new Error("服务记录暂时无法加载"); return demoControls.fault === "empty" ? {orders:[],refunds:[],invoices:[]} : data; },
+  act: async (action, requestKey) => {
+    const {key,data} = await current();
+    if (keys.has(requestKey)) return data;
+    if (demoControls.failNext) { demoControls.failNext=false; throw new Error("提交失败，请重试。已填写内容已保留。"); }
+    if (action.type === "accept") {
+      const order = data.orders.find(o=>o.id===action.orderId);
+      if (!order || order.status !== "accepting") throw new Error("订单状态已变化，请刷新后重试");
+      order.status="completed";
+      order.progress.push({title:"验收完成",date:new Date().toLocaleString("zh-CN"),detail:"您已确认服务成果验收通过。"});
+      if (!data.invoices.some(i=>i.orderId===order.id)) data.invoices.push({id:`INV-${order.id}`,orderId:order.id,amount:order.paid-order.refunded,status:"available"});
+    } else if (action.type === "refund") {
+      const order=data.orders.find(o=>o.id===action.orderId);
+      if (!order || order.status === "closed" || !Number.isFinite(action.amount) || action.amount <= 0 || action.amount > order.paid-order.refunded || action.reason.trim().length < 5) throw new Error("请检查退款金额和申请原因");
+      if (data.invoices.some(i=>i.orderId===order.id && i.status !== "available")) throw new Error("订单已进入开票流程，请联系服务商协商红冲后退款");
+      if (data.refunds.some(r=>r.orderId===order.id && r.status === "processing")) throw new Error("该订单已有处理中申请，请勿重复提交");
+      const existing=action.refundId ? data.refunds.find(r=>r.id===action.refundId && r.orderId===order.id && r.status === "rejected") : undefined;
+      if (action.refundId && !existing) throw new Error("售后状态已更新，请刷新后重试");
+      if (existing) Object.assign(existing,{status:"processing",amount:action.amount,reason:action.reason,note:"申请已重新提交，等待服务商审核。"});
+      else data.refunds.unshift({id:`AF${Date.now()}`,orderId:order.id,name:order.name,provider:order.provider,amount:action.amount,reason:action.reason,note:"申请已提交，等待服务商审核。",createdAt:new Date().toLocaleString("zh-CN"),status:"processing"});
+    } else if (action.type === "cancelRefund") {
+      const refund=data.refunds.find(r=>r.id===action.refundId);
+      if (!refund || !["processing","rejected"].includes(refund.status)) throw new Error("当前申请无法取消");
+      refund.status="cancelled"; refund.note="申请人已取消本次申请。";
+    } else {
+      if (action.title.trim().length < 4 || !/^[0-9A-HJ-NPQRTUWXY]{18}$/.test(action.taxId) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(action.email)) throw new Error("请检查发票抬头、税号及接收邮箱");
+      const invoice=data.invoices.find(i=>i.id===action.invoiceId);
+      if (!invoice || invoice.status !== "available") throw new Error("当前开票状态已变化，请刷新重试");
+      if (data.refunds.some(r=>r.orderId===invoice.orderId && r.status==="processing")) throw new Error("订单正在处理退款，请完成售后后申请开票");
+      Object.assign(invoice,{status:"processing",title:action.title,taxId:action.taxId,email:action.email});
+    }
+    if (!writeStored(key,data)) throw new Error("记录保存失败，请检查浏览器存储设置后重试");
+    keys.add(requestKey);
+    return accountDataSchema.parse(data);
+  },
+};
