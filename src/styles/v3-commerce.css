@@ -69,15 +69,16 @@ html[data-design-version="v3"] :is(.service-v3, .product-detail-v3, .v3-account-
 .service-v3 .service-value-strip { background: transparent; border: 0; border-bottom: 1px solid #e5e5f0; border-radius: 0; padding-block: 25px; margin-bottom: 27px; }
 .service-v3 .service-value-strip svg { color: #7462ef; }
 .service-v3 .service-catalogue-title h2 { font-size: 23px; }
-.service-v3 .service-card { border-radius: 22px; border-color: #e9e8f2; box-shadow: 0 4px 18px #54428605; }
+.service-v3 .service-card { border-radius: 22px; border: 1px solid #eeedf4; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); }
 .service-v3 .service-card:hover { transform: translateY(-2px); border-color: #cfc6fc; box-shadow: 0 14px 30px -10px #8470c936; }
-.service-v3 .service-cover { border-radius: 21px 21px 0 0; }
+.service-v3 .service-cover { border-radius: 0; overflow: hidden; }
+.service-v3 .service-cover > img { border-radius: 0; }
 .service-v3 .service-card h3 { font-size: 16px; font-weight: 600; }
 .service-v3 .service-card-body { padding: 14px 16px 0; }
 .service-v3 .card-tags span { background: #f3f1ff; color: #7866b5; padding: 3px 7px; }
 .service-v3 .service-card-foot { padding-inline: 16px; }
-.service-v3 .provider-name { color: #626176; }
-.service-v3 .provider-avatar { border-radius: 8px; }
+.service-v3 .provider-name { color: #626176; font-weight: 400; }
+.service-v3 .provider-avatar { border-radius: 8px; background: transparent; }
 .service-v3 .service-filter-panel { border-radius: 18px; background: #fff; }
 .service-v3 .service-filter-panel button[aria-pressed="true"] { background: #eeeaff; color: #6456f2; }
 .service-v3 .pagination button[aria-current="page"] { background: var(--v3-action); border: 0; }
