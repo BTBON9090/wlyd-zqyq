@@ -15,6 +15,7 @@ import {
 } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { site } from "../lib/config";
+import { useDesignVersion } from "../app/DesignVersion";
 export function Brand() {
   return (
     <Link className="brand" to="/" aria-label={`${site.name}首页`}>
@@ -39,11 +40,15 @@ export function Modal({
   description?: string;
   children: ReactNode;
 }) {
+  const { version } = useDesignVersion();
+  const withAcceptanceTools = __DEMO__ && version === "v3";
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+    <Dialog.Root open={open} onOpenChange={onOpenChange} modal={!withAcceptanceTools}>
       <Dialog.Portal>
-        <Dialog.Overlay className="modal-overlay" />
-        <Dialog.Content className="modal-content">
+        {withAcceptanceTools ? <div className="modal-overlay" aria-hidden="true" /> : <Dialog.Overlay className="modal-overlay" />}
+        <Dialog.Content className="modal-content" onInteractOutside={(event) => {
+          if (withAcceptanceTools && event.target instanceof Element && event.target.closest(".acceptance-panel, .global-tools")) event.preventDefault();
+        }}>
           <div className="modal-heading">
             <Dialog.Title>{title}</Dialog.Title>
             <Dialog.Close className="icon-button" aria-label="关闭弹窗">

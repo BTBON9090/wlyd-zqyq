@@ -304,8 +304,16 @@ export function Shell() {
         onOpenChange={(open) => {
           if (!open) closeAuth();
         }}
-        title={authText.title}
-        description={authText.description}
+        title={
+          homeVersion === "v3" && authOnboarding
+            ? "继续企业入驻"
+            : authText.title
+        }
+        description={
+          homeVersion === "v3" && authOnboarding
+            ? undefined
+            : authText.description
+        }
       >
         <Suspense fallback={<p className="muted">正在加载…</p>}>
           {authRequest && (

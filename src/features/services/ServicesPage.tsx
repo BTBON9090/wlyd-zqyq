@@ -11,6 +11,10 @@ import {
   ArrowRight,
   MagnifyingGlass,
   CaretRight,
+  ClockCounterClockwise,
+  FileText,
+  SlidersHorizontal,
+  Storefront,
   X,
 } from "@phosphor-icons/react";
 import { categories } from "../../data/categories";
@@ -268,14 +272,35 @@ export default function ServicesPage() {
               </div>
               <div className="service-value-strip">
                 {[
-                  ["多规格可选", "按范围与预算选择"],
-                  ["商家信息可查", "了解团队与服务案例"],
-                  ["交付标准清晰", "查看周期与阶段安排"],
-                  ["服务进度留痕", "在个人中心查看记录"],
-                ].map(([title, desc]) => (
+                  {
+                    title: "多规格可选",
+                    desc: "按范围与预算选择",
+                    Icon: SlidersHorizontal,
+                  },
+                  {
+                    title: "商家信息可查",
+                    desc: "了解团队与服务案例",
+                    Icon: Storefront,
+                  },
+                  {
+                    title: "交付标准清晰",
+                    desc: "查看周期与阶段安排",
+                    Icon: FileText,
+                  },
+                  {
+                    title: "服务进度留痕",
+                    desc: "在个人中心查看记录",
+                    Icon: ClockCounterClockwise,
+                  },
+                ].map(({ title, desc, Icon }) => (
                   <div key={title}>
-                    <strong>{title}</strong>
-                    <span>{desc}</span>
+                    {isV3 && <span className="service-value-icon" aria-hidden="true">
+                      <Icon size={21} weight="duotone" />
+                    </span>}
+                    {isV3 ? <span className="service-value-copy">
+                      <strong>{title}</strong>
+                      <span>{desc}</span>
+                    </span> : <><strong>{title}</strong><span>{desc}</span></>}
                   </div>
                 ))}
               </div>

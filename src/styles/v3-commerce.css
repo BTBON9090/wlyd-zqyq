@@ -1,10 +1,10 @@
-/* Shared V3 commerce surfaces; the listing keeps its existing card geometry. */
+/* Shared V3 commerce surfaces. */
 html[data-design-version="v3"] {
   --v3-ink: #242332;
   --v3-muted: #757487;
   --v3-purple: #6456f2;
   --v3-line: #e8e7f2;
-  --v3-action: linear-gradient(110deg, #7954ff 0%, #6456f2 48%, #4986ff 100%);
+  --v3-action: linear-gradient(110deg, #6456f2 0%, #496fff 60%, #08b8e8 100%);
 }
 html[data-design-version="v3"] :is(.button.primary, .showcase-search button:not(.service-clear)) {
   position: relative;
@@ -118,6 +118,32 @@ html[data-design-version="v3"] :is(.service-v3, .product-detail-v3, .v3-account-
 .product-detail-v3 .merchant-card:first-child { border-top: 3px solid #b2a2fb; }
 .product-detail-v3 .commerce-table th { background: #f7f5fc; }
 .product-detail-v3 .faq { border-color: #ebe8f3; }
+
+/* V3 detail-page type floor: 11px is reserved for image/source microcopy. */
+.product-detail-v3 .content-image .image-empty-label { font-size: 11px; }
+.product-detail-v3 .shop-strip p,
+.product-detail-v3 .shop-strip p *,
+.product-detail-v3 .product-price > span,
+.product-detail-v3 .product-price small,
+.product-detail-v3 .product-price em,
+.product-detail-v3 .product-specs > span,
+.product-detail-v3 .product-specs small,
+.product-detail-v3 .product-version-hint,
+.product-detail-v3 .product-quantity,
+.product-detail-v3 .product-quantity small,
+.product-detail-v3 .product-facts span,
+.product-detail-v3 .product-transaction-note,
+.product-detail-v3 .delivery-overview span,
+.product-detail-v3 .service-case-grid article > span,
+.product-detail-v3 .product-review time,
+.product-detail-v3 .product-review .card-tags span,
+.product-detail-v3 .shop-metrics span,
+.product-detail-v3 .merchant-card > span,
+.product-detail-v3 .related-service span:not(.image-empty-label) { font-size: 12px; }
+.product-detail-v3 .service-case-grid p,
+.product-detail-v3 .product-review p,
+.product-detail-v3 .product-review blockquote,
+.product-detail-v3 .merchant-card p { font-size: 14px; }
 
 /* Account workspace. Deliberately desktop-oriented, like the service catalogue. */
 .v3-account-page { width: calc(100% - 64px); max-width: 1840px; min-width: 1120px; margin: 0 auto; padding-bottom: 64px; }
@@ -280,4 +306,449 @@ html[data-design-version="v3"] :is(.service-v3, .product-detail-v3, .v3-account-
 @media (prefers-reduced-motion: reduce) {
   html[data-design-version="v3"] .button.primary, .service-v3 .service-card { transition: none; }
   html[data-design-version="v3"] .button.primary:hover, .service-v3 .service-card:hover { transform: none; }
+}
+
+/* V3 visual contract. This file loads last so V3 never falls back to V1/V2 tokens. */
+html[data-design-version="v3"] {
+  --color-primary: #6456f2;
+  --color-primary-deep: #5647dc;
+  --color-primary-bright: #4986ff;
+  --color-primary-hover: #5647dc;
+  --color-primary-soft: #f1efff;
+  --color-primary-line: #dcd6ff;
+  --color-border: #e8e7f2;
+  --color-surface: #ffffff;
+  --color-text: #242332;
+  --color-text-secondary: #626176;
+  --color-text-muted: #757487;
+  --radius-sm: 12px;
+  --radius-lg: 20px;
+}
+
+/* Desktop typography remains stable from compact laptops through wide monitors. */
+@media (min-width: 768px) {
+  .home-v3 h2 { font-size: 40px; }
+  .home-v3 .v3-section-heading h2 { font-size: 40px; }
+  .home-v3 .v3-ai-feature h3 { font-size: 32px; }
+  .home-v3 .v3-solution-copy h3 { font-size: 32px; }
+  .home-v3 .v3-quote blockquote { font-size: 18px; }
+  .home-v3 .v3-metric-number { font-size: 48px; }
+  .home-v3 .v3-story-result > strong { font-size: 48px; }
+  .home-v3 .v3-hero-description { font-size: 18px; }
+}
+@media (min-width: 1101px) {
+  .home-v3 .v3-hero h1 { font-size: 54px; }
+}
+
+/* Header actions and navigation */
+.shell-v3 .site-header .primary-nav > a {
+  font-size: 14px;
+  font-weight: 600;
+}
+.shell-v3 .utility-inner,
+.shell-v3 .utility-inner a,
+.shell-v3 .utility-inner button { font-size: 12px; }
+.shell-v3 .site-header .header-actions { gap: 20px; }
+.shell-v3 .site-header .login-link,
+.shell-v3 .site-header .header-enterprise {
+  min-height: 38px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 12px;
+}
+.shell-v3 .site-header .login-link {
+  padding: 8px 13px;
+  color: #5b49df;
+  background: #f0edff;
+}
+.shell-v3 .site-header .login-link:hover {
+  color: #4e3bcf;
+  background: #e8e3ff;
+}
+.shell-v3 .site-header .button.header-enterprise.primary,
+.shell-v3 .site-header .button.header-enterprise.secondary {
+  min-height: 38px;
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 12px;
+}
+
+/* Home: image composition, text hierarchy and the two intentional outlined bars. */
+.home-v3 .v3-ai-symbol {
+  inset: auto -26% 5% auto;
+  width: 120%;
+  height: 72%;
+}
+.home-v3 .v3-ai-symbol img {
+  object-position: right bottom;
+  opacity: .78;
+}
+.home-v3 .v3-ai-feature > div:first-child { max-width: 64%; }
+.home-v3 .v3-ai-feature { min-height: 740px; }
+.home-v3 .v3-business-title h3 { font-size: 20px; }
+.home-v3 .v3-business-title > span {
+  padding: 3px 9px;
+  border-radius: 999px;
+  color: #6555c6;
+  background: #efedff;
+}
+.home-v3 .v3-business-row p,
+.home-v3 .v3-story-copy > p,
+.home-v3 .v3-story-result > p { font-size: 14px; }
+.home-v3 .v3-solution-tabs {
+  border: 1px solid #fff;
+  background: rgb(228 233 250 / 76%);
+  box-shadow: none;
+}
+.home-v3 .v3-quote {
+  border: 0;
+  background: #f5f6fa;
+  box-shadow: none;
+}
+.home-v3 .v3-partner-logo {
+  border: 0;
+  background: #f5f6fa;
+}
+.home-v3 .v3-partner-logo:hover {
+  border-color: transparent;
+  background: #f0edff;
+  box-shadow: none;
+}
+
+/* Services: border-light surfaces, aligned hero modules and a clearer value bar. */
+.service-v3 .service-v2-sidebar,
+.service-v3 .service-filter-panel,
+.service-v3 .service-card {
+  border: 0;
+}
+.service-v3 .service-v2-sidebar {
+  background: rgb(255 255 255 / 72%);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  box-shadow: 0 8px 28px rgb(42 45 82 / 5%);
+}
+.service-v3 .service-page-links { border-color: #eceaf5; }
+.service-v3 .service-side-help { border-top: 0; }
+.service-v3 .service-side-help {
+  font-size: 12px;
+}
+.service-v3 .service-side-help strong,
+.service-v3 .service-side-help button { font-size: 12px; }
+.service-v3 .service-v2-sidebar > nav > button,
+.service-v3 .service-page-links a { font-size: 14px; }
+.service-v3 .service-v2-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 29%);
+  align-items: stretch;
+}
+.service-v3 .service-v2-hero > * { height: 100%; }
+.service-v3 .service-promo {
+  height: auto;
+  min-height: 265px;
+}
+.service-v3 .service-match {
+  border: 0;
+  background: linear-gradient(145deg, #e5e0ff, #e7efff);
+  box-shadow: 0 12px 28px rgb(65 54 120 / 8%);
+}
+.service-v3 .service-promo > div > span,
+.service-v3 .service-match > span { font-size: 12px; }
+.service-v3 .service-promo p,
+.service-v3 .service-match p { font-size: 14px; }
+.service-v3 .service-match ol,
+.service-v3 .service-match .button { font-size: 14px; }
+.service-v3 .service-value-strip {
+  margin: 16px 0 28px;
+  padding: 22px 8px;
+  border: 0;
+  border-radius: 24px;
+  background: #eef0fa;
+  box-shadow: none;
+}
+.service-v3 .service-value-strip > div {
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 16px;
+  border: 0;
+}
+.service-v3 .service-value-strip > div::before {
+  content: none;
+}
+.service-v3 .service-value-strip strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+.service-v3 .service-value-strip span { font-size: 12px; }
+.service-v3 .service-v2-grid .service-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 26px rgb(43 45 82 / 12%), 0 2px 5px rgb(43 45 82 / 4%);
+}
+.service-v3 .service-v2-grid .service-card:hover {
+  border-color: transparent;
+  box-shadow: 0 18px 42px rgb(83 70 157 / 14%);
+}
+.service-v3 .service-card-body > p { font-size: 14px; }
+.service-v3 .service-card-foot,
+.service-v3 .service-sales,
+.service-v3 .provider-name { font-size: 12px; }
+.service-v3 .service-catalogue-title > span,
+.service-v3 .service-sort > span,
+.service-v3 .service-bottom-note { font-size: 12px; }
+
+/* Account workspace avoids outlined containers; spacing and tone carry hierarchy. */
+.v3-account-sidebar,
+.v3-account-panel,
+.v3-order-card,
+.v3-refund-card {
+  border: 0;
+}
+.v3-account-sidebar { background: #f7f6fb; }
+.v3-account-panel { box-shadow: 0 14px 40px rgb(59 48 102 / 6%); }
+.v3-order-card,
+.v3-refund-card { background: #faf9fd; }
+.v3-account-search input,
+.v3-account-page .button,
+.v3-account-tabs button,
+.v3-invoice-table { font-size: 14px; }
+.v3-order-product p,
+.v3-refund-content p,
+.v3-account-empty p { font-size: 14px; }
+
+/* V3 authentication modal */
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) {
+  --color-primary: #6456f2;
+  --color-primary-soft: #f1efff;
+  --color-primary-line: #dcd6ff;
+  --color-border: #e8e7f2;
+  --color-text: #242332;
+  --color-text-secondary: #626176;
+  --color-text-muted: #757487;
+  width: min(560px, calc(100vw - 32px));
+  border-radius: 24px;
+  padding: 32px;
+}
+html[data-design-version="v3"] .modal-content:has(.auth-onboarding-context) > .muted {
+  display: none;
+}
+html[data-design-version="v3"] .auth-onboarding-context {
+  padding: 4px 0 20px;
+  margin: 0 0 20px;
+  border: 0;
+  border-bottom: 1px solid #eceaf5;
+  border-radius: 0;
+  background: transparent;
+}
+html[data-design-version="v3"] .auth-onboarding-context > strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+}
+html[data-design-version="v3"] .auth-onboarding-context ol {
+  margin-top: 14px;
+  gap: 20px;
+}
+html[data-design-version="v3"] .auth-onboarding-context li {
+  font-size: 12px;
+}
+html[data-design-version="v3"] .auth-onboarding-context li::before {
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+}
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) .auth-tabs button,
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) .field > label,
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) .consent,
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) .consent button,
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) .auth-submit {
+  font-size: 14px;
+}
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) .field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) .input-action {
+  height: 48px;
+  min-height: 48px;
+  border-radius: 14px;
+  font-size: 14px;
+}
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) .input-action > button {
+  min-height: 40px;
+  font-size: 12px;
+}
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) .auth-submit {
+  min-height: 48px;
+  border-radius: 14px;
+}
+html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-context) :is(.auth-caption, .auth-switch, .field-hint, .field-error) {
+  font-size: 12px;
+}
+
+@media (max-width: 767px) {
+  .home-v3 .v3-ai-feature > div:first-child { max-width: 100%; }
+  .home-v3 .v3-ai-feature { min-height: 660px; }
+  .home-v3 .v3-ai-symbol {
+    inset: auto -20% 0 auto;
+    width: 120%;
+    height: 62%;
+  }
+  .home-v3 .v3-section-heading p,
+  .home-v3 .v3-ai-feature p,
+  .home-v3 .v3-business-row p,
+  .home-v3 .v3-solution-copy > p,
+  .home-v3 .v3-story-copy p,
+  .home-v3 .v3-metrics p { font-size: 14px; }
+  .home-v3 .v3-solution-notes { font-size: 12px; }
+}
+
+/* One palette for all V3 routes, including surfaces inherited from shared pages. */
+html[data-design-version="v3"],
+html[data-design-version="v3"] :is(.shell-v3, .home-v3, .service-v3, .product-detail-v3, .v3-account-page, .v3-account-dialog, .modal-content) {
+  --v3-ink: #1b1c28;
+  --v3-muted: #595e70;
+  --v3-purple: #6456f2;
+  --v3-line: #e3e5ef;
+  --v3-gradient: var(--v3-action);
+  --color-primary: #6456f2;
+  --color-primary-deep: #493bc8;
+  --color-primary-hover: #493bc8;
+  --color-primary-soft: #eeebff;
+  --color-text: #1b1c28;
+  --color-text-secondary: #505568;
+  --color-text-muted: #656b7c;
+  --color-background: #f5f6fa;
+  --control-radius: 14px;
+}
+html[data-design-version="v3"],
+html[data-design-version="v3"] body { overflow-x: clip; }
+.home-v3 { overflow-x: clip; }
+.home-v3 .v3-hero-halo { right: 0; }
+.shell-v3 > main { background: #f5f6fa; }
+.shell-v3:has(.service-v3, .product-detail-v3, .v3-account-page) main {
+  background: linear-gradient(145deg, #f2f1fb 0, #f3f6fc 420px, #f7f8fb 850px);
+}
+html[data-design-version="v3"] .button,
+html[data-design-version="v3"] .showcase-search button:not(.service-clear) {
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+html[data-design-version="v3"] .button.secondary {
+  color: var(--color-text);
+  background: #fff;
+  border-color: #dedfeb;
+}
+html[data-design-version="v3"] .button.secondary:hover:not(:disabled) {
+  color: var(--color-primary-deep);
+  background: var(--color-primary-soft);
+}
+html[data-design-version="v3"] .acceptance-panel {
+  z-index: 2147483000;
+  pointer-events: auto;
+}
+html[data-design-version="v3"] .global-tools { z-index: 2147482999; pointer-events: auto; }
+html[data-design-version="v3"] .acceptance-content :is(p, .text-button, .panel-footnote) { font-size: 12px; }
+html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-radius: 14px; }
+.home-v3 .v3-quote > svg { color: var(--v3-purple); }
+.home-v3 .v3-quote blockquote { color: var(--v3-ink); }
+.home-v3 .v3-solution-tabs button,
+.home-v3 #v3-tab-ai { border-radius: 14px; color: #555c72; }
+.home-v3 .v3-solution-tabs button[aria-selected="true"] { color: var(--v3-purple); }
+.home-v3 .v3-ai-bottom { z-index: 1; color: #424960; }
+.service-v3 .service-value-icon {
+  flex: 0 0 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #fff;
+}
+.service-v3 .service-value-copy { display: grid; gap: 5px; min-width: 0; }
+.service-v3 .service-value-copy > span { color: #595e70; line-height: 1.5; }
+.service-v3 .service-value-icon svg { color: var(--v3-purple); }
+.service-v3 .service-page-links a,
+.service-v3 .service-v2-sidebar > nav > button { border-radius: 14px; }
+.service-v3 .service-side-help { background: transparent; }
+.service-v3 .service-cover.content-image[data-empty="false"]::after {
+  inset: auto 0 0;
+  width: 100%;
+  height: 24%;
+  border: 0;
+  border-radius: 0;
+  opacity: 1;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent, #fff);
+}
+.service-v3 .service-card .price { color: #493bc8; font-weight: 700; }
+.service-v3 .service-score-text { color: #99500b; font-size: 14px; font-weight: 700; }
+.service-v3 .service-card-foot { padding-bottom: 8px; }
+.service-v3 .provider { border-color: #ececf3; }
+.product-detail-v3 :is(.product-intro, .product-facts, .product-specs strong) { font-size: 14px; color: var(--color-text-secondary); }
+
+/* A compact workspace: 14px business text, stronger secondary ink, less empty padding. */
+.v3-account-page { width: calc(100% - 40px); min-width: 0; max-width: 1600px; padding-bottom: 36px; }
+.v3-account-top { height: 50px; color: var(--v3-muted); font-size: 13px; }
+.v3-account-layout { grid-template-columns: 210px minmax(0, 1fr); gap: 20px; }
+.v3-account-sidebar { padding: 16px 10px; }
+.v3-account-user { padding-bottom: 15px; }
+.v3-sidebar-caption { padding: 14px 12px 6px; }
+.v3-account-sidebar :is(a, .v3-sidebar-group) { color: var(--v3-ink); }
+.v3-account-sidebar > a, .v3-account-other a, .v3-sidebar-group { padding: 10px 12px; border-radius: 14px; }
+.v3-account-sidebar :is(a.active, .v3-sidebar-group) { color: var(--v3-purple); background: #eeebff; }
+.v3-account-subnav { margin-block: 6px 8px; }
+.v3-account-subnav a { padding-block: 7px; border-radius: 14px; }
+.v3-account-heading { padding-bottom: 16px; }
+.v3-account-heading p { font-size: 14px; color: var(--v3-muted); }
+.v3-account-enterprise { font-size: 13px; color: var(--v3-muted); }
+.v3-account-summary { gap: 12px; margin-bottom: 16px; }
+.v3-account-summary > button { padding: 14px 18px; border: 0; background: #fff; }
+.v3-account-summary > button > span { color: var(--v3-muted); font-size: 14px; }
+.v3-account-summary strong { color: #493bc8; font-size: 30px; font-weight: 650; }
+.v3-account-summary svg { color: var(--v3-purple); }
+.v3-account-panel { padding: 18px; min-height: 0; }
+.v3-account-toolbar { gap: 12px; margin-bottom: 16px; }
+.v3-account-tabs { flex-wrap: wrap; background: #f0f1f7; border-radius: 14px; }
+.v3-account-tabs button { font-size: 14px; color: var(--v3-muted); border-radius: 12px; }
+.v3-account-tabs button span { color: inherit; }
+.v3-account-tabs button[aria-pressed="true"],
+.v3-account-tabs button[aria-pressed="true"] span { color: var(--v3-purple); }
+.v3-account-search input { width: 180px; font-size: 14px; height: 38px; color: var(--v3-ink); }
+.v3-account-page .button { min-height: 38px; border-radius: 14px; font-size: 14px; }
+.v3-account-page .button.secondary { color: var(--v3-ink); border-color: #dedfeb; }
+.v3-order-list, .v3-refund-list { gap: 12px; }
+.v3-order-body { padding: 16px; gap: 14px; grid-template-columns: minmax(0,1fr) 90px 130px 104px; }
+.v3-order-product { gap: 12px; }
+.v3-order-product p { font-size: 14px; line-height: 1.6; color: var(--v3-muted); }
+.v3-order-card > header { padding: 10px 16px; color: var(--v3-muted); background: #f0f1f7; flex-wrap: wrap; }
+.v3-order-provider { color: var(--v3-ink); }
+.v3-order-price, .v3-order-unit, .v3-order-actions { font-size: 14px; }
+.v3-order-price strong, .v3-refund-amount > strong, .v3-invoice-table .v3-invoice-amount { color: #493bc8; font-weight: 700; }
+.v3-account-page :is(.v3-order-unit strong, .v3-order-price > span, .v3-order-price p, .v3-order-actions > button:not(.button), .v3-refund-content p, .v3-refund-meta, .v3-invoice-table td small, .v3-account-pagination, .v3-account-user small, .v3-sidebar-caption, .v3-sidebar-support small) { color: var(--v3-muted); }
+.v3-order-fulfillment { color: #493bc8; background: #eeebff; border-radius: 8px; }
+.v3-refund-card { padding: 16px 18px; gap: 18px; }
+.v3-invoice-table th { color: var(--v3-muted); font-size: 14px; background: #f0f1f7; }
+.v3-invoice-table td { color: var(--v3-ink); padding-block: 14px; }
+.v3-account-empty { min-height: 240px; padding: 28px; }
+.v3-account-empty h2 { color: var(--v3-ink); font-weight: 600; }
+.v3-account-empty p { color: var(--v3-muted); }
+.v3-account-dialog { color: var(--v3-ink); }
+.v3-account-dialog :is(dt, .v3-order-timeline p, .v3-order-timeline time) { color: var(--v3-muted); }
+@media (max-width: 1100px) {
+  .v3-account-layout { grid-template-columns: 190px minmax(0, 1fr); gap: 16px; }
+  .v3-order-body { grid-template-columns: minmax(0,1fr) 120px; }
+  .v3-order-product { grid-column: 1; grid-row: span 2; }
+  .v3-order-unit { display: none; }
+  .v3-order-actions { grid-column: 2; }
+}
+@media (max-width: 767px) {
+  .v3-account-layout { grid-template-columns: minmax(0,1fr); }
+  .service-v3 .service-v2-hero { grid-template-columns: minmax(0, 1fr); }
+  .service-v3 .service-promo { min-height: 280px; }
+  .service-v3 .service-promo > div:not(.content-image) { right: 20px; left: 24px; }
+  .v3-account-sidebar { display: none; }
+  .v3-account-page { width: calc(100% - 24px); }
+  .v3-account-summary { flex-wrap: wrap; }
+  .v3-account-summary > button { flex-basis: 40%; }
+  .v3-account-search { flex-wrap: wrap; margin-left: 0; }
+  .v3-account-enterprise { display: none; }
 }

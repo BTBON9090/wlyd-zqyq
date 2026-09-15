@@ -9,6 +9,7 @@ import { useValidation } from "../../lib/forms";
 import { ErrorNotice, Field, Input, Modal } from "../../components/ui";
 import { LegalContent } from "./LegalPage";
 import { type AuthMode } from "../../app/AppProvider";
+import { useDesignVersion } from "../../app/DesignVersion";
 const otpTimes = new Map<string, number>();
 
 /**
@@ -25,6 +26,8 @@ export function AuthPanel({
   onDone?: (target: string) => void;
 }) {
   const [current, setCurrent] = useState<AuthMode>(initialMode);
+  const { version } = useDesignVersion();
+  const isV3 = version === "v3";
   useEffect(() => setCurrent(initialMode), [initialMode]);
   const reset = current === "reset",
     register = current === "register";
@@ -147,8 +150,8 @@ export function AuthPanel({
     <>
       {onboarding && !reset && (
         <div className="auth-onboarding-context">
-          <span>企业入驻 · 第一步</span>
-          <strong>先验证账号，再关联企业</strong>
+          {!isV3 && <span>企业入驻 · 第一步</span>}
+          <strong>{isV3 ? "入驻进度" : "先验证账号，再关联企业"}</strong>
           <ol>
             <li className="current">账号验证</li>
             <li>企业资料</li>
@@ -394,10 +397,12 @@ export function AuthPanel({
           </>
         )}
       </div>
-      <p className="auth-safe">
-        <ShieldCheck size={15} />
-        安全连接 · 信息保护
-      </p>
+      {!isV3 && (
+        <p className="auth-safe">
+          <ShieldCheck size={15} />
+          安全连接 · 信息保护
+        </p>
+      )}
       <Modal
         open={!!legal}
         onOpenChange={(v) => {
