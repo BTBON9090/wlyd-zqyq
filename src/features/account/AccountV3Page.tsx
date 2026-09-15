@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Buildings, Briefcase, CaretDown, CheckCircle, Clock, Copy, DownloadSimple, Headset, MagnifyingGlass, Receipt, SquaresFour, Wallet, Truck, Bank, ShoppingCart, Sparkle, Gear, FolderOpen, ClipboardText } from "@phosphor-icons/react";
 import { useApp } from "../../app/AppProvider";
 import { ContentImage } from "../../components/ContentImage";
+import { useStickyList } from "../../components/useStickyList";
 import { EmptyState, ErrorNotice, Input, Modal } from "../../components/ui";
 import { accountGateway, currency, invoiceStatus, orderStatus, refundStatus, type AccountAction, type Invoice, type Order, type Refund } from "./accountData";
 
@@ -22,6 +23,8 @@ function Missing({title,description}:{title:string;description:string}) {
   return <div className="v3-account-empty"><div className="v3-empty-art" aria-hidden="true"><FolderOpen size={76} weight="duotone"/><span><Sparkle size={22} weight="fill"/></span></div><h2>{title}</h2><p>{description}</p></div>;
 }
 export default function AccountV3Page() {
+  const listRef=useRef<HTMLDivElement>(null);
+  useStickyList(listRef,true);
   const {session,loading,openAuth,toast,authError}=useApp();
   const {pathname}=useLocation();
   const [params,setParams]=useSearchParams();
@@ -84,7 +87,7 @@ export default function AccountV3Page() {
     const a=document.createElement("a");a.href=url;a.download="开票记录.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   const canRefund=(o:Order)=>o.paid>o.refunded && o.status!=="closed" && !refunds.some(r=>r.orderId===o.id&&r.status==="processing") && !invoices.some(i=>i.orderId===o.id&&i.status!=="available");
-  return <div className="v3-account-page">
+  return <div ref={listRef} className="v3-account-page">
     <div className="v3-account-top"><div><Link to="/">首页</Link><span>/</span>个人中心<span>/</span>{title}</div><Link to="/services">发现更多企业服务 <ArrowUpRight size={15}/></Link></div>
     <div className="v3-account-layout">
       <aside className="v3-account-sidebar">
@@ -102,7 +105,7 @@ export default function AccountV3Page() {
         {loading?<div className="v3-account-loading" role="status">正在读取账号信息…</div>:!session?<div className="v3-account-guest"><Missing title="登录后，掌握每一项业务进展" description="查看订单、处理售后与管理发票，让企业事务井然有序。"/><ErrorNotice error={authError}/><button className="button primary" onClick={()=>openAuth({returnTo:pathname})}>登录 / 注册 <ArrowRight size={16}/></button></div>:section==="empty"?<div className="v3-account-panel"><Missing title={`暂无${title}内容`} description="相关内容将在这里集中展示。"/></div>:data.isPending?<div className="v3-account-loading" role="status" aria-busy="true">正在加载服务记录…</div>:data.isError?<EmptyState error title="服务记录暂时无法加载" description={data.error.message} action="重试" onAction={()=>void data.refetch()}/>:<>
           <div className="v3-account-summary">{(section==="orders" ? [["全部订单",orders.length,"all"],["正在服务",orders.filter(o=>o.status==="serving").length,"serving"],["待验收",orders.filter(o=>o.status==="accepting").length,"accepting"],["已完成",orders.filter(o=>o.status==="completed").length,"completed"]] : section==="refunds" ? [["售后申请",refunds.length,"all"],["处理中",refunds.filter(r=>r.status==="processing").length,"processing"],["已退款",currency(refunds.filter(r=>r.status==="refunded").reduce((n,r)=>n+r.amount,0)),"refunded"]] : [["可开票金额",currency(invoices.filter(i=>i.status==="available").reduce((n,i)=>n+i.amount,0)),"available"],["开票中",invoices.filter(i=>i.status==="processing").length,"processing"],["已开票金额",currency(invoices.filter(i=>i.status==="issued").reduce((n,i)=>n+i.amount,0)),"issued"]]).map(([label,value,state])=><button key={label} onClick={()=>{setFilter(String(state));setPage(1);}}><span>{label}</span><strong>{value}</strong><ArrowUpRight size={18}/></button>)}</div>
           <section className="v3-account-panel">
-            <div className="v3-account-toolbar"><div className="v3-account-tabs" aria-label="状态筛选">{[["all","全部"],...Object.entries(statuses)].map(([value,label])=><button key={value} aria-pressed={filter===value} onClick={()=>{setFilter(value);setPage(1);}}>{label}<span>{value==="all"?records.length:records.filter(r=>r.status===value).length}</span></button>)}</div>
+            <div className="v3-account-toolbar" data-list-sticky><div className="v3-account-tabs" aria-label="状态筛选">{[["all","全部"],...Object.entries(statuses)].map(([value,label])=><button key={value} aria-pressed={filter===value} onClick={()=>{setFilter(value);setPage(1);}}>{label}<span>{value==="all"?records.length:records.filter(r=>r.status===value).length}</span></button>)}</div>
               <form className="v3-account-search" role="search" onSubmit={e=>{e.preventDefault();setSearch(draft.trim());setPage(1);}}><label><MagnifyingGlass size={17}/><input aria-label="搜索订单、服务或商家" placeholder="搜索编号、服务或商家" value={draft} onChange={e=>setDraft(e.target.value)} maxLength={100}/></label><button className="button secondary" type="button" onClick={()=>{setDraft("");setSearch("");setFilter("all");setPage(1);}}>重置</button><button className="button primary">查询</button></form>
             </div>
             {!count?<Missing title="暂无相关记录" description="您可以调整筛选条件，或查看其他状态的记录。"/>:section==="orders"?<div className="v3-order-list">{slice(filteredOrders).map(o=><article className="v3-order-card" key={o.id}>

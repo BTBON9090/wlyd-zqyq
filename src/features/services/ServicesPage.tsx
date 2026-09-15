@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   Link,
@@ -28,6 +28,7 @@ import { DemandComposer } from "./DemandComposer";
 import { loadHomeContent } from "../home/homeContent";
 
 import { useDesignVersion } from "../../app/DesignVersion";
+import { useStickyList } from "../../components/useStickyList";
 export default function ServicesPage() {
   const location = useLocation();
   const hall = location.pathname.endsWith("/hall");
@@ -146,8 +147,153 @@ export default function ServicesPage() {
   }
   const { version: homeVersion } = useDesignVersion();
   const isV3 = homeVersion === "v3";
+  const listRef = useRef<HTMLDivElement>(null);
+  useStickyList(listRef, isV3);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const activeFilters = [
+    cat !== "all",
+    !!sub,
+    !!leaf,
+    price !== "all",
+    rating > 0,
+  ].filter(Boolean).length;
+  const searchForm = (
+    <form
+      className="showcase-search"
+      role="search"
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (hall) patch({ q: draft.trim() });
+        else navigate(`/services/hall?q=${encodeURIComponent(draft.trim())}`);
+      }}
+    >
+      <MagnifyingGlass size={18} />
+      <input
+        aria-label="搜索服务名称或服务商"
+        value={draft}
+        onChange={(e) => setDraft(e.target.value)}
+        maxLength={100}
+        placeholder="搜索服务、商家或关键词"
+      />
+      {draft && (
+        <button
+          type="button"
+          className="service-clear"
+          aria-label="清空搜索"
+          onClick={() => {
+            setDraft("");
+            patch({ q: "" });
+          }}
+        >
+          <X size={13} />
+        </button>
+      )}
+      <button>搜索</button>
+    </form>
+  );
+  const filterPanel = hall && (!isV3 || filtersOpen) && (
+    <div className="service-filter-panel" id="service-list-filters">
+      <div className="category-line">
+        <span>服务分类</span>
+        <div>
+          <button
+            aria-pressed={cat === "all"}
+            onClick={() => chooseCategory("all")}
+          >
+            全部
+          </button>
+          {categories.slice(1).map((c) => (
+            <button
+              key={c.id}
+              aria-pressed={cat === c.id}
+              onClick={() => chooseCategory(c.id)}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      {secondary.length > 0 && (
+        <div className="category-line">
+          <span>细分类目</span>
+          <div>
+            <button
+              aria-pressed={!sub}
+              onClick={() => patch({ sub: "", leaf: "" })}
+            >
+              全部
+            </button>
+            {secondary.map((name) => (
+              <button
+                key={name}
+                aria-pressed={sub === name}
+                onClick={() => patch({ sub: name!, leaf: "" })}
+              >
+                {name}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+      {sub && tertiary.length > 0 && (
+        <div className="category-line">
+          <span>服务项目</span>
+          <div>
+            <button aria-pressed={!leaf} onClick={() => patch({ leaf: "" })}>
+              全部
+            </button>
+            {tertiary.map((name) => (
+              <button
+                key={name}
+                aria-pressed={leaf === name}
+                onClick={() => patch({ leaf: name! })}
+              >
+                {name}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+      <div className="service-filter-controls">
+        <label>
+          价格{" "}
+          <select
+            value={price}
+            onChange={(e) => patch({ price: e.target.value })}
+          >
+            <option value="all">不限价格</option>
+            <option value="under1000">1,000 元以下</option>
+            <option value="1000to5000">1,000–5,000 元</option>
+            <option value="over5000">5,000 元以上</option>
+          </select>
+        </label>
+        <label>
+          评分{" "}
+          <select
+            value={rating}
+            onChange={(e) => patch({ rating: e.target.value })}
+          >
+            <option value={0}>不限评分</option>
+            <option value={4.5}>4.5 分及以上</option>
+            <option value={4.8}>4.8 分及以上</option>
+          </select>
+        </label>
+        <button
+          onClick={() => {
+            setParams({});
+            setDraft("");
+          }}
+        >
+          清空条件
+        </button>
+      </div>
+    </div>
+  );
   return (
-    <div className={`commerce-container service-v2${isV3 ? " service-v3" : ""}`}>
+    <div
+      ref={listRef}
+      className={`commerce-container service-v2${isV3 ? " service-v3" : ""}`}
+    >
       <Breadcrumb
         items={[
           { label: "企业服务", to: hall ? "/services" : undefined },
@@ -159,39 +305,7 @@ export default function ServicesPage() {
           <h1>企业服务</h1>
           <p>汇聚专业商家，服务企业经营</p>
         </div>
-        <form
-          className="showcase-search"
-          role="search"
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (hall) patch({ q: draft.trim() });
-            else
-              navigate(`/services/hall?q=${encodeURIComponent(draft.trim())}`);
-          }}
-        >
-          <MagnifyingGlass size={18} />
-          <input
-            aria-label="搜索服务名称或服务商"
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            maxLength={100}
-            placeholder="搜索服务、商家或关键词"
-          />
-          {draft && (
-            <button
-              type="button"
-              className="service-clear"
-              aria-label="清空搜索"
-              onClick={() => {
-                setDraft("");
-                patch({ q: "" });
-              }}
-            >
-              <X size={13} />
-            </button>
-          )}
-          <button>搜索</button>
-        </form>
+        {!isV3 && searchForm}
         <button className="button secondary" onClick={openPublish}>
           发布需求 <ArrowRight size={15} />
         </button>
@@ -235,7 +349,11 @@ export default function ServicesPage() {
               <div className="service-v2-hero">
                 <div className="service-promo">
                   <ContentImage
-                    src={isV3 ? "media/v3/customer-campus.webp" : content.data?.serviceBannerImage}
+                    src={
+                      isV3
+                        ? "media/v3/customer-campus.webp"
+                        : content.data?.serviceBannerImage
+                    }
                     alt="企业服务运营宣传图"
                     placeholder="企业服务"
                     eager
@@ -294,150 +412,90 @@ export default function ServicesPage() {
                   },
                 ].map(({ title, desc, Icon }) => (
                   <div key={title}>
-                    {isV3 && <span className="service-value-icon" aria-hidden="true">
-                      <Icon size={21} weight="duotone" />
-                    </span>}
-                    {isV3 ? <span className="service-value-copy">
-                      <strong>{title}</strong>
-                      <span>{desc}</span>
-                    </span> : <><strong>{title}</strong><span>{desc}</span></>}
+                    {isV3 && (
+                      <span className="service-value-icon" aria-hidden="true">
+                        <Icon size={21} weight="duotone" />
+                      </span>
+                    )}
+                    {isV3 ? (
+                      <span className="service-value-copy">
+                        <strong>{title}</strong>
+                        <span>{desc}</span>
+                      </span>
+                    ) : (
+                      <>
+                        <strong>{title}</strong>
+                        <span>{desc}</span>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
             </>
           )}
           <section className="service-catalogue">
-            <div className="service-catalogue-title">
-              <h2>{hall ? "服务大厅" : "热门服务"}</h2>
-              <span>专业商家服务</span>
-              {!hall && (
-                <Link to="/services/hall">
-                  查看全部 <ArrowRight size={14} />
-                </Link>
-              )}
-            </div>
-            {hall && (
-              <div className="service-filter-panel">
-                <div className="category-line">
-                  <span>服务分类</span>
-                  <div>
+            <div className="service-catalogue-tools" data-list-sticky>
+              <div className="service-catalogue-heading">
+                <div className="service-catalogue-title">
+                  <h2>{hall ? "服务大厅" : "热门服务"}</h2>
+                  <span>专业商家服务</span>
+                  {!hall && (
+                    <Link to="/services/hall">
+                      查看全部 <ArrowRight size={14} />
+                    </Link>
+                  )}
+                </div>
+                {isV3 && searchForm}
+              </div>
+              {!isV3 && filterPanel}
+              <div className="service-sort">
+                {isV3 && (
+                  <select
+                    className="service-sort-select"
+                    aria-label="服务排序"
+                    value={sort}
+                    onChange={(e) => patch({ sort: e.target.value })}
+                  >
+                    <option value="recommended">综合推荐</option>
+                    <option value="sales">销量优先</option>
+                    <option value="newest">最新发布</option>
+                    <option value="priceAsc">价格从低到高</option>
+                    <option value="priceDesc">价格从高到低</option>
+                  </select>
+                )}
+                <div className="service-sort-options">
+                  {[
+                    ["recommended", "综合推荐"],
+                    ["sales", "销量"],
+                    ["newest", "最新发布"],
+                    ["priceAsc", "价格 ↑"],
+                    ["priceDesc", "价格 ↓"],
+                  ].map(([id, label]) => (
                     <button
-                      aria-pressed={cat === "all"}
-                      onClick={() => chooseCategory("all")}
+                      key={id}
+                      aria-pressed={sort === id}
+                      onClick={() => patch({ sort: id })}
                     >
-                      全部
+                      {label}
                     </button>
-                    {categories.slice(1).map((c) => (
-                      <button
-                        key={c.id}
-                        aria-pressed={cat === c.id}
-                        onClick={() => chooseCategory(c.id)}
-                      >
-                        {c.label}
-                      </button>
-                    ))}
-                  </div>
+                  ))}
                 </div>
-                {secondary.length > 0 && (
-                  <div className="category-line">
-                    <span>细分类目</span>
-                    <div>
-                      <button
-                        aria-pressed={!sub}
-                        onClick={() => patch({ sub: "", leaf: "" })}
-                      >
-                        全部
-                      </button>
-                      {secondary.map((name) => (
-                        <button
-                          key={name}
-                          aria-pressed={sub === name}
-                          onClick={() => patch({ sub: name!, leaf: "" })}
-                        >
-                          {name}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {sub && tertiary.length > 0 && (
-                  <div className="category-line">
-                    <span>服务项目</span>
-                    <div>
-                      <button
-                        aria-pressed={!leaf}
-                        onClick={() => patch({ leaf: "" })}
-                      >
-                        全部
-                      </button>
-                      {tertiary.map((name) => (
-                        <button
-                          key={name}
-                          aria-pressed={leaf === name}
-                          onClick={() => patch({ leaf: name! })}
-                        >
-                          {name}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                <div className="service-filter-controls">
-                  <label>
-                    价格{" "}
-                    <select
-                      value={price}
-                      onChange={(e) => patch({ price: e.target.value })}
+                <div className="service-sort-meta">
+                  <span>共 {filtered.length} 项</span>
+                  {isV3 && hall && (
+                    <button
+                      className="service-filter-toggle"
+                      aria-expanded={filtersOpen}
+                      aria-controls="service-list-filters"
+                      onClick={() => setFiltersOpen(!filtersOpen)}
                     >
-                      <option value="all">不限价格</option>
-                      <option value="under1000">1,000 元以下</option>
-                      <option value="1000to5000">1,000–5,000 元</option>
-                      <option value="over5000">5,000 元以上</option>
-                    </select>
-                  </label>
-                  <label>
-                    评分{" "}
-                    <select
-                      value={rating}
-                      onChange={(e) => patch({ rating: e.target.value })}
-                    >
-                      <option value={0}>不限评分</option>
-                      <option value={4.5}>4.5 分及以上</option>
-                      <option value={4.8}>4.8 分及以上</option>
-                    </select>
-                  </label>
-                  <button
-                    onClick={() => {
-                      setParams({});
-                      setDraft("");
-                    }}
-                  >
-                    清空条件
-                  </button>
+                      <SlidersHorizontal size={17} /> 筛选
+                      {activeFilters > 0 && <span>{activeFilters}</span>}
+                    </button>
+                  )}
                 </div>
               </div>
-            )}
-            <div className="service-sort">
-              <div>
-                {[
-                  ["recommended", "综合推荐"],
-                  ["sales", "销量"],
-                  ["newest", "最新发布"],
-                  ["priceAsc", "价格 ↑"],
-                  ["priceDesc", "价格 ↓"],
-                ].map(([id, label]) => (
-                  <button
-                    key={id}
-                    aria-pressed={sort === id}
-                    onClick={() => patch({ sort: id })}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-              <span>
-                {query && `“${query}” · `}共 {filtered.length} 项
-              </span>
+              {isV3 && filterPanel}
             </div>
             {services.isPending ? (
               <Skeletons />
