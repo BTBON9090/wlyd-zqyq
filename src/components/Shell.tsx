@@ -223,41 +223,36 @@ export function Shell() {
         <Outlet />
       </main>
       <footer className="site-footer">
-        <div className="container footer-main">
-          <div>
-            <Brand />
-            <p>连接专业资源，陪伴企业每一步成长。</p>
-          </div>
-          <div className="footer-links">
-            <Link to="/services">企业服务</Link>
-            <Link to="/onboarding">企业入驻</Link>
-            <button onClick={() => setHelp(true)}>帮助中心</button>
-          </div>
-          <div className="footer-support">
-            <Headset size={27} />
+        {location.pathname === "/" && (
+          <div className="container footer-main">
             <div>
-              <strong>服务支持</strong>
-              <span>{site.contact || "服务申请提交后，由服务商与您联系"}</span>
+              <Brand />
+              <p>连接专业资源，陪伴企业每一步成长。</p>
+            </div>
+            <div className="footer-links">
+              <Link to="/services">企业服务</Link>
+              <Link to="/onboarding">企业入驻</Link>
+              <button onClick={() => setHelp(true)}>帮助中心</button>
+            </div>
+            <div className="footer-support">
+              <Headset size={27} />
+              <div>
+                <strong>服务支持</strong>
+                <span>{site.contact || "服务申请提交后，由服务商与您联系"}</span>
+              </div>
             </div>
           </div>
-        </div>
+        )}
         <div className="container footer-bottom">
-          <span>
-            © {new Date().getFullYear()} {site.name}
+          <span className="footer-build">
+            建设单位：xx市经济技术开发区管理委员会 | 运营支持：万联易达（河北）科技有限公司
           </span>
-          <div>
-            <Link to="/legal/service">服务协议</Link>
-            <Link to="/legal/privacy">隐私政策</Link>
-            {site.icp && (
-              <a
-                href="https://beian.miit.gov.cn/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {site.icp}
-              </a>
-            )}
-          </div>
+          <span className="footer-copyright">
+            © {new Date().getFullYear()} 万联易达集团 版权所有.
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
+              冀ICP备XXXXXX号
+            </a>
+          </span>
         </div>
       </footer>
       <Modal
@@ -337,6 +332,8 @@ export function Breadcrumb({
 }: {
   items: { label: string; to?: string }[];
 }) {
+  // 一级页面（无父级层级）不展示面包屑，二级及以下才展示。
+  if (items.length <= 1) return null;
   return (
     <nav className="breadcrumb" aria-label="面包屑">
       <Link to="/">首页</Link>

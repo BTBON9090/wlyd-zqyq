@@ -300,16 +300,18 @@ export default function ServicesPage() {
           ...(hall ? [{ label: "服务大厅" }] : []),
         ]}
       />
-      <div className="service-v2-top">
-        <div>
-          <h1>企业服务</h1>
-          <p>汇聚专业商家，服务企业经营</p>
+      {!isV3 && (
+        <div className="service-v2-top">
+          <div>
+            <h1>企业服务</h1>
+            <p>汇聚专业商家，服务企业经营</p>
+          </div>
+          {searchForm}
+          <button className="button secondary" onClick={openPublish}>
+            发布需求 <ArrowRight size={15} />
+          </button>
         </div>
-        {!isV3 && searchForm}
-        <button className="button secondary" onClick={openPublish}>
-          发布需求 <ArrowRight size={15} />
-        </button>
-      </div>
+      )}
       <div className="service-v2-layout">
         <aside className="service-v2-sidebar">
           <nav className="service-page-links">

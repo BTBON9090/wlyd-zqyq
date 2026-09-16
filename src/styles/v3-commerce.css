@@ -483,7 +483,7 @@ html[data-design-version="v3"] {
 .service-v3 .service-value-strip span { font-size: 12px; }
 .service-v3 .service-v2-grid .service-card {
   background: #fff;
-  border-radius: 24px;
+  border-radius: 16px;
   box-shadow: 0 8px 26px rgb(43 45 82 / 12%), 0 2px 5px rgb(43 45 82 / 4%);
 }
 .service-v3 .service-v2-grid .service-card:hover {
@@ -669,18 +669,9 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
 .service-v3 .service-page-links a,
 .service-v3 .service-v2-sidebar > nav > button { border-radius: 14px; }
 .service-v3 .service-side-help { background: transparent; }
-.service-v3 .service-cover.content-image[data-empty="false"]::after {
-  inset: auto 0 0;
-  width: 100%;
-  height: 24%;
-  border: 0;
-  border-radius: 0;
-  opacity: 1;
-  z-index: 1;
-  background: linear-gradient(180deg, transparent, #fff);
-}
+
 .service-v3 .service-card .price { color: #493bc8; font-weight: 700; }
-.service-v3 .service-score-text { color: #99500b; font-size: 14px; font-weight: 700; }
+.service-v3 .service-score-text { color: #d28532; font-size: 14px; font-weight: 700; }
 .service-v3 .service-card-foot { padding-bottom: 8px; }
 .service-v3 .provider { border-color: #ececf3; }
 .product-detail-v3 :is(.product-intro, .product-facts, .product-specs strong) { font-size: 14px; color: var(--color-text-secondary); }
@@ -840,12 +831,55 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
 .v3-account-tabs { flex-wrap: nowrap; overflow-x: auto; min-width: 0; scrollbar-width: thin; background: none; padding: 0; }
 .v3-account-tabs button { padding: 9px 10px; }
 .v3-account-tabs button[aria-pressed="true"] { background: #eeebff; box-shadow: none; }
+/* 宽屏下「更多」分组摊平成一排，窄屏才收成尾端下拉 */
+.v3-account-tabs-more,
+.v3-account-more-menu { display: contents; }
+.v3-account-more-trigger { display: none; }
 .v3-account-search { min-width: 0; }
-@container (max-width: 1050px) {
+.v3-account-search label { min-width: 0; }
+.v3-account-search input { min-width: 0; }
+@container (max-width: 900px) {
+  .v3-account-tabs { overflow: visible; }
+  .v3-account-tabs-more { display: block; position: relative; flex-shrink: 0; }
+  .v3-account-more-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--v3-muted);
+    white-space: nowrap;
+  }
+  .v3-account-more-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 30;
+    flex-direction: column;
+    min-width: 148px;
+    padding: 6px;
+    background: #fff;
+    border: 1px solid #e9e4f1;
+    border-radius: 12px;
+    box-shadow: 0 14px 32px -10px rgb(37 35 75 / 22%);
+  }
+  .v3-account-tabs-more:hover .v3-account-more-menu,
+  .v3-account-tabs-more:focus-within .v3-account-more-menu { display: flex; }
+  .v3-account-more-menu button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+  }
+}
+@container (max-width: 640px) {
   .v3-account-toolbar { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .v3-account-search { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; width: 100%; margin-left: 0; }
-  .v3-account-search label { min-width: 0; }
-  .v3-account-search input { width: 100%; min-width: 0; }
+  .v3-account-search { width: 100%; margin-left: 0; }
+  .v3-account-search input { width: 100%; }
 }
 @media (max-width: 767px) {
   .service-v3 .service-v2-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

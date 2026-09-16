@@ -14,6 +14,8 @@
   font-size: 15px;
   line-height: 1.75;
   position: relative;
+  /* 形成 BFC，避免末段区块的底边距穿透白底盒、露出 main 的灰底 */
+  display: flow-root;
 }
 
 /* 左侧栏目指示器 */
