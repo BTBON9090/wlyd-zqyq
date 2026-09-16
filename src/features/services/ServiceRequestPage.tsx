@@ -207,6 +207,7 @@ function RequestForm({ serviceId }: { serviceId: string }) {
   return (
     <div className="container request-page">
       <Breadcrumb
+        detail
         items={[
           { label: "企业服务", to: "/services" },
           { label: service.name, to: `/services/${serviceId}` },

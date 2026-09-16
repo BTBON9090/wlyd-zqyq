@@ -1,5 +1,6 @@
 /* V2 延展：紧凑商城布局、真实媒体位置、纯色控件。品牌色统一使用 token。 */
-.commerce-container {
+.commerce-container,
+.v3-account-page {
   width: min(1360px, calc(100% - 64px));
   margin-inline: auto;
 }
@@ -2013,7 +2014,8 @@
   margin-top: 24px;
 }
 @media (max-width: 1199px) {
-  .commerce-container {
+  .commerce-container,
+.v3-account-page {
     width: calc(100% - 40px);
   }
   .service-v2-layout,
@@ -2235,7 +2237,8 @@
   }
 }
 @media (max-width: 639px) {
-  .commerce-container {
+  .commerce-container,
+.v3-account-page {
     width: calc(100% - 28px);
   }
   .commerce-container .breadcrumb {

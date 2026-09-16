@@ -6,6 +6,11 @@ export const orderSchema = z.object({
   id: z.string(), serviceId: z.string(), name: z.string(), provider: z.string(), image: z.string().optional(),
   category: z.string(), spec: z.string(), quantity: z.number().int().positive(), total: z.number().nonnegative(), paid: z.number().nonnegative(),
   refunded: z.number().nonnegative(), createdAt: z.string(), deliveryDays: z.number(), phases: z.number(),
+  discount: z.number().nonnegative().optional(),
+  paymentMode: z.enum(["once", "installments"]).optional(),
+  payments: z.array(z.object({ label: z.string(), amount: z.number().nonnegative(), paidAt: z.string() })).optional(),
+  acceptanceDeadline: z.string().datetime({ offset: true }).optional(),
+  autoAccept: z.boolean().optional(),
   status: z.enum(["pending", "signing", "serving", "accepting", "completed", "closed"]),
   progress: z.array(z.object({ title: z.string(), date: z.string(), detail: z.string() })),
 });

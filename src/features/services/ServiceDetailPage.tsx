@@ -69,6 +69,7 @@ function ServiceDetail({ service }: { service: Service }) {
   return (
     <div className={`commerce-container product-detail-v2${designVersion === "v3" ? " product-detail-v3" : ""}`}>
       <Breadcrumb
+        detail
         items={[
           { label: "企业服务", to: "/services" },
           {

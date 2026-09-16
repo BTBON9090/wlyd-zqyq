@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import {
   ArrowRight,
+  Buildings,
   CaretDown,
   CheckCircle,
   Headset,
@@ -189,10 +190,10 @@ export function Shell() {
                 openAuth({ returnTo: "/onboarding" });
               }}
             >
+              <Buildings size={18} aria-hidden="true" />
               {session?.enterpriseStatus === "approved"
                 ? "我的企业"
                 : "企业入驻"}
-              <ArrowRight size={16} />
             </Link>
             <button
               className="icon-button menu-toggle"
@@ -219,7 +220,7 @@ export function Shell() {
           网络已断开，已填写的内容会保留，请联网后重试。
         </div>
       )}
-      <main id="main-content">
+      <main id="main-content" className={location.pathname !== "/" ? "inner-page-content" : undefined}>
         <Outlet />
       </main>
       <footer className="site-footer">
@@ -329,11 +330,13 @@ export function Shell() {
 }
 export function Breadcrumb({
   items,
+  detail = false,
 }: {
   items: { label: string; to?: string }[];
+  detail?: boolean;
 }) {
-  // 一级页面（无父级层级）不展示面包屑，二级及以下才展示。
-  if (items.length <= 1) return null;
+  // 导航入口及列表页不展示，仅详情与后续办理页面显式启用。
+  if (!detail) return null;
   return (
     <nav className="breadcrumb" aria-label="面包屑">
       <Link to="/">首页</Link>

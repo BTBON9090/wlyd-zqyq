@@ -12,6 +12,10 @@ function seed(): AccountData {
     const paid = [3000, 80000, 2400, 18000, 8160, 0, 980, 6000][i];
     const day = String(12-i).padStart(2,"0");
     return { id: `864005128910${43+i}`, serviceId: s.id, name: s.name, provider: s.provider, image: s.image, category: s.category,
+      paymentMode: [0,1,3].includes(i) ? "installments" : "once",
+      discount: i === 3 ? 10000 : i === 5 ? 2000 : 0,
+      payments: i === 0 ? [{label:"首期",amount:3000,paidAt:"2026-09-12"}] : i === 1 ? [{label:"首期",amount:30000,paidAt:"2026-09-11"},{label:"尾款",amount:50000,paidAt:"2026-09-13"}] : undefined,
+      ...(i === 1 ? {acceptanceDeadline:"2026-09-23T18:00:00+08:00",autoAccept:true} : {}),
       spec: s.published?.versions[0]?.name || "标准服务", quantity: 1, total, paid, refunded: i === 6 ? 980 : i === 7 ? 2000 : 0,
       createdAt: `2026-09-${day} 09:30:45`, deliveryDays: [15,30,7,60,30,20,10,15][i], phases: i < 2 ? 2 : 1, status: states[i],
       progress: [{title:"订单已创建",date:`2026-09-${day} 09:30`,detail:"服务需求已提交，等待服务商确认。"}, ...(paid ? [{title:"服务方案已确认",date:`2026-09-${day} 14:20`,detail:"已确认服务范围、交付周期与费用安排。"}] : []), ...(states[i] === "accepting" || states[i] === "completed" ? [{title:"交付成果已提交",date:"2026-09-13 16:40",detail:"服务商已完成约定服务内容，提交交付成果。"}] : [])] };
@@ -32,7 +36,18 @@ async function current() {
   const user = await mockGateway.session();
   if (!user) throw new Error("请登录后查看企业服务记录");
   const key = `commerce-v3:${user.id}`;
-  const data = readStored(key, accountDataSchema, seed());
+  const initial = seed();
+  const data = readStored(key, accountDataSchema, initial);
+  // Add newly supported metadata to existing local records without resetting changes.
+  for (const order of data.orders) {
+    const original = initial.orders.find(item => item.id === order.id);
+    if (!original) continue;
+    order.discount ??= original.discount;
+    order.paymentMode ??= original.paymentMode;
+    order.payments ??= original.payments;
+    order.acceptanceDeadline ??= original.acceptanceDeadline;
+    order.autoAccept ??= original.autoAccept;
+  }
   const receipts = await mockGateway.receipts();
   for (const receipt of receipts) {
     if (data.orders.some(order => order.id === receipt.id)) continue;

@@ -146,7 +146,7 @@ html[data-design-version="v3"] :is(.service-v3, .product-detail-v3, .v3-account-
 .product-detail-v3 .merchant-card p { font-size: 14px; }
 
 /* Account workspace. Deliberately desktop-oriented, like the service catalogue. */
-.v3-account-page { width: calc(100% - 64px); max-width: 1840px; min-width: 1120px; margin: 0 auto; padding-bottom: 64px; }
+.v3-account-page { min-width: 0; margin: 0 auto; padding-bottom: 64px; }
 .v3-account-top { display: flex; align-items: center; justify-content: space-between; height: 66px; color: #878396; font-size: 12px; }
 .v3-account-top > div { display: flex; gap: 13px; }
 .v3-account-top > a { display: flex; align-items: center; gap: 8px; color: #7161bd; }
@@ -677,7 +677,7 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
 .product-detail-v3 :is(.product-intro, .product-facts, .product-specs strong) { font-size: 14px; color: var(--color-text-secondary); }
 
 /* A compact workspace: 14px business text, stronger secondary ink, less empty padding. */
-.v3-account-page { width: calc(100% - 40px); min-width: 0; max-width: 1600px; padding-bottom: 36px; }
+.v3-account-page { min-width: 0; padding-bottom: 36px; }
 .v3-account-top { height: 50px; color: var(--v3-muted); font-size: 13px; }
 .v3-account-layout { grid-template-columns: 210px minmax(0, 1fr); gap: 20px; }
 .v3-account-sidebar { padding: 16px 10px; }
@@ -737,7 +737,6 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
   .service-v3 .service-promo { min-height: 280px; }
   .service-v3 .service-promo > div:not(.content-image) { right: 20px; left: 24px; }
   .v3-account-sidebar { display: none; }
-  .v3-account-page { width: calc(100% - 24px); }
   .v3-account-summary { flex-wrap: wrap; }
   .v3-account-summary > button { flex-basis: 40%; }
   .v3-account-search { flex-wrap: wrap; margin-left: 0; }
@@ -900,4 +899,233 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
 @media (prefers-reduced-motion: reduce) {
   .service-v3 [data-list-sticky], .v3-account-toolbar { transition: none; }
   .service-v3 .service-filter-panel { animation: none; }
+}
+
+/* Shared navigation rhythm and standalone order surfaces. */
+.shell-v3 {
+  --v3-nav-radius: 10px;
+  --v3-nav-hover: #f4f1ff;
+  --v3-nav-selected: #eeebff;
+  --v3-sidebar-surface: rgb(255 255 255 / 86%);
+  --v3-sidebar-shadow: 0 8px 28px rgb(42 45 82 / 5%);
+}
+.shell-v3 > .inner-page-content { padding-top: 28px; }
+html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a {
+  border-radius: var(--v3-nav-radius);
+  transition: color 160ms ease, background-color 160ms ease;
+}
+html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a:is(:hover, :focus-visible) {
+  color: var(--v3-purple);
+  background: var(--v3-nav-hover);
+}
+html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a.active {
+  color: var(--v3-purple);
+  background: var(--v3-nav-selected);
+  box-shadow: none;
+}
+.service-v3 .category-line button {
+  border-radius: 9px;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+.service-v3 .category-line button:is(:hover, :focus-visible) {
+  color: var(--v3-purple);
+  background: #eae5fc;
+}
+.service-v3 .category-line button[aria-pressed="true"] {
+  color: var(--v3-purple);
+  background: var(--v3-nav-selected);
+  font-weight: 600;
+}
+.shell-v3 :is(.service-v2-sidebar, .v3-account-sidebar) {
+  border: 0;
+  border-radius: 22px;
+  background: var(--v3-sidebar-surface);
+  box-shadow: var(--v3-sidebar-shadow);
+  backdrop-filter: blur(20px) saturate(130%);
+}
+.shell-v3 :is(.service-page-links a, .service-v2-sidebar > nav > button, .v3-account-sidebar a, .v3-sidebar-group) {
+  border-radius: var(--v3-nav-radius);
+  transition: color 160ms ease, background-color 160ms ease;
+}
+.shell-v3 :is(.service-page-links a, .service-v2-sidebar > nav > button, .v3-account-sidebar a, .v3-sidebar-group):hover {
+  color: var(--v3-purple);
+  background: var(--v3-nav-hover);
+}
+.shell-v3 :is(.service-page-links a.active, .service-v2-sidebar > nav > button.selected, .v3-account-sidebar a.active, .v3-sidebar-group) {
+  color: var(--v3-purple);
+  background: var(--v3-nav-selected);
+}
+.v3-account-sidebar :is(.v3-account-user, .v3-account-other, .v3-sidebar-support) { border-color: #eceaf5; }
+.v3-account-sidebar :is(a, .v3-sidebar-group) svg { color: currentColor; }
+.v3-account-sidebar .v3-account-subnav { border-color: #e7e2f4; }
+.v3-order-workspace { min-width: 0; container-type: inline-size; }
+.v3-order-workspace .v3-account-toolbar {
+  margin: 0 0 20px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 4px 18px #25234b06;
+}
+.v3-order-workspace .v3-account-toolbar[data-stuck="true"] { border-radius: 0 0 20px 20px; }
+.v3-order-workspace .v3-order-list { gap: 20px; }
+.v3-order-workspace .v3-order-card {
+  background: #fff;
+  border: 0;
+  border-radius: 22px;
+  box-shadow: 0 6px 22px rgb(42 45 82 / 4%);
+  overflow: hidden;
+}
+.v3-order-workspace .v3-order-card > header {
+  padding: 18px 24px;
+  background: #fff;
+  border-bottom: 1px solid #efedf5;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 16px;
+}
+.v3-order-workspace .v3-order-provider { max-width: none; min-width: 0; font-size: 13px; color: #494457; gap: 9px; }
+.v3-order-workspace .v3-order-provider svg { color: #8b7fc1; }
+.v3-order-state { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.v3-order-state .v3-status { font-size: 12px; }
+.v3-order-refund-label { color: #a36937; font-size: 12px; }
+.v3-order-workspace .v3-order-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 238px 104px;
+  gap: 26px;
+  align-items: start;
+  padding: 24px;
+}
+.v3-order-workspace .v3-order-product { grid-column: auto; grid-row: auto; gap: 16px; }
+.v3-order-workspace .v3-order-product .content-image { width: 84px; height: 94px; flex-basis: 84px; border-radius: 12px; }
+.v3-order-description { min-width: 0; }
+.v3-order-workspace .v3-order-product h2 { margin: -3px 0 8px; color: #242332; line-height: 1.6; font-size: 16px; }
+.v3-order-workspace .v3-order-product:hover h2 { color: var(--v3-purple); }
+.v3-order-workspace .v3-order-fulfillment { font-size: 11px; color: #7864b3; background: #f6f3fc; padding: 2px 7px; margin-bottom: 10px; border-radius: 5px; }
+.v3-order-description dl { display: grid; gap: 5px; margin: 0; font-size: 12px; }
+.v3-order-description dl > div { display: flex; align-items: baseline; gap: 12px; }
+.v3-order-description dt { flex: 0 0 66px; color: #858092; }
+.v3-order-description dd { margin: 0; color: #605969; line-height: 1.7; }
+.v3-order-description dd > span { display: inline-block; margin-left: 12px; color: #858092; }
+.v3-order-payment { color: #655e71; font-size: 12px; font-variant-numeric: tabular-nums; }
+.v3-order-payment dl { display: grid; gap: 7px; margin: 0; }
+.v3-order-payment dl > div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.v3-order-payment dt { color: #7b7485; }
+.v3-order-payment dd { margin: 0; white-space: nowrap; color: #514959; }
+.v3-order-payment .v3-paid-row { margin-top: 6px; padding-top: 12px; border-top: 1px solid #f0edf6; }
+.v3-order-payment .v3-paid-row dt { color: #51445f; }
+.v3-order-payment .v3-paid-row dd { font-size: 22px; font-weight: 650; line-height: 1.35; color: #5e49cf; }
+.v3-payment-state { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px; margin-top: 7px; font-size: 11px; color: #746582; }
+.v3-payment-state > span:first-child { color: #7560b3; }
+.v3-payment-stages { margin-top: 8px; font-size: 11px; line-height: 1.7; color: #83758d; }
+.v3-payment-refund { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px; font-size: 11px; padding-top: 8px; margin-top: 8px; border-top: 1px dashed #eae4ed; color: #9a673f; }
+.v3-order-workspace .v3-order-actions { grid-column: auto; display: grid; gap: 7px; padding-left: 5px; align-self: center; }
+.v3-order-workspace .v3-order-actions button { border: 0; font-size: 13px; }
+.v3-order-workspace .v3-order-actions .button { min-height: 38px; padding: 8px 10px; border-radius: 12px; }
+.v3-order-workspace .v3-order-text-action { min-height: 31px; border-radius: 9px; color: #665482; background: transparent; }
+.v3-order-workspace .v3-order-text-action.is-muted { color: #85778e; }
+.v3-order-workspace .v3-order-text-action.is-leading { color: var(--v3-purple); background: #f2eeff; font-weight: 600; }
+.v3-order-workspace .v3-order-text-action:hover { color: var(--v3-purple); background: var(--v3-nav-hover); }
+.v3-order-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 20px; padding: 14px 24px; border-top: 1px solid #f0edf5; color: #888093; font-size: 11px; }
+.v3-order-meta > span { display: flex; align-items: center; gap: 9px; }
+.v3-order-meta b, .v3-order-meta time { color: #746b80; font-weight: 400; font-variant-numeric: tabular-nums; }
+.v3-order-meta button { display: flex; align-items: center; padding: 3px; color: #9a8baa; }
+.v3-order-meta button:hover { color: var(--v3-purple); }
+.v3-order-deadline { display: flex; align-items: center; gap: 9px; background: #fff9ef; margin: 0 24px 18px; padding: 10px 12px; border-radius: 10px; color: #a07536; font-size: 12px; }
+.v3-order-deadline strong { font-variant-numeric: tabular-nums; font-weight: 600; color: #9d641c; }
+.v3-order-deadline > span:last-child { margin-left: auto; }
+.v3-account-dialog .v3-order-payment { padding: 20px; background: #faf8ff; border-radius: 14px; }
+.v3-order-workspace > .v3-account-empty { background: #fff; border-radius: 22px; }
+@media (min-width: 1550px) {
+  .v3-order-workspace .v3-order-body { grid-template-columns: minmax(0, 1fr) 260px 118px; gap: 36px; padding: 26px; }
+}
+@media (max-width: 1100px) {
+  .v3-order-workspace .v3-order-body { grid-template-columns: minmax(0, 1fr) 210px 100px; gap: 16px; padding: 20px; }
+  .v3-order-workspace .v3-order-product .content-image { flex-basis: 64px; width: 64px; height: 72px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a,
+  .service-v3 .category-line button { transition: none; }
+}
+
+/* Order header, product and actions share a consistent reading grid. */
+.v3-order-workspace .v3-order-card > header { gap: 16px; padding: 16px 22px; background: #faf9fc; }
+.v3-order-header-meta { display: flex; align-items: center; gap: 16px; min-width: 0; color: #6e687d; font-size: 11px; }
+.v3-order-header-meta time, .v3-order-number { white-space: nowrap; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.v3-order-number { display: flex; align-items: center; gap: 5px; }
+.v3-order-number button { display: inline-flex; border: 0; background: none; padding: 3px; color: #91899e; cursor: pointer; }
+.v3-order-workspace .v3-order-provider { font-size: 12px; border-left: 1px solid #e6e2ed; padding-left: 16px; overflow: hidden; }
+.v3-order-provider > svg { flex-shrink: 0; }
+.v3-order-provider > span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.v3-order-workspace .v3-order-body { grid-template-columns: minmax(0, 1fr) 110px 200px 104px; gap: 22px; padding: 24px 22px; align-items: start; }
+.v3-order-workspace .v3-order-product .content-image { width: 84px; height: 84px; flex: 0 0 84px; aspect-ratio: 1; }
+.v3-order-workspace .v3-order-description h2 { margin-top: 0; line-height: 1.5; }
+.v3-order-workspace .v3-order-description dl { gap: 3px; }
+.v3-order-workspace .v3-order-description dl > div { gap: 6px; }
+.v3-order-workspace .v3-order-description dt { flex-basis: 52px; }
+.v3-order-workspace .v3-order-description dd span { margin-left: 6px; }
+.v3-order-workspace .v3-order-unit { display: flex; flex-direction: column; align-items: center; gap: 9px; align-self: start; padding-top: 1px; font-size: 12px; color: #8b8496; }
+.v3-order-workspace .v3-order-unit strong { font-size: 15px; font-weight: 650; line-height: 24px; color: #332e40; white-space: nowrap; }
+.v3-order-workspace .v3-order-actions { align-self: start; gap: 8px; padding: 0; }
+.v3-order-workspace .v3-order-actions .button + .v3-order-text-action { margin-top: 10px; }
+.v3-order-workspace .v3-order-state { gap: 8px; }
+.v3-order-workspace .v3-order-deadline { display: flex; align-items: center; gap: 4px; margin: 0; padding: 4px 7px; background: #fff5e7; border-radius: 7px; font-size: 10px; white-space: nowrap; }
+.v3-order-workspace .v3-order-deadline strong { font-size: 11px; font-variant-numeric: tabular-nums; }
+.v3-order-workspace .v3-order-deadline > span:last-child { margin-left: 0; }
+.shell-v3 .v3-account-sidebar .v3-sidebar-group:not(.is-active) { background: transparent; color: var(--v3-ink); font-weight: 400; }
+.shell-v3 .v3-account-sidebar .v3-sidebar-group:not(.is-active):hover { background: var(--v3-nav-hover); color: var(--v3-purple); }
+.acceptance-trigger { touch-action: none; cursor: grab; user-select: none; }
+.acceptance-trigger:active { cursor: grabbing; }
+@media (max-width: 1150px) {
+  .v3-order-workspace .v3-order-body { grid-template-columns: minmax(0, 1fr) 94px 174px 94px; gap: 14px; padding: 20px; }
+  .v3-order-workspace .v3-order-product .content-image { width: 68px; height: 68px; flex-basis: 68px; }
+  .v3-order-header-meta { gap: 8px; }
+  .v3-order-workspace .v3-order-provider { padding-left: 8px; }
+  .v3-order-workspace .v3-order-deadline > span { display: none; }
+}
+
+/* Shared interaction and readability rules for V3 commerce workspaces. */
+.v3-account-tabs button,
+.service-v3 .service-sort-options button { transition: color 160ms ease, background-color 160ms ease; }
+.v3-account-tabs button:is(:hover, :focus-visible),
+.service-v3 .service-sort-options button:is(:hover, :focus-visible) { color: #5842da; background: #f0ecff; }
+.v3-account-tabs button[aria-pressed="true"]:hover,
+.service-v3 .service-sort-options button[aria-pressed="true"]:hover { background: #e5deff; }
+.service-v3 .service-catalogue-tools[data-stuck="true"],
+.v3-account-toolbar[data-stuck="true"],
+.v3-order-workspace .v3-account-toolbar[data-stuck="true"] {
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 14px -12px #24233245;
+}
+.v3-account-user > span { border-radius: 50%; }
+.v3-account-user > div { display: flex; flex-direction: column; gap: 4px; }
+.v3-account-user strong { font-size: 16px; line-height: 1.4; }
+.v3-account-user small { margin-top: 0; line-height: 1.5; }
+.v3-order-header-meta { font-size: 14px; gap: 14px; }
+.v3-order-workspace .v3-order-provider { font-size: 14px; font-weight: 600; padding-left: 14px; }
+.v3-order-workspace .v3-order-card > header { flex-wrap: wrap; row-gap: 10px; }
+.v3-order-header-meta { flex: 1 1 auto; }
+.v3-order-workspace .v3-order-state { margin-left: auto; }
+.v3-order-workspace .v3-order-body { font-size: 12px; }
+.v3-order-workspace .v3-order-fulfillment { font-size: 12px; font-weight: 600; color: #6547b8; margin-bottom: 8px; }
+.v3-order-workspace .v3-order-description dl { gap: 2px; line-height: 1.5; }
+.v3-order-workspace .v3-order-description dl > div { gap: 4px; }
+.v3-order-workspace .v3-order-description dd { line-height: 1.5; }
+.v3-order-payment dl { gap: 2px; line-height: 1.5; }
+.v3-order-payment dl > div { gap: 8px; }
+.v3-order-payment dd { color: #242332; }
+.v3-order-payment .v3-paid-row { margin-top: 6px; padding-top: 8px; }
+.v3-payment-state, .v3-payment-stages, .v3-payment-refund { font-size: 12px; line-height: 1.5; }
+.v3-payment-state > span:not(:first-child), .v3-payment-stages, .v3-payment-refund { color: #242332; }
+.v3-payment-stages { margin-top: 4px; }
+.v3-order-workspace .v3-order-actions { gap: 2px; }
+.v3-order-workspace .v3-order-actions button { font-size: 14px; }
+.v3-order-workspace .v3-order-actions .button + .v3-order-text-action { margin-top: 10px; }
+.v3-order-workspace .v3-order-text-action { min-height: 28px; padding-block: 3px; }
+.v3-order-workspace .v3-order-deadline { font-size: 12px; color: #8d4909; background: #ffebc8; }
+.v3-order-workspace .v3-order-deadline strong { font-size: 12px; color: #8d4909; }
+.v3-order-state .v3-status { font-weight: 600; }
+.v3-order-state .v3-status-serving { color: #5936bb; background: #e7dcff; }
+.v3-order-state .v3-status-accepting { color: #8d4909; background: #ffe4b3; }
+@media (prefers-reduced-motion: reduce) {
+  .v3-account-tabs button, .service-v3 .service-sort-options button { transition: none; }
 }

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { useApp } from "../app/AppProvider";
 import { demoControls, setDemoSession } from "./mockGateway";
+import { useDraggableTool } from "./useDraggableTool";
 const fields = [
   ["phone", "手机号格式"],
   ["otp", "短信验证码"],
@@ -20,6 +21,7 @@ const fields = [
   ["enterpriseId", "企业选择"],
 ];
 export default function AcceptancePanel() {
+  const draggable = useDraggableTool();
   const [open, setOpen] = useState(false);
   const { skipped, setSkipped, setSession, theme, setTheme, toast } = useApp();
   const client = useQueryClient();
@@ -32,9 +34,9 @@ export default function AcceptancePanel() {
     demoControls.skipped = next;
   };
   return (
-    <aside className="acceptance-panel" aria-label="验收工具">
+    <aside ref={draggable.ref} style={draggable.style} className="acceptance-panel" aria-label="验收工具">
       {open && (
-        <div className="acceptance-content">
+        <div className="acceptance-content" style={draggable.panelStyle}>
           <header>
             <strong>测试验收</strong>
             <button
@@ -171,7 +173,8 @@ export default function AcceptancePanel() {
       <button
         className="acceptance-trigger"
         aria-expanded={open}
-        onClick={() => setOpen(!open)}
+        {...draggable.triggerProps}
+        onClick={() => { if (draggable.allowClick()) setOpen(!open); }}
       >
         <Bug size={19} />
         验收工具{skipped.length > 0 && <span>{skipped.length}</span>}
