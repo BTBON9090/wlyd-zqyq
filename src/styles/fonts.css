@@ -159,3 +159,21 @@
 .price {
   font-weight: 600;
 }
+
+/* Emphasized monetary values use the bundled D-DIN face; supporting amounts stay sans. */
+.amount-emphasis,
+.v3-order-unit strong,
+.v3-order-payment .v3-paid-row dd,
+.v3-order-price strong,
+.v3-refund-amount > strong,
+.v3-invoice-table .v3-invoice-amount,
+.v3-invoice-form-total strong {
+  font-family: var(--font-num);
+  font-variant-numeric: tabular-nums;
+}
+.v3-order-payment dl > div:not(.v3-paid-row) dd,
+.v3-payment-state,
+.v3-payment-stages,
+.v3-payment-refund {
+  font-family: var(--font-sans);
+}

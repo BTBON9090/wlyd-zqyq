@@ -91,4 +91,4 @@ export const publishedServiceSchema = z.object({
 export type PublishedService = z.infer<typeof publishedServiceSchema>;
 export type ServiceVersion = z.infer<typeof versionSchema>;
 export const money = (value: number) =>
-  value.toLocaleString("zh-CN", { maximumFractionDigits: 2 });
+  value.toLocaleString("zh-CN", { maximumFractionDigits: 2, useGrouping: false });

@@ -262,9 +262,9 @@ export default function ServicesPage() {
             onChange={(e) => patch({ price: e.target.value })}
           >
             <option value="all">不限价格</option>
-            <option value="under1000">1,000 元以下</option>
-            <option value="1000to5000">1,000–5,000 元</option>
-            <option value="over5000">5,000 元以上</option>
+            <option value="under1000">1000 元以下</option>
+            <option value="1000to5000">1000–5000 元</option>
+            <option value="over5000">5000 元以上</option>
           </select>
         </label>
         <label>

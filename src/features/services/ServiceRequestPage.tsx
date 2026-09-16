@@ -386,7 +386,7 @@ function RequestForm({ serviceId }: { serviceId: string }) {
           )}
           <div className="summary-price">
             {version
-              ? `¥ ${(version.price * quantity).toLocaleString("zh-CN")}`
+              ? `¥ ${(version.price * quantity).toLocaleString("zh-CN", { useGrouping: false })}`
               : service.price === "按项报价"
                 ? "按需报价"
                 : `¥ ${service.price}`}

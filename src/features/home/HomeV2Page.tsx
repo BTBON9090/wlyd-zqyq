@@ -33,7 +33,7 @@ const campaigns = [
   },
   {
     title: "数字化转型补贴券",
-    amount: "5,000",
+    amount: "5000",
     unit: "元",
     scope: "支持企业数字化升级",
     detail:

@@ -32,7 +32,7 @@ function AcceptanceDeadline({ order }: { order: Order }) {
 export function OrderPayment({ order }: { order: Order }) {
   const amounts = orderAmounts(order);
   return (
-    <div className="v3-order-payment">
+    <div className="v3-order-payment" style={{ paddingRight: 20 }}>
       <dl>
         <div>
           <dt>订单总价</dt>
@@ -121,7 +121,7 @@ export function OrderCard({
         </div>
       </header>
       <div className="v3-order-body">
-        <Link to={`/services/${order.serviceId}`} className="v3-order-product">
+        <Link to={`/services/${order.serviceId}`} className="v3-order-product" style={{ paddingRight: 20 }}>
           <ContentImage
             src={order.image}
             alt={order.name}
@@ -155,7 +155,7 @@ export function OrderCard({
             </dl>
           </div>
         </Link>
-        <div className="v3-order-unit"><strong>{currency(order.total / order.quantity)}</strong><span>× {order.quantity}</span></div>
+        <div className="v3-order-unit" style={{ paddingRight: 20 }}><strong>{currency(order.total / order.quantity)}</strong><span>× {order.quantity}</span></div>
         <OrderPayment order={order} />
         <div className="v3-order-actions">
           {hasPrimary && (

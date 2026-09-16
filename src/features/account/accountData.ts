@@ -6,4 +6,4 @@ const production: AccountGateway = {
   act: (action, key) => http("/account/commerce/actions", accountDataSchema, { method: "POST", headers: { "Idempotency-Key": key }, body: JSON.stringify(action) }),
 };
 export const accountGateway: AccountGateway = __DEMO__ ? (await import("../../dev/accountGateway")).accountGateway : production;
-export const currency = (value: number) => new Intl.NumberFormat("zh-CN", { style: "currency", currency: "CNY" }).format(value);
+export const currency = (value: number) => new Intl.NumberFormat("zh-CN", { style: "currency", currency: "CNY", useGrouping: false }).format(value);
