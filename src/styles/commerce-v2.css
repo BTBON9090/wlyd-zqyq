@@ -2014,6 +2014,7 @@
   margin-top: 24px;
 }
 @media (max-width: 1199px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .commerce-container,
 .v3-account-page {
     width: calc(100% - 40px);
@@ -2073,8 +2074,10 @@
   .showcase-section-nav .section-nav-label {
     display: none;
   }
+  }
 }
 @media (max-width: 899px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .finance-business-grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -2235,8 +2238,10 @@
   .onboarding-v2 .onboarding-note {
     position: static;
   }
+  }
 }
 @media (max-width: 639px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .commerce-container,
 .v3-account-page {
     width: calc(100% - 28px);
@@ -2851,6 +2856,7 @@
   }
   .onboarding-v2 .onboarding-later {
     line-height: 1.8;
+  }
   }
 }
 @media (min-width: 1280px) {

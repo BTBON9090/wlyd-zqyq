@@ -1289,6 +1289,7 @@
   }
 }
 @media (max-width: 1199px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .brand strong {
     font-size: 15px;
   }
@@ -1320,8 +1321,10 @@
   .footer-support {
     max-width: 230px;
   }
+  }
 }
 @media (max-width: 1023px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .primary-nav {
     gap: 22px;
   }
@@ -1374,8 +1377,10 @@
   .service-card-body {
     padding-inline: 20px;
   }
+  }
 }
 @media (max-width: 767px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .utility-bar {
     height: 28px;
   }
@@ -1454,8 +1459,10 @@
     font-size: 11px;
     padding-block: 18px;
   }
+  }
 }
 @media (max-width: 639px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .brand strong {
     font-size: 12px;
     letter-spacing: 0;
@@ -1632,6 +1639,7 @@
     font-size: 12px;
     padding: 12px 18px;
   }
+  }
 }
 .button:active {
   transform: translateY(0) scale(0.98);
@@ -1688,8 +1696,10 @@
   padding: 9px 12px;
 }
 @media (max-width: 639px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .field input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
     height: 43px;
+  }
   }
 }
 
@@ -1747,8 +1757,10 @@
   color: #fff;
 }
 @media (max-width: 639px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .global-tools {
     transform: scale(0.9);
     transform-origin: left top;
+  }
   }
 }

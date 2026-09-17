@@ -94,7 +94,7 @@ export function Shell() {
     };
   }, []);
   return (
-    <div className={`app-shell${homeVersion === "v3" ? " shell-v3" : ""}`} data-design-version={homeVersion}>
+    <div className={`app-shell${homeVersion === "v3" ? " shell-v3" : ""}${location.pathname !== "/" ? " desktop-page" : ""}`} data-design-version={homeVersion}>
       <a href="#main-content" className="skip-link">
         跳转到主要内容
       </a>

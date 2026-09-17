@@ -62,6 +62,7 @@
 .home-v4 .partner-logos > * { background: #fff; border-radius: 16px; border: 1px solid #ebe8f5; }
 .home-v4 .partner-join { border-radius: 20px; background: #ece9ff; }
 @media(max-width:767px) {
+ @scope (:root:not(:has(.desktop-page))) {
   .home-v4 .market-service-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
   .home-v4 .showcase-hero { width: calc(100% - 24px); margin-top: 12px; height: 450px; border-radius: 20px; }
   .home-v4 .hero-inner { padding: 32px 20px; }
@@ -71,6 +72,6 @@
   .home-v4 .showcase-campaigns { padding: 18px; }
   .home-v4 .capability-tabs { gap: 8px; }
   .home-v4 .capability-tabs button { padding: 14px 8px; }
-  .home-v4 .showcase-section { padding-block: 32px; }
+  .home-v4 .showcase-section { padding-block: 32px; } }
 }
 @media(prefers-reduced-motion:reduce) { .home-v4 * { animation: none !important; transition: none !important; } }

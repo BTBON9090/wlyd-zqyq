@@ -94,6 +94,11 @@ export default function AcceptancePanel() {
             </select>
           </label>
           <div className="test-actions">
+            {([["售后协商与退款", "/account/aftersales"], ["评价中心", "/account/reviews"], ["分期订单详情", "/account/orders/services?order=86400512891044"], ["部分退款订单详情", "/account/orders/services?order=86400512891050"]] as const).map(([label,path]) => <button key={path} onClick={() => {
+              const user = { id: "demo-enterprise-user", phone: "13800000000", name: "丁野", enterprise: "临港精密制造有限公司", enterpriseStatus: "approved" as const };
+              setDemoSession(user); setSession(user); demoControls.fault = "none";
+              void client.invalidateQueries({ queryKey: ["account-commerce"] }); navigate(path); setOpen(false);
+            }}>{label}</button>)}
             <button onClick={() => { switchVersion("v4"); navigate("/?home=v4"); setOpen(false); }}>V4 首页</button>
             <button onClick={() => { navigate("/services/x1-name"); setOpen(false); }}>详情目录与图片切换</button>
             <button onClick={() => { demoControls.fault = "empty"; void client.invalidateQueries({ queryKey: ["services"] }); navigate("/services/hall"); setOpen(false); }}>暂无服务</button>

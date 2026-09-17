@@ -1020,6 +1020,7 @@
   margin: 25px 0;
 }
 @media (max-width: 1199px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .services-layout {
     grid-template-columns: 190px minmax(0, 1fr);
     gap: 22px;
@@ -1067,8 +1068,10 @@
   .services-heading h1 {
     font-size: 29px;
   }
+  }
 }
 @media (max-width: 1023px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .services-heading h1 {
     font-size: 27px;
   }
@@ -1176,8 +1179,10 @@
     grid-template-columns: minmax(0, 1fr) 230px;
     gap: 25px;
   }
+  }
 }
 @media (max-width: 767px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .services-heading h1 {
     font-size: 26px;
   }
@@ -1376,8 +1381,10 @@
   .result-card {
     padding: 35px;
   }
+  }
 }
 @media (max-width: 639px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .services-heading {
     padding: 5px 0 18px;
     display: flex;
@@ -1753,5 +1760,6 @@
   }
   .legal-page h1 {
     font-size: 26px;
+  }
   }
 }

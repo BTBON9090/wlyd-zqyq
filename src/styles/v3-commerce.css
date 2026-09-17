@@ -585,6 +585,7 @@ html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-c
 }
 
 @media (max-width: 767px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .home-v3 .v3-ai-feature > div:first-child { max-width: 100%; }
   .home-v3 .v3-ai-feature { min-height: 660px; }
   .home-v3 .v3-ai-symbol {
@@ -599,6 +600,7 @@ html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-c
   .home-v3 .v3-story-copy p,
   .home-v3 .v3-metrics p { font-size: 14px; }
   .home-v3 .v3-solution-notes { font-size: 12px; }
+  }
 }
 
 /* One palette for all V3 routes, including surfaces inherited from shared pages. */
@@ -725,13 +727,16 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
 .v3-account-dialog { color: var(--v3-ink); }
 .v3-account-dialog :is(dt, .v3-order-timeline p, .v3-order-timeline time) { color: var(--v3-muted); }
 @media (max-width: 1100px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .v3-account-layout { grid-template-columns: 190px minmax(0, 1fr); gap: 16px; }
   .v3-order-body { grid-template-columns: minmax(0,1fr) 120px; }
   .v3-order-product { grid-column: 1; grid-row: span 2; }
   .v3-order-unit { display: none; }
   .v3-order-actions { grid-column: 2; }
+  }
 }
 @media (max-width: 767px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .v3-account-layout { grid-template-columns: minmax(0,1fr); }
   .service-v3 .service-v2-hero { grid-template-columns: minmax(0, 1fr); }
   .service-v3 .service-promo { min-height: 280px; }
@@ -741,6 +746,7 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
   .v3-account-summary > button { flex-basis: 40%; }
   .v3-account-search { flex-wrap: wrap; margin-left: 0; }
   .v3-account-enterprise { display: none; }
+  }
 }
 /* List workspaces: one opaque control surface, flush with the navigation. */
 .service-sort > .service-sort-meta { display: contents; }
@@ -881,6 +887,7 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
   .v3-account-search input { width: 100%; }
 }
 @media (max-width: 767px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .service-v3 .service-v2-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service-v3 .service-v2-top { gap: 12px; padding-bottom: 10px; }
   .service-v3 .service-v2-top > .button { padding: 10px 12px; }
@@ -895,6 +902,7 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
   .service-v3 .service-sort-meta > span { display: none; }
   .service-v3 .service-filter-panel { max-height: 180px; }
   .v3-account-toolbar { margin: -18px -18px 16px; }
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .service-v3 [data-list-sticky], .v3-account-toolbar { transition: none; }
@@ -1039,8 +1047,10 @@ html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a
   .v3-order-workspace .v3-order-body { grid-template-columns: minmax(0, 1fr) 260px 118px; gap: 36px; padding: 26px; }
 }
 @media (max-width: 1100px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .v3-order-workspace .v3-order-body { grid-template-columns: minmax(0, 1fr) 210px 100px; gap: 16px; padding: 20px; }
   .v3-order-workspace .v3-order-product .content-image { flex-basis: 64px; width: 64px; height: 72px; }
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a,
@@ -1076,11 +1086,13 @@ html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a
 .acceptance-trigger { touch-action: none; cursor: grab; user-select: none; }
 .acceptance-trigger:active { cursor: grabbing; }
 @media (max-width: 1150px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .v3-order-workspace .v3-order-body { grid-template-columns: minmax(0, 1fr) 94px 180px 94px; gap: 14px; padding: 20px; }
   .v3-order-workspace .v3-order-product .content-image { width: 68px; height: 68px; flex-basis: 68px; }
   .v3-order-header-meta { gap: 8px; }
   .v3-order-workspace .v3-order-provider { padding-left: 8px; }
   .v3-order-workspace .v3-order-deadline > span { display: none; }
+  }
 }
 
 /* Shared interaction and readability rules for V3 commerce workspaces. */

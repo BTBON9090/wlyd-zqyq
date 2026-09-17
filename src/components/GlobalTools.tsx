@@ -7,20 +7,24 @@ export function GlobalTools() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(() => {
     try {
-      const saved = localStorage.getItem("park-tools-position");
+      const saved = localStorage.getItem("park-tools-position-v2");
       if (saved) return JSON.parse(saved) as { x: number; y: number };
     } catch {
       /* ignore */
     }
-    return { x: 20, y: window.innerHeight - 120 };
+    return { x: 20, y: window.innerHeight - 64 };
   });
   const dragging = useRef(false);
   const offset = useRef({ x: 0, y: 0 });
   useEffect(() => {
-    const clamp = () => setPosition(current => ({
+    const clamp = () => setPosition(current => {
+      let custom = false;
+      try { custom = !!localStorage.getItem("park-tools-position-v2"); } catch { /* Use default position. */ }
+      if (!custom) return { x: 20, y: window.innerHeight - 64 };
+      return ({
       x: Math.max(0, Math.min(current.x, window.innerWidth - (containerRef.current?.offsetWidth || 180))),
       y: Math.max(0, Math.min(current.y, window.innerHeight - 50)),
-    }));
+    }); });
     clamp();
     window.addEventListener("resize", clamp);
     return () => window.removeEventListener("resize", clamp);
@@ -40,7 +44,7 @@ export function GlobalTools() {
         document.body.style.userSelect = "";
         // 保存位置
         try {
-          localStorage.setItem("park-tools-position", JSON.stringify(position));
+          localStorage.setItem("park-tools-position-v2", JSON.stringify(position));
         } catch {
           /* ignore */
         }

@@ -21,6 +21,7 @@ import "./styles/fonts.css";
 import "./styles/v3-commerce.css";
 import "./styles/home-v4.css";
 import "./styles/detail-refresh.css";
+import "./styles/account-extended.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: { staleTime: 120_000, retry: 1, refetchOnWindowFocus: false },

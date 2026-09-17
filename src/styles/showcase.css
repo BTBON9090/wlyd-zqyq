@@ -464,13 +464,17 @@
 }
 /* 移动端不需要锚定导航；首页服务卡只展示 6 张 */
 @media (max-width: 767px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .showcase-section-nav {
     display: none;
   }
+  }
 }
 @media (max-width: 639px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .market-service-grid .service-card:nth-child(n + 7) {
     display: none;
+  }
   }
 }
 /* 首页锚定导航：浅灰底 + 胶囊选中，与白色下划线式的顶部导航区分开 */
@@ -729,6 +733,7 @@
 }
 /* 窄卡片：金额降一档、成交与评分用 11px 极次要字号，保证三项仍在同一行。 */
 @media (max-width: 639px) {
+  @scope (:root:not(:has(.desktop-page))) {
   :is(.market-service-grid, .service-v2-grid) .price {
     font-size: 15px;
   }
@@ -741,6 +746,7 @@
   }
   :is(.market-service-grid, .service-v2-grid) .card-bottom {
     gap: 5px;
+  }
   }
 }
 .market-caption {
@@ -1031,6 +1037,7 @@
   }
 }
 @media (max-width: 1199px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .showcase-entry {
     grid-template-columns: 205px minmax(0, 1fr) 185px;
     gap: 20px;
@@ -1067,8 +1074,10 @@
   .home-services-section .service-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
+  }
 }
 @media (max-width: 1023px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .showcase-container {
     width: calc(100% - 40px);
   }
@@ -1137,8 +1146,10 @@
   .home-services-section .service-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  }
 }
 @media (max-width: 767px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .showcase-container {
     width: calc(100% - 32px);
   }
@@ -1390,8 +1401,10 @@
   .home-version-switch b {
     display: none;
   }
+  }
 }
 @media (max-width: 539px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .showcase-hero {
     height: 355px;
   }
@@ -1452,6 +1465,7 @@
   }
   .coupon-amount .coupon-text {
     font-size: 15px;
+  }
   }
 }
 @media (prefers-reduced-motion: reduce) {

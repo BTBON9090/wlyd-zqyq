@@ -216,11 +216,14 @@ em {
   padding-bottom: 90px;
 }
 @media (max-width: 1023px) {
+  @scope (:root:not(:has(.desktop-page))) {
   .container {
     width: calc(100% - 48px);
   }
+  }
 }
 @media (max-width: 639px) {
+  @scope (:root:not(:has(.desktop-page))) {
   body {
     font-size: 14px;
   }
@@ -255,6 +258,7 @@ em {
   }
   .page-heading {
     margin: 20px 0 24px;
+  }
   }
 }
 @media (prefers-reduced-motion: reduce) {
