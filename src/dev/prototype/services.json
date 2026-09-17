@@ -3114,5 +3114,554 @@
       "salesCount": 760,
       "rating": 4.9
     }
+  },
+  {
+    "id": "s15",
+    "categoryId": "brand",
+    "category": "品牌与设计",
+    "categoryL2": "视觉设计",
+    "categoryL3": "品牌物料",
+    "name": "企业视觉识别系统规范设计",
+    "desc": "标志优化 · 基础规范 · 应用示例",
+    "overview": "梳理标志、标准色与字体规范，输出可落地的基础视觉识别手册，统一对外物料形象。",
+    "price": "2,600 起",
+    "priceMin": 2600,
+    "provider": "象限设计",
+    "image": "",
+    "features": ["创意策划", "视觉设计", "印刷对接"],
+    "delivery": "10–15 个工作日",
+    "tone": "t1",
+    "hot": false,
+    "publishedAt": "2026-08-21",
+    "rating": 4.8,
+    "providerRating": 4.9,
+    "salesCount": 510,
+    "published": {
+      "id": "s15",
+      "shop": {
+        "id": "shop-xiangxian",
+        "name": "象限设计",
+        "intro": "品牌视觉与数字产品设计工作室，服务官网、小程序与管理后台体验升级。",
+        "phone": "400-900-3311",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["设计严选", "回头客多", "保证金已缴"],
+        "score": 4.8,
+        "halfYearDeals": 94,
+        "employerCount": 52,
+        "completeRate": 98,
+        "introImages": [
+          {
+            "id": "xx-i1",
+            "name": "作品墙",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "xx-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "品牌与设计",
+      "categoryL2": "视觉设计",
+      "categoryL3": "品牌物料",
+      "name": "企业视觉识别系统规范设计",
+      "intro": "标志优化 · 基础规范 · 应用示例",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s15-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s15-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s15-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s15-s1-v1",
+          "name": "基础规范版",
+          "sellingPoints": "标志规范 · 色彩字体 · 应用示例",
+          "highlights": ["标志规范", "色彩字体", "应用示例"],
+          "price": 2600,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 10,
+          "deliveryStandard": "交付基础视觉规范手册与应用示例文件，可直接用于日常物料制作。",
+          "phases": []
+        },
+        {
+          "id": "s15-s1-v2",
+          "name": "完整手册版",
+          "sellingPoints": "基础规范 · 办公物料 · 对外模板",
+          "highlights": ["基础规范", "办公物料", "对外模板"],
+          "price": 4800,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 15,
+          "deliveryStandard": "交付完整视觉识别手册，含办公物料与对外模板源文件。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 标志规范化\n2. 色彩与字体规范\n3. 应用示例输出\n\n【交付说明】\n10–15 个工作日\n\n【适用对象】\n需要统一对外形象的园区入驻企业。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s15-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s15-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s15-case-1",
+          "categoryPath": "品牌与设计 / 视觉设计 / 品牌物料",
+          "title": "宣传物料策划与设计 · 园区客户案例",
+          "intro": "为园区企业完成「宣传物料策划与设计」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s15-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s15-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s15-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「宣传物料策划与设计」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "宣传物料策划与设计"
+        },
+        {
+          "id": "s15-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "宣传物料策划与设计"
+        },
+        {
+          "id": "s15-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在象限设计采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 510,
+      "rating": 4.8
+    }
+  },
+  {
+    "id": "s16",
+    "categoryId": "inspection",
+    "category": "检验检测",
+    "categoryL2": "质量检测",
+    "categoryL3": "第三方认证",
+    "name": "原材料成分分析与来料抽检",
+    "desc": "成分分析 · 抽检方案 · 报告出具",
+    "overview": "面向生产来料与关键原材料提供成分分析、抽检方案设计与检测报告，帮助控制进料质量。",
+    "price": "1,200 / 项",
+    "priceMin": 1200,
+    "provider": "华测检测",
+    "image": "",
+    "features": ["样品检测", "合规报告", "复检支持"],
+    "delivery": "7–12 个工作日",
+    "tone": "t3",
+    "publishedAt": "2026-08-19",
+    "rating": 4.5,
+    "providerRating": 4.8,
+    "salesCount": 155,
+    "published": {
+      "id": "s16",
+      "shop": {
+        "id": "shop-huace",
+        "name": "华测检测",
+        "intro": "第三方检测认证与合规辅导，出具权威检测报告。",
+        "phone": "400-6788-333",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["检测机构", "资质齐全"],
+        "score": 4.6,
+        "halfYearDeals": 210,
+        "employerCount": 130,
+        "completeRate": 98,
+        "introImages": [
+          {
+            "id": "hc-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "hc-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "检验检测",
+      "categoryL2": "质量检测",
+      "categoryL3": "第三方认证",
+      "name": "原材料成分分析与来料抽检",
+      "intro": "成分分析 · 抽检方案 · 报告出具",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s16-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s16-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s16-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s16-s1-v1",
+          "name": "单批次抽检",
+          "sellingPoints": "成分分析 · 检测报告 · 整改建议",
+          "highlights": ["成分分析", "检测报告", "整改建议"],
+          "price": 1200,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 7,
+          "deliveryStandard": "完成单批次来料抽检并出具检测报告，附不合格项整改建议。",
+          "phases": []
+        },
+        {
+          "id": "s16-s1-v2",
+          "name": "年度委托抽检",
+          "sellingPoints": "多批次抽检 · 趋势对比 · 专属对接",
+          "highlights": ["多批次抽检", "趋势对比", "专属对接"],
+          "price": 9800,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 12,
+          "deliveryStandard": "按年度委托计划完成多批次抽检，输出质量趋势对比与年度小结。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 来料取样与成分分析\n2. 抽检方案设计\n3. 检测报告与整改建议\n\n【交付说明】\n7–12 个工作日\n\n【适用对象】\n有来料检验需求的园区生产制造企业。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s16-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s16-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s16-case-1",
+          "categoryPath": "检验检测 / 质量检测 / 第三方认证",
+          "title": "产品第三方检测认证 · 园区客户案例",
+          "intro": "为园区企业完成「产品第三方检测认证」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s16-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s16-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s16-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「产品第三方检测认证」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "产品第三方检测认证"
+        },
+        {
+          "id": "s16-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "产品第三方检测认证"
+        },
+        {
+          "id": "s16-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在华测检测采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 155,
+      "rating": 4.5
+    },
+    "hot": false
+  },
+  {
+    "id": "s17",
+    "categoryId": "overseas",
+    "category": "出海企服",
+    "categoryL2": "海外主体",
+    "categoryL3": "公司注册与合规",
+    "name": "海外商标布局与跨境合规咨询",
+    "desc": "商标检索 · 布局建议 · 合规清单",
+    "overview": "结合目标市场提供商标检索与布局建议，并输出跨境经营合规要点清单，降低出海试错成本。",
+    "price": "15,000 / 项",
+    "priceMin": 15000,
+    "provider": "跨境企服",
+    "image": "",
+    "features": ["属地选型", "材料代办", "秘书服务"],
+    "delivery": "20–30 个工作日",
+    "tone": "t1",
+    "publishedAt": "2026-08-15",
+    "rating": 4.7,
+    "providerRating": 4.6,
+    "salesCount": 110,
+    "published": {
+      "id": "s17",
+      "shop": {
+        "id": "shop-kuajing",
+        "name": "跨境企服",
+        "intro": "海外主体设立与跨境合规服务，覆盖开户与税务合规辅导。",
+        "phone": "400-188-6688",
+        "logoUrl": "",
+        "bannerUrl": "",
+        "badges": ["出海企服", "企业"],
+        "score": 4.7,
+        "halfYearDeals": 88,
+        "employerCount": 55,
+        "completeRate": 96,
+        "introImages": [
+          {
+            "id": "kj-i1",
+            "name": "店铺介绍",
+            "kind": "image",
+            "url": ""
+          }
+        ],
+        "teamImages": [
+          {
+            "id": "kj-t1",
+            "name": "团队",
+            "kind": "image",
+            "url": ""
+          }
+        ]
+      },
+      "categoryL1": "出海企服",
+      "categoryL2": "海外主体",
+      "categoryL3": "公司注册与合规",
+      "name": "海外商标布局与跨境合规咨询",
+      "intro": "商标检索 · 布局建议 · 合规清单",
+      "serviceAreaLabel": "全国 · 园区重点城市",
+      "coverUrl": "",
+      "media": [
+        {
+          "id": "s17-cover",
+          "name": "封面",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s17-m1",
+          "name": "展示图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s17-m2",
+          "name": "展示图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "taxRate": 6,
+      "versions": [
+        {
+          "id": "s17-s1-v1",
+          "name": "单市场布局版",
+          "sellingPoints": "商标检索 · 类别建议 · 申请跟进",
+          "highlights": ["商标检索", "类别建议", "申请跟进"],
+          "price": 15000,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 20,
+          "deliveryStandard": "完成目标市场商标检索与类别建议，并跟进一件商标申请递交。",
+          "phases": []
+        },
+        {
+          "id": "s17-s1-v2",
+          "name": "多市场合规版",
+          "sellingPoints": "多国检索 · 合规清单 · 顾问答疑",
+          "highlights": ["多国检索", "合规清单", "顾问答疑"],
+          "price": 36800,
+          "unit": "项",
+          "startAfterPayDays": 1,
+          "startDayType": "工作日",
+          "fulfillmentType": "once_pay_once_accept",
+          "deliveryCycleDays": 30,
+          "deliveryStandard": "覆盖多个目标市场的商标检索与合规要点清单，服务期内提供顾问答疑。",
+          "phases": []
+        }
+      ],
+      "detailContent": "【服务范围】\n1. 目标市场商标检索\n2. 类别与布局建议\n3. 跨境合规要点清单\n\n【交付说明】\n20–30 个工作日\n\n【适用对象】\n计划拓展海外业务的园区企业。",
+      "detailGuarantee": "工作日 4 小时内响应咨询；关键节点进度可查；材料需补正时 1 个工作日内协助处理。平台支持里程碑付款与验收。",
+      "detailImages": [
+        {
+          "id": "s17-d1",
+          "name": "详情图 1",
+          "kind": "image",
+          "url": ""
+        },
+        {
+          "id": "s17-d2",
+          "name": "详情图 2",
+          "kind": "image",
+          "url": ""
+        }
+      ],
+      "relatedCases": [
+        {
+          "id": "s17-case-1",
+          "categoryPath": "出海企服 / 海外主体 / 公司注册与合规",
+          "title": "海外公司注册与合规 · 园区客户案例",
+          "intro": "为园区企业完成「海外公司注册与合规」交付，周期可控、节点透明。",
+          "coverUrl": ""
+        }
+      ],
+      "faqs": [
+        {
+          "id": "s17-f1",
+          "question": "如何确认服务范围？",
+          "answer": "请在右侧选择规格查看亮点与交付标准；确认购买意向后服务商将与您细化需求。"
+        },
+        {
+          "id": "s17-f2",
+          "question": "发票税率是多少？",
+          "answer": "本服务默认开具增值税发票，税率 6%。"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "s17-r1",
+          "scope": "service",
+          "buyerName": "张**",
+          "score": 5,
+          "content": "「海外公司注册与合规」交付清晰，沟通顺畅，推荐园区企业选用。",
+          "tags": ["专业靠谱", "响应及时"],
+          "createdAt": "2026-08-20 14:32",
+          "serviceName": "海外公司注册与合规"
+        },
+        {
+          "id": "s17-r2",
+          "scope": "service",
+          "buyerName": "李**",
+          "score": 4,
+          "content": "整体满意，材料准备清单很实用，补正一次就过。",
+          "tags": ["材料一次过"],
+          "createdAt": "2026-08-02 09:18",
+          "serviceName": "海外公司注册与合规"
+        },
+        {
+          "id": "s17-r3",
+          "scope": "shop",
+          "buyerName": "王**",
+          "score": 5,
+          "content": "在跨境企服采购过其他服务，服务态度好，会继续合作。",
+          "tags": ["服务周到"],
+          "createdAt": "2026-07-18 16:45",
+          "serviceName": "本店其他服务"
+        }
+      ],
+      "salesCount": 110,
+      "rating": 4.7
+    },
+    "hot": false
   }
 ]

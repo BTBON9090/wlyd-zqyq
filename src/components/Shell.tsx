@@ -23,6 +23,7 @@ import { navigation } from "../data/navigation";
 import { Brand, Modal } from "./ui";
 import { authCopy } from "../features/auth/authCopy";
 import { GlobalTools } from "./GlobalTools";
+import { useHeaderHeight } from "./useHeaderHeight";
 import { useDesignVersion } from "../app/DesignVersion";
 
 const AuthPanel = lazy(() =>
@@ -42,6 +43,8 @@ export function Shell() {
     "/onboarding",
   );
   const authText = authCopy(authRequest?.mode ?? "login", authOnboarding);
+  // 二层吸顶导航与详情页目录按真实导航高度让位，避免被主导航压住。
+  useHeaderHeight();
 
 
   useEffect(() => {

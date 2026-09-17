@@ -55,10 +55,12 @@ export function Modal({
               <X size={22} />
             </Dialog.Close>
           </div>
-          <Dialog.Description className={description ? "muted" : "sr-only"}>
-            {description || title}
-          </Dialog.Description>
-          {children}
+          <div className="modal-body">
+            <Dialog.Description className={description ? "muted" : "sr-only"}>
+              {description || title}
+            </Dialog.Description>
+            {children}
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

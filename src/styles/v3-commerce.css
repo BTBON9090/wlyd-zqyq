@@ -528,9 +528,9 @@ html[data-design-version="v3"] .modal-content:has(.auth-tabs, .auth-onboarding-c
   --color-text-muted: #757487;
   width: min(560px, calc(100vw - 32px));
   border-radius: 24px;
-  padding: 32px;
+  --modal-padding: 32px;
 }
-html[data-design-version="v3"] .modal-content:has(.auth-onboarding-context) > .muted {
+html[data-design-version="v3"] .modal-content:has(.auth-onboarding-context) .modal-body > .muted {
   display: none;
 }
 html[data-design-version="v3"] .auth-onboarding-context {
