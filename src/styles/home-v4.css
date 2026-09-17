@@ -1,0 +1,76 @@
+/* V4 keeps the operational V2 sections with the established V3 visual language. */
+.home-v4 { --color-showcase-accent: #6551ff; --color-showcase-ink: #202139; --showcase-width: 1360px; background: #f5f6fb; color: #202139; }
+.home-v4 .showcase-hero { margin: 24px auto 0; width: min(1360px, calc(100% - 48px)); height: 450px; border-radius: 28px; overflow: hidden; background: #eeecff; color: #202139; }
+.home-v4 .showcase-hero-media { left: 34%; }
+.home-v4 .showcase-hero-media .content-image[data-empty="false"]::after { background: linear-gradient(90deg, #eeecff 0%, #eeecff88 22%, transparent 65%); }
+.home-v4 .hero-inner { padding: 48px 42px; }
+.home-v4 .hero-editorial { max-width: 600px; }
+.home-v4 .hero-editorial h1 { color: #202139; font-size: clamp(32px, 3.3vw, 48px); font-weight: 700; letter-spacing: -.04em; }
+.home-v4 .hero-editorial h1 em { color: #6450ee; }
+.home-v4 .hero-kicker { color: #6450ee; font-weight: 600; }
+.home-v4 .hero-description { color: #5e6179; font-size: 15px; max-width: 470px; }
+.home-v4 .showcase-button { background: linear-gradient(110deg, #6c4dff, #5268ff 62%, #00afe4); color: #fff; border: 0; border-radius: 12px; min-height: 44px; padding-inline: 22px; box-shadow: 0 7px 18px #6651ff22; }
+.home-v4 .showcase-button:hover { filter: brightness(1.06); transform: translateY(-2px); }
+.home-v4 .hero-bottom { padding-inline: 42px; }
+.home-v4 .hero-slides button { color: #686680; border-color: #dedaf4; }
+.home-v4 .hero-slides button[aria-pressed="true"] { color: #604bea; border-color: #604bea; }
+.home-v4 .hero-arrows button { color: #604bea; background: #ffffffb8; border-color: #dedaf4; border-radius: 12px; }
+.home-v4 .showcase-entry { position: relative; margin-top: 22px; padding: 24px 28px; border-radius: 22px; background: #fff; border: 1px solid #edeaf6; box-shadow: 0 8px 30px #29204e04; }
+.home-v4 .showcase-search { border-radius: 14px; background: #f7f7fc; }
+.home-v4 .showcase-search button { border-radius: 10px; background: linear-gradient(110deg,#6c4dff,#00afe4); }
+.home-v4 .showcase-campaigns { margin-block: 20px 28px; background: #fff; border: 0; border-radius: 22px; padding: 22px 26px; gap: 18px; }
+.home-v4 .campaign-coupon { border: 0; border-radius: 16px; background: #f3f0ff; padding: 22px 18px; transition: background .2s, transform .2s; }
+.home-v4 .campaign-coupon:nth-of-type(2) { background: #edf6ff; }
+.home-v4 .campaign-coupon:nth-of-type(3) { background: #eef8f7; }
+.home-v4 .campaign-coupon + .campaign-coupon { border-left: 0; }
+.home-v4 .campaign-coupon:hover { transform: translateY(-3px); background: #eae4ff; }
+.home-v4 .coupon-amount { color: #6650ed; }
+.home-v4 .campaigns-heading { background: #f5f3fb; border-radius: 14px; }
+.home-v4 .capability-tabs button[aria-pressed="true"] { background: #ede8ff; color: #6249ed; border-color: #d8ceff; }
+.home-v4 :is(.finance-product,.trade-product,.logistics-copy) { border-radius: 20px; border: 1px solid #ece9f6; background: #fff; }
+.home-v4 .business-trade { background: #eeeff8; }
+.home-v4 .business-heading h2 { font-size: 30px; }
+.home-v4 .capability-tabs small { font-size: 12px; }
+.home-v4 .showcase-section-nav { background: #ffffffed; backdrop-filter: blur(16px); border-color: #ece9f7; box-shadow: 0 8px 22px #36245508; }
+.home-v4 .showcase-section-nav > div { min-height: 64px; gap: 12px; overflow-x: auto; }
+.home-v4 .showcase-section-nav a { font-size: 14px; border-radius: 10px; padding: 10px 14px; }
+.home-v4 .showcase-section-nav a.is-active { color: #6249ed; background: #eeeaff; }
+.home-v4 .showcase-section { padding-block: 48px; }
+.home-v4 :is(.showcase-heading, .market-heading) h2 { color: #202139; font-size: 30px; font-weight: 700; }
+.home-v4 :is(.showcase-heading, .market-heading) p { font-size: 14px; }
+.home-v4 .capability-tabs { border: 0; gap: 12px; background: transparent; }
+.home-v4 .capability-tabs button { border: 1px solid #ebe8f5; border-radius: 16px; background: #fff; padding: 20px 14px; transition: background .2s, transform .2s; }
+.home-v4 .capability-tabs button:hover { transform: translateY(-2px); background: #f0ecff; }
+.home-v4 .capability-tabs button[aria-selected="true"], .home-v4 .capability-tabs button.is-active { background: #ede8ff; color: #6249ed; border-color: #d8ceff; }
+.home-v4 .capability-feature { margin-top: 20px; border: 0; border-radius: 24px; background: #fff; overflow: hidden; }
+.home-v4 .capability-feature > .content-image { border-radius: 20px; }
+.home-v4 :is(.showcase-market, .trade-business) { background: #eeeff8; }
+.showcase-home.home-v4 .market-service-grid .service-card { border: 1px solid #ece9f4; border-radius: 20px; overflow: hidden; box-shadow: 0 7px 20px #33264e05; }
+.showcase-home.home-v4 .market-service-grid .service-card:hover { box-shadow: 0 12px 28px #6651ff16; border-color: #cdc4ff; }
+.home-v4 .market-service-grid .service-card-body { padding: 14px 16px 0; }
+.home-v4 .market-service-grid .service-card-foot { padding: 0 16px 10px; }
+.home-v4 .market-service-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; }
+.home-v4 .market-service-grid .price { color: #6249ed; }
+.home-v4 .content-image[data-empty="true"] { background: #eeedf7; }
+.home-v4 .content-image .image-empty-label { color: #7c7596; }
+.home-v4 .service-card h3 { color: #202139; }
+.home-v4 .market-categories button { border-radius: 10px; }
+.home-v4 :is(.finance-card, .trade-product, .logistics-card, .business-poster) { border-radius: 20px; overflow: hidden; }
+.home-v4 .growth-campaign { border-radius: 24px; width: min(1360px,calc(100% - 48px)); margin: 32px auto; overflow: hidden; }
+.home-v4 .resource-layout { background: #fff; border: 0; border-radius: 24px; overflow: hidden; }
+.home-v4 .resource-tabs button { border-radius: 10px; }
+.home-v4 .partner-logos > * { background: #fff; border-radius: 16px; border: 1px solid #ebe8f5; }
+.home-v4 .partner-join { border-radius: 20px; background: #ece9ff; }
+@media(max-width:767px) {
+  .home-v4 .market-service-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .home-v4 .showcase-hero { width: calc(100% - 24px); margin-top: 12px; height: 450px; border-radius: 20px; }
+  .home-v4 .hero-inner { padding: 32px 20px; }
+  .home-v4 .showcase-hero-media { left: 0; opacity: .28; }
+  .home-v4 .hero-bottom { padding-inline: 20px; }
+  .home-v4 .showcase-entry { padding: 20px; }
+  .home-v4 .showcase-campaigns { padding: 18px; }
+  .home-v4 .capability-tabs { gap: 8px; }
+  .home-v4 .capability-tabs button { padding: 14px 8px; }
+  .home-v4 .showcase-section { padding-block: 32px; }
+}
+@media(prefers-reduced-motion:reduce) { .home-v4 * { animation: none !important; transition: none !important; } }

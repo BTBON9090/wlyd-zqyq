@@ -50,7 +50,7 @@ const campaigns = [
 ];
 const partners = ["本地服务商", "金融机构", "科研院所", "物流企业", "科技公司"];
 
-export default function HomeV2Page() {
+export default function HomeV2Page({ variant = "v2" }: { variant?: "v2" | "v4" }) {
   const navigate = useNavigate();
   const { session, openAuth } = useApp();
   const content = useQuery({
@@ -131,7 +131,7 @@ export default function HomeV2Page() {
     );
   }
   const imageOnly =
-    slide.imageOnly &&
+    variant !== "v4" && slide.imageOnly &&
     !!(slide.image || slide.mobileImage) &&
     failedBanner !== `${slide.image}|${slide.mobileImage}`;
   const bannerTarget =
@@ -152,7 +152,7 @@ export default function HomeV2Page() {
     navigate(destinations[capability.id]);
   };
   return (
-    <div className="showcase-home">
+    <div className={`showcase-home${variant === "v4" ? " home-v4" : ""}`}>
       <section
         className={`showcase-hero ${imageOnly ? "is-image-only" : ""}`}
         aria-label="平台宣传 Banner"
@@ -164,8 +164,8 @@ export default function HomeV2Page() {
         <div className="showcase-hero-media">
           <ContentImage
             key={`${slide.id}-${slide.image}`}
-            src={slide.image}
-            mobileSrc={slide.mobileImage}
+            src={variant === "v4" ? "media/v3/park-hero.webp" : slide.image}
+            mobileSrc={variant === "v4" ? undefined : slide.mobileImage}
             alt={slide.label}
             eager
             onUnavailable={() =>
@@ -372,7 +372,7 @@ export default function HomeV2Page() {
         </div>
         <div className="capability-feature" key={capability.id}>
           <ContentImage
-            src={settings.capabilityImages[capability.id]}
+            src={settings.capabilityImages[capability.id] || (variant === "v4" ? capability.id === "ai" ? "media/v3/ai-sculpture.webp" : "media/v3/customer-campus.webp" : undefined)}
             alt={`${capability.title}业务宣传图`}
             placeholder={`${capability.title}宣传图 · 待上传`}
             className="capability-image"
@@ -464,7 +464,7 @@ export default function HomeV2Page() {
       </section>
 
       <BusinessSections
-        images={settings.businessImages}
+        images={variant === "v4" ? { ...settings.businessImages, finance: settings.businessImages.finance || "media/banners/hero-platform.webp", trade: settings.businessImages.trade || "media/banners/hero-services.webp", logistics: settings.businessImages.logistics || "media/banners/hero-park.webp" } : settings.businessImages}
         productImages={settings.productImages}
       />
       <section
@@ -472,7 +472,7 @@ export default function HomeV2Page() {
         aria-label="企业服务推广"
       >
         <ContentImage
-          src={settings.campaignImage}
+          src={settings.campaignImage || (variant === "v4" ? "media/banners/hero-services.webp" : undefined)}
           alt="企业成长服务专题广告"
           placeholder="专题广告图 · 待上传"
         />
@@ -501,7 +501,7 @@ export default function HomeV2Page() {
           <div className="resource-visual">
             <ContentImage
               key={resource.id}
-              src={settings.resourceImages[resource.id]}
+              src={settings.resourceImages[resource.id] || (variant === "v4" ? "media/v3/customer-campus.webp" : undefined)}
               alt={`${resource.title}展示图片`}
               placeholder={`${resource.title}展示图 · 待上传`}
             />

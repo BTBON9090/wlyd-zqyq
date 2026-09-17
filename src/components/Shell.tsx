@@ -31,7 +31,7 @@ const AuthPanel = lazy(() =>
 
 export function Shell() {
   const { session, logout, toast, authRequest, openAuth, closeAuth } = useApp();
-  const { version: homeVersion } = useDesignVersion();
+  const { commerceVersion: homeVersion } = useDesignVersion();
   const location = useLocation();
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);

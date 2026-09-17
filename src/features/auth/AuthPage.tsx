@@ -26,7 +26,7 @@ export function AuthPanel({
   onDone?: (target: string) => void;
 }) {
   const [current, setCurrent] = useState<AuthMode>(initialMode);
-  const { version } = useDesignVersion();
+  const { commerceVersion: version } = useDesignVersion();
   const isV3 = version === "v3";
   useEffect(() => setCurrent(initialMode), [initialMode]);
   const reset = current === "reset",

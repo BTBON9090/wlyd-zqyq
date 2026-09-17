@@ -40,7 +40,7 @@ export function Modal({
   description?: string;
   children: ReactNode;
 }) {
-  const { version } = useDesignVersion();
+  const { commerceVersion: version } = useDesignVersion();
   const withAcceptanceTools = __DEMO__ && version === "v3";
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange} modal={!withAcceptanceTools}>

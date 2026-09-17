@@ -145,7 +145,7 @@ export default function ServicesPage() {
     }
     setPublish(true);
   }
-  const { version: homeVersion } = useDesignVersion();
+  const { commerceVersion: homeVersion } = useDesignVersion();
   const isV3 = homeVersion === "v3";
   const listRef = useRef<HTMLDivElement>(null);
   useStickyList(listRef, isV3);
@@ -516,10 +516,10 @@ export default function ServicesPage() {
               </div>
             ) : (
               <EmptyState
-                title="暂无匹配的服务"
-                description="试试其他类目，或清除筛选条件。"
-                action="清除筛选"
-                onAction={() => setParams({})}
+                title={services.data?.length ? "暂无匹配的服务" : "暂无在售服务"}
+                description="换个关键词试试，也可以发布需求，让服务商为您提供合适的方案。"
+                action="发布我的需求"
+                onAction={openPublish}
               />
             )}
             {hall && totalPages > 1 && (

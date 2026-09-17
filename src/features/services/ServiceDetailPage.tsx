@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Minus, Plus } from "@phosphor-icons/react";
+import { ArrowRight, CaretLeft, CaretRight, ImageSquare, Minus, Plus } from "@phosphor-icons/react";
+import { useStickyList } from "../../components/useStickyList";
 import { Link, useParams } from "react-router-dom";
 import { Breadcrumb } from "../../components/Shell";
 import { ContentImage } from "../../components/ContentImage";
@@ -36,7 +37,28 @@ export default function ServiceDetailPage() {
   return <ServiceDetail key={serviceId} service={query.data} />;
 }
 function ServiceDetail({ service }: { service: Service }) {
-  const { version: designVersion } = useDesignVersion();
+  const { commerceVersion: designVersion } = useDesignVersion();
+  const rootRef = useRef<HTMLDivElement>(null);
+  useStickyList(rootRef, true);
+  const [activeSection, setActiveSection] = useState("service-content");
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const sections = Array.from(root.querySelectorAll<HTMLElement>(".product-detail-section[id]"));
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const nav = root.querySelector<HTMLElement>(".product-detail-tabs");
+      const offset = (document.querySelector(".site-header")?.getBoundingClientRect().height || 72) + (nav?.offsetHeight || 64) + 28;
+      const current = sections.filter(section => section.getBoundingClientRect().top <= offset).at(-1) || sections[0];
+      if (current) setActiveSection(current.id);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    update();
+    return () => { window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); cancelAnimationFrame(frame); };
+  }, []);
   const pub = service.published;
   useEffect(() => {
     const target = document.getElementById(window.location.hash.slice(1));
@@ -67,7 +89,7 @@ function ServiceDetail({ service }: { service: Service }) {
       ?.filter((s) => s.id !== service.id && s.provider === service.provider)
       .slice(0, 3) || [];
   return (
-    <div className={`commerce-container product-detail-v2${designVersion === "v3" ? " product-detail-v3" : ""}`}>
+    <div ref={rootRef} className={`commerce-container product-detail-v2${designVersion === "v3" ? " product-detail-v3" : ""}`}>
       <Breadcrumb
         detail
         items={[
@@ -96,14 +118,22 @@ function ServiceDetail({ service }: { service: Service }) {
       </div>
       <section className="product-hero">
         <div className="product-gallery">
+          <div className="product-gallery-stage">
           <ContentImage
             className="product-main-image"
             src={selected.url}
             alt={selected.name}
+            placeholderIcon={<ImageSquare size={44} weight="duotone" />}
             eager
           />
+          {gallery.length > 1 && <div className="product-gallery-controls">
+            <button aria-label="上一张图片" onClick={() => setImageIndex((imageIndex - 1 + gallery.length) % gallery.length)}><CaretLeft /></button>
+            <span aria-live="polite">{imageIndex + 1} / {gallery.length}</span>
+            <button aria-label="下一张图片" onClick={() => setImageIndex((imageIndex + 1) % gallery.length)}><CaretRight /></button>
+          </div>}
+          </div>
           <div className="product-thumbnails">
-            {gallery.slice(0, 5).map((m, i) => (
+            {gallery.map((m, i) => (
               <button
                 key={m.id}
                 aria-label={`查看宣传图 ${i + 1}`}
@@ -248,7 +278,7 @@ function ServiceDetail({ service }: { service: Service }) {
       </section>
       <div className="product-detail-layout">
         <div className="product-detail-main">
-          <nav className="product-detail-tabs" aria-label="服务详情目录">
+          <nav className="product-detail-tabs" data-list-sticky aria-label="服务详情目录">
             {[
               ["service-content", "服务介绍"],
               ["delivery-process", "规格与交付"],
@@ -257,7 +287,7 @@ function ServiceDetail({ service }: { service: Service }) {
               ["service-shop", "店铺介绍"],
               ["service-faq", "常见问题"],
             ].map(([id, name]) => (
-              <a key={id} href={`#${id}`}>
+              <a key={id} href={`#${id}`} className={activeSection === id ? "is-active" : ""} aria-current={activeSection === id ? "location" : undefined}>
                 {name}
               </a>
             ))}
@@ -276,7 +306,7 @@ function ServiceDetail({ service }: { service: Service }) {
                 </div>
               ))}
             </div>
-            {pub?.detailImages.map((m) => (
+            {pub?.detailImages.filter(m => m.url).map((m) => (
               <ContentImage
                 key={m.id}
                 className="detail-content-image"
@@ -374,7 +404,7 @@ function ServiceDetail({ service }: { service: Service }) {
               <div className="service-case-grid">
                 {pub.relatedCases.map((c) => (
                   <article key={c.id}>
-                    <ContentImage src={c.coverUrl} alt={c.title} />
+                    <ContentImage src={c.coverUrl} alt={c.title} placeholderIcon={<ImageSquare size={36} weight="duotone" />} />
                     <span>{c.categoryPath}</span>
                     <h3>{c.title}</h3>
                     <p>{c.intro}</p>
@@ -447,7 +477,7 @@ function ServiceDetail({ service }: { service: Service }) {
                 ))}
               </div>
             )}
-            {pub?.shop.introImages.map((m) => (
+            {pub?.shop.introImages.filter(m => m.url).map((m) => (
               <ContentImage
                 key={m.id}
                 className="detail-content-image"
@@ -455,11 +485,11 @@ function ServiceDetail({ service }: { service: Service }) {
                 alt={m.name}
               />
             ))}
-            {!!pub?.shop.teamImages.length && (
+            {!!pub?.shop.teamImages.some(m => m.url) && (
               <>
                 <h3>服务团队</h3>
                 <div className="service-case-grid">
-                  {pub.shop.teamImages.map((m) => (
+                  {pub.shop.teamImages.filter(m => m.url).map((m) => (
                     <ContentImage key={m.id} src={m.url} alt={m.name} />
                   ))}
                 </div>
@@ -514,7 +544,7 @@ function ServiceDetail({ service }: { service: Service }) {
                   <div>
                     <strong>{s.name}</strong>
                     <span>
-                      {s.price === "按项报价" ? "按需报价" : `¥ ${s.price}`}
+                      {s.price === "按项报价" ? "按需报价" : `¥ ${s.price.replace(/,/g, "")}`}
                     </span>
                   </div>
                 </Link>

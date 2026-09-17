@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { emptyModules } from "../data/navigation";
 import { BlankModule } from "../components/BlankModule";
 import { Shell } from "../components/Shell";
-import { EmptyState } from "../components/ui";
+import { PageState } from "../components/PageState";
 import { site } from "../lib/config";
 const Home = lazy(() => import("../features/home/HomeEntry"));
 const Onboarding = lazy(() => import("../features/auth/OnboardingPage"));
@@ -65,18 +65,11 @@ export default function App() {
             <Route path="services/:serviceId/order" element={<Request />} />
             <Route path="account/*" element={<Account />} />
             <Route path="legal/:type" element={<Legal />} />
+            {__DEMO__ && (["404", "403", "500", "offline"] as const).map(kind => <Route key={kind} path={`__preview/${kind}`} element={<PageState kind={kind}/>} />)}
             <Route
               path="*"
               element={
-                <div className="container not-found">
-                  <EmptyState
-                    title="这个页面暂时不可用"
-                    description="试点已开放首页、登录注册与企业服务。"
-                  />
-                  <a className="button primary" href={import.meta.env.BASE_URL}>
-                    返回首页
-                  </a>
-                </div>
+                <PageState />
               }
             />
           </Route>

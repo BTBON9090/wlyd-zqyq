@@ -3,8 +3,9 @@ import { useDesignVersion } from "../../app/DesignVersion";
 const V1 = lazy(() => import("./HomePage"));
 const V2 = lazy(() => import("./HomeV2Page"));
 const V3 = lazy(() => import("./HomeV3Page"));
+const V4 = lazy(() => import("./HomeV4Page"));
 export default function HomeEntry() {
   const { version } = useDesignVersion();
-  const Page = version === "v1" ? V1 : version === "v2" ? V2 : V3;
+  const Page = version === "v1" ? V1 : version === "v2" ? V2 : version === "v4" ? V4 : V3;
   return <Suspense fallback={<div className="loading-page">正在加载首页…</div>}><Page /></Suspense>;
 }

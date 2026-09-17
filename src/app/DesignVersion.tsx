@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-export type DesignVersion = "v1" | "v2" | "v3";
-const valid = (v: string | null): v is DesignVersion => v === "v1" || v === "v2" || v === "v3";
+export type DesignVersion = "v1" | "v2" | "v3" | "v4";
+const valid = (v: string | null): v is DesignVersion => v === "v1" || v === "v2" || v === "v3" || v === "v4";
 const key = "park-home-version";
 function saved(): DesignVersion {
   try { const v = localStorage.getItem(key); if (valid(v)) return v; } catch { /* Optional storage. */ }
@@ -35,11 +35,11 @@ export function DesignVersionProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener("storage", sync);
   }, [location, navigate]);
   useEffect(() => {
-    document.documentElement.dataset.designVersion = version;
+    document.documentElement.dataset.designVersion = version === "v4" ? "v3" : version;
     return () => { delete document.documentElement.dataset.designVersion; };
   }, [version]);
   useEffect(() => {
-    if (version !== "v3") return;
+    if (version !== "v3" && version !== "v4") return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const move = (event: PointerEvent) => {
       if (event.pointerType === "touch" || reduced.matches) return;
@@ -63,4 +63,7 @@ export function DesignVersionProvider({ children }: { children: ReactNode }) {
   };
   return <Context.Provider value={{ version, switchVersion }}>{children}</Context.Provider>;
 }
-export const useDesignVersion = () => useContext(Context);
+export const useDesignVersion = () => {
+  const context = useContext(Context);
+  return { ...context, commerceVersion: context.version === "v4" ? "v3" : context.version };
+};

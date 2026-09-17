@@ -19,6 +19,8 @@ import "./styles/commerce-v2.css";
 // 金额字体层，最后导入以覆盖各页面既有的 font-weight
 import "./styles/fonts.css";
 import "./styles/v3-commerce.css";
+import "./styles/home-v4.css";
+import "./styles/detail-refresh.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: { staleTime: 120_000, retry: 1, refetchOnWindowFocus: false },

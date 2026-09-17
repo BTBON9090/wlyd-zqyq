@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDesignVersion } from "../app/DesignVersion";
 import { Bug, CaretDown, Check, X } from "@phosphor-icons/react";
 import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
@@ -23,6 +24,15 @@ const fields = [
 export default function AcceptancePanel() {
   const draggable = useDraggableTool();
   const [open, setOpen] = useState(false);
+  const { switchVersion } = useDesignVersion();
+  useEffect(() => {
+    if (!open) return;
+    const outside = (event: PointerEvent) => { if (event.target instanceof Node && !draggable.ref.current?.contains(event.target)) setOpen(false); };
+    const escape = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    document.addEventListener("pointerdown", outside);
+    document.addEventListener("keydown", escape);
+    return () => { document.removeEventListener("pointerdown", outside); document.removeEventListener("keydown", escape); };
+  }, [open, draggable.ref]);
   const { skipped, setSkipped, setSession, theme, setTheme, toast } = useApp();
   const client = useQueryClient();
   const navigate = useNavigate();
@@ -84,6 +94,15 @@ export default function AcceptancePanel() {
             </select>
           </label>
           <div className="test-actions">
+            <button onClick={() => { switchVersion("v4"); navigate("/?home=v4"); setOpen(false); }}>V4 首页</button>
+            <button onClick={() => { navigate("/services/x1-name"); setOpen(false); }}>详情目录与图片切换</button>
+            <button onClick={() => { demoControls.fault = "empty"; void client.invalidateQueries({ queryKey: ["services"] }); navigate("/services/hall"); setOpen(false); }}>暂无服务</button>
+            <button onClick={() => {
+              const user = { id: "demo-enterprise-user", phone: "13800000000", name: "丁野", enterprise: "临港精密制造有限公司", enterpriseStatus: "approved" as const };
+              setDemoSession(user); setSession(user); demoControls.fault = "empty";
+              void client.invalidateQueries({ queryKey: ["account-commerce"] }); navigate("/account/orders/services"); setOpen(false);
+            }}>暂无订单</button>
+            {([ ["404", "404 页面不存在"], ["403", "403 无访问权限"], ["500", "500 服务异常"], ["offline", "网络异常"] ] as const).map(([kind,label]) => <button key={kind} onClick={() => { navigate(`/__preview/${kind}`); setOpen(false); }}>{label}</button>)}
             <button
               onClick={() => {
                 const user = {
@@ -156,7 +175,8 @@ export default function AcceptancePanel() {
             onClick={() => {
               demoControls.fault = "none";
               demoControls.failNext = false;
-              void client.invalidateQueries({ queryKey: ["services"] });
+              void client.invalidateQueries();
+              if (window.location.pathname.includes("/__preview/")) navigate("/services/hall");
               toast("异常模拟已恢复");
             }}
           >
