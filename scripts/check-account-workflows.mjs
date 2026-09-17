@@ -35,7 +35,15 @@ try {
   const received = initial.reviews.find(r=>r.direction==='received');
   await assert.rejects(gateway.act({type:'reviewVisibility',reviewId:received.id,target:'review',hidden:true},'hide-other'));
   const rejected = initial.refunds.find(r=>r.status==='rejected');
-  const resubmitted = await gateway.act({type:'refund',orderId:rejected.orderId,refundId:rejected.id,amount:500,reason:'补充交付争议说明',description:'已核对交付范围'},'resubmit');
+  const resubmit = {type:'refund',orderId:rejected.orderId,refundId:rejected.id,amount:500,reason:'补充交付争议说明',description:'已核对交付范围'};
+  const activeRefund = initial.refunds.find(r=>r.orderId===rejected.orderId&&r.status==='processing');
+  if (activeRefund) {
+    await assert.rejects(gateway.act(resubmit,'duplicate-active-refund'),/已有处理中申请/);
+    const cancelled = await gateway.act({type:'cancelRefund',refundId:activeRefund.id},'cancel-active-refund');
+    assert.equal(cancelled.refunds.find(r=>r.id===activeRefund.id).status,'cancelled');
+  }
+  const resubmitted = await gateway.act(resubmit,'resubmit');
+  assert.equal(resubmitted.refunds.find(r=>r.id===rejected.id).status,'processing');
   assert.equal(resubmitted.refunds.find(r=>r.id===rejected.id).description,'已核对交付范围');
   console.log('Account workflows passed: proposal, refund resubmission, review, follow-up, ownership and idempotency.');
 } finally { await server.close(); }

@@ -66,28 +66,6 @@
 .icon-button:hover {
   background: var(--color-surface-subtle);
 }
-.utility-bar {
-  height: 28px;
-  font-size: 11px;
-  background: #f0f3f8;
-  color: var(--color-text-secondary);
-  border-bottom: 1px solid var(--color-border);
-}
-.utility-inner,
-.utility-inner > div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  gap: 22px;
-}
-.utility-inner button {
-  font-size: 11px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0;
-}
 .site-header {
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
@@ -327,6 +305,44 @@
 }
 .footer-bottom a {
   margin-left: 6px;
+}
+/* 全站右下角的一键回到顶部按钮，滚动一定距离后淡入 */
+.back-to-top {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 22px rgb(26 73 150 / 14%);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    visibility 0.2s;
+}
+.back-to-top.is-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+.back-to-top:hover {
+  box-shadow: 0 12px 26px rgb(26 73 150 / 20%);
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    transition: none;
+  }
 }
 .breadcrumb {
   display: flex;
@@ -1405,12 +1421,6 @@
 }
 @media (max-width: 767px) {
   @scope (:root:not(:has(.desktop-page))) {
-  .utility-bar {
-    height: 28px;
-  }
-  .utility-inner {
-    font-size: 10px;
-  }
   .header-inner {
     height: 70px;
     gap: 15px;

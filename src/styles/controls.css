@@ -87,23 +87,6 @@
   background: var(--color-primary-soft);
 }
 
-/* Header 的高度也供首页吸顶专题导航使用，避免两层导航重叠。 */
-.utility-bar {
-  height: var(--utility-height);
-  background: #f4f6fa;
-  font-size: 10px;
-  border-color: #e9edf3;
-}
-.utility-inner > div {
-  gap: 18px;
-}
-.utility-inner button,
-.utility-map {
-  font-size: 10px;
-}
-.utility-map:hover {
-  color: var(--color-primary);
-}
 .site-header {
   background: rgb(255 255 255 / 97%);
   border-color: #e5ebf3;
@@ -208,9 +191,7 @@
   display: none;
 }
 .blank-module-page {
-  min-height: calc(
-    100dvh - var(--header-height) - var(--utility-height) - 230px
-  );
+  min-height: calc(100dvh - var(--header-height) - 230px);
   background: #f5f7fa;
 }
 .app-shell:has(.blank-module-page) .site-footer {
@@ -383,7 +364,6 @@
   @scope (:root:not(:has(.desktop-page))) {
   :root {
     --header-height: 54px;
-    --utility-height: 22px;
   }
   .site-header .header-inner {
     gap: 10px;
@@ -415,16 +395,6 @@
   .site-header .primary-nav.is-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 12px 16px;
-  }
-  .utility-inner {
-    font-size: 9px;
-  }
-  .utility-inner > div {
-    gap: 10px;
-  }
-  .utility-inner button,
-  .utility-map {
-    font-size: 9px;
   }
   :root :is(.button, .showcase-button) {
     min-height: 40px;

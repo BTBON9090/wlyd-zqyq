@@ -143,7 +143,7 @@
   scroll-margin-top: 22px;
 }
 .app-shell:has(.showcase-home)
-  > :is(.utility-bar, .site-header, .site-footer)
+  > :is(.site-header, .site-footer)
   .container {
   max-width: var(--showcase-width);
   width: calc(100% - 56px);
@@ -1082,7 +1082,7 @@
     width: calc(100% - 40px);
   }
   .app-shell:has(.showcase-home)
-    > :is(.utility-bar, .site-header, .site-footer)
+    > :is(.site-header, .site-footer)
     .container {
     width: calc(100% - 40px);
   }
@@ -1154,7 +1154,7 @@
     width: calc(100% - 32px);
   }
   .app-shell:has(.showcase-home)
-    > :is(.utility-bar, .site-header, .site-footer)
+    > :is(.site-header, .site-footer)
     .container {
     width: calc(100% - 32px);
   }

@@ -1060,12 +1060,6 @@
 /* ══════════════════════════════════════════════════════════════════
    V3 顶部导航栏
    ══════════════════════════════════════════════════════════════════ */
-:is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .utility-bar {
-  background: linear-gradient(100deg, #e7efff, #f0ecff 58%, #e5f5ff);
-}
-:is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .utility-inner {
-  width: 94%;
-}
 :is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .site-header {
   box-shadow: none;
   border-bottom-color: #e9edf7;
@@ -1814,36 +1808,6 @@ html:has(.home-v3) {
   background: #fff;
 }
 
-:is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .utility-bar {
-  position: relative;
-  overflow: hidden;
-  color: #49516e;
-  background: linear-gradient(100deg, #eef7ff 0%, #f3efff 52%, #edfbff 100%);
-  border-bottom-color: #e6eafb;
-}
-
-:is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .utility-bar::before {
-  position: absolute;
-  top: -28px;
-  left: 32%;
-  width: 220px;
-  height: 76px;
-  content: "";
-  pointer-events: none;
-  background: radial-gradient(ellipse, rgb(67 205 255 / 22%), transparent 68%);
-  filter: blur(9px);
-}
-
-:is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .utility-inner {
-  position: relative;
-  width: min(94%, 1680px);
-}
-
-:is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .utility-map,
-:is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .utility-inner button {
-  color: #4c5aa3;
-}
-
 :is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .site-header {
   position: relative;
   border-bottom-color: transparent;
@@ -2174,7 +2138,6 @@ html:has(.home-v3) {
 
 @media (max-width: 767px) {
   @scope (:root:not(:has(.desktop-page))) {
-  :is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .utility-inner,
   :is(.app-shell.shell-v3, .app-shell:has(.home-v3)) .header-inner {
     width: calc(100% - 32px);
   }

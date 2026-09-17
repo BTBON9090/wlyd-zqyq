@@ -1,13 +1,22 @@
 /* Business screens preserve the desktop working area below 1200px.
    Smaller legacy media rules are scoped to pages without .desktop-page. */
 .desktop-page { min-width: 1200px; }
+.v3-invoice-table { table-layout: fixed; min-width: 860px; }
+.v3-invoice-table .invoice-col-select { width: 4%; }
+.v3-invoice-table .invoice-col-order { width: 19%; }
+.v3-invoice-table .invoice-col-service { width: 23%; }
+.v3-invoice-table .invoice-col-provider { width: 18%; }
+.v3-invoice-table .invoice-col-amount { width: 14%; }
+.v3-invoice-table .invoice-col-status { width: 10%; }
+.v3-invoice-table .invoice-col-action { width: 12%; }
+.v3-invoice-table td:nth-child(3), .v3-invoice-table td:nth-child(4) { width: auto; overflow-wrap: anywhere; }
 .review-workspace .v3-account-toolbar { margin: 0 0 18px; width: 100%; }
 /* 桌面业务页保留 1200px 工作区：横向滚动交给视口 (html)。
    body 只能放开 V3 的 overflow-x: clip，不能再设成滚动容器，
    否则 body 自己成为 scrollport，顶部导航与列表吸顶会全部失效。 */
 html:has(.desktop-page) { overflow-x: auto; }
 html[data-design-version] body:has(.desktop-page) { overflow-x: visible; }
-.desktop-page .commerce-container, .desktop-page .v3-account-page { width: calc(100% - 64px); }
+.desktop-page .commerce-container, .desktop-page .v3-account-page { width: min(1360px, calc(100% - 64px)); }
 .desktop-page :is(.service-v2-sidebar,.v3-account-sidebar) { display: flex; flex-direction: column; overflow: hidden; max-height: var(--list-sidebar-height,calc(100vh - 110px)); }
 .v3-account-sidebar .v3-account-user { flex: 0 0 auto; }
 .v3-sidebar-scroll { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #d9d2ed transparent; }

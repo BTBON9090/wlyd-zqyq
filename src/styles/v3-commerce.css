@@ -89,8 +89,25 @@ html[data-design-version="v3"] :is(.service-v3, .product-detail-v3, .v3-account-
 .product-detail-v3 .shop-strip strong { font-size: 14px; }
 .product-detail-v3 .product-hero { border: 1px solid #eeedf6; border-radius: 28px; box-shadow: 0 10px 40px #8573b509; padding: 30px; gap: 36px; }
 .product-detail-v3 .product-main-image { border-radius: 20px; background: linear-gradient(140deg, #eae5ff, #e6f6ff); }
-.product-detail-v3 .product-thumbnails > button { border-radius: 10px; padding: 3px; }
-.product-detail-v3 .product-thumbnails .content-image { border-radius: 6px; }
+/* 缩略图切换：放大尺寸，选中态改用浅紫描边 + 柔和外发光，整体降低色彩重量。 */
+.product-detail-v3 .product-gallery .product-thumbnails { gap: 12px; margin-top: 14px; }
+.product-detail-v3 .product-gallery .product-thumbnails > button {
+  padding: 4px;
+  border: 1px solid #eceaf6;
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.product-detail-v3 .product-gallery .product-thumbnails > button:hover { border-color: #ddd6f6; }
+.product-detail-v3 .product-gallery .product-thumbnails > button[aria-pressed="true"] {
+  border-color: #c7bdf7;
+  background: #faf9ff;
+  box-shadow: 0 0 0 3px rgb(100 86 242 / 12%);
+}
+.product-detail-v3 .product-thumbnails .content-image { border-radius: 9px; }
+@media (min-width: 768px) {
+  .product-detail-v3 .product-gallery .product-thumbnails > button { flex: 0 0 96px; }
+}
 .product-detail-v3 .product-gallery > p { color: #868395; font-size: 11px; }
 .product-detail-v3 .product-category { color: #7562b8; font-size: 12px; }
 .product-detail-v3 .product-summary h1 { font-size: 27px; line-height: 1.55; letter-spacing: -.5px; margin: 10px 0 12px; }
@@ -345,9 +362,6 @@ html[data-design-version="v3"] {
   font-size: 14px;
   font-weight: 600;
 }
-.shell-v3 .utility-inner,
-.shell-v3 .utility-inner a,
-.shell-v3 .utility-inner button { font-size: 12px; }
 .shell-v3 .site-header .header-actions { gap: 20px; }
 .shell-v3 .site-header .login-link,
 .shell-v3 .site-header .header-enterprise {

@@ -1,0 +1,38 @@
+/* Service enquiries group related fields within a compact, readable workspace. */
+.request-page { max-width: 1240px; padding-block: 22px 32px; font-size: 14px; }
+.request-page :is(p,small,label,input,textarea,button,a,dt,dd,span) { font-size: 14px; }
+.request-page .breadcrumb { margin-bottom: 18px; }
+.request-page .page-heading { margin: 16px 0 22px; }
+.request-page .page-heading h1 { font-size: 30px; margin-bottom: 8px; }
+.request-page .page-heading p { margin: 0; line-height: 1.6; }
+.request-page .request-layout { grid-template-columns: minmax(0,1fr) 320px; gap: 22px; }
+.request-page .form-card { padding: 24px; border-radius: 22px; border-color: #e8e6f1; }
+.request-page .form-card h2 { font-size: 20px; margin: 0 0 16px; }
+.request-page .form-card h2 > span { width: 30px; height: 30px; border-radius: 8px; }
+.request-page .form-card h2 > span, .request-page .character-count, .request-page .upload-box strong { font-size: 14px; }
+.request-page .field { margin-bottom: 16px; gap: 8px; }
+.request-page .field > label { font-weight: 600; }
+.request-page :is(input:not([type="checkbox"]):not([type="file"]),textarea) { border-radius: 12px; padding: 12px 14px; line-height: 1.6; }
+.request-page textarea { min-height: 148px; height: 148px; resize: vertical; }
+.request-page .character-count { margin-top: 4px; }
+.request-page .field-hint { margin-top: 4px; line-height: 1.6; }
+.request-page .upload-box { padding: 16px; border-radius: 14px; gap: 12px; background: #f7f8fc; }
+.request-page .upload-box p { margin: 4px 0 0; line-height: 1.5; }
+.request-page .form-card > section + section { padding-top: 20px; margin-top: 20px; }
+.request-page .form-grid { gap: 18px; }
+.request-page .consent { margin-top: 4px; align-items: flex-start; line-height: 1.7; }
+.request-page .consent input { flex-shrink: 0; margin-top: 4px; }
+.request-page .form-footer { margin-top: 18px; padding-top: 18px; }
+.request-page .button { border-radius: 12px; min-height: 44px; white-space: nowrap; }
+.request-page .tag { border-radius: 8px; }
+.request-page .request-summary { padding: 22px; border-radius: 22px; border-color: #e8e6f1; top: calc(var(--site-header-height,72px) + 22px); }
+.request-page .request-summary h2 { font-size: 20px; line-height: 1.5; margin: 14px 0 10px; }
+.request-page .request-summary > p { margin: 5px 0; line-height: 1.6; }
+.request-page .summary-price { font-size: 30px; margin: 18px 0; color: #493bc8; }
+.request-page .summary-price small { font-family: var(--font-sans); }
+.request-page .request-summary dl { padding-top: 16px; }
+.request-page .request-summary dl > div + div { margin-top: 14px; }
+.request-page .request-summary dd { margin-top: 4px; line-height: 1.6; }
+.request-page .notice { padding: 14px; margin-block: 16px; border-radius: 14px; line-height: 1.7; }
+.request-page .notice > svg { flex-shrink: 0; }
+.request-page .request-summary .field-hint { margin-bottom: 0; }

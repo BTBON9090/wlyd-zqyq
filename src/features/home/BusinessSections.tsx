@@ -4,6 +4,7 @@ import { ArrowRight } from "@phosphor-icons/react";
 import { ContentImage } from "../../components/ContentImage";
 import { Modal } from "../../components/ui";
 import { DEMO } from "../../lib/config";
+import { CoverPlaceholderIcon } from "../services/ServiceCard";
 const finances = [
   {
     name: "园区信用贷",
@@ -84,9 +85,11 @@ const products = [
 export function BusinessSections({
   images = {},
   productImages = {},
+  variant = "v2",
 }: {
   images?: Record<string, string>;
   productImages?: Record<string, string>;
+  variant?: "v2" | "v4";
 }) {
   const [finance, setFinance] = useState<(typeof finances)[number] | null>(
     null,
@@ -199,6 +202,8 @@ export function BusinessSections({
                 <ContentImage
                   src={productImages[product.id]}
                   alt={product.name}
+                  className={variant === "v4" ? "service-cover" : ""}
+                  placeholderIcon={variant === "v4" ? <CoverPlaceholderIcon /> : undefined}
                 />
                 <div>
                   <h3>{product.name}</h3>
@@ -244,6 +249,7 @@ export function BusinessSections({
               alt="智慧物流宣传图"
               placeholder="物流专题宣传图 · 待上传"
             />
+            {variant === "v4" && <div className="logistics-poster-copy"><span>园区运输服务</span><h3>连接运力资源<br />衔接每一次发运</h3><p>找车、调度、跟踪、结算<br />让运输协作更顺畅</p></div>}
           </div>
           <div className="logistics-copy">
             <h3>货物所往，服务所至</h3>

@@ -389,7 +389,7 @@ function RequestForm({ serviceId }: { serviceId: string }) {
               ? `¥ ${(version.price * quantity).toLocaleString("zh-CN", { useGrouping: false })}`
               : service.price === "按项报价"
                 ? "按需报价"
-                : `¥ ${service.price}`}
+                : `¥ ${service.price.replace(/,/g, "")}`}
             <small>参考价格</small>
           </div>
           <dl>

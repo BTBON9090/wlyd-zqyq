@@ -7,7 +7,7 @@ import type { Service } from "../../lib/models";
 import { ConsultDialog } from "./ConsultDialog";
 
 /** 缺省封面图标：只保留图片框与山峦，与「暂无宣传图」文字上下组合。 */
-function CoverPlaceholderIcon() {
+export function CoverPlaceholderIcon() {
   return (
     <svg
       className="service-cover-placeholder-icon"

@@ -1,5 +1,5 @@
 import { BusinessSections } from "./BusinessSections";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
   MagnifyingGlass,
 } from "@phosphor-icons/react";
 import { ContentImage } from "../../components/ContentImage";
+import { useStickyList } from "../../components/useStickyList";
 import { EmptyState, Modal, Skeletons } from "../../components/ui";
 import { useApp } from "../../app/AppProvider";
 import { categories } from "../../data/categories";
@@ -53,6 +54,8 @@ const partners = ["本地服务商", "金融机构", "科研院所", "物流企�
 export default function HomeV2Page({ variant = "v2" }: { variant?: "v2" | "v4" }) {
   const navigate = useNavigate();
   const { session, openAuth } = useApp();
+  const pageRef = useRef<HTMLDivElement>(null);
+  useStickyList(pageRef, variant === "v4");
   const content = useQuery({
     queryKey: ["homepage-content"],
     queryFn: ({ signal }) => loadHomeContent(signal),
@@ -152,7 +155,9 @@ export default function HomeV2Page({ variant = "v2" }: { variant?: "v2" | "v4" }
     navigate(destinations[capability.id]);
   };
   return (
-    <div className={`showcase-home${variant === "v4" ? " home-v4" : ""}`}>
+    <div ref={pageRef} className={`showcase-home${variant === "v4" ? " home-v4" : ""}`}>
+      {/* V4：Banner 区（hero + 搜索栏 + 优惠券栏）共用一块自上而下的渐变 */}
+      <div className={variant === "v4" ? "v4-banner" : undefined}>
       <section
         className={`showcase-hero ${imageOnly ? "is-image-only" : ""}`}
         aria-label="平台宣传 Banner"
@@ -319,15 +324,16 @@ export default function HomeV2Page({ variant = "v2" }: { variant?: "v2" | "v4" }
                 <h3>{campaign.title}</h3>
                 <p>{campaign.scope}</p>
                 <span>
-                  了解活动 <ArrowRight size={13} />
+                  {variant === "v4" ? (DEMO ? "领取优惠券" : "查看领取规则") : "了解活动"} <ArrowRight size={variant === "v4" ? 16 : 13} />
                 </span>
               </div>
             </button>
           ))}
         </section>
       </div>
+      </div>
 
-      <nav className="showcase-section-nav" aria-label="首页专题导航">
+      <nav className="showcase-section-nav" data-list-sticky aria-label="首页专题导航">
         <div className="showcase-container">
           <span>发现平台价值</span>
           {[
@@ -441,7 +447,7 @@ export default function HomeV2Page({ variant = "v2" }: { variant?: "v2" | "v4" }
               onAction={() => void services.refetch()}
             />
           ) : list.length ? (
-            <div className="market-service-grid" key={category}>
+            <div className={`market-service-grid${variant === "v4" ? " service-v3" : ""}`} key={category}>
               {list.map((service) => (
                 <ServiceCard key={service.id} service={service} />
               ))}
@@ -464,6 +470,7 @@ export default function HomeV2Page({ variant = "v2" }: { variant?: "v2" | "v4" }
       </section>
 
       <BusinessSections
+        variant={variant}
         images={variant === "v4" ? { ...settings.businessImages, finance: settings.businessImages.finance || "media/banners/hero-platform.webp", trade: settings.businessImages.trade || "media/banners/hero-services.webp", logistics: settings.businessImages.logistics || "media/banners/hero-park.webp" } : settings.businessImages}
         productImages={settings.productImages}
       />

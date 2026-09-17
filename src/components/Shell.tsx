@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import {
   ArrowRight,
+  ArrowUp,
   Buildings,
   CaretDown,
   CheckCircle,
@@ -101,19 +102,6 @@ export function Shell() {
       <a href="#main-content" className="skip-link">
         跳转到主要内容
       </a>
-      <div className="utility-bar">
-        <div className="container utility-inner">
-          <span>政企协同，让企业办事更简单</span>
-          <div>
-            <Link to="/map" className="utility-map">
-              产业地图
-            </Link>
-            <button onClick={() => setHelp(true)}>
-              帮助与支持 <ArrowRight size={12} />
-            </button>
-          </div>
-        </div>
-      </div>
       <header className="site-header">
         <div className="container header-inner">
           <Brand />
@@ -328,7 +316,28 @@ export function Shell() {
         </Suspense>
       </Modal>
       <GlobalTools />
+      <BackToTop />
     </div>
+  );
+}
+/** 全站右下角的一键回到顶部按钮，滚动一定距离后才出现。 */
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 480);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <button
+      type="button"
+      className={`back-to-top${visible ? " is-visible" : ""}`}
+      aria-label="回到顶部"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    >
+      <ArrowUp size={20} weight="bold" />
+    </button>
   );
 }
 export function Breadcrumb({
