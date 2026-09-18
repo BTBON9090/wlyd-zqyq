@@ -68,7 +68,7 @@ function seed(): AccountData {
     order.deliveries = Array.from({length:order.phases},(_,index)=>({name:order.phases>1?`第${index+1}阶段 · ${index===0?"方案与实施":"联调与交付"}`:"服务成果交付",status:order.status==="completed"?"accepted" as const:order.status==="accepting"?"submitted" as const:order.status==="serving"&&index===0?"working" as const:"waiting" as const,standard:index===0?"按合同约定完成服务范围，提供成果说明与核对清单。":"完成联调验证，提交交付说明与验收清单。",...(["accepting","completed"].includes(order.status)?{submittedAt:"2026-09-13 16:40:00",fileName:`${order.name}交付说明.pdf`}:{})}));
   }
   return { orders, refunds, invoices, reviews:[
-    {id:"REV-01",orderId:orders[4].id,direction:"sent",score:5,content:"沟通及时，申报材料核对仔细，交付符合约定。",createdAt:"2026-09-14 10:30:00",anonymous:false,hidden:false,followup:{content:"后续问题也得到了耐心解答。",createdAt:"2026-09-16 14:00:00",hidden:false}},
+    {id:"REV-01",orderId:orders[4].id,direction:"sent",score:5,content:"沟通及时，申报材料核对仔细，交付符合约定。",images:["media/v3/customer-campus.webp"],createdAt:"2026-09-14 10:30:00",anonymous:false,hidden:false,followup:{content:"后续问题也得到了耐心解答。",createdAt:"2026-09-16 14:00:00",hidden:false}},
     {id:"REV-02",orderId:orders[7].id,direction:"sent",score:4,content:"设计整体满意，调整后的交付范围已确认。",createdAt:"2026-09-15 11:20:00",anonymous:true,hidden:false,reply:"感谢反馈，我们会继续完善服务。"},
     {id:"REV-03",orderId:orders[4].id,direction:"received",score:5,content:"资料提供完整，需求清晰，沟通与验收配合顺畅。",createdAt:"2026-09-15 09:20:00",anonymous:false,hidden:false},
     {id:"REV-04",orderId:orders[8].id,direction:"sent",score:5,content:"入职手续办理很快，材料清单一次说明清楚，没有反复补件。",createdAt:"2026-09-10 15:40:00",anonymous:false,hidden:false},
@@ -171,7 +171,8 @@ export const accountGateway: AccountGateway = {
       const order=data.orders.find(o=>o.id===action.orderId);
       if (!order || order.status!=="completed" || data.reviews.some(r=>r.orderId===order.id&&r.direction==="sent")) throw new Error("当前订单无法重复评价");
       if(!Number.isInteger(action.score)||action.score<1||action.score>5||action.content.length>1000) throw new Error("请检查评分和评价内容");
-      data.reviews.unshift({id:`REV-${Date.now()}`,orderId:order.id,direction:"sent",score:action.score,content:action.content.trim(),anonymous:action.anonymous,hidden:false,createdAt:new Date().toLocaleString("zh-CN")});
+      if(!Array.isArray(action.images)||action.images.length>3) throw new Error("评价图片最多上传 3 张");
+      data.reviews.unshift({id:`REV-${Date.now()}`,orderId:order.id,direction:"sent",score:action.score,content:action.content.trim(),anonymous:action.anonymous,hidden:false,images:action.images,createdAt:new Date().toLocaleString("zh-CN")});
     } else if (action.type === "reviewFollowup" || action.type === "reviewVisibility" || action.type === "reviewAnonymous") {
       const review=data.reviews.find(r=>r.id===action.reviewId&&r.direction==="sent");
       if(!review) throw new Error("评价记录不存在");

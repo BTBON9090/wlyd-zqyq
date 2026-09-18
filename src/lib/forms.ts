@@ -38,3 +38,11 @@ export function fileError(file?: File) {
     return "请上传 PDF、DOCX、XLSX、JPG 或 PNG 文件";
   return "";
 }
+/** 评价配图：只接受常见位图，单张不超过 8 MB。 */
+export function imageError(file?: File) {
+  if (!file) return "";
+  if (!/^image\/(png|jpe?g|webp)$/i.test(file.type))
+    return "请上传 PNG、JPG 或 WEBP 图片";
+  if (file.size > 8 * 1024 * 1024) return "单张图片不能超过 8 MB";
+  return "";
+}

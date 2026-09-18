@@ -470,49 +470,85 @@
   align-items: start;
 }
 .request-summary {
-  padding: 27px;
+  padding: 18px;
   border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: 18px;
   background: white;
   position: sticky;
   top: 90px;
 }
-.request-summary h2 {
-  font-size: 21px;
-  margin: 17px 0 10px;
+.summary-cover {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--color-surface-subtle);
 }
-.request-summary > p {
+.summary-cover .content-image {
+  aspect-ratio: 16 / 10;
+}
+.summary-cover-tag {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgb(15 23 42 / 52%);
+  color: #fff;
   font-size: 12px;
+  backdrop-filter: blur(6px);
+}
+.request-summary h2 {
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 14px 0 6px;
+}
+.request-summary .summary-provider {
+  font-size: 13px;
   color: var(--color-text-secondary);
-}
-.summary-price {
-  font-size: 25px;
-  color: var(--color-primary);
-  font-weight: 600;
-  margin: 24px 0;
-}
-.summary-price small {
-  display: block;
-  font-size: 10px;
-  font-weight: 400;
-  color: var(--color-text-muted);
-  margin-top: 3px;
-}
-.request-summary dl {
-  border-top: 1px solid var(--color-border);
-  padding-top: 20px;
   margin: 0;
 }
-.request-summary dl > div + div {
-  margin-top: 14px;
+.request-summary dl {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+.request-summary dl > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
 }
 .request-summary dt {
-  font-size: 11px;
-  color: var(--color-text-muted);
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--color-text-secondary);
 }
 .request-summary dd {
-  margin: 5px 0 0;
-  font-size: 12px;
+  margin: 0;
+  font-size: 13px;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.summary-pay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--color-surface-subtle);
+}
+.summary-pay > span {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+.summary-pay strong {
+  font-size: 28px;
+  font-weight: 650;
+  color: var(--color-danger);
 }
 .result-page {
   padding-top: 34px;
@@ -1147,9 +1183,6 @@
   .request-summary h2 {
     font-size: 19px;
   }
-  .summary-price {
-    font-size: 23px;
-  }
   .auth-layout {
     grid-template-columns: 1fr 390px;
     gap: 45px;
@@ -1283,20 +1316,8 @@
     font-size: 20px;
     margin-bottom: 5px;
   }
-  .request-summary dl,
-  .request-summary .field-hint {
+  .request-summary dl {
     display: none;
-  }
-  .request-summary .summary-price {
-    font-size: 22px;
-    margin: 15px 0;
-  }
-  .request-summary .summary-price small {
-    display: inline;
-    margin-left: 12px;
-  }
-  .request-summary .notice {
-    margin: 10px 0 0;
   }
   .request-layout .form-card {
     width: 100%;
@@ -1564,12 +1585,8 @@
   .form-card {
     padding: 25px 19px;
   }
-  .request-summary .summary-price {
-    font-size: 22px;
-  }
-  .request-summary .notice {
-    font-size: 11px;
-    padding: 12px;
+  .summary-pay strong {
+    font-size: 24px;
   }
   .result-page {
     padding-top: 25px;

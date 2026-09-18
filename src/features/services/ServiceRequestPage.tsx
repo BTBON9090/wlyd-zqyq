@@ -13,17 +13,23 @@ import {
   ArrowRight,
   CheckCircle,
   Paperclip,
-  ShieldCheck,
   X,
 } from "@phosphor-icons/react";
 import { useApp } from "../../app/AppProvider";
 import { gateway } from "../../lib/api";
 import { DEMO } from "../../lib/config";
+import { currency } from "../../lib/money";
+import { ContentImage } from "../../components/ContentImage";
 import { requestSchema, type Receipt } from "../../lib/models";
 import { fileError, useValidation } from "../../lib/forms";
 import { readStored, removeStored, writeStored } from "../../lib/storage";
 import { Breadcrumb } from "../../components/Shell";
 import { EmptyState, ErrorNotice, Field, Input } from "../../components/ui";
+/** 履约类型与规格数据一一对应，侧边订单预览直接展示。 */
+const fulfillment = {
+  once_pay_once_accept: "一次性支付 · 一次性验收",
+  installment_pay_installment_accept: "分期支付 · 分期验收",
+};
 export default function ServiceRequestPage() {
   const { serviceId = "" } = useParams();
   const { session, loading, openAuth } = useApp();
@@ -370,50 +376,77 @@ function RequestForm({ serviceId }: { serviceId: string }) {
               返回服务详情
             </Link>
             <button className="button primary" disabled={pending}>
-              {pending ? "正在提交…" : "提交需求"}
+              {pending ? "正在提交…" : "去支付"}
               <ArrowRight size={17} />
             </button>
           </div>
         </form>
         <aside className="request-summary">
-          <span className="tag primary-tag">本次申请的服务</span>
+          <div className="summary-cover">
+            <ContentImage
+              src={service.image}
+              alt={service.name}
+              placeholder="暂无服务图片"
+            />
+            <span className="summary-cover-tag">{service.category}</span>
+          </div>
           <h2>{service.name}</h2>
-          <p>{service.provider}</p>
-          {version && (
-            <p>
-              <strong>{version.name}</strong> × {quantity} {version.unit}
-            </p>
+          <p className="summary-provider">{service.provider}</p>
+          {version ? (
+            <dl>
+              <div>
+                <dt>服务规格</dt>
+                <dd>{version.name}</dd>
+              </div>
+              <div>
+                <dt>数量</dt>
+                <dd>
+                  {quantity} {version.unit}
+                </dd>
+              </div>
+              <div>
+                <dt>履约类型</dt>
+                <dd>{fulfillment[version.fulfillmentType]}</dd>
+              </div>
+              <div>
+                <dt>交付周期</dt>
+                <dd>{version.deliveryCycleDays}个工作日</dd>
+              </div>
+              <div>
+                <dt>单价</dt>
+                <dd>
+                  {currency(version.price)}/{version.unit}
+                </dd>
+              </div>
+              <div>
+                <dt>订单总额</dt>
+                <dd className="amount-emphasis">
+                  {currency(version.price * quantity)}
+                </dd>
+              </div>
+            </dl>
+          ) : (
+            <dl>
+              <div>
+                <dt>交付周期</dt>
+                <dd>{service.delivery}</dd>
+              </div>
+              <div>
+                <dt>单价</dt>
+                <dd>{service.price}</dd>
+              </div>
+            </dl>
           )}
-          <div className="summary-price">
-            {version
-              ? `¥ ${(version.price * quantity).toLocaleString("zh-CN", { useGrouping: false })}`
-              : service.price === "按项报价"
-                ? "按需报价"
-                : `¥ ${service.price.replace(/,/g, "")}`}
-            <small>参考价格</small>
+          <div className="summary-pay">
+            <span>待支付金额</span>
+            <strong className="amount-emphasis">
+              {version ? currency(version.price * quantity) : service.price}
+            </strong>
           </div>
-          <dl>
-            <div>
-              <dt>参考周期</dt>
-              <dd>
-                {version ? `${version.deliveryCycleDays} 天` : service.delivery}
-              </dd>
-            </div>
-            <div>
-              <dt>服务内容</dt>
-              <dd>{service.features.join("、")}</dd>
-            </div>
-          </dl>
-          <div className="notice">
-            <ShieldCheck size={21} />
-            <span>
-              提交不产生费用。具体服务范围、价格与履约安排由双方另行确认。
-            </span>
-          </div>
-          <p className="field-hint">
-            需求文字在当前浏览器会话中暂存，提交成功后清除。附件刷新后需重新选择。
-          </p>
         </aside>
+        <p className="field-hint request-draft-hint">
+          需求文字在当前浏览器会话中暂存，提交成功后清除。附件刷新后需重新选择。
+        </p>
       </div>
     </div>
   );

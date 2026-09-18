@@ -326,7 +326,7 @@ export default function ServicesPage() {
             </Link>
           </nav>
           <h2>全部服务分类</h2>
-          <nav aria-label="服务分类">
+          <nav aria-label="服务分类" data-sidebar-scroll>
             {categories.slice(1).map((c) => (
               <button
                 key={c.id}

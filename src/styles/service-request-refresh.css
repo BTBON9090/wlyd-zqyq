@@ -25,14 +25,11 @@
 .request-page .form-footer { margin-top: 18px; padding-top: 18px; }
 .request-page .button { border-radius: 12px; min-height: 44px; white-space: nowrap; }
 .request-page .tag { border-radius: 8px; }
-.request-page .request-summary { padding: 22px; border-radius: 22px; border-color: #e8e6f1; top: calc(var(--site-header-height,72px) + 22px); }
-.request-page .request-summary h2 { font-size: 20px; line-height: 1.5; margin: 14px 0 10px; }
-.request-page .request-summary > p { margin: 5px 0; line-height: 1.6; }
-.request-page .summary-price { font-size: 30px; margin: 18px 0; color: #493bc8; }
-.request-page .summary-price small { font-family: var(--font-sans); }
-.request-page .request-summary dl { padding-top: 16px; }
-.request-page .request-summary dl > div + div { margin-top: 14px; }
-.request-page .request-summary dd { margin-top: 4px; line-height: 1.6; }
+.request-page .request-summary { padding: 18px; border-radius: 20px; border-color: #e8e6f1; top: calc(var(--site-header-height,72px) + 22px); }
+.request-page .request-summary h2 { font-size: 19px; line-height: 1.5; margin: 14px 0 6px; }
+.request-page .request-summary > p { margin: 0; line-height: 1.6; }
+.request-page .request-summary dl { padding-top: 14px; }
+.request-page .request-summary .summary-cover .content-image { border-radius: 14px; }
+.request-page .request-draft-hint { margin: 12px 2px 0; }
 .request-page .notice { padding: 14px; margin-block: 16px; border-radius: 14px; line-height: 1.7; }
 .request-page .notice > svg { flex-shrink: 0; }
-.request-page .request-summary .field-hint { margin-bottom: 0; }

@@ -1,12 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, CaretLeft, CaretRight, ImageSquare, Minus, Plus } from "@phosphor-icons/react";
+import {
+  ArrowRight,
+  Buildings,
+  CaretLeft,
+  CaretRight,
+  ImageSquare,
+  Minus,
+  Plus,
+  ShoppingCart,
+  Star,
+} from "@phosphor-icons/react";
 import { useStickyList } from "../../components/useStickyList";
 import { Link, useParams } from "react-router-dom";
 import { Breadcrumb } from "../../components/Shell";
 import { ContentImage } from "../../components/ContentImage";
+import { ReviewImages } from "../../components/ReviewImages";
 import { EmptyState, Modal } from "../../components/ui";
 import { gateway } from "../../lib/api";
+import { asset } from "../../lib/config";
 import { useDesignVersion } from "../../app/DesignVersion";
 import { money } from "../../lib/publishedService";
 import type { Service } from "../../lib/models";
@@ -59,6 +71,22 @@ function ServiceDetail({ service }: { service: Service }) {
     update();
     return () => { window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); cancelAnimationFrame(frame); };
   }, []);
+  // 发布吸顶标签栏的真实高度，供右侧卡片计算吸顶位置。
+  useEffect(() => {
+    const root = rootRef.current;
+    const nav = root?.querySelector<HTMLElement>(".product-detail-tabs");
+    if (!root || !nav) return;
+    const sync = () =>
+      root.style.setProperty("--detail-tabs-height", `${nav.offsetHeight}px`);
+    const observer = new ResizeObserver(sync);
+    observer.observe(nav);
+    window.addEventListener("resize", sync);
+    sync();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", sync);
+    };
+  }, []);
   const pub = service.published;
   useEffect(() => {
     const target = document.getElementById(window.location.hash.slice(1));
@@ -101,21 +129,6 @@ function ServiceDetail({ service }: { service: Service }) {
           { label: service.name },
         ]}
       />
-      <div className="shop-strip">
-        <ContentImage
-          className="shop-logo"
-          src={pub?.shop.logoUrl}
-          alt={`${service.provider}商家标识`}
-          placeholder="商家标识"
-        />
-        <div>
-          <strong>{pub?.shop.name || service.provider}</strong>
-          <span>{pub?.shop.intro || `${service.category}专业服务`}</span>
-        </div>
-        <a href="#service-shop">
-          查看店铺信息 <ArrowRight size={14} />
-        </a>
-      </div>
       <section className="product-hero">
         <div className="product-gallery">
           <div className="product-gallery-stage">
@@ -161,20 +174,16 @@ function ServiceDetail({ service }: { service: Service }) {
               .join(" / ")}
           </div>
           <h1>{service.name}</h1>
-          <p className="product-intro">{pub?.intro || service.overview}</p>
-          <div className="product-stats">
-            {pub && (
-              <>
-                <span>
-                  服务评分 <strong>{pub.rating.toFixed(1)}</strong>
-                </span>
-                <span>
-                  成交 <strong>{pub.salesCount}</strong>
-                </span>
-              </>
-            )}
-
-          </div>
+          {pub && (
+            <div className="product-stats">
+              <span>
+                服务评分 <strong>{pub.rating.toFixed(1)}</strong>
+              </span>
+              <span>
+                成交 <strong>{pub.salesCount}</strong>
+              </span>
+            </div>
+          )}
           <div className="product-price">
             <span>服务价格</span>
             <strong>
@@ -219,9 +228,12 @@ function ServiceDetail({ service }: { service: Service }) {
               </div>
             </div>
           )}
-          {version && (
-            <p className="product-version-hint">{version.sellingPoints}</p>
-          )}
+          {version &&
+            (version.sellingPoints || version.highlights.length > 0) && (
+              <p className="product-version-hint">
+                {version.sellingPoints || version.highlights.join(" · ")}
+              </p>
+            )}
           <div className="product-quantity">
             <span>购买数量</span>
             <div>
@@ -262,7 +274,8 @@ function ServiceDetail({ service }: { service: Service }) {
           </div>
           <div className="product-actions">
             <Link className="button primary" to={orderUrl}>
-              确认服务方案 <ArrowRight size={17} />
+              <ShoppingCart size={17} />
+              立即购买
             </Link>
             <button
               className="button secondary"
@@ -436,12 +449,28 @@ function ServiceDetail({ service }: { service: Service }) {
             {reviews.length ? (
               reviews.map((r) => (
                 <article className="product-review" key={r.id}>
-                  <div>
+                  <span className="review-avatar" aria-hidden="true">
+                    {(r.buyerName || "企").slice(0, 1)}
+                  </span>
+                  <div className="review-meta">
                     <strong>{r.buyerName}</strong>
-                    <span>{r.score.toFixed(1)} 分</span>
+                    <span
+                      className="review-score"
+                      aria-label={`${r.score.toFixed(1)} 分`}
+                    >
+                      {[1, 2, 3, 4, 5].map((n) => (
+                        <Star
+                          key={n}
+                          size={14}
+                          weight={n <= r.score ? "fill" : "regular"}
+                        />
+                      ))}
+                      <b>{r.score.toFixed(1)}</b>
+                    </span>
                     <time>{r.createdAt.slice(0, 10)}</time>
                   </div>
                   <p>{r.content}</p>
+                  <ReviewImages images={r.images} />
                   {r.tags?.length ? (
                     <div className="card-tags">
                       {r.tags.map((t) => (
@@ -460,7 +489,16 @@ function ServiceDetail({ service }: { service: Service }) {
           </section>
           <section id="service-shop" className="product-detail-section">
             <h2>店铺介绍</h2>
-            <h3>{pub?.shop.name || service.provider}</h3>
+            <div className="shop-identity">
+              <span className="shop-avatar" aria-hidden="true">
+                {pub?.shop.logoUrl ? (
+                  <img src={asset(pub.shop.logoUrl)} alt="" />
+                ) : (
+                  <Buildings size={24} />
+                )}
+              </span>
+              <h3>{pub?.shop.name || service.provider}</h3>
+            </div>
             <p>{pub?.shop.intro || "商家暂未补充店铺介绍。"}</p>
             {pub && (
               <div className="shop-metrics">

@@ -84,9 +84,6 @@ html[data-design-version="v3"] :is(.service-v3, .product-detail-v3, .v3-account-
 .service-v3 .pagination button[aria-current="page"] { background: var(--v3-action); border: 0; }
 
 /* Service detail: editorial introduction above a practical specification area. */
-.product-detail-v3 .shop-strip { border: 0; border-radius: 20px; padding: 18px 24px; background: #ffffffb3; margin-bottom: 20px; }
-.product-detail-v3 .shop-logo { border-radius: 12px; background: #ede8ff; }
-.product-detail-v3 .shop-strip strong { font-size: 14px; }
 .product-detail-v3 .product-hero { border: 1px solid #eeedf6; border-radius: 28px; box-shadow: 0 10px 40px #8573b509; padding: 30px; gap: 36px; }
 .product-detail-v3 .product-main-image { border-radius: 20px; background: linear-gradient(140deg, #eae5ff, #e6f6ff); }
 /* 缩略图切换：放大尺寸，选中态改用浅紫描边 + 柔和外发光，整体降低色彩重量。 */
@@ -111,8 +108,6 @@ html[data-design-version="v3"] :is(.service-v3, .product-detail-v3, .v3-account-
 .product-detail-v3 .product-gallery > p { color: #868395; font-size: 11px; }
 .product-detail-v3 .product-category { color: #7562b8; font-size: 12px; }
 .product-detail-v3 .product-summary h1 { font-size: 27px; line-height: 1.55; letter-spacing: -.5px; margin: 10px 0 12px; }
-.product-detail-v3 .product-intro { font-size: 13px; color: #747084; }
-.product-detail-v3 .product-stats { gap: 28px; font-size: 12px; }
 .product-detail-v3 .product-price { background: linear-gradient(110deg, #f0ebff, #eff6ff); border: 0; border-radius: 16px; padding: 20px; }
 .product-detail-v3 .product-price strong { color: var(--v3-purple); font-size: 36px; font-weight: 600; }
 .product-detail-v3 .product-facts { font-size: 13px; }
@@ -138,28 +133,21 @@ html[data-design-version="v3"] :is(.service-v3, .product-detail-v3, .v3-account-
 
 /* V3 detail-page type floor: 11px is reserved for image/source microcopy. */
 .product-detail-v3 .content-image .image-empty-label { font-size: 11px; }
-.product-detail-v3 .shop-strip p,
-.product-detail-v3 .shop-strip p *,
 .product-detail-v3 .product-price > span,
 .product-detail-v3 .product-price small,
 .product-detail-v3 .product-price em,
 .product-detail-v3 .product-specs > span,
 .product-detail-v3 .product-specs small,
-.product-detail-v3 .product-version-hint,
 .product-detail-v3 .product-quantity,
 .product-detail-v3 .product-quantity small,
 .product-detail-v3 .product-facts span,
 .product-detail-v3 .product-transaction-note,
 .product-detail-v3 .delivery-overview span,
 .product-detail-v3 .service-case-grid article > span,
-.product-detail-v3 .product-review time,
-.product-detail-v3 .product-review .card-tags span,
 .product-detail-v3 .shop-metrics span,
 .product-detail-v3 .merchant-card > span,
 .product-detail-v3 .related-service span:not(.image-empty-label) { font-size: 12px; }
 .product-detail-v3 .service-case-grid p,
-.product-detail-v3 .product-review p,
-.product-detail-v3 .product-review blockquote,
 .product-detail-v3 .merchant-card p { font-size: 14px; }
 
 /* Account workspace. Deliberately desktop-oriented, like the service catalogue. */
@@ -690,7 +678,7 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
 .service-v3 .service-score-text { color: #d28532; font-size: 14px; font-weight: 700; }
 .service-v3 .service-card-foot { padding-bottom: 8px; }
 .service-v3 .provider { border-color: #ececf3; }
-.product-detail-v3 :is(.product-intro, .product-facts, .product-specs strong) { font-size: 14px; color: var(--color-text-secondary); }
+.product-detail-v3 :is(.product-facts, .product-specs strong) { font-size: 14px; color: var(--color-text-secondary); }
 
 /* A compact workspace: 14px business text, stronger secondary ink, less empty padding. */
 .v3-account-page { min-width: 0; padding-bottom: 36px; }
@@ -807,19 +795,20 @@ html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-rad
   border: 0;
   background: none;
   gap: 16px;
+  font-size: 14px;
 }
 .service-v3 .service-sort > .service-sort-options { min-width: 0; overflow-x: auto; scrollbar-width: thin; }
 .service-sort-select { display: none; }
 .service-v3 .service-sort button { flex-shrink: 0; padding: 8px 12px; border-radius: 10px; color: var(--v3-muted); font-size: 14px; }
 .service-v3 .service-sort button[aria-pressed="true"] { background: #eeebff; color: var(--color-primary-deep); box-shadow: none; font-weight: 600; }
 .service-v3 .service-sort > .service-sort-meta { display: flex; align-items: center; flex-shrink: 0; gap: 12px; }
-.service-v3 .service-sort-meta > span { font-size: 12px; color: var(--v3-muted); white-space: nowrap; }
+.service-v3 .service-sort-meta > span { font-size: 14px; color: var(--v3-muted); white-space: nowrap; }
 .service-v3 .service-sort .service-filter-toggle { display: inline-flex; align-items: center; gap: 6px; background: #f1f2f7; color: var(--v3-ink); }
 .service-v3 .service-filter-toggle[aria-expanded="true"] { color: var(--color-primary-deep); background: #eeebff; }
 .service-v3 .service-filter-toggle > span { color: var(--color-primary-deep); font-weight: 700; }
 .service-v3 .service-filter-panel {
-  padding: 16px;
-  margin: 14px 0 0;
+  padding: 12px 14px;
+  margin: 10px 0 0;
   background: #f6f7fb;
   border-radius: 14px;
   max-height: min(260px, 35dvh);

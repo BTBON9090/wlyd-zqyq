@@ -65,6 +65,7 @@ export const publishedServiceSchema = z.object({
       score: z.number(),
       content: z.string(),
       tags: z.array(z.string()).optional(),
+      images: z.array(z.string()).optional(),
       createdAt: z.string(),
       serviceName: z.string().optional(),
       reply: z.string().optional(),
