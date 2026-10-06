@@ -5,8 +5,9 @@ const V2 = lazy(() => import("./HomeV2Page"));
 const V3 = lazy(() => import("./HomeV3Page"));
 const V4 = lazy(() => import("./HomeV4Page"));
 const V5 = lazy(() => import("./HomeV5Page"));
+const V6 = lazy(() => import("./HomeV6Page"));
 export default function HomeEntry() {
   const { version } = useDesignVersion();
-  const Page = version === "v1" ? V1 : version === "v2" ? V2 : version === "v4" ? V4 : version === "v5" ? V5 : V3;
+  const Page = version === "v1" ? V1 : version === "v2" ? V2 : version === "v4" ? V4 : version === "v5" ? V5 : version === "v6" ? V6 : V3;
   return <Suspense fallback={<div className="loading-page">正在加载首页…</div>}><Page /></Suspense>;
 }

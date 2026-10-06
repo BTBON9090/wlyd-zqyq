@@ -101,6 +101,7 @@ export default function AcceptancePanel() {
             }}>{label}</button>)}
             <button onClick={() => { switchVersion("v4"); navigate("/?home=v4"); setOpen(false); }}>V4 首页</button>
             <button onClick={() => { switchVersion("v5"); navigate("/?home=v5"); setOpen(false); }}>V5 首页</button>
+            <button onClick={() => { switchVersion("v6"); navigate("/?home=v6"); setOpen(false); }}>V6 首页</button>
             <button onClick={() => { navigate("/services/x1-name"); setOpen(false); }}>详情目录与图片切换</button>
             <button onClick={() => { demoControls.fault = "empty"; void client.invalidateQueries({ queryKey: ["services"] }); navigate("/services/hall"); setOpen(false); }}>暂无服务</button>
             <button onClick={() => {

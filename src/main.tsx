@@ -24,6 +24,7 @@ import "./styles/detail-refresh.css";
 import "./styles/account-extended.css";
 import "./styles/service-request-refresh.css";
 import "./styles/home-v5.css";
+import "./styles/home-v6.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: { staleTime: 120_000, retry: 1, refetchOnWindowFocus: false },
