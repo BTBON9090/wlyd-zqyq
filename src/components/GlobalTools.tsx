@@ -80,7 +80,7 @@ export function GlobalTools() {
         ⋮⋮
       </div>
       <div className="global-tools-versions">
-        {(["v1", "v2", "v3", "v4", "v5", "v6"] as const).map((v) => (
+        {(["v1", "v2", "v3", "v4", "v5", "v6", "v7"] as const).map((v) => (
           <button
             key={v}
             className={version === v ? "is-active" : ""}
