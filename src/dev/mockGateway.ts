@@ -11,6 +11,8 @@ import {
 export const demoControls = {
   fault: "none" as "none" | "error" | "empty",
   failNext: false,
+  /** 额外接口延迟（毫秒），仅用于演示加载态 */
+  delay: 0,
   skipped: [] as string[],
 };
 const accountsSchema = z.record(
@@ -39,7 +41,7 @@ async function pause(signal?: AbortSignal) {
       signal?.removeEventListener("abort", abort);
       resolve();
     };
-    const timer = setTimeout(done, 360);
+    const timer = setTimeout(done, 360 + demoControls.delay);
     const abort = () => {
       clearTimeout(timer);
       reject(new Error("请求已取消"));

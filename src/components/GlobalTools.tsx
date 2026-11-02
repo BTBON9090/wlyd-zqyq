@@ -68,7 +68,10 @@ export function GlobalTools() {
 
   const switchTo = (v: Version) => switchVersion(v);
 
-  if (!__DEMO__) return null;
+  // 分屏对比的 iframe 里只展示页面本身，不再叠加演示工具。
+  const comparing = new URLSearchParams(window.location.search).has("compare");
+
+  if (!__DEMO__ || comparing) return null;
 
   return (
     <div

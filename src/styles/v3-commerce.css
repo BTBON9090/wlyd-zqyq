@@ -646,13 +646,7 @@ html[data-design-version="v3"] .button.secondary:hover:not(:disabled) {
   color: var(--color-primary-deep);
   background: var(--color-primary-soft);
 }
-html[data-design-version="v3"] .acceptance-panel {
-  z-index: 2147483000;
-  pointer-events: auto;
-}
 html[data-design-version="v3"] .global-tools { z-index: 2147482999; pointer-events: auto; }
-html[data-design-version="v3"] .acceptance-content :is(p, .text-button, .panel-footnote) { font-size: 12px; }
-html[data-design-version="v3"] .acceptance-trigger { font-size: 14px; border-radius: 14px; }
 .home-v3 .v3-quote > svg { color: var(--v3-purple); }
 .home-v3 .v3-quote blockquote { color: var(--v3-ink); }
 .home-v3 .v3-solution-tabs button,
@@ -1086,8 +1080,6 @@ html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a
 .v3-order-workspace .v3-order-deadline > span:last-child { margin-left: 0; }
 .shell-v3 .v3-account-sidebar .v3-sidebar-group:not(.is-active) { background: transparent; color: var(--v3-ink); font-weight: 400; }
 .shell-v3 .v3-account-sidebar .v3-sidebar-group:not(.is-active):hover { background: var(--v3-nav-hover); color: var(--v3-purple); }
-.acceptance-trigger { touch-action: none; cursor: grab; user-select: none; }
-.acceptance-trigger:active { cursor: grabbing; }
 @media (max-width: 1150px) {
   @scope (:root:not(:has(.desktop-page))) {
   .v3-order-workspace .v3-order-body { grid-template-columns: minmax(0, 1fr) 94px 180px 94px; gap: 14px; padding: 20px; }

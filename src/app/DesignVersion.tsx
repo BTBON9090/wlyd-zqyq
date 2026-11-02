@@ -15,12 +15,14 @@ export function DesignVersionProvider({ children }: { children: ReactNode }) {
   const url = new URLSearchParams(location.search).get("home");
   const configured = import.meta.env.VITE_HOME_VERSION || "v2";
   const version: DesignVersion = __DEMO__ ? (valid(url) ? url : preference) : (valid(configured) ? configured : "v2");
+  const comparing = new URLSearchParams(location.search).has("compare");
   useEffect(() => {
-    if (__DEMO__ && valid(url)) {
+    // 分屏对比的 iframe 只读取 ?home=，不写回全局偏好，避免对比影响正常浏览。
+    if (__DEMO__ && valid(url) && !comparing) {
       setPreference(url);
       try { localStorage.setItem(key, url); } catch { /* Keep the in-memory preference. */ }
     }
-  }, [url]);
+  }, [url, comparing]);
   useEffect(() => {
     const sync = (event: StorageEvent) => {
       if (event.key !== key || !valid(event.newValue)) return;

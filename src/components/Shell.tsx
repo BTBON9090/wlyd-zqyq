@@ -26,6 +26,7 @@ import { authCopy } from "../features/auth/authCopy";
 import { GlobalTools } from "./GlobalTools";
 import { useHeaderHeight } from "./useHeaderHeight";
 import { useDesignVersion } from "../app/DesignVersion";
+import { AiAssistant } from "./AiAssistant";
 
 const AuthPanel = lazy(() =>
   import("../features/auth/AuthPage").then((m) => ({ default: m.AuthPanel })),
@@ -39,6 +40,8 @@ export function Shell() {
   const [menu, setMenu] = useState(false);
   const [help, setHelp] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
+  // 分屏对比的 iframe 里只保留页面本身，不叠加悬浮工具。
+  const compareFrame = new URLSearchParams(location.search).has("compare");
   const [offline, setOffline] = useState(!navigator.onLine);
   const authOnboarding = (authRequest?.returnTo ?? "").startsWith(
     "/onboarding",
@@ -316,7 +319,8 @@ export function Shell() {
         </Suspense>
       </Modal>
       <GlobalTools />
-      <BackToTop />
+      {!compareFrame && <AiAssistant />}
+      {!compareFrame && <BackToTop />}
     </div>
   );
 }
