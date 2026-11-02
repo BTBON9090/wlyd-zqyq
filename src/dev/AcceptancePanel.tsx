@@ -1,6 +1,5 @@
 import {
   ArrowClockwise,
-  ArrowLeft,
   ArrowSquareOut,
   Bug,
   Check,
@@ -10,7 +9,6 @@ import {
   Palette,
   Plus,
   SlidersHorizontal,
-  SplitHorizontal,
   Stack,
   Trash,
   UserCircle,
@@ -22,7 +20,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useApp } from "../app/AppProvider";
-import { useDesignVersion, type DesignVersion } from "../app/DesignVersion";
 import { demoControls, setDemoSession } from "./mockGateway";
 import { useDraggableTool } from "./useDraggableTool";
 import "./acceptance.css";
@@ -47,21 +44,17 @@ const tabs = [
 ] as const;
 
 const intros: Record<Tab, string> = {
-  preview: "切换首页版本与数据状态，仅用于查看演示效果。",
+  preview: "切换页面数据状态，仅用于查看演示效果。",
   onboarding: "模拟账号、入驻与表单校验，勾选后对应规则不再拦截提交。",
   sandbox: "直接进入常见业务页面，或制造一次失败请求验证异常路径。",
   issues: "记录验收中发现的问题，自动带上当前页面与版本。",
 };
 
-const versions: { id: DesignVersion; label: string; desc: string }[] = [
-  { id: "v1", label: "V1 初版门户", desc: "经典政企首页，信息密度较高" },
-  { id: "v2", label: "V2 商城首页", desc: "商城式服务入口与推荐位" },
-  { id: "v3", label: "V3 政企门户", desc: "当前默认版本" },
-  { id: "v4", label: "V4 品牌首页", desc: "品牌化视觉与统一风格" },
-  { id: "v5", label: "V5 产业信息台", desc: "今日办事入口与六大业务" },
-  { id: "v6", label: "V6 园林画卷", desc: "画卷式叙事与服务旅程" },
-  { id: "v7", label: "V7 现代公共服务", desc: "公共服务式信息架构" },
-];
+const currentVersion = {
+  id: "v4",
+  label: "V4 品牌首页",
+  desc: "品牌化视觉与统一风格",
+};
 
 const pageStates = [
   { id: "ready", label: "有数据" },
@@ -218,19 +211,16 @@ function AcceptancePanelView() {
           ? "error"
           : "ready",
   );
-  const [compare, setCompare] = useState(false);
-  const [baseline, setBaseline] = useState<DesignVersion>("v1");
   const [issues, setIssues] = useState<Issue[]>(readIssues);
   const [draft, setDraft] = useState("");
   const [level, setLevel] = useState<Level>("mid");
   const closeRef = useRef<HTMLButtonElement>(null);
-  const { version, switchVersion } = useDesignVersion();
   const { session, skipped, setSkipped, setSession, theme, setTheme, toast } =
     useApp();
   const client = useQueryClient();
   const navigate = useNavigate();
   const location = useLocation();
-  const current = versions.find((item) => item.id === version) ?? versions[2];
+  const current = currentVersion;
   const role = !session
     ? "guest"
     : session.enterpriseStatus === "approved"
@@ -242,12 +232,11 @@ function AcceptancePanelView() {
     closeRef.current?.focus();
     const escape = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
-      if (compare) setCompare(false);
-      else setOpen(false);
+      setOpen(false);
     };
     document.addEventListener("keydown", escape);
     return () => document.removeEventListener("keydown", escape);
-  }, [open, compare]);
+  }, [open]);
 
   useEffect(() => {
     try {
@@ -273,12 +262,6 @@ function AcceptancePanelView() {
         ? Array.from(new Set([...skipped, ...keys]))
         : skipped.filter((key) => !keys.includes(key)),
     );
-
-  const selectVersion = (id: DesignVersion) => {
-    switchVersion(id);
-    if (location.pathname !== "/") navigate(`/?home=${id}`);
-    toast(`已切换到 ${versions.find((item) => item.id === id)?.label ?? id}`);
-  };
 
   const applyPageState = (next: PageState) => {
     demoControls.fault =
@@ -350,7 +333,7 @@ function AcceptancePanelView() {
         content,
         level,
         page: `${location.pathname}${location.search}`,
-        version: version.toUpperCase(),
+        version: current.id.toUpperCase(),
         createdAt: Date.now(),
       },
       ...issues,
@@ -391,63 +374,6 @@ function AcceptancePanelView() {
 
   return (
     <>
-      {compare && (
-        <div className="acc-compare" role="dialog" aria-label="分屏对比">
-          <header className="acc-compare-head">
-            <button
-              type="button"
-              className="acc-compare-back"
-              onClick={() => setCompare(false)}
-            >
-              <ArrowLeft size={14} />
-              返回验收工具
-            </button>
-            <strong className="acc-compare-title">左右对比</strong>
-            <label className="acc-compare-pick">
-              左侧
-              <select
-                value={baseline}
-                onChange={(event) =>
-                  setBaseline(event.target.value as DesignVersion)
-                }
-              >
-                {versions.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <span className="acc-compare-pick is-static">
-              右侧 · {current.label}
-            </span>
-            <button
-              type="button"
-              className="acc-icon"
-              onClick={() => setCompare(false)}
-              aria-label="退出分屏对比"
-            >
-              <X size={16} />
-            </button>
-          </header>
-          <div className="acc-compare-body">
-            {[baseline, version].map((id, index) => {
-              const item = versions.find((entry) => entry.id === id);
-              return (
-                <div className="acc-compare-pane" key={`${id}-${index}`}>
-                  <span className="acc-compare-tag">
-                    {index === 0 ? "左" : "右"} · {item?.label ?? id}
-                  </span>
-                  <iframe
-                    title={`${item?.label ?? id} 预览`}
-                    src={`${import.meta.env.BASE_URL}?home=${id}&compare=1`}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
       <aside
         ref={draggable.ref}
         style={draggable.style}
@@ -507,34 +433,19 @@ function AcceptancePanelView() {
 
               {tab === "preview" && (
                 <>
-                  <Section icon={<Stack size={14} />} title="设计版本">
-                    <div className="acc-versions">
-                      {versions.map((item) => (
-                        <button
-                          key={item.id}
-                          type="button"
-                          className={`acc-version${version === item.id ? " is-active" : ""}`}
-                          aria-pressed={version === item.id}
-                          onClick={() => selectVersion(item.id)}
-                        >
-                          <span className="acc-version-dot" />
-                          <span className="acc-version-text">
-                            <strong>{item.label}</strong>
-                            <small>{item.desc}</small>
-                          </span>
-                          <Check
-                            size={15}
-                            weight="bold"
-                            className="acc-version-check"
-                          />
-                        </button>
-                      ))}
+                  <Section icon={<Stack size={14} />} title="首页方案">
+                    <div className="acc-version is-active is-static">
+                      <span className="acc-version-dot" />
+                      <span className="acc-version-text">
+                        <strong>{current.label}</strong>
+                        <small>{current.desc}，当前唯一方案</small>
+                      </span>
+                      <Check
+                        size={15}
+                        weight="bold"
+                        className="acc-version-check"
+                      />
                     </div>
-                    {location.pathname !== "/" && (
-                      <p className="acc-hint">
-                        当前不在首页，选择版本后会回到首页查看效果。
-                      </p>
-                    )}
                   </Section>
 
                   <Section
@@ -560,27 +471,6 @@ function AcceptancePanelView() {
                     </p>
                   </Section>
 
-                  <Section
-                    icon={<SplitHorizontal size={14} />}
-                    title="分屏对比"
-                  >
-                    <div className="acc-switch-row">
-                      <div>
-                        <strong>左右对比模式</strong>
-                        <small>
-                          左侧选基准版本，右侧固定为当前版本，在独立视口并排查看。
-                        </small>
-                      </div>
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={compare}
-                        aria-label="左右对比模式"
-                        className="acc-switch"
-                        onClick={() => setCompare((value) => !value)}
-                      />
-                    </div>
-                  </Section>
                 </>
               )}
 
@@ -958,8 +848,5 @@ function AcceptancePanelView() {
 }
 
 export default function AcceptancePanel() {
-  const location = useLocation();
-  // 分屏对比的 iframe 内不再渲染验收工具本身。
-  if (new URLSearchParams(location.search).has("compare")) return null;
   return <AcceptancePanelView />;
 }

@@ -1,8 +1,7 @@
 /* 验收工具（仅演示构建使用）：右侧抽屉 + 四个分类。
    只在 src/dev/AcceptancePanel.tsx 内引入，正式构建不会打包。 */
 
-.acceptance-panel,
-.acc-compare {
+.acceptance-panel {
   --acc-accent: #2460d2;
   --acc-accent-strong: #184cb6;
   --acc-accent-soft: #eff4fc;
@@ -304,11 +303,6 @@
 }
 
 /* ── 版本卡片 ─────────────────────────────────────────────────────── */
-.acc-versions {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
 .acc-version {
   display: grid;
   grid-template-columns: 8px minmax(0, 1fr) 16px;
@@ -325,7 +319,7 @@
     border-color 0.16s,
     background 0.16s;
 }
-.acc-version:hover {
+.acc-version:not(.is-static):hover {
   border-color: var(--acc-accent-line);
   background: #fbfcff;
 }
@@ -373,6 +367,9 @@
 .acc-version.is-active .acc-version-check {
   opacity: 1;
 }
+.acc-version.is-static {
+  cursor: default;
+}
 
 /* ── 分段控件 ─────────────────────────────────────────────────────── */
 .acc-seg {
@@ -407,64 +404,7 @@
   box-shadow: 0 1px 2px rgb(20 40 80 / 10%);
 }
 
-/* ── 开关行 ───────────────────────────────────────────────────────── */
-.acc-switch-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  background: #fbfcfe;
-}
-.acc-switch-row > div {
-  flex: 1;
-  min-width: 0;
-}
-.acc-switch-row strong {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.4;
-}
-.acc-switch-row small {
-  display: block;
-  margin-top: 2px;
-  color: var(--color-text-muted);
-  font-size: 11px;
-  line-height: 1.5;
-}
-.acc-switch {
-  position: relative;
-  flex: none;
-  width: 36px;
-  height: 20px;
-  padding: 0;
-  border: 0;
-  border-radius: 999px;
-  background: #d7dee9;
-  transition: background 0.18s;
-}
-.acc-switch::after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 22%);
-  transition: transform 0.18s;
-}
-.acc-switch[aria-checked="true"] {
-  background: var(--acc-accent);
-}
-.acc-switch[aria-checked="true"]::after {
-  transform: translateX(16px);
-}
-
-/* ── 校验分组 ─────────────────────────────────────────────────────── */
+ ─────────────────────────────────────────────────────── */
 .acc-group {
   padding: 9px 11px;
   border: 1px solid var(--color-border);
@@ -802,118 +742,6 @@
   white-space: nowrap;
 }
 
-/* ── 分屏对比 ─────────────────────────────────────────────────────── */
-.acc-compare {
-  position: fixed;
-  z-index: 2147483002;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  background: #eef2f8;
-}
-.acc-compare-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 9px 16px;
-  border-bottom: 1px solid var(--color-border);
-  background: var(--color-surface);
-}
-.acc-compare-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 9px;
-  border: 1px solid var(--color-border);
-  border-radius: 7px;
-  background: var(--color-surface);
-  color: var(--color-text-secondary);
-  font-size: 11.5px;
-}
-.acc-compare-back:hover {
-  border-color: var(--acc-accent-line);
-  background: var(--acc-accent-soft);
-  color: var(--acc-accent);
-}
-.acc-compare-title {
-  font-size: 12.5px;
-  font-weight: 600;
-}
-.acc-compare-pick {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-left: auto;
-  color: var(--color-text-secondary);
-  font-size: 11px;
-  white-space: nowrap;
-}
-.acc-compare-pick select {
-  height: 30px;
-  padding: 0 6px;
-  border: 1px solid var(--color-border);
-  border-radius: 7px;
-  background: var(--color-surface);
-  color: var(--color-text);
-  font-size: 11px;
-}
-.acc-compare-pick.is-static {
-  margin-left: 0;
-}
-.acc-compare-head .acc-icon {
-  margin-left: 2px;
-}
-.acc-compare-body {
-  display: flex;
-  flex: 1;
-  gap: 12px;
-  min-height: 0;
-  padding: 12px;
-}
-.acc-compare-pane {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 0;
-  overflow: hidden;
-  border: 1px solid #e1e7f1;
-  border-radius: 12px;
-  background: #fff;
-}
-.acc-compare-tag {
-  flex: none;
-  padding: 7px 12px;
-  border-bottom: 1px solid #eef2f8;
-  background: #f8fafc;
-  color: #475569;
-  font-size: 11px;
-  line-height: 1.4;
-}
-.acc-compare-pane iframe {
-  flex: 1;
-  width: 100%;
-  min-height: 0;
-  border: 0;
-  background: #fff;
-}
-
-@media (max-width: 720px) {
-  .acc-compare-head {
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 8px 12px;
-  }
-  .acc-compare-pick {
-    margin-left: 0;
-  }
-  .acc-compare-body {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-  }
-}
-
 @media (max-width: 480px) {
   .acc-drawer {
     width: 100vw;
@@ -923,17 +751,12 @@
   .acc-head {
     padding-top: max(18px, env(safe-area-inset-top));
   }
-  .acc-compare-pick.is-static {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .acc-drawer {
     animation: none;
   }
-  .acc-switch,
-  .acc-switch::after,
   .acc-version,
   .acc-chip {
     transition: none;

@@ -646,7 +646,6 @@ html[data-design-version="v3"] .button.secondary:hover:not(:disabled) {
   color: var(--color-primary-deep);
   background: var(--color-primary-soft);
 }
-html[data-design-version="v3"] .global-tools { z-index: 2147482999; pointer-events: auto; }
 .home-v3 .v3-quote > svg { color: var(--v3-purple); }
 .home-v3 .v3-quote blockquote { color: var(--v3-ink); }
 .home-v3 .v3-solution-tabs button,

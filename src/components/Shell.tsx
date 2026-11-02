@@ -23,7 +23,6 @@ import { site } from "../lib/config";
 import { navigation } from "../data/navigation";
 import { Brand, Modal } from "./ui";
 import { authCopy } from "../features/auth/authCopy";
-import { GlobalTools } from "./GlobalTools";
 import { useHeaderHeight } from "./useHeaderHeight";
 import { useDesignVersion } from "../app/DesignVersion";
 import { AiAssistant } from "./AiAssistant";
@@ -40,8 +39,6 @@ export function Shell() {
   const [menu, setMenu] = useState(false);
   const [help, setHelp] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
-  // 分屏对比的 iframe 里只保留页面本身，不叠加悬浮工具。
-  const compareFrame = new URLSearchParams(location.search).has("compare");
   const [offline, setOffline] = useState(!navigator.onLine);
   const authOnboarding = (authRequest?.returnTo ?? "").startsWith(
     "/onboarding",
@@ -318,9 +315,8 @@ export function Shell() {
           )}
         </Suspense>
       </Modal>
-      <GlobalTools />
-      {!compareFrame && <AiAssistant />}
-      {!compareFrame && <BackToTop />}
+      <AiAssistant />
+      <BackToTop />
     </div>
   );
 }

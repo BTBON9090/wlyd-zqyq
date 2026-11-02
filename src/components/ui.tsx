@@ -47,7 +47,7 @@ export function Modal({
       <Dialog.Portal>
         {withAcceptanceTools ? <div className="modal-overlay" aria-hidden="true" /> : <Dialog.Overlay className="modal-overlay" />}
         <Dialog.Content className="modal-content" onInteractOutside={(event) => {
-          if (withAcceptanceTools && event.target instanceof Element && event.target.closest(".acceptance-panel, .global-tools")) event.preventDefault();
+          if (withAcceptanceTools && event.target instanceof Element && event.target.closest(".acceptance-panel")) event.preventDefault();
         }}>
           <div className="modal-heading">
             <Dialog.Title>{title}</Dialog.Title>

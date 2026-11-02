@@ -1,47 +1,14 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-export type DesignVersion = "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7";
-const valid = (v: string | null): v is DesignVersion => v === "v1" || v === "v2" || v === "v3" || v === "v4" || v === "v5" || v === "v6" || v === "v7";
-const key = "park-home-version";
-function saved(): DesignVersion {
-  try { const v = localStorage.getItem(key); if (valid(v)) return v; } catch { /* Optional storage. */ }
-  return "v3";
-}
-const Context = createContext<{ version: DesignVersion; switchVersion: (v: DesignVersion) => void }>({ version: "v2", switchVersion: () => {} });
+import { useEffect, type ReactNode } from "react";
+/** 首页方案已固定为 V4 品牌首页；商城内页沿用 v3 皮肤。 */
+export type DesignVersion = "v4";
+type CommerceVersion = "v1" | "v2" | "v3";
+const commerceVersion: CommerceVersion = "v3";
 export function DesignVersionProvider({ children }: { children: ReactNode }) {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [preference, setPreference] = useState(saved);
-  const url = new URLSearchParams(location.search).get("home");
-  const configured = import.meta.env.VITE_HOME_VERSION || "v2";
-  const version: DesignVersion = __DEMO__ ? (valid(url) ? url : preference) : (valid(configured) ? configured : "v2");
-  const comparing = new URLSearchParams(location.search).has("compare");
   useEffect(() => {
-    // 分屏对比的 iframe 只读取 ?home=，不写回全局偏好，避免对比影响正常浏览。
-    if (__DEMO__ && valid(url) && !comparing) {
-      setPreference(url);
-      try { localStorage.setItem(key, url); } catch { /* Keep the in-memory preference. */ }
-    }
-  }, [url, comparing]);
-  useEffect(() => {
-    const sync = (event: StorageEvent) => {
-      if (event.key !== key || !valid(event.newValue)) return;
-      setPreference(event.newValue);
-      const params = new URLSearchParams(location.search);
-      if (params.has("home")) {
-        params.set("home", event.newValue);
-        navigate({ pathname: location.pathname, search: params.toString(), hash: location.hash }, { replace: true });
-      }
-    };
-    window.addEventListener("storage", sync);
-    return () => window.removeEventListener("storage", sync);
-  }, [location, navigate]);
-  useEffect(() => {
-    document.documentElement.dataset.designVersion = version === "v4" ? "v3" : version;
+    document.documentElement.dataset.designVersion = commerceVersion;
     return () => { delete document.documentElement.dataset.designVersion; };
-  }, [version]);
+  }, []);
   useEffect(() => {
-    if (version !== "v3" && version !== "v4") return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const move = (event: PointerEvent) => {
       if (event.pointerType === "touch" || reduced.matches) return;
@@ -55,17 +22,7 @@ export function DesignVersionProvider({ children }: { children: ReactNode }) {
     };
     document.addEventListener("pointermove", move, { passive: true });
     return () => document.removeEventListener("pointermove", move);
-  }, [version]);
-  const switchVersion = (v: DesignVersion) => {
-    setPreference(v);
-    try { localStorage.setItem(key, v); } catch { /* Keep the in-memory preference. */ }
-    const params = new URLSearchParams(location.search);
-    params.set("home", v);
-    navigate({ pathname: location.pathname, search: params.toString(), hash: location.hash }, { replace: true });
-  };
-  return <Context.Provider value={{ version, switchVersion }}>{children}</Context.Provider>;
+  }, []);
+  return <>{children}</>;
 }
-export const useDesignVersion = () => {
-  const context = useContext(Context);
-  return { ...context, commerceVersion: context.version === "v4" || context.version === "v5" || context.version === "v6" || context.version === "v7" ? "v3" : context.version };
-};
+export const useDesignVersion = () => ({ version: "v4" as DesignVersion, commerceVersion });

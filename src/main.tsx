@@ -11,7 +11,6 @@ import "./styles/tokens.css";
 import "./styles/base.css";
 import "./styles/components.css";
 import "./styles/pages.css";
-import "./styles/home.css";
 import "./styles/home-v3.css";
 import "./styles/showcase.css";
 import "./styles/controls.css";
@@ -23,9 +22,6 @@ import "./styles/home-v4.css";
 import "./styles/detail-refresh.css";
 import "./styles/account-extended.css";
 import "./styles/service-request-refresh.css";
-import "./styles/home-v5.css";
-import "./styles/home-v6.css";
-import "./styles/home-v7.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: { staleTime: 120_000, retry: 1, refetchOnWindowFocus: false },
