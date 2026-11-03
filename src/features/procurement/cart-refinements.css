@@ -1,0 +1,11 @@
+/* 购物车数量控件与商品需求描述：仅影响集采购物车。 */
+.procurement-cart-page .market-cart-table { min-width: 1180px; }
+.procurement-cart-page .market-cart-product { min-width: 175px; }
+.procurement-cart-page .market-cart-stepper { width: 96px; height: 30px; border-radius: 6px; }
+.procurement-cart-page .market-cart-stepper button { display: grid; place-items: center; flex: 0 0 27px; width: 27px; height: 28px; padding: 0; }
+.procurement-cart-page .market-cart-stepper button:disabled { color: var(--color-text-muted); opacity: .45; cursor: not-allowed; }
+.procurement-cart-page .market-cart-stepper input { flex: 1 1 auto; width: 40px; height: 28px; min-width: 0; font-size: 12px; }
+.procurement-cart-page .market-cart-remark { display: block; box-sizing: border-box; width: 100%; min-width: 170px; min-height: 60px; padding: 8px 10px; border: 1px solid var(--color-border); border-radius: var(--control-radius); background: var(--color-surface); color: var(--color-text); font: inherit; font-size: 13px; line-height: 1.5; resize: vertical; }
+.procurement-cart-page .market-cart-remark:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 2px var(--color-primary-soft); }
+.procurement-cart-page .market-cart-remark::placeholder { color: var(--color-text-muted); }
+.procurement-cart-page .market-cart-table td .procurement-inline-error { color: var(--color-danger); line-height: 1.5; max-width: 150px; }

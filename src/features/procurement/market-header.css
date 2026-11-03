@@ -1,0 +1,30 @@
+/* Align the marketplace search controls with the existing service search. */
+.market-search-band { top: var(--site-header-height, var(--header-height, 72px)); }
+.market-search-row { justify-content:flex-start; gap:20px; min-height:78px; padding-block:12px; box-sizing:border-box; }
+.market-search { max-width:none; height:46px; border:1px solid #e5e8f2; border-radius:10px; background:#f8f9fc; overflow:visible; transition:border-color .16s, box-shadow .16s; }
+.market-search:focus-within { border-color:var(--color-primary); box-shadow:0 0 0 3px rgb(100 86 242 / 10%); }
+.market-category-control { position:relative; flex:0 0 auto; }
+.market-search-category { height:100%; }
+.market-category-control .market-category-trigger { display:flex; align-items:center; gap:10px; height:100%; max-width:208px; padding:0 12px 0 15px; border:0; border-radius:9px 0 0 9px; background:transparent; color:var(--color-text); font-size:13px; font-weight:600; cursor:pointer; }
+.market-category-trigger span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.market-category-trigger svg { flex:none; color:var(--color-text-muted); transition:transform .15s; }
+.market-category-trigger svg.is-open { transform:rotate(180deg); }
+.market-search-category::after { position:absolute; right:0; top:10px; bottom:10px; width:1px; content:""; background:var(--color-border); }
+.market-category-control .market-category-menu { position:absolute; top:calc(100% + 9px); left:0; z-index:35; width:260px; max-height:min(440px, 55vh); overflow-y:auto; overscroll-behavior:contain; padding:6px; border:1px solid var(--color-border); border-radius:10px; background:var(--color-surface); box-shadow:0 12px 36px rgb(39 39 68 / 16%); }
+.market-category-menu button { display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; min-height:36px; padding:8px 10px; border:0; border-radius:7px; background:transparent; color:var(--color-text); text-align:left; font-size:13px; cursor:pointer; }
+.market-category-menu button:hover, .market-category-menu button:focus-visible { outline:none; background:var(--color-primary-soft); color:var(--color-primary); }
+.market-category-menu button[aria-selected="true"] { background:var(--color-primary-soft); color:var(--color-primary); font-weight:600; }
+.market-category-menu button svg { flex:none; }
+.market-category-menu p { margin:8px 10px; color:var(--color-text-muted); font-size:12px; }
+.market-search > svg { margin:0 11px 0 15px; color:var(--color-text-muted); }
+.market-search input { background:transparent; font-size:14px; }
+.market-search > .market-search-submit { align-self:stretch; min-width:98px; margin:4px; border-radius:7px; background:linear-gradient(110deg,#704bff 0%,#416cff 48%,#08c0f3 100%); color:#fff; font-size:13px; }
+.market-search > .market-search-submit:hover { background:linear-gradient(110deg,#613be9 0%,#315ce9 48%,#00acd9 100%); }
+.market-search-actions { gap:10px; }
+.market-order-link, .market-cart-button { min-height:42px; border-radius:10px; font-size:13px; }
+.market-cart-button { background:linear-gradient(110deg,#704bff 0%,#416cff 48%,#08c0f3 100%); }
+@media (max-width:1250px) { .market-search-row { gap:14px; } }
+
+.market-filter-category .market-category-trigger { height:36px; min-width:148px; max-width:210px; border:1px solid var(--color-border); border-radius:8px; background:var(--color-surface); color:var(--color-text); font-weight:500; }
+.market-filter-category .market-category-trigger span { flex:1; text-align:left; }
+.market-filter-category .market-category-menu { width:260px; }

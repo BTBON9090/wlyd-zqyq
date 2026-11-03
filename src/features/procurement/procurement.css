@@ -1,32 +1,4 @@
 /* 仅集采新增区域；共享控件沿用既有企业服务样式。 */
-.procurement-page { padding-bottom: 72px; }
-.procurement-page .procurement-sidebar .service-side-help a { display:inline-block; margin-top:12px; color:var(--color-primary); font-size:12px; font-weight:600; }
-.procurement-hero .service-promo h1 { margin:15px 0 10px; font-size:30px; line-height:1.35; letter-spacing:-.6px; color:var(--v3-ink,#202235); }
-.procurement-hero .service-promo p { margin-bottom:20px; }
-.procurement-quick h2 { margin:15px 0 8px; font-size:20px; }
-.procurement-quick ul { padding:0; margin:22px 0; list-style:none; display:grid; gap:12px; color:#615f75; font-size:13px; counter-reset:procurement-steps; }
-.procurement-quick li { counter-increment:procurement-steps; display:flex; gap:9px; align-items:center; }
-.procurement-quick li:before { content:counter(procurement-steps, decimal-leading-zero); color:#8276c4; font-size:11px; font-weight:700; }
-.procurement-quick .button { gap:7px; }
-.procurement-values { margin-top:14px; }
-.procurement-page .service-catalogue { margin-top:24px; }
-.procurement-page .service-catalogue-tools { margin-bottom:20px; }
-.procurement-page .service-catalogue-title h2 { margin:0; }
-.procurement-filter { display:flex; align-items:center; gap:6px; flex-wrap:wrap; padding:16px 0 7px; border-top:1px solid #eeedf3; margin-top:14px; }
-.procurement-filter > span { color:#858392; font-size:13px; margin-right:10px; }
-.procurement-filter button { border:0; border-radius:8px; background:transparent; color:#5c5d6d; padding:7px 13px; cursor:pointer; font-size:13px; }
-.procurement-filter button[aria-pressed="true"] { background:#eeeaff; color:#6456e9; font-weight:600; }
-.procurement-cart-link { display:inline-flex; gap:5px; align-items:center; font-weight:600; color:var(--color-primary); margin-left:18px; }
-.procurement-card .service-card-body { padding-bottom:12px; }
-.procurement-card .service-card-body > p { margin:7px 0 0; min-height:20px; color:#777989; }
-.procurement-card-image { height:170px; background:#f4f5f8; }
-.procurement-card-image picture, .procurement-card-image img { width:100%; height:100%; display:block; }
-.procurement-card-image img { object-fit:cover; }
-.procurement-card-meta { display:flex; flex-wrap:wrap; gap:8px; margin:11px 0; color:#7b7d8c; font-size:12px; }
-.procurement-card-meta span + span:before { content:"·"; margin-right:8px; color:#c3c3cd; }
-.procurement-card .card-bottom { display:flex; align-items:baseline; gap:8px; }
-.procurement-tax { font-size:11px; color:#92939f; }
-.procurement-card .service-card-foot { border-top:1px solid #f1f1f5; }
 .procurement-detail, .procurement-cart-page, .procurement-checkout { padding-bottom:72px; }
 .procurement-detail-hero { display:grid; grid-template-columns:minmax(260px, .95fr) minmax(320px, 1.2fr) minmax(190px,.55fr); gap:24px; padding:24px; background:#fff; border:1px solid #ececf4; border-radius:20px; }
 .procurement-detail-gallery > .content-image { width:100%; aspect-ratio:1.18; overflow:hidden; border-radius:14px; background:#f4f5f8; }
@@ -120,3 +92,177 @@
 .procurement-order-summary > p { line-height:1.7; font-size:12px; }
 @media (max-width: 1050px) { .procurement-detail-hero { grid-template-columns:1fr 1.2fr; }.procurement-provider { grid-column:1/-1; }.procurement-description dl { grid-template-columns:repeat(2,1fr); }.procurement-cart-head { display:none; }.procurement-cart-row { grid-template-columns:minmax(200px,2fr) 1fr 1fr; }.procurement-cart-row > :nth-child(4) { text-align:right; } }
 @media (max-width: 700px) { .procurement-detail-hero { grid-template-columns:1fr; padding:16px; }.procurement-provider { grid-column:auto; }.procurement-detail-summary h1 { font-size:22px; }.procurement-cart-row { grid-template-columns:1fr auto; gap:12px; }.procurement-cart-product { grid-column:1/-1; }.procurement-cart-footer, .procurement-page-heading { align-items:flex-start; flex-direction:column; }.procurement-cart-footer > div:last-child { flex-wrap:wrap; }.procurement-checkout-layout { grid-template-columns:1fr; }.procurement-address-form { grid-template-columns:1fr; }.procurement-wide-field { grid-column:auto; }.procurement-page .service-catalogue-heading { align-items:stretch; }.procurement-hero .service-promo h1 { font-size:25px; } }
+
+/* 商城首页信息结构按产品原型：搜索、商城导航、分类/轮播/资讯和商品区。 */
+.inner-page-content:has(> .procurement-page) { padding-top:0; }
+.procurement-page { background:#f5f7fb; color:#17223a; padding:0 0 72px; }
+.market-width { width:calc(100% - 64px); max-width:1360px; margin:0 auto; }
+.market-search-band { background:#fff; border-bottom:1px solid #e4e9f0; box-shadow:0 1px 3px #172b4d08; }
+.market-search-row { display:flex; align-items:center; justify-content:flex-end; gap:24px; min-height:80px; }
+.market-search { display:flex; align-items:center; flex:1; max-width:700px; min-width:0; height:46px; border:2px solid #5945f4; border-radius:12px; background:#fff; overflow:hidden; }
+.market-search select { width:108px; height:30px; border:0; border-right:1px solid #e2e7ef; padding:0 9px; color:#3d4a61; background:#f8fafc; outline:0; font-size:13px; font-weight:600; }
+.market-search > svg { margin:0 11px 0 15px; color:#96a4b9; flex:none; }
+.market-search input { min-width:0; flex:1; border:0; outline:0; height:100%; color:#26354f; font-size:14px; }
+.market-search input::placeholder { color:#9aa9bf; }
+.market-search > button { display:flex; align-items:center; justify-content:center; gap:7px; align-self:stretch; min-width:98px; border:0; color:#fff; background:#5036f4; font-weight:700; cursor:pointer; }
+.market-search > button:hover { background:#422be0; }
+.market-search-actions { display:flex; align-items:center; gap:10px; flex:none; }
+.market-order-link, .market-cart-button { display:inline-flex; align-items:center; justify-content:center; gap:7px; height:42px; padding:0 17px; border-radius:11px; font-size:13px; font-weight:700; white-space:nowrap; }
+.market-order-link { color:#36465f; border:1px solid #dce4ef; background:#fff; box-shadow:0 2px 3px #172b4d0a; }
+.market-cart-button { color:#fff; background:linear-gradient(100deg,#2465ef,#5135f4); }
+.market-cart-button span { display:grid; place-items:center; min-width:20px; height:20px; padding:0 5px; border-radius:99px; background:#ffbd16; color:#18243c; font-size:11px; }
+.market-nav-band { background:#fff; border-bottom:1px solid #e4e9f0; }
+.market-nav-band .market-width { display:flex; align-items:center; gap:11px; min-height:48px; }
+.market-home-chip { color:#5846f5; background:#f0efff; border-radius:8px; padding:7px 12px; font-size:13px; font-weight:700; }
+.market-current-nav { display:inline-flex; align-items:center; gap:8px; color:#7d8b9e; font-size:12px; }
+.market-main { padding-top:20px; }
+.market-hero-grid { display:grid; grid-template-columns:minmax(220px,1fr) minmax(0,2.05fr) minmax(220px,1fr); gap:16px; align-items:stretch; }
+.market-category-wrap { position:relative; min-width:0; z-index:3; }
+.market-category-panel { height:340px; display:flex; flex-direction:column; border:1px solid #dce5ef; border-radius:16px; background:#fff; overflow:hidden; box-shadow:0 2px 3px #172b4d0b; }
+.market-category-heading { height:42px; display:flex; flex:none; align-items:center; gap:9px; padding:0 15px; border:0; color:#fff; background:#5035f5; font-size:14px; font-weight:700; text-align:left; cursor:pointer; }
+.market-category-list { overflow:auto; padding:5px; scrollbar-width:thin; scrollbar-color:#d5deec transparent; }
+.market-category-list > button { width:100%; height:35px; display:flex; align-items:center; gap:10px; border:0; border-radius:8px; padding:0 10px; background:transparent; color:#263650; cursor:pointer; text-align:left; font-size:13px; font-weight:600; }
+.market-category-list > button:hover, .market-category-list > button:focus-visible { background:#f2f1ff; color:#5035ed; }
+.market-category-list > button > svg:first-child { color:#5841f5; flex:none; }
+.market-category-list > button:nth-child(3n + 2) > svg:first-child { color:#1473ed; }
+.market-category-list > button:nth-child(3n) > svg:first-child { color:#00a17c; }
+.market-category-list > button > span { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.market-category-list > button > svg:last-child { color:#bdc8d8; flex:none; }
+.market-category-list > p { padding:12px; color:#8997a9; font-size:12px; }
+.market-category-flyout { position:absolute; left:100%; top:0; width:520px; max-height:340px; overflow:auto; padding:12px 18px; background:#fff; border:1px solid #dce5ef; border-radius:14px; box-shadow:0 16px 42px #172b4d24; z-index:5; }
+.market-category-flyout > div { display:grid; grid-template-columns:135px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #f0f2f6; }
+.market-category-flyout > div:last-child { border-bottom:0; }
+.market-category-flyout strong { display:flex; justify-content:space-between; gap:5px; color:#263650; font-size:12px; }
+.market-category-flyout span { display:flex; flex-wrap:wrap; gap:7px 12px; }
+.market-category-flyout span button { padding:0; border:0; background:none; color:#64748b; font-size:12px; cursor:pointer; }
+.market-category-flyout span button:hover { color:#5035f5; }
+.market-hero { min-width:0; min-height:340px; display:flex; flex-direction:column; justify-content:space-between; gap:22px; padding:24px; border:1px solid #293762; border-radius:16px; color:#fff; background-color:#172448; background-image:linear-gradient(105deg,#111d38,#302c78); background-size:cover; background-position:center; overflow:hidden; box-shadow:0 2px 5px #172b4d14; }
+.market-hero-content { min-width:0; }
+.market-hero-tag { display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border:1px solid #ffffff3b; border-radius:999px; background:#ffffff24; color:#d8dcff; font-size:12px; font-weight:600; }
+.market-hero-tag svg { color:#ffd36d; }
+.market-hero h1 { margin:15px 0 10px; color:#fff; font-size:clamp(22px,2.05vw,30px); line-height:1.28; letter-spacing:-.5px; font-weight:800; }
+.market-hero-content > p { margin:0; color:#d8ddef; font-size:13px; line-height:1.65; }
+.market-hero-badges { display:flex; flex-wrap:wrap; gap:6px; margin-top:15px; }
+.market-hero-badges span { display:inline-flex; align-items:center; gap:4px; padding:5px 7px; border:1px solid #ffffff1e; border-radius:6px; background:#0710227a; color:#f4f6ff; font-size:11px; }
+.market-hero-badges svg { color:#1ee1ad; }
+.market-hero-bottom { display:flex; justify-content:space-between; align-items:end; gap:12px; }
+.market-hero-action { display:inline-flex; align-items:center; gap:8px; min-height:40px; padding:0 16px; border:0; border-radius:11px; background:linear-gradient(110deg,#2f81f6,#4c33ec); color:#fff; font-size:13px; font-weight:700; cursor:pointer; }
+.market-carousel-controls { display:flex; align-items:center; gap:5px; }
+.market-carousel-controls > div { display:flex; align-items:center; gap:5px; margin-right:8px; }
+.market-carousel-controls > div button { width:7px; height:7px; padding:0; border:0; border-radius:99px; background:#ffffff72; cursor:pointer; }
+.market-carousel-controls > div button[aria-pressed="true"] { width:20px; background:#fff; }
+.market-carousel-controls > button { display:grid; place-items:center; width:32px; height:32px; padding:0; border:0; border-radius:9px; color:#fff; background:#101c49b8; cursor:pointer; }
+.market-information { display:grid; grid-template-rows:63px 1fr; gap:10px; min-width:0; }
+.market-enterprise, .market-bulletin { background:#fff; border:1px solid #dce5ef; border-radius:16px; box-shadow:0 2px 3px #172b4d0b; }
+.market-enterprise { display:flex; align-items:center; gap:11px; padding:12px 14px; }
+.market-enterprise > span { width:34px; height:34px; flex:none; display:grid; place-items:center; border-radius:9px; color:#fff; background:linear-gradient(145deg,#327cf5,#5137f5); }
+.market-enterprise > div { min-width:0; }
+.market-enterprise strong { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#17233b; font-size:13px; }
+.market-enterprise button { border:0; padding:2px 0 0; background:none; color:#8b9ab0; font-size:11px; cursor:pointer; display:inline-flex; align-items:center; }
+.market-bulletin { padding:15px 14px; min-width:0; }
+.market-bulletin-tabs { display:flex; align-items:center; gap:9px; border-bottom:1px solid #e8edf4; }
+.market-bulletin-tabs button { padding:0 0 10px; border:0; border-bottom:2px solid transparent; background:none; color:#74849c; white-space:nowrap; font-size:12px; font-weight:700; cursor:pointer; }
+.market-bulletin-tabs button[aria-pressed="true"] { color:#5035f5; border-bottom-color:#5035f5; }
+.market-bulletin-tabs small { margin-left:auto; white-space:nowrap; color:#a8b4c6; font-size:10px; }
+.market-bulletin ul { list-style:none; margin:9px 0 0; padding:0; }
+.market-bulletin li { display:flex; align-items:center; gap:7px; min-width:0; padding:8px 0; }
+.market-bulletin li span { flex:none; border:1px solid #cfc9ff; border-radius:5px; color:#5843ec; background:#f4f2ff; padding:2px 4px; font-size:10px; }
+.market-bulletin li:nth-child(2n) span { color:#008f73; border-color:#b9eadb; background:#edfbf7; }
+.market-bulletin li p { margin:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#53647d; font-size:12px; }
+.market-products { margin-top:24px; padding:24px 27px 28px; border:1px solid #e1e8f0; border-radius:20px; background:#fff; }
+.market-products-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:18px; border-bottom:1px solid #edf1f6; }
+.market-products-heading > div:first-child { display:flex; align-items:baseline; gap:12px; }
+.market-products-heading h2 { margin:0; color:#19273f; font-size:21px; font-weight:800; }
+.market-products-heading > div:first-child > span { color:#98a7bc; font-size:12px; }
+.market-sort { display:flex; gap:3px; padding:4px; background:#f0f4f9; border:1px solid #e1e8f2; border-radius:11px; }
+.market-sort button { padding:7px 11px; border:0; border-radius:8px; background:transparent; color:#5d6e87; font-size:12px; font-weight:600; cursor:pointer; }
+.market-sort button[aria-pressed="true"] { background:#fff; color:#5035f5; box-shadow:0 1px 4px #172b4d0f; }
+.market-filter { display:flex; align-items:center; flex-wrap:wrap; gap:5px; padding:14px 0; border-bottom:1px solid #edf1f6; }
+.market-filter > span { margin-right:6px; color:#8e9db0; font-size:12px; }
+.market-filter button { padding:6px 9px; border:0; border-radius:6px; background:none; color:#60718a; font-size:12px; cursor:pointer; }
+.market-filter button[aria-pressed="true"] { background:#eeecff; color:#5035f5; }
+.market-product-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; padding-top:20px; }
+.market-product-card { min-width:0; border:1px solid #e3eaf2; border-radius:14px; overflow:hidden; background:#fff; transition:border-color .15s,box-shadow .15s; }
+.market-product-card:hover { border-color:#c7c0ff; box-shadow:0 8px 22px #26336a13; }
+.market-product-link { display:block; color:inherit; }
+.market-product-media { position:relative; height:155px; background:#f2f5f9; overflow:hidden; }
+.market-product-media .content-image, .market-product-media picture, .market-product-media img { width:100%; height:100%; }
+.market-product-media img { display:block; object-fit:cover; }
+.market-product-media > span { position:absolute; right:9px; top:9px; padding:4px 7px; border-radius:99px; background:#172039b8; color:#fff; font-size:10px; }
+.market-product-body { padding:12px 13px; }
+.market-product-body > small { color:#8293aa; font-size:11px; }
+.market-product-body h3 { margin:6px 0; color:#20304a; font-size:14px; line-height:1.45; }
+.market-product-body > p { margin:0; color:#97a5b7; font-size:11px; }
+.market-product-price { display:flex; align-items:baseline; gap:4px; margin-top:14px; white-space:nowrap; }
+.market-product-price > span { color:#9ba7b7; font-size:10px; }
+.market-product-price strong { color:#5141e8; font-size:20px; }
+.market-product-price small, .market-product-price del { color:#9ba7b7; font-size:11px; }
+.market-product-meta { display:flex; justify-content:space-between; gap:6px; margin-top:10px; color:#95a3b5; font-size:11px; }
+.market-product-supplier { display:flex; gap:7px; align-items:center; padding:10px 13px; border-top:1px solid #f0f3f7; color:#7f8ea3; font-size:11px; }
+.market-product-supplier > *:last-child { min-width:0; }
+@media (max-width: 1250px) { .market-search-row { gap:14px; }.market-sort button { padding-inline:8px; }.market-bulletin-tabs { gap:6px; }.market-bulletin-tabs small { display:none; }.market-hero { padding:20px; } }
+
+/* 商城详情与购物车保持产品原型的信息结构，沿用平台基础视觉。 */
+.inner-page-content:has(> .market-search-band), .inner-page-content:has(> .procurement-page) { padding-top: 0; }
+.market-detail-hero { grid-template-columns: minmax(300px, .9fr) minmax(0, 1.35fr); }
+.market-detail-hero .procurement-facts { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.market-detail-hero .procurement-detail-price { margin: 18px 0; }
+.market-detail-hero .procurement-detail-price p { text-decoration: none; }
+.market-copy { border:0; background:none; color:#63758f; cursor:pointer; vertical-align:middle; margin-left:5px; }
+.market-cart-heading { display:flex; justify-content:space-between; align-items:center; margin: 20px 0; }
+.market-cart-heading h1 { margin:0; font-size:24px; }
+.market-cart-heading a { color:#52657f; display:flex; align-items:center; gap:5px; }
+.market-cart-table-wrap { background:#fff; border:1px solid #e2e8f0; border-radius:8px; overflow-x:auto; }
+.market-cart-table { width:100%; min-width:1120px; border-collapse:collapse; font-size:13px; text-align:left; }
+.market-cart-table th { background:#f5f7fa; color:#61728a; font-weight:500; white-space:nowrap; }
+.market-cart-table th,.market-cart-table td { padding:15px 9px; border-bottom:1px solid #edf1f5; vertical-align:top; }
+.market-cart-table th:first-child,.market-cart-table td:first-child { padding-left:17px; }
+.market-cart-table td small { display:block; color:#8190a3; margin-top:5px; font-size:12px; }
+.market-cart-table td strong { font-weight:600; }
+.market-cart-product { display:flex; gap:10px; min-width:240px; max-width:300px; }
+.market-cart-product > .content-image, .market-cart-product > img { width:64px; height:64px; flex:none; border-radius:4px; }
+.market-cart-product a { color:#25354b; }
+.market-cart-product input { margin-top:8px; padding:5px 7px; width:100%; border:1px solid #e3eaf2; border-radius:4px; font-size:12px; }
+.market-cart-stepper { display:flex; width:100px; }
+.market-cart-stepper input { width:40px; min-width:0; }
+.market-cart-quick { display:flex; align-items:center; gap:10px; padding:18px 0; color:#52657f; font-size:13px; }
+.market-cart-quick input { margin-left:8px; border:1px solid #dce4ed; padding:9px; border-radius:5px; }
+.market-cart-footer { background:#fff; border:1px solid #e2e8f0; border-radius:8px; display:flex; justify-content:space-between; align-items:center; padding:14px 16px; gap:12px; font-size:13px; }
+.market-cart-footer > div { display:flex; align-items:center; gap:15px; }
+.market-cart-footer button:not(.button) { border:0; background:none; color:#52657f; cursor:pointer; }
+.market-cart-footer button:disabled { color:#a9b3c0; cursor:not-allowed; }
+.market-cart-total { color:#e4623e; font-size:20px; }
+
+/* 采购工具随滚动保留，颜色绑定平台主题；分类始终与商品列表相邻。 */
+.market-search-band { position:sticky; top:var(--header-height, 58px); z-index:25; }
+.market-search-row { min-height:64px; }
+.market-search { height:40px; border-color:var(--color-primary); border-radius:var(--control-radius); }
+.market-search > button { background:var(--color-primary); }
+.market-search > button:hover { background:var(--color-primary-hover); }
+.market-order-link, .market-cart-button { height:40px; border-radius:var(--control-radius); }
+.market-cart-button { background:var(--color-primary); }
+.market-cart-button span { color:var(--color-primary-deep); background:var(--color-primary-soft); }
+.market-main { padding-top:24px; }
+.market-hero-grid { grid-template-columns:minmax(0, 1.8fr) minmax(300px,1fr); }
+.market-hero { min-height:260px; border:0; border-radius:var(--radius-lg); background-color:var(--color-primary-deep); background-image:linear-gradient(110deg,var(--color-primary-deep),var(--color-primary)); }
+.market-hero-action { background:var(--color-surface); color:var(--color-primary); border-radius:var(--control-radius); }
+.market-information { display:block; }
+.market-bulletin { height:100%; border-color:var(--color-border); border-radius:var(--radius-lg); padding:18px 20px; box-sizing:border-box; }
+.market-bulletin-title { display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; color:var(--color-text); }
+.market-bulletin-title small { color:var(--color-text-muted); font-size:11px; font-weight:400; }
+.market-bulletin-tabs { gap:20px; }
+.market-bulletin-tabs button[aria-pressed="true"] { color:var(--color-primary); border-bottom-color:var(--color-primary); }
+.market-bulletin li span, .market-bulletin li:nth-child(2n) span { color:var(--color-primary); border-color:var(--color-primary-line); background:var(--color-primary-soft); }
+.market-bulletin li p { flex:1; min-width:0; }
+.market-bulletin li time { flex:none; color:var(--color-text-muted); font-size:11px; }
+.market-bulletin-empty { color:var(--color-text-muted); font-size:13px; padding:25px 0; }
+.market-products { border-color:var(--color-border); border-radius:var(--radius-lg); }
+.market-products-heading { position:sticky; top:calc(var(--header-height, 58px) + 64px); z-index:20; padding:14px 0; background:var(--color-surface); }
+.market-sort button[aria-pressed="true"] { color:var(--color-primary); }
+.market-filter button[aria-pressed="true"] { color:var(--color-primary); background:var(--color-primary-soft); }
+.market-product-card:hover { border-color:var(--color-primary-line); }
+.market-product-price strong { color:var(--color-price); }
+.market-toolbar-controls { display:flex; align-items:center; gap:12px; }
+.market-category-select { display:flex; align-items:center; gap:8px; white-space:nowrap; font-size:12px; color:var(--color-text-muted); }
+.market-category-select select { max-width:175px; height:36px; padding:0 26px 0 10px; border:1px solid var(--color-border); border-radius:var(--control-radius); background:var(--color-surface); color:var(--color-text); font-size:12px; cursor:pointer; }
+.market-product-media .content-image[data-empty="true"] { background:var(--color-surface-subtle); color:var(--color-text-muted); }

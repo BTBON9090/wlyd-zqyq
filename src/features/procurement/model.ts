@@ -9,9 +9,12 @@ export const productSchema = z.object({
   taxRate: z.number().nonnegative(), minimum: z.number().int().positive(),
   increment: z.number().int().positive(), stock: z.number().int().nonnegative(),
   leadDays: z.number().int().nonnegative(), updatedAt: z.string(),
+  sales: z.number().int().nonnegative().optional(), code: z.string().optional(), model: z.string().optional(),
+  features: z.string().optional(), salesArea: z.string().optional(), freightMode: z.string().optional(),
+  attrs: z.array(z.object({name:z.string(),value:z.string()})).optional(), images: z.array(z.string()).optional(),
 });
 export type Product = z.infer<typeof productSchema>;
-export type CartItem = { productId: string; quantity: number };
+export type CartItem = { productId: string; quantity: number; selected: boolean; remark: string };
 // 订单模型等用户提供新的订单原型后再对齐。
 export type ProcurementGateway = { products: (signal?: AbortSignal) => Promise<Product[]> };
 

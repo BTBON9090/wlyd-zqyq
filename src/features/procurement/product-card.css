@@ -1,0 +1,36 @@
+/* 主图与供应商商品主图保持 1:1；卡片 hover 延续企业服务的上移与阴影。 */
+.jc-card {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #eeedf4;
+  border-radius: 16px;
+  box-shadow: 0 8px 26px rgb(43 45 82 / 12%), 0 2px 5px rgb(43 45 82 / 4%);
+  overflow: hidden;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.jc-card:hover {
+  transform: translateY(-2px);
+  border-color: transparent;
+  box-shadow: 0 18px 42px rgb(83 70 157 / 14%);
+}
+.jc-card-link { display: block; height: 100%; color: inherit; text-decoration: none; }
+.jc-card-media { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: var(--color-surface-subtle); }
+.jc-card-media .content-image, .jc-card-media picture, .jc-card-media img { width: 100%; height: 100%; }
+.jc-card-media .content-image[data-empty="true"] { background: var(--color-surface-subtle); color: var(--color-text-muted); }
+.jc-card-media .image-empty-label { font-size: 12px; }
+.jc-card-media img { display: block; object-fit: contain; transition: transform .35s; }
+.jc-card:hover .jc-card-media img { transform: scale(1.025); }
+.jc-card-minimum { position: absolute; top: 12px; right: 12px; padding: 5px 9px; border-radius: 99px; background: rgb(29 40 62 / 76%); color: #fff; font-size: 12px; line-height: 1.3; }
+.jc-card-body { padding: 16px; }
+.jc-card-tags { display: flex; align-items: center; gap: 7px; min-width: 0; min-height: 25px; }
+.jc-card-brand, .jc-card-category { min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 4px 7px; border-radius: 5px; color: var(--color-primary-deep); background: var(--color-primary-soft); font-size: 12px; line-height: 1.3; }
+.jc-card-brand { flex: none; font-weight: 600; }
+.jc-card-category { color: var(--color-text-secondary); background: var(--color-surface-subtle); }
+.jc-card-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: 44px; margin: 10px 0 6px; color: var(--color-text); font-size: 16px; line-height: 22px; font-weight: 650; overflow-wrap: anywhere; }
+.jc-card-spec { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
+.jc-card-pricing { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px; margin-top: 15px; }
+.jc-card-pricing > span, .jc-card-pricing small, .jc-card-pricing del { color: var(--color-text-muted); font-size: 12px; }
+.jc-card-pricing strong { color: var(--color-price); font-size: 20px; line-height: 1.25; font-weight: 700; }
+.jc-card-pricing del { margin-left: 2px; }
+.jc-card-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 10px; padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 12px; line-height: 1.4; }
+@media (prefers-reduced-motion: reduce) { .jc-card, .jc-card-media img { transition: none; } .jc-card:hover, .jc-card:hover .jc-card-media img { transform: none; } }
