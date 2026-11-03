@@ -1,0 +1,7 @@
+# 仅本次集采分支预览使用演示数据；其余分支沿用站点现有设置。
+[context."codex/procurement-mall-20261103"]
+  command = "npm run build:preview"
+  publish = "dist-preview"
+
+[context."codex/procurement-mall-20261103".environment]
+  VITE_DATA_MODE = "demo"

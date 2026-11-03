@@ -10,6 +10,10 @@ const Onboarding = lazy(() => import("../features/auth/OnboardingPage"));
 const Legal = lazy(() => import("../features/auth/LegalPage"));
 const Account = lazy(() => import("../features/account/AccountEntry"));
 const Services = lazy(() => import("../features/services/ServicesPage"));
+const Procurement = lazy(() => import("../features/procurement/ProcurementPage"));
+const ProcurementProduct = lazy(() => import("../features/procurement/ProductDetail"));
+const ProcurementCart = lazy(() => import("../features/procurement/CartPage"));
+const ProcurementCheckout = lazy(() => import("../features/procurement/CheckoutPage"));
 const Detail = lazy(() => import("../features/services/ServiceDetailPage"));
 const Request = lazy(() => import("../features/services/ServiceRequestPage"));
 const Requests = lazy(() =>
@@ -25,6 +29,8 @@ function PageTitle() {
   useEffect(() => {
     const name = location.pathname.startsWith("/account")
       ? "个人中心"
+      : location.pathname.startsWith("/procurement")
+        ? "集采商城"
       : location.pathname.startsWith("/services")
         ? "企业服务"
         : location.pathname.startsWith("/onboarding")
@@ -63,6 +69,10 @@ export default function App() {
             <Route path="services/requests" element={<Requests />} />
             <Route path="services/:serviceId" element={<Detail />} />
             <Route path="services/:serviceId/order" element={<Request />} />
+            <Route path="procurement" element={<Procurement />} />
+            <Route path="procurement/cart" element={<ProcurementCart />} />
+            <Route path="procurement/checkout" element={<ProcurementCheckout />} />
+            <Route path="procurement/:productId" element={<ProcurementProduct />} />
             <Route path="account/*" element={<Account />} />
             <Route path="legal/:type" element={<Legal />} />
             {__DEMO__ && (["404", "403", "500", "offline"] as const).map(kind => <Route key={kind} path={`__preview/${kind}`} element={<PageState kind={kind}/>} />)}
