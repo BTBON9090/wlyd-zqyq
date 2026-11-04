@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { MapPin, CaretDown, Plus } from "@phosphor-icons/react";
 import { useApp } from "../../app/AppProvider";
 import { Modal } from "../../components/ui";
 import { blankBook, type Address, type Book } from "./delivery";
-import regions from "china-division/dist/pca-code.json";
+import { RegionSelect } from "./RegionSelect";
 import "./buyer-flow.css";
 
 function read(key: string): Book {
@@ -61,155 +61,6 @@ const empty: Address = {
   region: "",
   street: "",
 };
-function RegionSelect({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const root = useRef<HTMLFieldSetElement>(null);
-  const [province, setProvince] = useState(
-    () => regions.find((p) => value.startsWith(p.name))?.code || "",
-  );
-  const provinceData = regions.find((p) => p.code === province);
-  const [city, setCity] = useState(
-    () =>
-      provinceData?.children.find((c) => value.includes(c.name))?.code ||
-      (provinceData?.children.length === 1
-        ? provinceData.children[0].code
-        : ""),
-  );
-  const cityData = provinceData?.children.find((c) => c.code === city);
-  const [level, setLevel] = useState<"province" | "city" | "district">(
-    "province",
-  );
-  useEffect(() => {
-    if (!open) return;
-    const close = (e: PointerEvent) => {
-      if (!root.current?.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("pointerdown", close);
-    return () => document.removeEventListener("pointerdown", close);
-  }, [open]);
-  return (
-    <fieldset
-      className="buyer-region-select"
-      ref={root}
-      onKeyDown={(e) => {
-        if (e.key === "Escape") {
-          e.stopPropagation();
-          setOpen(false);
-        }
-      }}
-    >
-      <legend>省市区</legend>
-      <button
-        type="button"
-        className="buyer-region-trigger"
-        aria-label="选择省市区"
-        aria-expanded={open}
-        aria-haspopup="dialog"
-        onClick={() => {
-          setOpen(!open);
-          setLevel(province ? (city ? "district" : "city") : "province");
-        }}
-      >
-        <span>{value || "请选择省、市、区"}</span>
-        <CaretDown size={16} />
-      </button>
-      {open && (
-        <div
-          className="buyer-region-menu"
-          role="dialog"
-          aria-label="选择省市区"
-        >
-          <div className="buyer-region-tabs">
-            <button
-              type="button"
-              aria-pressed={level === "province"}
-              onClick={() => setLevel("province")}
-            >
-              {provinceData?.name || "选择省份"}
-            </button>
-            <button
-              type="button"
-              disabled={!province}
-              aria-pressed={level === "city"}
-              onClick={() => setLevel("city")}
-            >
-              {cityData?.name === "市辖区"
-                ? provinceData?.name
-                : cityData?.name || "选择城市"}
-            </button>
-            <button
-              type="button"
-              disabled={!city}
-              aria-pressed={level === "district"}
-              onClick={() => setLevel("district")}
-            >
-              选择区县
-            </button>
-          </div>
-          <div className="buyer-region-options">
-            {level === "province"
-              ? regions.map((p) => (
-                  <button
-                    type="button"
-                    key={p.code}
-                    onClick={() => {
-                      setProvince(p.code);
-                      const c =
-                        p.children.length === 1 ? p.children[0].code : "";
-                      setCity(c);
-                      onChange("");
-                      setLevel(c ? "district" : "city");
-                    }}
-                  >
-                    {p.name}
-                  </button>
-                ))
-              : level === "city"
-                ? provinceData?.children.map((c) => (
-                    <button
-                      type="button"
-                      key={c.code}
-                      onClick={() => {
-                        setCity(c.code);
-                        onChange("");
-                        setLevel("district");
-                      }}
-                    >
-                      {c.name === "市辖区" ? provinceData.name : c.name}
-                    </button>
-                  ))
-                : cityData?.children?.map((a) => (
-                    <button
-                      type="button"
-                      key={a.code}
-                      onClick={() => {
-                        onChange(
-                          [
-                            provinceData?.name,
-                            cityData.name === "市辖区" || cityData.name === "县"
-                              ? ""
-                              : cityData.name,
-                            a.name,
-                          ].join(""),
-                        );
-                        setOpen(false);
-                      }}
-                    >
-                      {a.name}
-                    </button>
-                  ))}
-          </div>
-        </div>
-      )}
-    </fieldset>
-  );
-}
 export function AddressPicker({
   delivery: d,
   checkout = false,
