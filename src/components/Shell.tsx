@@ -46,6 +46,22 @@ export function Shell() {
   const authText = authCopy(authRequest?.mode ?? "login", authOnboarding);
   // 二层吸顶导航与详情页目录按真实导航高度让位，避免被主导航压住。
   useHeaderHeight();
+  useEffect(() => {
+    const header=document.querySelector<HTMLElement>(".site-header");
+    if(!header)return;
+    let frame=0;
+    const update=()=>{
+      frame=0;
+      const progress=Math.min(1,Math.max(0,window.scrollY/128));
+      header.style.setProperty("--shrink",String(progress));
+      header.dataset.shrinking=String(progress>0);
+      header.dataset.compact=String(progress===1);
+      document.documentElement.style.setProperty("--site-header-height",header.getBoundingClientRect().height+"px");
+    };
+    const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
+    update();window.addEventListener("scroll",schedule,{passive:true});
+    return ()=>{cancelAnimationFrame(frame);window.removeEventListener("scroll",schedule);};
+  }, []);
 
 
   useEffect(() => {

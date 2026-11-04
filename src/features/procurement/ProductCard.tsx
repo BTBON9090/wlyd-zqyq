@@ -1,3 +1,4 @@
+import { Package } from "@phosphor-icons/react";
 import { Link, useLocation } from "react-router-dom";
 import { ContentImage } from "../../components/ContentImage";
 import type { Product } from "./model";
@@ -12,7 +13,7 @@ export function ProductCard({ product }: { product: Product }) {
     <article className="jc-card">
       <Link className="jc-card-link" to={`/procurement/${encodeURIComponent(product.id)}`} state={{ from }}>
         <div className="jc-card-media">
-          <ContentImage src={product.image} alt={product.name} placeholder="暂无商品图片" />
+          <ContentImage src={product.image} alt={product.name} placeholder="暂无商品图片" placeholderIcon={<Package size={36} weight="duotone"/>} />
           <span className="jc-card-minimum">{product.minimum} {product.unit}起订</span>
         </div>
         <div className="jc-card-body">

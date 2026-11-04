@@ -23,3 +23,46 @@
 .po-detail-grid { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:16px; align-items:start; }.po-detail-main,.po-detail-grid aside { display:grid; gap:14px; min-width:0; }.po-panel { padding:20px; min-width:0; }.po-panel h3 { display:flex; align-items:center; gap:8px; margin:0 0 18px; color:#26374d; font-size:15px; }
 .po-items-table { overflow-x:auto; }.po-items-table table { width:100%; min-width:560px; border-collapse:collapse; font-size:12px; text-align:left; }.po-items-table th { color:#97a1b0; font-weight:500; background:#f8f9fc; }.po-items-table th,.po-items-table td { padding:11px 8px; border-bottom:1px solid #f0f1f5; }.po-items-table td small { display:block; margin-top:5px; color:#98a2b1; }.po-facts { margin:0; display:grid; gap:12px; font-size:13px; }.po-facts div { display:flex; gap:12px; justify-content:space-between; }.po-facts dt { color:#97a2b0; flex:none; }.po-facts dd { margin:0; text-align:right; color:#3f4d60; overflow-wrap:anywhere; }.po-shipment { border-top:1px solid #eef1f5; padding:14px 0; font-size:12px; }.po-shipment>div { display:flex; justify-content:space-between; }.po-shipment p,.po-shipment ul { color:#8793a5; }.po-shipment ul { padding-left:18px; }.po-total-line { display:flex; justify-content:space-between; gap:8px; align-items:center; font-size:12px; }.po-full { width:100%; margin-top:14px; }.po-confirm { padding:4px 2px; }.po-confirm>div { display:flex; justify-content:flex-end; gap:10px; margin-top:24px; }.po-error { color:#d04e47; }
 @media(max-width:900px) { .po-detail-grid { grid-template-columns:1fr; }.po-card header { flex-wrap:wrap; gap:8px 12px; } }
+.po-workspace > .v3-account-toolbar { position:sticky; top:var(--list-header-height,72px); z-index:20; background:#fff; border-radius:20px; padding:16px 20px; margin:0; }
+.po-list { gap:18px; }
+.po-card { border:0; border-radius:22px; box-shadow:0 6px 22px rgb(42 45 82 / 4%); }
+.po-card header { padding:15px 22px; background:#faf9fd; border-bottom:1px solid #eeebf5; color:#696579; font-size:14px; }
+.po-provider { padding-left:14px; border-left:1px solid #e7e1ef; color:#3d354b; font-weight:600; }
+.po-status { padding:4px 9px; border-radius:7px; background:#eee8ff; }
+.po-card-body { display:grid; grid-template-columns:minmax(0,1fr) 200px 104px; align-items:start; gap:24px; padding:24px 22px; }
+.po-item strong { font-size:16px; color:#252033; }.po-item small { color:#82758f; font-size:13px; }
+.po-card-total strong { color:#6347e9; font-size:24px; }.po-card-total small { color:#726a80; }
+.po-card-actions { display:flex; flex-direction:column; align-items:stretch; gap:8px; }.po-card-actions .button { min-height:38px; }
+.po-more { justify-self:start; border:0; border-radius:6px; padding:4px 9px; color:#6547b8; background:#f0eaff; cursor:pointer; }
+.po-deadline { font-size:12px; color:#a7600f; margin:10px 0 0; }
+.po-workspace > .v3-account-toolbar[data-stuck="true"] { border-radius:0 0 20px 20px; }
+.po-card { overflow:visible; }.po-card > header { border-radius:22px 22px 0 0; }
+.po-card-body { align-items:center; }
+.po-card-actions { align-self:center; text-align:center; }
+.po-card-actions .v3-order-text-action { min-height:28px; border:0; border-radius:9px; padding:3px 6px; color:#665482; background:transparent; font-size:14px; text-align:center; cursor:pointer; }
+.po-card-actions .v3-order-text-action:hover:not(:disabled) { color:var(--v3-purple); background:var(--v3-nav-hover); }
+.po-card-actions .v3-order-text-action:disabled { opacity:.5; cursor:not-allowed; }
+.po-card-actions .button + .v3-order-text-action { margin-top:16px; }
+.po-card header > .v3-status { margin-left:auto; font-weight:600; }
+.po-status-pending_pay { color:#8d4909; background:#ffe4b3; }
+.po-status-pending_ship { color:#2859aa; background:#dfeaff; }
+.po-status-partial { color:#5936bb; background:#e7dcff; }
+.po-status-shipped { color:#086e80; background:#d5f2f3; }
+.po-status-received,.po-status-completed { color:#12634f; background:#d2f0e3; }
+.po-status-cancelled { color:#535565; background:#e4e5ed; }
+.po-card-product { display:flex; align-items:center; min-width:0; gap:16px; }
+.po-product-icon { flex:0 0 72px; height:72px; display:grid; place-items:center; border-radius:12px; color:#8068c5; background:#eee9fa; }
+.po-card-items { display:block; min-width:0; }.po-product-names { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:16px; color:#252033; }
+.po-items-summary { position:relative; display:inline-block; margin-top:9px; }
+.po-count { border:0; padding:0; color:#76658b; background:transparent; font:inherit; font-size:13px; cursor:help; text-decoration:underline dotted; text-underline-offset:3px; }
+.po-items-popover { display:none; position:absolute; left:0; top:100%; z-index:30; width:300px; max-width:60vw; padding:14px; background:white; border:1px solid #e6e1ef; border-radius:12px; box-shadow:0 12px 30px #38275824; font-size:13px; }
+.po-items-summary:hover .po-items-popover,.po-items-summary:focus-within .po-items-popover { display:block; }
+.po-items-popover ul { list-style:none; margin:8px 0 0; padding:0; max-height:240px; overflow:auto; }.po-items-popover li { display:flex; justify-content:space-between; gap:16px; padding:6px 0; }.po-items-popover li span:first-child { overflow-wrap:anywhere; }.po-items-popover li span:last-child { white-space:nowrap; color:#76658b; }
+.po-card-product { align-self:start; }.po-quantity { display:block; color:var(--color-text-secondary); margin-top:7px; }.po-back { justify-self:start; }.po-workspace>.po-panel { border:none; border-radius:16px; }
+.po-overview header,.po-payment-actions { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; }.po-overview header h2 { margin:0; font-size:19px; overflow-wrap:anywhere; }.po-overview p,.po-payment-actions small { color:var(--color-text-secondary); font-size:13px; }.po-overview dl { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 32px; border-block:1px solid #eeecf5; padding:18px 0; }.po-overview dt { color:var(--color-text-secondary);font-size:12px; }.po-overview dd { margin:5px 0 0; white-space:pre-wrap; overflow-wrap:anywhere; }.po-overview footer { text-align:right;color:var(--color-primary-deep); }.po-detail-product { display:flex; gap:8px; align-items:center; }.po-detail-product .content-image { flex:none;width:44px;height:44px;border-radius:6px;overflow:hidden; }.po-detail-product img { width:100%;height:100%;object-fit:cover; }.po-line-note {white-space:pre-wrap;overflow-wrap:anywhere;max-width:200px;}
+.po-overview header { column-gap:24px; row-gap:12px; }
+.po-overview-meta { display:flex; align-items:center; justify-content:flex-end; gap:18px; margin-left:auto; color:var(--color-text-secondary); font-size:13px; }
+.po-overview .po-payment-actions { flex-basis:100%; justify-content:flex-end; }
+.po-items-table table { font-size:14px; line-height:1.55; }
+.po-items-table td small { font-size:13px; }
+@media(max-width:600px) { .po-overview-meta { margin-left:0; flex-wrap:wrap; } }

@@ -8,6 +8,7 @@ import { AdaptiveTabs } from "../../components/AdaptiveTabs";
 import { RefundCard, RefundDetail } from "./RefundCard";
 import { OrderDetail } from "./OrderDetail";
 import { ReviewCenter } from "./ReviewCenter";
+import { ordersGateway } from "../procurement/orders/gateway";
 import ProcurementOrders from "../procurement/orders/ProcurementOrders";
 import { useStickyList } from "../../components/useStickyList";
 import { EmptyState, ErrorNotice, Input, Modal } from "../../components/ui";
@@ -35,10 +36,19 @@ export default function AccountV3Page() {
   const [params,setParams]=useSearchParams();
   const client=useQueryClient();
   const section=pathname==="/account/orders/procurement" ? "procurement" : pathname==="/account" || pathname==="/account/orders/services" ? "orders" : pathname==="/account/aftersales" ? "refunds" : pathname==="/account/invoices" ? "invoices" : pathname==="/account/reviews" ? "reviews" : "empty";
-  const title=section==="procurement" ? "我的订单" : section==="orders" ? "我的订单" : section==="refunds" ? "售后管理" : section==="invoices" ? "我的发票" : [...subnav,...othernav.map(n=>[n.to,n.label]),["/account/overview","工作台总览"],["/account/enterprise","企业档案与资质"]].find(n=>n[0]===pathname)?.[1] || "个人中心";
+  const procurementDetail=section==="procurement" && params.has("order");
+  const title=procurementDetail && params.get("payment")==="success" ? "支付结果" : procurementDetail ? "订单详情" : section==="procurement" ? "我的订单" : section==="orders" ? "我的订单" : section==="refunds" ? "售后管理" : section==="invoices" ? "我的发票" : [...subnav,...othernav.map(n=>[n.to,n.label]),["/account/overview","工作台总览"],["/account/enterprise","企业档案与资质"]].find(n=>n[0]===pathname)?.[1] || "个人中心";
   const data=useQuery({queryKey:["account-commerce",session?.id],queryFn:accountGateway.load,enabled:!!session,retry:false});
   const orders=data.data?.orders || [], refunds=data.data?.refunds || [], invoices=data.data?.invoices || [];
   const [expanded,setExpanded]=useState(true);
+  const [procurementExpanded,setProcurementExpanded]=useState(pathname==="/account/orders/procurement");
+  const procurementOrders=useQuery({
+    queryKey:["procurement-orders",session?.id],
+    queryFn:()=>ordersGateway.list(session!.id),
+    enabled:!!session && (procurementExpanded || section==="procurement"),
+    retry:false,
+  });
+  useEffect(()=>{if(pathname==="/account/orders/procurement")setProcurementExpanded(true);},[pathname]);
   const [filter,setFilter]=useState("all");
   const [draft,setDraft]=useState("");
   const [search,setSearch]=useState("");
@@ -98,19 +108,19 @@ export default function AccountV3Page() {
       <aside className="v3-account-sidebar">
         <div className="v3-account-user"><span>{session?.name.slice(0,1)||"万"}</span><div><strong>{session?.name||"我的园区"}</strong><small>{session?.enterprise||"连接专业，安心办事"}</small></div></div>
         <div className="v3-sidebar-scroll" data-sidebar-scroll>
-        <div className="v3-sidebar-caption">功能菜单</div>
-        <NavLink to="/account/overview"><SquaresFour/>工作台总览</NavLink>
-        <NavLink to="/account/enterprise"><Buildings/>企业档案与资质</NavLink>
-        <button className={`v3-sidebar-group${pathname === "/account" || subnav.some(([to]) => pathname === to || pathname.startsWith(`${to}/`)) ? " is-active" : ""}`} onClick={()=>setExpanded(!expanded)} aria-expanded={expanded}><Briefcase/>企业服务管理<CaretDown style={{transform:expanded?"none":"rotate(-90deg)"}} size={15}/></button>
-        {expanded&&<nav className="v3-account-subnav" aria-label="企业服务管理">{subnav.map(([to,label])=><NavLink key={to} to={to} className={({isActive})=>(isActive||(pathname==="/account"&&label==="我的订单"))?"active":""}>{label}{session&&["我的订单","售后管理","我的发票"].includes(label)&&<span>{label==="我的订单"?orders.length:label==="售后管理"?refunds.length:invoices.filter(i=>i.status==="available").length}</span>}</NavLink>)}</nav>}
-        <nav className="v3-account-other" aria-label="其他功能">{othernav.map(({to,label,Icon})=>to==="/account/orders/procurement"&&section==="procurement"?<span key={to}><NavLink to={to}><Icon/>{label}</NavLink><nav className="v3-account-subnav" aria-label="大宗商品与集采"><NavLink to={to}>我的订单</NavLink></nav></span>:<NavLink key={to} to={to}><Icon/>{label}</NavLink>)}</nav>
+
+        <NavLink to="/account/overview"><SquaresFour/><span className="v3-nav-label">工作台总览</span></NavLink>
+        <NavLink to="/account/enterprise"><Buildings/><span className="v3-nav-label">企业档案与资质</span></NavLink>
+        <button className={`v3-sidebar-group${pathname === "/account" || subnav.some(([to]) => pathname === to || pathname.startsWith(`${to}/`)) ? " is-active" : ""}`} onClick={()=>setExpanded(!expanded)} aria-expanded={expanded}><Briefcase/><span className="v3-nav-label">企业服务管理</span><CaretDown style={{transform:expanded?"none":"rotate(-90deg)"}} size={15}/></button>
+        {expanded&&<nav className="v3-account-subnav" aria-label="企业服务管理">{subnav.map(([to,label])=><NavLink key={to} to={to} className={({isActive})=>(isActive||(pathname==="/account"&&label==="我的订单"))?"active":""}><span className="v3-nav-label">{label}</span>{session&&["我的订单","售后管理","我的发票"].includes(label)&&<span>{label==="我的订单"?orders.length:label==="售后管理"?refunds.length:invoices.filter(i=>i.status==="available").length}</span>}</NavLink>)}</nav>}
+        <nav className="v3-account-other" aria-label="其他功能">{othernav.map(({to,label,Icon})=>to==="/account/orders/procurement"?<div key={to}><button type="button" className={`v3-sidebar-group${section==="procurement"?" is-active":""}`} aria-expanded={procurementExpanded} onClick={()=>setProcurementExpanded(!procurementExpanded)}><Icon/><span className="v3-nav-label">{label}</span><CaretDown size={15} style={{transform:procurementExpanded?"none":"rotate(-90deg)"}}/></button>{procurementExpanded&&<nav className="v3-account-subnav" aria-label="大宗商品与集采"><NavLink to={to}><span className="v3-nav-label">我的订单</span>{session && procurementOrders.data && <span>{procurementOrders.data.length}</span>}</NavLink></nav>}</div>:<NavLink key={to} to={to}><Icon/><span className="v3-nav-label">{label}</span></NavLink>)}</nav>
         <div className="v3-sidebar-support"><Headset size={20}/><div><strong>服务有回应</strong><small>让每一次合作更安心</small></div></div>
         </div>
       </aside>
       <div className="v3-account-main">
         {detailOrder ? <OrderDetail order={detailOrder} refunds={refunds} invoices={invoices} reviews={data.data?.reviews||[]} onBack={()=>{const next=new URLSearchParams(params);next.delete("order");setParams(next);}} onCopy={()=>void copy(detailOrder.id)} onAccept={()=>open({type:"accept",order:detailOrder})} onRefund={()=>open({type:"refund",order:detailOrder})} onInvoice={invoice=>open({type:invoice.status==="available"?"invoice":"invoiceDetail",invoice,order:detailOrder})} canRefund={canRefund(detailOrder)}/> : <>
         <header className="v3-account-heading"><div><span className="v3-account-heading-icon">{section==="refunds"?<Headset size={27}/>:section==="invoices"?<Receipt size={27}/>:<ClipboardText size={27}/>}</span><div><h1>{title}</h1><p>{section==="procurement"?"大宗商品与集采订单及履约进度。":section==="orders"?"从合作开始到服务交付，进展尽在掌握。":section==="refunds"?"跟进每一次售后申请，让问题得到妥善解决。":section==="invoices"?"开票申请、进度与记录，集中管理更清晰。":"您的企业事务，在这里有序管理。"}</p></div></div>{session&&<span className="v3-account-enterprise"><Buildings size={17}/>{session.enterprise||session.name}</span>}</header>
-        {loading?<div className="v3-account-loading" role="status">正在读取账号信息…</div>:!session?<div className="v3-account-guest"><Missing title="登录后，掌握每一项业务进展" description="查看订单、处理售后与管理发票，让企业事务井然有序。"/><ErrorNotice error={authError}/><button className="button primary" onClick={()=>openAuth({returnTo:pathname})}>登录 / 注册 <ArrowRight size={16}/></button></div>:section==="procurement"?<ProcurementOrders userId={session.id}/>:section==="empty"?<div className="v3-account-panel"><Missing title={`暂无${title}内容`} description="相关内容将在这里集中展示。"/></div>:data.isPending?<div className="v3-account-loading" role="status" aria-busy="true">正在加载服务记录…</div>:data.isError?<EmptyState error title="服务记录暂时无法加载" description={data.error.message} action="重试" onAction={()=>void data.refetch()}/>:section==="reviews"?<ReviewCenter orders={orders} reviews={data.data?.reviews||[]} userName={session?.name||""} pending={pending} error={error} onAction={async action=>(await submit(action))??false}/>:<>
+        {loading?<div className="v3-account-loading" role="status">正在读取账号信息…</div>:!session?<div className="v3-account-guest"><Missing title="登录后，掌握每一项业务进展" description="查看订单、处理售后与管理发票，让企业事务井然有序。"/><ErrorNotice error={authError}/><button className="button primary" onClick={()=>openAuth({returnTo:pathname})}>登录 / 注册 <ArrowRight size={16}/></button></div>:section==="procurement"?<ProcurementOrders userId={session.id} query={procurementOrders}/>:section==="empty"?<div className="v3-account-panel"><Missing title={`暂无${title}内容`} description="相关内容将在这里集中展示。"/></div>:data.isPending?<div className="v3-account-loading" role="status" aria-busy="true">正在加载服务记录…</div>:data.isError?<EmptyState error title="服务记录暂时无法加载" description={data.error.message} action="重试" onAction={()=>void data.refetch()}/>:section==="reviews"?<ReviewCenter orders={orders} reviews={data.data?.reviews||[]} userName={session?.name||""} pending={pending} error={error} onAction={async action=>(await submit(action))??false}/>:<>
           <div className="v3-account-summary">{(section==="orders" ? [["全部订单",orders.length,"all"],["正在服务",orders.filter(o=>o.status==="serving").length,"serving"],["待验收",orders.filter(o=>o.status==="accepting").length,"accepting"],["已完成",orders.filter(o=>o.status==="completed").length,"completed"]] : section==="refunds" ? [["售后申请",refunds.length,"all"],["处理中",refunds.filter(r=>r.status==="processing").length,"processing"],["已退款",currency(refunds.filter(r=>r.status==="refunded").reduce((n,r)=>n+r.amount,0)),"refunded"]] : [["可开票金额",currency(invoices.filter(i=>i.status==="available").reduce((n,i)=>n+i.amount,0)),"available"],["开票中",invoices.filter(i=>i.status==="processing").length,"processing"],["已开票金额",currency(invoices.filter(i=>i.status==="issued").reduce((n,i)=>n+i.amount,0)),"issued"]]).map(([label,value,state])=><button key={label} onClick={()=>{setFilter(String(state));setPage(1);}}><span>{label}</span><strong className={typeof value === "string" && value.startsWith("¥") ? "amount-emphasis" : undefined}>{value}</strong><ArrowUpRight size={18}/></button>)}</div>
           <section className={section === "orders" || section === "refunds" ? "v3-order-workspace" : "v3-account-panel"}>
             <div className="v3-account-toolbar" data-list-sticky><AdaptiveTabs items={tabItems.map(([value,label])=>({value,label,count:tabCount(value)}))} value={filter} onChange={value=>{setFilter(value);setPage(1);}}/>

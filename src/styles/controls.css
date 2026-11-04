@@ -456,3 +456,16 @@
 .site-header .brand-mark {
   background: var(--color-primary);
 }
+
+/* The desktop header follows the scroll distance; preserve the original style at rest. */
+@media (min-width:901px) {
+  #root .site-header[data-shrinking=true] { background:white; backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:none; }
+  #root .site-header[data-shrinking=true] .header-inner { height:calc(70px - 39px * var(--shrink)); min-height:0; padding-block:0; }
+  #root .site-header[data-shrinking=true] .brand-mark { width:calc(34px - 12px * var(--shrink)); height:calc(34px - 12px * var(--shrink)); font-size:calc(23px - 8px * var(--shrink)); }
+  #root .site-header[data-shrinking=true] .brand strong { font-size:calc(15px - 3px * var(--shrink)); }
+  #root .site-header[data-shrinking=true] .brand small { display:block; overflow:hidden; max-height:calc(16px * (1 - var(--shrink))); opacity:calc(1 - var(--shrink)); margin:0; }
+  #root .site-header[data-compact=true] .brand small { display:none; }
+  #root .site-header[data-shrinking=true] .primary-nav > a,
+  #root .site-header[data-shrinking=true] .header-actions :is(.button,.user-link,.login-link) { height:calc(34px - 10px * var(--shrink)); min-height:0; padding-block:0; font-size:calc(14px - 2px * var(--shrink)); box-shadow:none; }
+  #root .site-header[data-shrinking=true] .user-avatar { width:calc(28px - 8px * var(--shrink)); height:calc(28px - 8px * var(--shrink)); }
+}

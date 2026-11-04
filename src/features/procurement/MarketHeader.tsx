@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { CaretDown, Check, ClockCounterClockwise, MagnifyingGlass, ShoppingCart } from "@phosphor-icons/react";
+import { CaretDown, Check, ClipboardText, MagnifyingGlass, ShoppingCart } from "@phosphor-icons/react";
 import { useCart } from "./cart";
-import { getCategories, resolveCategory, useProducts, type Category } from "./catalogue";
+export const channels = {buy:"集采专区",benefits:"福利商城",sourcing:"商机寻源",offers:"特价专区"} as const;
 import "./procurement.css";
 import "./market-header.css";
 
-type CategorySelectProps = {value:string; onChange:(value:string)=>void; categories:Category[]; label?:string; allLabel?:string; variant?:"search"|"filter"};
-export function CategorySelect({value,onChange,categories,label="搜索商品分类",allLabel="全部物料",variant="search"}:CategorySelectProps) {
+function ChannelSelect({value,onChange}:{value:string;onChange:(value:string)=>void}) {
+  const label="搜索频道";
   const [open,setOpen]=useState(false), [focusIndex,setFocusIndex]=useState(0);
   const menuRef=useRef<HTMLDivElement>(null), triggerRef=useRef<HTMLButtonElement>(null);
   const optionRefs=useRef<Array<HTMLButtonElement|null>>([]);
-  const options=[{id:"all",name:allLabel},...categories];
-  const selectedName=options.find((item)=>item.id===value)?.name || allLabel;
+  const options=Object.entries(channels).map(([id,name])=>({id,name}));
+  const selectedName=options.find((item)=>item.id===value)?.name || channels.buy;
   useEffect(()=>{
     if(!open)return;
     const closeOutside=(event:PointerEvent)=>{if(!menuRef.current?.contains(event.target as Node))setOpen(false);};
@@ -32,27 +32,27 @@ export function CategorySelect({value,onChange,categories,label="搜索商品分
     else return;
     event.preventDefault();setFocusIndex(next);optionRefs.current[next]?.focus();
   }
-  return <div className={`market-category-control market-${variant}-category`} ref={menuRef}>
+  return <div className="market-category-control market-search-category" ref={menuRef}>
     <button ref={triggerRef} type="button" className="market-category-trigger" aria-label={`${label}：${selectedName}`} aria-haspopup="listbox" aria-expanded={open} onClick={()=>open?setOpen(false):showOptions()} onKeyDown={(event)=>{if(event.key==="ArrowDown"||event.key==="ArrowUp"){event.preventDefault();showOptions(true);} else if(open&&event.key==="Escape"){event.preventDefault();setOpen(false);}}}>
       <span title={selectedName}>{selectedName}</span><CaretDown size={15} className={open?"is-open":""}/>
     </button>
-    {open&&<div className="market-category-menu" role="listbox" aria-label={label}>{options.map((option,index)=><button type="button" role="option" aria-selected={value===option.id} tabIndex={focusIndex===index?0:-1} ref={(node)=>{optionRefs.current[index]=node;}} key={option.id} onClick={()=>selectOption(option.id)} onKeyDown={(event)=>onOptionKey(event,index)}><span>{option.name}</span>{value===option.id&&<Check size={16}/>}</button>)}{categories.length===0&&<p>暂无其他物资分类</p>}</div>}
+    {open&&<div className="market-category-menu" role="listbox" aria-label={label}>{options.map((option,index)=><button type="button" role="option" aria-selected={value===option.id} tabIndex={focusIndex===index?0:-1} ref={(node)=>{optionRefs.current[index]=node;}} key={option.id} onClick={()=>selectOption(option.id)} onKeyDown={(event)=>onOptionKey(event,index)}><span>{option.name}</span>{value===option.id&&<Check size={16}/>}</button>)}</div>}
   </div>;
 }
 
 export function MarketHeader() {
   const navigate=useNavigate(); const [params]=useSearchParams();
-  const products=useProducts(); const cart=useCart(); const categories=getCategories(products.data||[]);
-  const query=(params.get("q")||"").trim().slice(0,100), cat=resolveCategory(params.get("cat")||"all",categories);
-  const [draft,setDraft]=useState(query), [selected,setSelected]=useState(cat);
-  useEffect(()=>setDraft(query),[query]); useEffect(()=>setSelected(cat),[cat]);
-  function search() { const next=new URLSearchParams({view:"all"}); if(draft.trim())next.set("q",draft.trim());if(selected!=="all")next.set("cat",selected);navigate(`/procurement?${next}`); }
+  const cart=useCart(), channel=params.get("channel") || "buy", query=params.get("q")||"";
+  const [draft,setDraft]=useState(query);
+  useEffect(()=>setDraft(query),[query]);
+  function switchChannel(id:string){navigate(id==="buy"?"/procurement":`/procurement?channel=${id}`);setDraft("");window.scrollTo(0,0);}
+  function search() { const next=new URLSearchParams({view:"all"}); if(draft.trim())next.set("q",draft.trim());if(channel!=="buy")next.set("channel",channel);navigate(`/procurement?${next}`);window.scrollTo(0,0); }
   return <div className="market-search-band"><div className="market-width market-search-row">
     <form className="market-search" role="search" onSubmit={(event)=>{event.preventDefault();search();}}>
-      <CategorySelect value={selected} onChange={setSelected} categories={categories}/>
+      <ChannelSelect value={channel} onChange={switchChannel}/>
       <MagnifyingGlass size={20}/><input aria-label="搜索商品、品牌或物料编码" value={draft} onChange={(event)=>setDraft(event.target.value)} maxLength={100} placeholder="搜索工业品、紧固件、品牌或物料编码…"/>
       <button type="submit" className="market-search-submit"><MagnifyingGlass size={17}/> 搜索</button>
     </form>
-    <div className="market-search-actions"><Link className="market-order-link" to="/account/orders/procurement"><ClockCounterClockwise size={19}/> 我的订单</Link><Link className="market-cart-button" to="/procurement/cart"><ShoppingCart size={20}/> 购物车{cart.count>0 && <span>{cart.count}</span>}</Link></div>
+    <div className="market-search-actions"><Link className="button secondary market-order-link" to="/account/orders/procurement"><ClipboardText size={19}/> 我的订单</Link><Link className="button primary market-cart-button" to="/procurement/cart"><ShoppingCart size={20}/> 购物车{cart.count>0 && <span>{cart.count}</span>}</Link></div>
   </div></div>;
 }

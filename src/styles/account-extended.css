@@ -138,3 +138,12 @@ html[data-design-version] body:has(.desktop-page) { overflow-x: visible; }
 .review-upload-add { width: 88px; height: 88px; display: grid; place-items: center; align-content: center; gap: 4px; border: 1px dashed #d7d0ea; border-radius: 12px; background: #faf9fd; color: #7a6ea0; font-size: 11px; cursor: pointer; }
 .review-upload-add:hover { border-color: #b9aef0; color: #6456f2; background: #f5f2ff; }
 .review-upload-error { margin: 0; font-size: 12px; color: var(--color-danger); }
+/* 个人中心与企业服务使用统一导航尺寸；短内容页也保留完整的侧栏空间。 */
+.desktop-page .v3-account-layout { min-height: calc(100vh - var(--list-header-height, 72px) - 48px); }
+.desktop-page .v3-account-sidebar :is(.v3-sidebar-scroll > a, .v3-account-other > a, .v3-sidebar-group),
+.desktop-page .service-v2-sidebar :is(.service-page-links a, nav > button) { gap: 10px; }
+.desktop-page .v3-account-sidebar :is(.v3-sidebar-scroll > a, .v3-account-other > a, .v3-sidebar-group) > svg:first-child,
+.desktop-page .service-v2-sidebar :is(.service-page-links a, nav > button) > svg:first-child { width: 18px; height: 18px; flex: 0 0 18px; }
+.v3-account-sidebar :is(.v3-sidebar-scroll > a,.v3-account-other a,.v3-sidebar-group) { min-width:0; white-space:nowrap; }
+.v3-account-sidebar .v3-nav-label { display:block; flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.v3-account-sidebar .v3-sidebar-group > svg:last-child { flex:0 0 15px; }

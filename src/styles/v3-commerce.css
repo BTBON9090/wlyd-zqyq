@@ -172,8 +172,8 @@ html[data-design-version="v3"] :is(.service-v3, .product-detail-v3, .v3-account-
 .v3-account-subnav { border-left: 1px solid #eae3fa; margin: 10px 3px 12px 22px; padding-left: 9px; }
 .v3-account-subnav a { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; margin: 2px 0; border-radius: 8px; font-size: 14px; color: #757082; }
 .v3-account-subnav a.active, .v3-account-other a.active, .v3-account-sidebar > a.active { color: #6456f2; font-weight: 600; background: linear-gradient(100deg, #eee8ff, #f4f7ff); }
-.v3-account-subnav a > span { min-width: 22px; text-align: center; font-size: 12px; color: #8b7ba9; background: #f3f0f7; border-radius: 6px; }
-.v3-account-subnav a.active > span { color: #7860d9; background: #e8e0ff; }
+.v3-account-subnav a > span:not(.v3-nav-label) { min-width: 22px; text-align: center; font-size: 12px; color: #8b7ba9; background: #f3f0f7; border-radius: 6px; }
+.v3-account-subnav a.active > span:not(.v3-nav-label) { color: #7860d9; background: #e8e0ff; }
 .v3-account-other { margin-top: 15px; padding-top: 11px; border-top: 1px solid #efedf6; }
 .v3-sidebar-support { display: flex; align-items: center; gap: 12px; margin: 22px 9px 0; padding-top: 20px; border-top: 1px solid #efedf6; color: #9a8cc0; }
 .v3-sidebar-support strong { font-size: 12px; font-weight: 500; color: #797186; }
@@ -1143,3 +1143,5 @@ html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a
 .v3-order-state .v3-status-pending { color: #8d4909; background: #ffe4b3; }
 .v3-order-state .v3-status-completed { color: #12634f; background: #d2f0e3; }
 .v3-order-state .v3-status-closed { color: #535565; background: #e4e5ed; }
+/* Shared dimensions for the purchase and contact actions on both detail pages. */
+.product-detail-v3 :is(.product-actions,.procurement-detail-actions) > .button { box-sizing:border-box; flex:0 1 145px; min-width:0; height:44px; min-height:44px; padding:0 16px; justify-content:center; border-radius:var(--control-radius,12px); }

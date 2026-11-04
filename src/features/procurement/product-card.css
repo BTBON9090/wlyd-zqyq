@@ -18,7 +18,7 @@
 .jc-card-media .content-image, .jc-card-media picture, .jc-card-media img { width: 100%; height: 100%; }
 .jc-card-media .content-image[data-empty="true"] { background: var(--color-surface-subtle); color: var(--color-text-muted); }
 .jc-card-media .image-empty-label { font-size: 12px; }
-.jc-card-media img { display: block; object-fit: contain; transition: transform .35s; }
+.jc-card-media img { display: block; object-fit: cover; transition: transform .35s; }
 .jc-card:hover .jc-card-media img { transform: scale(1.025); }
 .jc-card-minimum { position: absolute; top: 12px; right: 12px; padding: 5px 9px; border-radius: 99px; background: rgb(29 40 62 / 76%); color: #fff; font-size: 12px; line-height: 1.3; }
 .jc-card-body { padding: 16px; }
@@ -30,7 +30,11 @@
 .jc-card-spec { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
 .jc-card-pricing { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px; margin-top: 15px; }
 .jc-card-pricing > span, .jc-card-pricing small, .jc-card-pricing del { color: var(--color-text-muted); font-size: 12px; }
-.jc-card-pricing strong { color: var(--color-price); font-size: 20px; line-height: 1.25; font-weight: 700; }
+.jc-card-pricing strong { color: var(--color-primary); font-size: 20px; line-height: 1.25; font-weight: 700; }
 .jc-card-pricing del { margin-left: 2px; }
 .jc-card-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 10px; padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 12px; line-height: 1.4; }
 @media (prefers-reduced-motion: reduce) { .jc-card, .jc-card-media img { transition: none; } .jc-card:hover, .jc-card:hover .jc-card-media img { transform: none; } }
+.jc-card { border:0; box-shadow:0 3px 14px #30274c0a; }
+.jc-card-media { aspect-ratio:1; }
+.jc-card-body { padding:12px 14px 14px; }.jc-card-tags { min-height:0; }.jc-card-title { min-height:0; margin:7px 0 3px; }.jc-card-pricing { margin-top:8px; }
+.jc-card-meta { border:0; padding:0; margin-top:8px; justify-content:flex-start; }
