@@ -53,3 +53,19 @@
 
 .market-category-flyout .market-group-link { white-space:nowrap; }
 .market-facet button { padding:2px 9px; line-height:1.4; border-radius:999px; }
+
+.market-hero {
+  background-color:#222; background-image:linear-gradient(100deg,#191919,#373737);
+  justify-content:flex-end; padding:clamp(22px,2.5vw,36px); gap:24px;
+}
+.market-hero-tag {
+  padding:0; border:0; background:none; border-radius:0; color:#eee;
+  font-size:13px; font-weight:500; letter-spacing:.06em;
+}
+.market-hero-tag::before { content:""; width:22px; height:2px; background:currentColor; margin-right:4px; }
+.market-hero h1 { margin:12px 0 8px; max-width:19em; font-size:clamp(25px,2.25vw,35px); font-weight:700; text-wrap:balance; }
+.market-hero-content > p { max-width:34em; color:#eee; font-size:14px; line-height:1.6; }
+.market-hero-action { color:#222; background:#fff; }
+.market-hero-action:hover { background:#eee; }
+.market-carousel-controls > button { background:rgb(0 0 0 / 60%); }
+.market-carousel-controls > button:hover { background:#161616; }
