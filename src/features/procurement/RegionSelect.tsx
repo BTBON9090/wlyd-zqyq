@@ -7,13 +7,13 @@ const cityPart = (name: string) => ["市辖区", "县"].includes(name) ? "" : na
 function initialPath(value: string) {
   const province = regions.find(p => value.startsWith(p.name));
   for (const c of province?.children ?? []) {
-    const district = c.children.find(a => province!.name + cityPart(c.name) + a.name === value);
+    const district = c.children.find(a => value.startsWith(province!.name + cityPart(c.name) + a.name));
     if (district) return [province!.code, c.code, district.code];
   }
   return [province?.code || "", "", ""];
 }
 
-export function RegionSelect({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+export function RegionSelect({ value, onChange, compact = false }: { value: string; onChange: (v: string) => void; compact?: boolean }) {
   const menuId = useId();
   const root = useRef<HTMLFieldSetElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -75,10 +75,10 @@ export function RegionSelect({ value, onChange }: { value: string; onChange: (v:
     (selected || choices.current.querySelector("button"))?.focus();
   }, [level, open]);
 
-  return <fieldset ref={root} className="buyer-region-select" onBlur={e => {
+  return <fieldset ref={root} className={"buyer-region-select" + (compact ? " buyer-region-compact" : "")} onBlur={e => {
     if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) setOpen(false);
   }}>
-    <legend>省市区</legend>
+    <legend className={compact ? "sr-only" : undefined}>省市区</legend>
     <button type="button" ref={trigger} className="buyer-region-trigger" aria-label={'选择省市区' + (value ? '：' + value : '')}
       aria-expanded={open} aria-controls={open ? menuId : undefined} onClick={toggle}>
       <MapPin size={17}/><span>{value || "请选择省、市、区"}</span><CaretDown size={16}/>

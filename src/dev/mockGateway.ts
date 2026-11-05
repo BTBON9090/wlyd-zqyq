@@ -21,6 +21,11 @@ const accountsSchema = z.record(
 );
 const accounts = () => readStored("accounts", accountsSchema, {});
 let current = readStored("session", sessionSchema.nullable(), null);
+// Update only the old built-in demo identity; keep real and custom accounts intact.
+if (current?.id === "demo-enterprise-user" && current.name === "丁野") {
+  current = { ...current, name: "林远" };
+  writeStored("session", current);
+}
 const otpRecords = new Map<
   string,
   { expires: number; sentAt: number; attempts: number }

@@ -103,12 +103,10 @@ export function ShipmentRecords({
               <dt>发货时间</dt>
               <dd>{shipment.time}</dd>
             </div>
-            {!shipment.received && shipment.autoReceiveAt && (
-              <div>
-                <dt>自动签收时间</dt>
-                <dd>{shipment.autoReceiveAt}</dd>
-              </div>
-            )}
+            <div className="dispatch-receipt-time">
+              <dt>{shipment.received ? "签收时间" : "自动签收时间"}</dt>
+              <dd>{(shipment.received ? shipment.receivedAt : shipment.autoReceiveAt) || "—"}</dd>
+            </div>
           </dl>
           <div className="dispatch-lines">
             <small>本次发货商品</small>

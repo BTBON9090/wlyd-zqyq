@@ -7,12 +7,12 @@ import "./procurement.css";
 import "./market-header.css";
 
 function ChannelSelect({value,onChange}:{value:string;onChange:(value:string)=>void}) {
-  const label="搜索频道";
+  const label="搜索类型";
   const [open,setOpen]=useState(false), [focusIndex,setFocusIndex]=useState(0);
   const menuRef=useRef<HTMLDivElement>(null), triggerRef=useRef<HTMLButtonElement>(null);
   const optionRefs=useRef<Array<HTMLButtonElement|null>>([]);
-  const options=Object.entries(channels).map(([id,name])=>({id,name}));
-  const selectedName=options.find((item)=>item.id===value)?.name || channels.buy;
+  const options=[{id:"product",name:"商品"},{id:"shop",name:"店铺"}];
+  const selectedName=options.find((item)=>item.id===value)?.name || "商品";
   useEffect(()=>{
     if(!open)return;
     const closeOutside=(event:PointerEvent)=>{if(!menuRef.current?.contains(event.target as Node))setOpen(false);};
@@ -43,14 +43,15 @@ function ChannelSelect({value,onChange}:{value:string;onChange:(value:string)=>v
 export function MarketHeader() {
   const navigate=useNavigate(); const [params]=useSearchParams();
   const cart=useCart(), channel=params.get("channel") || "buy", query=params.get("q")||"";
+  const [searchType,setSearchType]=useState(params.get("searchType")==="shop"?"shop":"product");
+  useEffect(()=>setSearchType(params.get("searchType")==="shop"?"shop":"product"),[params]);
   const [draft,setDraft]=useState(query);
   useEffect(()=>setDraft(query),[query]);
-  function switchChannel(id:string){navigate(id==="buy"?"/procurement":`/procurement?channel=${id}`);setDraft("");window.scrollTo(0,0);}
-  function search() { const next=new URLSearchParams({view:"all"}); if(draft.trim())next.set("q",draft.trim());if(channel!=="buy")next.set("channel",channel);navigate(`/procurement?${next}`);window.scrollTo(0,0); }
+  function search() { const next=new URLSearchParams({view:"all"}); if(draft.trim())next.set("q",draft.trim());if(channel!=="buy")next.set("channel",channel);if(searchType==="shop")next.set("searchType","shop");navigate(`/procurement?${next}`);window.scrollTo(0,0); }
   return <div className="market-search-band"><div className="market-width market-search-row">
     <form className="market-search" role="search" onSubmit={(event)=>{event.preventDefault();search();}}>
-      <ChannelSelect value={channel} onChange={switchChannel}/>
-      <MagnifyingGlass size={20}/><input aria-label="搜索商品、品牌或物料编码" value={draft} onChange={(event)=>setDraft(event.target.value)} maxLength={100} placeholder="搜索工业品、紧固件、品牌或物料编码…"/>
+      <ChannelSelect value={searchType} onChange={setSearchType}/>
+      <MagnifyingGlass size={20}/><input aria-label={searchType==="shop"?"搜索店铺":"搜索商品、品牌或物料编码"} value={draft} onChange={(event)=>setDraft(event.target.value)} maxLength={100} placeholder={searchType==="shop"?"搜索店铺名称…":"搜索工业品、紧固件、品牌或物料编码…"}/>
       <button type="submit" className="market-search-submit"><MagnifyingGlass size={17}/> 搜索</button>
     </form>
     <div className="market-search-actions"><Link className="button secondary market-order-link" to="/account/orders/procurement"><ClipboardText size={19}/> 我的订单</Link><Link className="button primary market-cart-button" to="/procurement/cart"><ShoppingCart size={20}/> 购物车{cart.count>0 && <span>{cart.count}</span>}</Link></div>

@@ -69,3 +69,25 @@
 .market-hero-action:hover { background:#eee; }
 .market-carousel-controls > button { background:rgb(0 0 0 / 60%); }
 .market-carousel-controls > button:hover { background:#161616; }
+.market-products-heading { top:calc(var(--site-header-height,72px) + 70px); }
+.market-shop-results h2 { font-size:20px; margin:18px 0; }
+.market-shop-results h2 small { font-size:13px; font-weight:400; color:var(--color-text-muted); margin-left:8px; }
+.market-shop-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:14px; }
+.market-shop-grid article { display:flex; align-items:center; gap:14px; padding:20px; background:#fff; border-radius:16px; }
+.market-shop-grid article > svg { color:var(--color-primary); }
+.market-shop-grid article > div { display:grid; gap:6px; flex:1; }
+.market-shop-grid small { color:var(--color-text-muted); }
+.market-shop-grid button { display:flex; align-items:center; gap:5px; border:0; background:var(--color-primary-soft); color:var(--color-primary-deep); border-radius:8px; padding:9px 12px; cursor:pointer; }
+.market-facet > .market-facet-content { display:flex; flex-wrap:wrap; align-items:flex-start; gap:4px 12px; min-width:0; }
+.market-facet-options { display:flex; flex-wrap:wrap; align-items:center; gap:4px 8px; }
+.market-facet-actions { display:flex; align-items:center; gap:8px; }
+.market-facet .market-facet-toggle, .market-facet .market-facet-multiple { display:inline-flex; align-items:center; gap:3px; padding:3px 9px; color:var(--color-primary-deep); background:var(--color-primary-soft); font-size:12px; font-weight:600; white-space:nowrap; }
+.market-facet .market-facet-toggle:hover, .market-facet .market-facet-multiple:hover { background:#dedaff; }
+.market-facet-check { display:inline-flex; align-items:center; gap:5px; padding:3px 7px; line-height:1.4; cursor:pointer; }
+.market-facet-check input { width:14px; height:14px; margin:0; accent-color:var(--color-primary); }
+.market-facet-confirm { display:flex; align-items:center; flex-basis:100%; gap:8px; padding:8px 0 2px; }
+.market-facet .market-facet-confirm button { padding:5px 14px; border-radius:7px; background:#f2f1f7; }
+.market-facet .market-facet-confirm .market-facet-apply { color:#fff; background:var(--color-primary); }
+.market-products-heading > div:first-child { align-items:center; gap:8px; }
+.market-products-heading h2 { font-size:18px; }
+.market-products-icon { flex:none; color:var(--color-primary); }

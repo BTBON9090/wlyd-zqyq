@@ -54,15 +54,15 @@ export function Cashier({
           </p>
         )}
         <footer>
-          <button className="button secondary" disabled={busy} onClick={close}>
-            稍后支付
-          </button>
           <button
             className="po-text-button"
             aria-expanded={help}
             onClick={() => setHelp(!help)}
           >
             支付遇到问题
+          </button>
+          <button className="button secondary" disabled={busy} onClick={close}>
+            稍后支付
           </button>
           <button
             className="button primary"

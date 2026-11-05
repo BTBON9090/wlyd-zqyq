@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // 候选客户端契约；正式接口、鉴权与订单状态仍需后端确认。
 export const orderItemSchema=z.object({id:z.string(),productId:z.string().optional(),name:z.string(),sku:z.string(),brand:z.string().optional(),model:z.string().optional(),spec:z.string(),unit:z.string(),quantity:z.number().int().positive(),price:z.number().nonnegative(),shipped:z.number().int().nonnegative(),image:z.string().optional(),remark:z.string().optional()});
-export const shipmentSchema=z.object({id:z.string(),company:z.string(),tracking:z.string(),time:z.string(),autoReceiveAt:z.string().optional(),received:z.boolean(),lines:z.array(z.object({itemId:z.string(),quantity:z.number().int().positive()}))});
+export const shipmentSchema=z.object({id:z.string(),company:z.string(),tracking:z.string(),time:z.string(),autoReceiveAt:z.string().optional(),receivedAt:z.string().optional(),received:z.boolean(),lines:z.array(z.object({itemId:z.string(),quantity:z.number().int().positive()}))});
 export const orderSchema=z.object({id:z.string(),supplier:z.string(),created:z.string(),status:z.enum(["pending_pay","pending_ship","shipped","received","completed","cancelled"]),receiver:z.string(),phone:z.string(),address:z.string(),note:z.string().optional(),paymentDeadline:z.string().optional(),paidAt:z.string().optional(),receivedAt:z.string().optional(),items:z.array(orderItemSchema),shipments:z.array(shipmentSchema)});
 export type ProcurementOrder=z.infer<typeof orderSchema>;
 export type OrderItem=z.infer<typeof orderItemSchema>;

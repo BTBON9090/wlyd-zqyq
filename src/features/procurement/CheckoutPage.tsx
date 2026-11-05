@@ -8,7 +8,6 @@ import {
   ArrowLeft,
   ClipboardText,
   Package,
-  Storefront,
 } from "@phosphor-icons/react";
 import { Breadcrumb } from "../../components/Shell";
 import { ContentImage } from "../../components/ContentImage";
@@ -34,6 +33,7 @@ export default function CheckoutPage() {
   const delivery = useDelivery();
   const active = delivery.active;
   const [note, setNote] = useState("");
+  const [remarks, setRemarks] = useState<Record<string,string>>({});
   const direct = params.get("product");
   const quantity = Number(params.get("quantity"));
   const checkoutItems = direct
@@ -94,7 +94,7 @@ export default function CheckoutPage() {
           price: product.price,
           shipped: 0,
           image: product.image,
-          remark: item.remark,
+          remark: remarks[item.productId] ?? item.remark,
         });
       }
       const ids = await ordersGateway.create(session.id, [...groups.values()]);
@@ -149,7 +149,7 @@ export default function CheckoutPage() {
           <div className="procurement-empty">
             <h2>购物车中的商品需要调整</h2>
             <p>部分商品已不可用或数量不符合当前配送区域的供货要求。</p>
-            <AddressPicker delivery={delivery} />
+            <AddressPicker delivery={delivery} checkout />
             <Link className="button primary" to="/procurement/cart">
               返回购物车
             </Link>
@@ -168,13 +168,6 @@ export default function CheckoutPage() {
                 </div>
                 {suppliers.map((id) => (
                   <div className="buyer-check-group" key={id}>
-                    <h3>
-                      <Storefront size={17} />
-                      {
-                        rows.find((r) => r.product?.supplierId === id)?.product
-                          ?.supplierName
-                      }
-                    </h3>
                     {rows
                       .filter((r) => r.product?.supplierId === id)
                       .map(
@@ -195,11 +188,8 @@ export default function CheckoutPage() {
                                     .join(" · ")}
                                 </small>
                                 <small>商品编码　{p.code || p.sku}</small>
-                                {item.remark && (
-                                  <small>备注：{item.remark}</small>
-                                )}
                               </div>
-                              <div>
+                              <div className="buyer-check-price">
                                 <small>
                                   {currency(p.price)} × {item.quantity} {p.unit}
                                 </small>
@@ -209,6 +199,12 @@ export default function CheckoutPage() {
                                   )}
                                 </b>
                               </div>
+                              <label className="buyer-item-remark">
+                                <textarea rows={1} aria-label={p.name + "采购备注"} maxLength={200}
+                                  placeholder="填写此商品的采购要求（选填）"
+                                  value={remarks[item.productId] ?? item.remark}
+                                  onChange={(e)=>setRemarks({...remarks,[item.productId]:e.target.value})}/>
+                              </label>
                             </article>
                           ),
                       )}

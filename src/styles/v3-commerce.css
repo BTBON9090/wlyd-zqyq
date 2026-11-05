@@ -1145,3 +1145,8 @@ html[data-design-version="v3"] .app-shell.shell-v3 .site-header .primary-nav > a
 .v3-order-state .v3-status-closed { color: #535565; background: #e4e5ed; }
 /* Shared dimensions for the purchase and contact actions on both detail pages. */
 .product-detail-v3 :is(.product-actions,.procurement-detail-actions) > .button { box-sizing:border-box; flex:0 1 145px; min-width:0; height:44px; min-height:44px; padding:0 16px; justify-content:center; border-radius:var(--control-radius,12px); }
+
+/* The search button sits 3px inside the field; its corners follow the field's arc. */
+html[data-design-version="v3"] .service-v3 .showcase-search button:not(.service-clear) {
+  border-radius: 10px;
+}

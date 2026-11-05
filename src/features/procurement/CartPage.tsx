@@ -6,10 +6,11 @@ import {
   Minus,
   Plus,
   Package,
-  Storefront,
   Barcode,
   ShoppingCart,
   Trash,
+  ListChecks,
+  FileArrowDown,
 } from "@phosphor-icons/react";
 import { Breadcrumb } from "../../components/Shell";
 import { ContentImage } from "../../components/ContentImage";
@@ -20,7 +21,7 @@ import { validQuantity } from "./model";
 import { useProducts } from "./catalogue";
 import { MarketHeader } from "./MarketHeader";
 import { quote, totals, lineAmounts } from "./delivery";
-import { AddressPicker, useDelivery } from "./AddressPicker";
+import { useDelivery } from "./AddressPicker";
 
 export default function CartPage() {
   const cart = useCart();
@@ -122,7 +123,6 @@ export default function CartPage() {
             继续选购
           </Link>
         </header>
-        <AddressPicker delivery={delivery} />
         {query.isPending ? (
           <p>正在加载商品…</p>
         ) : query.isError ? (
@@ -139,7 +139,7 @@ export default function CartPage() {
             description="浏览集采商品，或通过商品编码添加物资。"
           />
         ) : (
-          <>
+          <section className="buyer-cart-panel">
             <div className="buyer-cart-tools">
               <label>
                 <input
@@ -155,22 +155,17 @@ export default function CartPage() {
                   cart.remove(selected.map((r) => r.item.productId))
                 }
               >
-                删除所选
+                <Trash size={16} aria-hidden="true" /> 删除所选
               </button>
               <button disabled={!valid} onClick={() => exportRows(false)}>
-                导出清单
+                <ListChecks size={16} aria-hidden="true" /> 导出清单
               </button>
               <button disabled={!valid} onClick={() => exportRows(true)}>
-                导出报价单
+                <FileArrowDown size={16} aria-hidden="true" /> 导出报价单
               </button>
             </div>
             {suppliers.map((id) => (
               <section className="buyer-supplier" key={id || "unavailable"}>
-                <header>
-                  <Storefront size={19} />
-                  {rows.find((r) => r.product?.supplierId === id)?.product
-                    ?.supplierName || "不可用商品"}
-                </header>
                 {rows
                   .filter((r) => r.product?.supplierId === id)
                   .map(({ item, product: p }) => (
@@ -203,16 +198,6 @@ export default function CartPage() {
                             .join(" · ")}
                         </small>
                         <small>商品编码　{p?.code || p?.sku || "—"}</small>
-                        <textarea
-                          rows={2}
-                          aria-label={(p?.name || "商品") + "需求描述"}
-                          placeholder="添加采购备注（选填）"
-                          maxLength={200}
-                          value={item.remark}
-                          onChange={(e) =>
-                            cart.remark(item.productId, e.target.value)
-                          }
-                        />
                       </div>
                       <div className="buyer-line-price">
                         <small>含税单价</small>
@@ -296,7 +281,7 @@ export default function CartPage() {
                   ))}
               </section>
             ))}
-          </>
+          </section>
         )}
         <form
           className="buyer-quick"

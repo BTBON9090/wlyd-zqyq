@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { type UseQueryResult, useQueryClient } from "@tanstack/react-query";
 import { Link, useSearchParams } from "react-router-dom";
 import {
@@ -414,17 +414,18 @@ function OrderDetails({
   now: number;
 }) {
   const status = orderStatus(order);
-  const minutes = Math.ceil(
-    (Date.parse(order.paymentDeadline || "") - now) / 60000,
-  );
+  const seconds = Math.max(0, Math.ceil(
+    (Date.parse(order.paymentDeadline || "") - now) / 1000,
+  ));
+  const [expandedRemarks, setExpandedRemarks] = useState<string[]>([]);
   const pendingPayment = order.status === "pending_pay";
   const phone = order.phone.replace(/^(\d{3})\d{4}(\d{4})$/, "$1****$2");
   return (
     <div className="purchase-detail">
-      <button className="po-text-button po-back" onClick={back}>
-        <ArrowLeft size={16} />
-        返回订单列表
-      </button>
+      <header className="order-detail-heading">
+        <button className="v3-order-text-action" onClick={back}><ArrowLeft size={18} />返回订单列表</button>
+        <h1>订单详情</h1>
+      </header>
       <section className="detail-block purchase-summary">
         <header>
           <h2>订单 {order.id}</h2>
@@ -464,16 +465,15 @@ function OrderDetails({
             <strong>{currency(orderTotal(order))}</strong>
             {pendingPayment && (
               <>
-                <small>
-                  {!Number.isFinite(minutes)
-                    ? "支付截止时间待确认"
-                    : minutes <= 0
-                      ? "支付时间已到"
-                      : `剩余支付时间 ${Math.floor(minutes / 60)}小时 ${minutes % 60}分`}
+                <small className="purchase-countdown">
+                  {!Number.isFinite(seconds) ? "支付截止时间待确认" : seconds <= 0 ? "支付时间已到" : <>
+                    <span>剩余支付时间</span>
+                    <strong>{String(Math.floor(seconds / 3600)).padStart(2, "0")}<i>:</i>{String(Math.floor((seconds % 3600) / 60)).padStart(2, "0")}<i>:</i>{String(seconds % 60).padStart(2, "0")}</strong>
+                  </>}
                 </small>
                 <div className="purchase-actions">
                   <button
-                    className="v3-order-text-action"
+                    className="button secondary"
                     disabled={!__DEMO__}
                     onClick={() =>
                       onAction({ type: "cancel", orderId: order.id })
@@ -506,7 +506,8 @@ function OrderDetails({
             </thead>
             <tbody>
               {order.items.map((item) => (
-                <tr key={item.id}>
+                <Fragment key={item.id}>
+                <tr>
                   <td>
                     <div className="purchase-product">
                       <ContentImage
@@ -524,10 +525,9 @@ function OrderDetails({
                         </small>
                         <small>SKU 编码 · {item.sku}</small>
                         {item.remark && (
-                          <details className="purchase-remark">
-                            <summary>商品备注</summary>
-                            <p>{item.remark}</p>
-                          </details>
+                          <button className="purchase-remark-toggle" aria-expanded={expandedRemarks.includes(item.id)} onClick={() => setExpandedRemarks(current => current.includes(item.id) ? current.filter(id => id !== item.id) : [...current, item.id])}>
+                            {expandedRemarks.includes(item.id) ? "▾" : "▸"} 商品备注
+                          </button>
                         )}
                       </div>
                     </div>
@@ -543,6 +543,8 @@ function OrderDetails({
                     <b>{currency(item.price * item.quantity)}</b>
                   </td>
                 </tr>
+                {item.remark && expandedRemarks.includes(item.id) && <tr className="purchase-remark-row"><td colSpan={5}><p>{item.remark}</p></td></tr>}
+                </Fragment>
               ))}
             </tbody>
           </table>

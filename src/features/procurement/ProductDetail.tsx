@@ -18,7 +18,8 @@ import { validQuantity, type Product } from "./model";
 import { useProducts } from "./catalogue";
 import { MarketHeader } from "./MarketHeader";
 
-import { AddressPicker, useDelivery } from "./AddressPicker";
+import { useDelivery } from "./AddressPicker";
+import { RegionSelect } from "./RegionSelect";
 import { quote } from "./delivery";
 
 export default function ProductDetail() {
@@ -85,8 +86,9 @@ function ProductContent({
   product: Product;
   returnTo: string;
 }) {
-  const delivery = useDelivery(),
-    product = quote(base, delivery.region);
+  const delivery = useDelivery();
+  const [region, setRegion] = useState(delivery.active?.region || delivery.region || "");
+  const product = quote(base, region);
   const media =
     product.detailMedia ||
     product.images?.map((src) => ({ type: "image" as const, src })) ||
@@ -233,7 +235,7 @@ function ProductContent({
               </dd>
             </div>
           </dl>
-          <AddressPicker delivery={delivery} />
+          <div className="buyer-detail-region"><span>配送至</span><RegionSelect compact value={region} onChange={setRegion}/></div>
           <div className="procurement-quantity">
             <span>购买数量</span>
             <div className="procurement-stepper">

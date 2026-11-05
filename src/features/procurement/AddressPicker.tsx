@@ -159,6 +159,11 @@ export function AddressPicker({
         open={open}
         onOpenChange={setOpen}
         title={form ? (form.id ? "编辑收货地址" : "新增收货地址") : "配送地址"}
+        footer={!form && <div className="buyer-address-tools"><button className="button primary" onClick={() => {
+          setForm(empty);
+          setMakeDefault(!book.defaultId);
+          setHint("");
+        }}><Plus size={16} />新增地址</button></div>}
       >
         {form ? (
           <form className="buyer-address-form" onSubmit={submit}>
@@ -268,19 +273,6 @@ export function AddressPicker({
               </article>
             ))}
             {!book.entries.length && <p>还没有保存的收货地址。</p>}
-            <div className="buyer-address-tools">
-              <button
-                className="button primary"
-                onClick={() => {
-                  setForm(empty);
-                  setMakeDefault(!book.defaultId);
-                  setHint("");
-                }}
-              >
-                <Plus size={16} />
-                新增地址
-              </button>
-            </div>
           </div>
         )}
       </Modal>
