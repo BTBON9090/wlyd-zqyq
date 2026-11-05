@@ -150,8 +150,8 @@ export default function CheckoutPage() {
             <h2>购物车中的商品需要调整</h2>
             <p>部分商品已不可用或数量不符合当前配送区域的供货要求。</p>
             <AddressPicker delivery={delivery} checkout />
-            <Link className="button primary" to="/procurement/cart">
-              返回购物车
+            <Link className="button primary buyer-empty-back" to="/procurement/cart">
+              <ArrowLeft size={16} aria-hidden="true" /> 返回购物车
             </Link>
           </div>
         ) : (

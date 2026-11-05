@@ -5,6 +5,9 @@
   container-type: inline-size;
   color: var(--color-text);
 }
+.purchase-detail > .order-detail-heading {
+  margin-bottom: 0;
+}
 .purchase-detail .detail-block {
   min-width: 0;
   padding: 0;
@@ -40,7 +43,7 @@
 }
 .purchase-summary-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(216px, 28%);
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 34%);
   padding: 20px 24px;
   gap: 24px;
   align-items: start;
