@@ -1,3 +1,4 @@
+import { PROCUREMENT_DEMO_ACTIONS } from "../sharedApi";
 import { useState } from "react";
 import { Truck } from "@phosphor-icons/react";
 import type { ProcurementOrder, OrderAction } from "./types";
@@ -11,7 +12,7 @@ export function ShipmentRecords({
 }) {
   const [checked, setChecked] = useState<string[]>([]);
   const canReceive =
-    __DEMO__ && ["shipped", "pending_ship"].includes(order.status);
+    PROCUREMENT_DEMO_ACTIONS && ["shipped", "pending_ship"].includes(order.status);
   const available = canReceive
     ? order.shipments.filter((s) => !s.received).map((s) => s.id)
     : [];
@@ -103,12 +104,10 @@ export function ShipmentRecords({
               <dt>发货时间</dt>
               <dd>{shipment.time}</dd>
             </div>
-            {!shipment.received && shipment.autoReceiveAt && (
-              <div>
-                <dt>自动签收时间</dt>
-                <dd>{shipment.autoReceiveAt}</dd>
-              </div>
-            )}
+            <div className="dispatch-receipt-time">
+              <dt>{shipment.received ? "签收时间" : "自动签收时间"}</dt>
+              <dd>{(shipment.received ? shipment.receivedAt : shipment.autoReceiveAt) || "—"}</dd>
+            </div>
           </dl>
           <div className="dispatch-lines">
             <small>本次发货商品</small>

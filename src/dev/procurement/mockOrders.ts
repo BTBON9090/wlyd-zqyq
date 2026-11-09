@@ -27,7 +27,7 @@ function act(user:string,action:OrderAction){const all=read(user);const order=al
    const ids=action.type==="receiveBatch"?action.shipmentIds:[action.shipmentId];
    const selected=ids.map(id=>order.shipments.find(s=>s.id===id));
    if(!selected.length||!["pending_ship","shipped"].includes(order.status)||selected.some(s=>!s||s.received))throw new Error("所选批次中有不可签收的发货记录，请刷新订单后重试");
-   for(const shipment of selected)if(shipment)shipment.received=true;
+   for(const shipment of selected)if(shipment){shipment.received=true;shipment.receivedAt=now();}
    if(order.status==="shipped"&&order.shipments.every(s=>s.received)){order.status="received";order.receivedAt=now();}
  }
  save(user,all);

@@ -1,0 +1,19 @@
+.order-state-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid;
+}
+.order-state-icon > svg { width: 40px; height: 40px; }
+.order-state-icon-success { background: #eaf7f1; color: #158061; border-color: #ccebdd; }
+.order-state-icon-error { background: #fff0ee; color: #b93d38; border-color: #f2d0cc; }
+.order-state-icon-pending { background: #fff6e7; color: #9d641c; border-color: #efddba; }
+.order-state-icon-info { background: var(--color-primary-soft); color: var(--color-primary-deep); border-color: #e1daf5; }
+.order-state-icon.is-compact { width: 34px; height: 34px; }
+.order-state-icon.is-compact > svg { width: 19px; height: 19px; }
+.order-action-error { display: flex; align-items: center; gap: 10px; margin: 0; padding: 12px 14px; border-radius: 10px; background: #fff4f2; border: 1px solid #f2d6d2; color: #a63a35; font-size: 14px; line-height: 1.6; }
+.order-action-error p { margin: 0; overflow-wrap: anywhere; }
+.po-confirm > .order-action-error { justify-content: flex-start; margin-top: 16px; }

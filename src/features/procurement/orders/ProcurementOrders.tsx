@@ -1,3 +1,4 @@
+import { PROCUREMENT_DEMO_ACTIONS } from "../sharedApi";
 import { useEffect, useState } from "react";
 import { type UseQueryResult, useQueryClient } from "@tanstack/react-query";
 import { Link, useSearchParams } from "react-router-dom";
@@ -7,7 +8,9 @@ import {
   MapPin,
   MagnifyingGlass,
   Package,
+  Receipt,
 } from "@phosphor-icons/react";
+import { useApp } from "../../../app/AppProvider";
 import { AdaptiveTabs } from "../../../components/AdaptiveTabs";
 import { EmptyState, Modal } from "../../../components/ui";
 import { ContentImage } from "../../../components/ContentImage";
@@ -22,6 +25,9 @@ import {
 } from "./types";
 import { ShipmentRecords } from "./ShipmentRecords";
 import { Cashier, PaymentReceipt } from "./OrderPayment";
+import { OrderStateIcon } from "./OrderStateIcon";
+import { receiptFeedback } from "./receiptFeedback";
+import { ProductRemark } from "./ProductRemark";
 import "./orders.css";
 import "./order-detail.css";
 
@@ -43,6 +49,7 @@ export default function ProcurementOrders({
   query: UseQueryResult<ProcurementOrder[]>;
 }) {
   const client = useQueryClient();
+  const { toast } = useApp();
   const [params, setParams] = useSearchParams();
   const [filter, setFilter] = useState("all"),
     [search, setSearch] = useState(""),
@@ -83,16 +90,25 @@ export default function ProcurementOrders({
     setError("");
     try {
       await ordersGateway.act(userId, action);
-      await client.invalidateQueries({
-        queryKey: ["procurement-orders", userId],
-      });
+      const [updated] = await Promise.all([
+        query.refetch(),
+        client.invalidateQueries({ queryKey: ["procurement-products"] }),
+      ]);
       setAction(null);
       if (action.type === "simulatePayment") {
         setParams({ order: action.orderId, payment: "success" });
         window.scrollTo({ top: 0, behavior: "instant" });
+      } else if (action.type === "receiveShipment" || action.type === "receiveBatch") {
+        toast(updated.error
+          ? "签收已提交，订单状态暂未刷新，请刷新页面查看。"
+          : receiptFeedback(updated.data?.find(item => item.id === action.orderId), action));
+      } else if (action.type === "cancel") {
+        toast(updated.error ? "订单已取消，请刷新页面查看最新状态。" : "订单已取消，库存已恢复。");
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : "操作失败，请重试");
+      const message = e instanceof Error ? e.message : "操作失败，请重试";
+      setError(message);
+      toast(`${action.type === "simulatePayment" ? "支付失败" : action.type === "cancel" ? "取消失败" : "签收失败"}：${message}`);
     } finally {
       setBusy(false);
     }
@@ -289,7 +305,7 @@ export default function ProcurementOrders({
                             />
                             <button
                               className="v3-order-text-action"
-                              disabled={!__DEMO__}
+                              disabled={!PROCUREMENT_DEMO_ACTIONS}
                               onClick={() =>
                                 setAction({ type: "cancel", orderId: o.id })
                               }
@@ -348,9 +364,10 @@ export default function ProcurementOrders({
                 : "确认收到该批次商品？"}
           </p>
           {error && (
-            <p role="alert" className="po-error">
-              {error}
-            </p>
+            <div role="alert" className="po-error order-action-error">
+              <OrderStateIcon state="error" compact />
+              <p>{error}</p>
+            </div>
           )}
           <div>
             <button
@@ -392,9 +409,9 @@ function PayButton({
   return (
     <button
       className="button primary"
-      disabled={expired || !__DEMO__}
+      disabled={expired || !PROCUREMENT_DEMO_ACTIONS}
       title={
-        expired ? "支付时间已到" : !__DEMO__ ? "支付服务尚未接入" : undefined
+        expired ? "支付时间已到" : !PROCUREMENT_DEMO_ACTIONS ? "支付服务尚未接入" : undefined
       }
       onClick={() => onAction({ type: "simulatePayment", orderId: order.id })}
     >
@@ -414,17 +431,21 @@ function OrderDetails({
   now: number;
 }) {
   const status = orderStatus(order);
-  const minutes = Math.ceil(
-    (Date.parse(order.paymentDeadline || "") - now) / 60000,
-  );
+  const seconds = Math.max(0, Math.ceil(
+    (Date.parse(order.paymentDeadline || "") - now) / 1000,
+  ));
+  const netCents = order.items.length && order.items.every(item => item.taxRate !== undefined && Number.isFinite(item.taxRate))
+    ? order.items.reduce((total, item) => total + Math.round(Math.round(item.price * 100) * item.quantity / (1 + item.taxRate! / 100)), 0)
+    : null;
   const pendingPayment = order.status === "pending_pay";
+  const totalCents = Math.round(orderTotal(order) * 100);
   const phone = order.phone.replace(/^(\d{3})\d{4}(\d{4})$/, "$1****$2");
   return (
     <div className="purchase-detail">
-      <button className="po-text-button po-back" onClick={back}>
-        <ArrowLeft size={16} />
-        返回订单列表
-      </button>
+      <header className="order-detail-heading">
+        <button className="v3-order-text-action" onClick={back}><ArrowLeft size={18} />返回订单列表</button>
+        <h1>订单详情</h1>
+      </header>
       <section className="detail-block purchase-summary">
         <header>
           <h2>订单 {order.id}</h2>
@@ -459,22 +480,26 @@ function OrderDetails({
               <p>{order.note || "无"}</p>
             </div>
           </div>
-          <aside className="purchase-settlement">
-            <small>含税订单金额</small>
-            <strong>{currency(orderTotal(order))}</strong>
+          <aside className="purchase-settlement" aria-label="订单费用明细">
+            <h3><Receipt size={18} aria-hidden="true" />费用明细</h3>
+            <dl className="purchase-cost-breakdown">
+              <div><dt>商品金额（未税）</dt><dd>{netCents === null ? "—" : currency(netCents / 100)}</dd></div>
+              <div><dt>税额</dt><dd>{netCents === null ? "—" : currency(Math.max(0, totalCents - netCents) / 100)}</dd></div>
+              <div><dt>运费</dt><dd>免运费</dd></div>
+            </dl>
+            <div className="purchase-settlement-total"><span>订单金额（含税）</span><strong>{currency(totalCents / 100)}</strong></div>
             {pendingPayment && (
               <>
-                <small>
-                  {!Number.isFinite(minutes)
-                    ? "支付截止时间待确认"
-                    : minutes <= 0
-                      ? "支付时间已到"
-                      : `剩余支付时间 ${Math.floor(minutes / 60)}小时 ${minutes % 60}分`}
+                <small className="purchase-countdown">
+                  {!Number.isFinite(seconds) ? "支付截止时间待确认" : seconds <= 0 ? "支付时间已到" : <>
+                    <span>剩余支付时间</span>
+                    <strong>{String(Math.floor(seconds / 3600)).padStart(2, "0")}<i>:</i>{String(Math.floor((seconds % 3600) / 60)).padStart(2, "0")}<i>:</i>{String(seconds % 60).padStart(2, "0")}</strong>
+                  </>}
                 </small>
                 <div className="purchase-actions">
                   <button
-                    className="v3-order-text-action"
-                    disabled={!__DEMO__}
+                    className="button secondary"
+                    disabled={!PROCUREMENT_DEMO_ACTIONS}
                     onClick={() =>
                       onAction({ type: "cancel", orderId: order.id })
                     }
@@ -523,12 +548,7 @@ function OrderDetails({
                             .join(" · ")}
                         </small>
                         <small>SKU 编码 · {item.sku}</small>
-                        {item.remark && (
-                          <details className="purchase-remark">
-                            <summary>商品备注</summary>
-                            <p>{item.remark}</p>
-                          </details>
-                        )}
+                        {item.remark && <ProductRemark text={item.remark}/> }
                       </div>
                     </div>
                   </td>

@@ -1,8 +1,11 @@
+import { UAT } from "../../../uat/api";
 import { useState } from "react";
-import { Buildings, CheckCircle } from "@phosphor-icons/react";
+import { Buildings } from "@phosphor-icons/react";
 import { Modal } from "../../../components/ui";
+import { SHARED_PROCUREMENT } from "../sharedApi";
 import { currency } from "../../../lib/money";
 import { orderTotal, type ProcurementOrder } from "./types";
+import { OrderStateIcon } from "./OrderStateIcon";
 
 export function Cashier({
   order,
@@ -38,31 +41,32 @@ export function Cashier({
           <legend>支付方式</legend>
           <label>
             <Buildings size={19} />
-            企业在线支付
+            {UAT ? "UAT 模拟支付" : SHARED_PROCUREMENT ? "模拟企业支付" : "企业在线支付"}
             <input type="radio" name="payment-method" defaultChecked />
           </label>
         </fieldset>
-        <small>本地演示支付，不会实际扣款。</small>
+        <small>{UAT ? "UAT 模拟支付，不会实际扣款。" : "演示支付，不会实际扣款。"}</small>
         {help && (
           <p role="status" className="cashier-help">
             可先选择“稍后支付”，再从待支付订单重新打开收银台。支付超时后请重新下单。
           </p>
         )}
         {(error || expired) && (
-          <p className="po-error" role="alert">
-            {error || "支付时间已到"}
-          </p>
+          <div className="po-error order-action-error" role="alert">
+            <OrderStateIcon state={error ? "error" : "pending"} compact />
+            <p>{error || "支付时间已到，请重新下单。"}</p>
+          </div>
         )}
         <footer>
-          <button className="button secondary" disabled={busy} onClick={close}>
-            稍后支付
-          </button>
           <button
             className="po-text-button"
             aria-expanded={help}
             onClick={() => setHelp(!help)}
           >
             支付遇到问题
+          </button>
+          <button className="button secondary" disabled={busy} onClick={close}>
+            稍后支付
           </button>
           <button
             className="button primary"
@@ -88,15 +92,15 @@ export function PaymentReceipt({
 }) {
   return (
     <section className="detail-block purchase-receipt">
-      <CheckCircle size={56} weight="duotone" aria-hidden="true" />
-      <h2>支付成功</h2>
-      <p>
+      <OrderStateIcon state="success" />
+      <h2>{UAT ? "UAT 模拟支付成功" : SHARED_PROCUREMENT ? "模拟支付成功" : "支付成功"}</h2>
+      <p className="purchase-receipt-amount">
         已支付 <strong>{currency(orderTotal(order))}</strong>
       </p>
       <dl>
         {[
           ["订单号", order.id],
-          ["支付方式", "企业在线支付"],
+          ["支付方式", UAT ? "UAT 模拟支付" : SHARED_PROCUREMENT ? "模拟企业支付" : "企业在线支付"],
           ["支付时间", order.paidAt],
         ].map(([k, v]) => (
           <div key={k}>

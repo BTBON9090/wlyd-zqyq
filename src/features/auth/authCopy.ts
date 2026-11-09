@@ -1,3 +1,4 @@
+import { UAT } from "../../uat/api";
 import type { AuthMode } from "../../app/AppProvider";
 
 /** 登录弹窗外壳的标题与说明，与面板内容一一对应。 */
@@ -5,7 +6,7 @@ export function authCopy(mode: AuthMode, onboarding: boolean) {
   if (mode === "reset")
     return {
       title: "重置登录密码",
-      description: "验证手机号后，设置一个新的密码。",
+      description: UAT ? "验证当前密码后，设置一个新的密码。" : "验证手机号后，设置一个新的密码。",
     };
   if (mode === "register")
     return {

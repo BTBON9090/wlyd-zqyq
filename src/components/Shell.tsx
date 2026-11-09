@@ -18,6 +18,10 @@ import {
   WifiSlash,
   X,
 } from "@phosphor-icons/react";
+import { UAT } from "../uat/api";
+import { useUat } from "../uat/UatSessionProvider";
+import { CloudFeedback, ProcurementAccess } from "../uat/BuyerDataControls";
+import { ProfileAvatar } from "../features/account/ProfileAvatar";
 import { useApp } from "../app/AppProvider";
 import { site } from "../lib/config";
 import { navigation } from "../data/navigation";
@@ -32,6 +36,7 @@ const AuthPanel = lazy(() =>
 );
 
 export function Shell() {
+  const uat = useUat();
   const { session, logout, toast, authRequest, openAuth, closeAuth } = useApp();
   const { commerceVersion: homeVersion } = useDesignVersion();
   const location = useLocation();
@@ -148,7 +153,7 @@ export function Shell() {
                   onClick={() => setAccountMenu((open) => !open)}
                 >
                   <span className="user-avatar" aria-hidden="true">
-                    {session.name.slice(0, 1)}
+                    <ProfileAvatar name={session.name} src={UAT ? String((uat.entries.profile.value as {avatar?:string}|null)?.avatar || "") : ""}/>
                   </span>
                   <span className="user-name">{session.name}</span>
                   <CaretDown size={13} weight="bold" />
@@ -228,7 +233,8 @@ export function Shell() {
         </div>
       )}
       <main id="main-content" className={location.pathname !== "/" ? "inner-page-content" : undefined}>
-        <Outlet />
+        {UAT && Object.values(uat.entries).some(entry => entry.error && entry.loaded) && <div className="commerce-container"><CloudFeedback/></div>}
+        {UAT && location.pathname.startsWith("/procurement") ? <ProcurementAccess><Outlet key={`${uat.user?.id || "guest"}:${uat.user?.currentParkId || ""}`}/></ProcurementAccess> : <Outlet key={UAT ? `${uat.user?.id || "guest"}:${uat.user?.currentParkId || ""}` : undefined}/> }
       </main>
       <footer className="site-footer">
         {location.pathname === "/" && (

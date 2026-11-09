@@ -1,3 +1,5 @@
+import { SHARED_PROCUREMENT } from "./sharedApi";
+import { ProductDescription } from "./ProductDescription";
 import { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {
@@ -7,8 +9,10 @@ import {
   Minus,
   Plus,
   ShoppingCart,
+  WarningCircle,
+  Storefront,
+  CaretRight,
 } from "@phosphor-icons/react";
-import { Breadcrumb } from "../../components/Shell";
 import { asset } from "../../lib/config";
 import { ContentImage } from "../../components/ContentImage";
 import { EmptyState } from "../../components/ui";
@@ -18,7 +22,8 @@ import { validQuantity, type Product } from "./model";
 import { useProducts } from "./catalogue";
 import { MarketHeader } from "./MarketHeader";
 
-import { AddressPicker, useDelivery } from "./AddressPicker";
+import { useDelivery } from "./AddressPicker";
+import { RegionSelect } from "./RegionSelect";
 import { quote } from "./delivery";
 
 export default function ProductDetail() {
@@ -85,8 +90,9 @@ function ProductContent({
   product: Product;
   returnTo: string;
 }) {
-  const delivery = useDelivery(),
-    product = quote(base, delivery.region);
+  const delivery = useDelivery();
+  const [region, setRegion] = useState(delivery.active?.region || delivery.region || "");
+  const product = quote(base, region);
   const media =
     product.detailMedia ||
     product.images?.map((src) => ({ type: "image" as const, src })) ||
@@ -104,7 +110,7 @@ function ProductContent({
   const cart = useCart();
   const { toast } = useApp();
   const navigate = useNavigate();
-  function add(buyNow = false) {
+  async function add(buyNow = false) {
     if (!validQuantity(product, quantity)) {
       setMessage(
         `请按 ${product.minimum} ${product.unit}起订、每次增加 ${product.increment} ${product.unit}选择，且不超过库存。`,
@@ -118,7 +124,7 @@ function ProductContent({
       return;
     }
     try {
-      cart.add(product, quantity);
+      await cart.add(product, quantity);
       setMessage("");
       toast("已加入购物车");
     } catch (error) {
@@ -127,17 +133,11 @@ function ProductContent({
   }
   return (
     <div className="commerce-container product-detail-v2 product-detail-v3 procurement-detail">
-      <Breadcrumb
-        detail
-        items={[
-          { label: "集采商城", to: "/procurement" },
-          {
-            label: product.category,
-            to: `/procurement?cat=${encodeURIComponent(product.categoryId)}`,
-          },
-          { label: product.name },
-        ]}
-      />
+      <nav className="market-crumb product-detail-crumb" aria-label="面包屑">
+        <Link to="/procurement"><Storefront size={17}/>商城首页</Link><CaretRight size={14}/>
+        <Link to={`/procurement?cat=${encodeURIComponent(product.categoryId)}`}><Package size={17}/>{product.category}</Link><CaretRight size={14}/>
+        <span aria-current="page">{product.name}</span>
+      </nav>
       <section className="procurement-detail-hero market-detail-hero">
         <div className="procurement-detail-gallery">
           <ContentImage
@@ -164,7 +164,7 @@ function ProductContent({
         </div>
         <div className="procurement-detail-summary">
           <h1>{product.name}</h1>
-          <p className="procurement-detail-lead">{product.description}</p>
+          <p className="procurement-detail-lead">{SHARED_PROCUREMENT ? new DOMParser().parseFromString(product.description, "text/html").body.textContent : product.description}</p>
           <div className="procurement-detail-price">
             <div>
               <span>销售价</span>
@@ -233,7 +233,7 @@ function ProductContent({
               </dd>
             </div>
           </dl>
-          <AddressPicker delivery={delivery} />
+          <div className="buyer-detail-region"><span>配送至</span><RegionSelect compact value={region} onChange={setRegion}/></div>
           <div className="procurement-quantity">
             <span>购买数量</span>
             <div className="procurement-stepper">
@@ -276,7 +276,7 @@ function ProductContent({
           </div>
           {message && (
             <p className="procurement-inline-error" role="alert">
-              {message}
+              <WarningCircle size={20} weight="fill" aria-hidden="true"/><span>{message}</span>
             </p>
           )}
           <div className="procurement-detail-actions">
@@ -299,6 +299,7 @@ function ProductContent({
       </section>
       <section className="procurement-description buyer-detail-info">
         <h2>商品信息</h2>
+        {SHARED_PROCUREMENT && <ProductDescription html={product.description} />}
         <dl>
           <div>
             <dt>商品名称</dt>
@@ -357,13 +358,13 @@ function ProductContent({
                   alt={product.name + " · 详情图 " + (i + 1)}
                 />
               ) : (
-                /^(https?:\/\/|[^:/?#]+\/)/i.test(item.src) && (
+                /^(https?:\/\/|\/api\/shared\/media\/|[^:/?#]+\/)/i.test(item.src) && (
                   <video
                     key={i}
                     controls
                     preload="metadata"
                     src={
-                      /^https?:\/\//i.test(item.src)
+                      /^(https?:\/\/|\/api\/shared\/media\/)/i.test(item.src)
                         ? item.src
                         : asset(item.src)
                     }

@@ -3,6 +3,7 @@ import { asset } from "../lib/config";
 
 /** 把配置里的相对路径解析为站点资源地址；仅接受本地路径与 HTTP(S)。 */
 function resolveSource(value?: string) {
+  if (value?.startsWith('/api/shared/media/') || value?.startsWith('/client/') || value?.startsWith('/supplier/') || value?.startsWith('/demo-product-')) return value;
   if (value && !/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(value)) return asset(value);
   return /^https?:\/\//i.test(value || "") ? value : undefined;
 }

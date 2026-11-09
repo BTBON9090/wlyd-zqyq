@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { UAT } from "../uat/api";
 import { site } from "./config";
 import {
   demandSchema,
@@ -21,6 +22,7 @@ export async function http<T>(
   schema: z.ZodType<T>,
   options: RequestInit = {},
 ): Promise<T> {
+  if (UAT) throw new ApiError("此模块保留界面演示，尚未接入 UAT 业务服务；本次操作不会生成真实业务数据。", 501);
   const controller = new AbortController();
   const timer = window.setTimeout(() => controller.abort(), 15000);
   const abort = () => controller.abort();
@@ -145,6 +147,8 @@ const api: Gateway = {
       body: JSON.stringify({ name }),
     }),
 };
-export const gateway: Gateway = __DEMO__
+const reviewedServices = async () => (await import("../dev/catalogue")).catalogue.map(service => ({ ...service, provider: service.provider + "（界面示例）" }));
+const uatReadOnly: Gateway = { ...api, services: reviewedServices, service: async id => { const service = (await reviewedServices()).find(item => item.id === id); if (!service) throw new ApiError("该服务示例不存在", 404); return service; }, receipts: async () => [], demands: async () => [] };
+export const gateway: Gateway = UAT ? uatReadOnly : __DEMO__
   ? (await import("../dev/mockGateway")).mockGateway
   : api;

@@ -18,16 +18,19 @@ html:has(.desktop-page) { overflow-x: auto; }
 html[data-design-version] body:has(.desktop-page) { overflow-x: visible; }
 .desktop-page .commerce-container, .desktop-page .v3-account-page { width: min(1360px, calc(100% - 64px)); }
 .desktop-page :is(.service-v2-sidebar,.v3-account-sidebar) { display: flex; flex-direction: column; overflow: hidden; max-height: var(--list-sidebar-height,calc(100vh - 110px)); }
-/* 页脚逼近时侧栏会被压缩高度，菜单改为内部滚动：
-   滚动条常显 + 未到底时底部渐隐，避免"菜单凭空少了几项"；空间不足时让出底部辅助卡片。 */
-.desktop-page :is(.v3-sidebar-scroll,.service-v2-sidebar > nav[aria-label="服务分类"]) { scrollbar-width: thin; scrollbar-color: #c4b9e6 transparent; }
-.desktop-page :is(.v3-sidebar-scroll,.service-v2-sidebar > nav[aria-label="服务分类"])::-webkit-scrollbar { width: 6px; }
-.desktop-page :is(.v3-sidebar-scroll,.service-v2-sidebar > nav[aria-label="服务分类"])::-webkit-scrollbar-track { background: transparent; }
-.desktop-page :is(.v3-sidebar-scroll,.service-v2-sidebar > nav[aria-label="服务分类"])::-webkit-scrollbar-thumb { background: #c4b9e6; border-radius: 999px; }
+/* 页脚逼近时侧栏会被压缩高度，菜单改为内部滚动。
+   服务分类保留细滚动条，个人中心隐藏滚动条；两者未到底时保留底部渐隐。 */
+.desktop-page .service-v2-sidebar > nav[aria-label="服务分类"] { scrollbar-width: thin; scrollbar-color: #c4b9e6 transparent; }
+.desktop-page .service-v2-sidebar > nav[aria-label="服务分类"]::-webkit-scrollbar { width: 6px; }
+.desktop-page .service-v2-sidebar > nav[aria-label="服务分类"]::-webkit-scrollbar-track { background: transparent; }
+.desktop-page .service-v2-sidebar > nav[aria-label="服务分类"]::-webkit-scrollbar-thumb { background: #c4b9e6; border-radius: 999px; }
 .desktop-page :is(.v3-sidebar-scroll,.service-v2-sidebar > nav[aria-label="服务分类"])[data-overflow="true"]:not([data-at-end="true"]) { mask-image: linear-gradient(180deg,#000 calc(100% - 26px),transparent); -webkit-mask-image: linear-gradient(180deg,#000 calc(100% - 26px),transparent); }
 [data-sidebar-compact="true"] :is(.service-side-help,.v3-sidebar-support) { display: none; }
 .v3-account-sidebar .v3-account-user { flex: 0 0 auto; }
-.v3-sidebar-scroll { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #d9d2ed transparent; }
+.v3-sidebar-scroll { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+/* Keep account navigation scrollable without a visible scrollbar. */
+.v3-account-sidebar, .v3-account-sidebar .v3-sidebar-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+.v3-account-sidebar::-webkit-scrollbar, .v3-account-sidebar .v3-sidebar-scroll::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .v3-sidebar-scroll > a { display: flex; align-items: center; gap: 10px; padding: 10px 12px; font-size: 14px; width: 100%; border-radius: 14px; }
 .v3-sidebar-scroll > a > svg { width: 20px; height: 20px; }
 .service-v2-sidebar .service-page-links, .service-v2-sidebar > h2, .service-v2-sidebar .service-side-help { flex: 0 0 auto; }

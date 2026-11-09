@@ -8,6 +8,8 @@ import {
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { gateway } from "../lib/api";
 import { DEMO } from "../lib/config";
+import { UAT } from "../uat/api";
+import { useUat } from "../uat/UatSessionProvider";
 import type { Session } from "../lib/models";
 type Context = {
   session: Session | null;
@@ -33,8 +35,10 @@ export type AuthRequest = {
 const AppContext = createContext<Context | null>(null);
 export function AppProvider({ children }: { children: ReactNode }) {
   const client = useQueryClient();
+  const uat = useUat();
   const auth = useQuery({
     queryKey: ["session"],
+    enabled: !UAT,
     queryFn: gateway.session,
     retry: false,
     staleTime: 60_000,
@@ -82,11 +86,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
   return (
     <AppContext.Provider
       value={{
-        session: auth.data ?? null,
-        loading: auth.isPending,
-        authError: auth.error,
+        session: UAT ? (uat.user ? { id: uat.user.id, name: uat.user.displayName, phone: String((uat.entries.profile.value as {phone?:string}|null)?.phone || ""), enterprise: (uat.entries.profile.value as {company?:string}|null)?.company, enterpriseStatus: "none" } : null) : auth.data ?? null,
+        loading: UAT ? uat.loading : auth.isPending,
+        authError: UAT ? (uat.error ? new Error(uat.error) : null) : auth.error,
         setSession,
         logout: async () => {
+          if (UAT) {
+            if (Object.values(uat.entries).some(entry => entry.saving || entry.revision) && !window.confirm("还有尚未保存的修改，退出将放弃这些修改，是否继续？")) throw new Error("已保留当前账号，请先处理未保存的修改。");
+            await uat.logout(); return;
+          }
           await gateway.logout();
           setSession(null);
         },

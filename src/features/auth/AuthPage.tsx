@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { z } from "zod";
+import { UAT, uatRequest } from "../../uat/api";
+import { useUat } from "../../uat/UatSessionProvider";
 import { ArrowRight, Eye, EyeSlash, ShieldCheck } from "@phosphor-icons/react";
 import { useApp } from "../../app/AppProvider";
 import { gateway } from "../../lib/api";
@@ -7,9 +9,10 @@ import { DEMO, safeReturn } from "../../lib/config";
 import { loginSchema, passwordSchema, phoneSchema } from "../../lib/models";
 import { useValidation } from "../../lib/forms";
 import { ErrorNotice, Field, Input, Modal } from "../../components/ui";
-import { LegalContent } from "./LegalPage";
+import { LegalContent, legalTitle } from "./LegalPage";
 import { type AuthMode } from "../../app/AppProvider";
 import { useDesignVersion } from "../../app/DesignVersion";
+const ACCOUNT_LOGIN = UAT || __DEMO__;
 const otpTimes = new Map<string, number>();
 
 /**
@@ -25,14 +28,18 @@ export function AuthPanel({
   returnTo?: string;
   onDone?: (target: string) => void;
 }) {
+  const uat = useUat();
+  const [displayName, setDisplayName] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
   const [current, setCurrent] = useState<AuthMode>(initialMode);
   const { commerceVersion: version } = useDesignVersion();
   const isV3 = version === "v3";
   useEffect(() => setCurrent(initialMode), [initialMode]);
   const reset = current === "reset",
     register = current === "register";
-  const { setSession, toast, skipped } = useApp();
-  const [mode, setMode] = useState<"sms" | "password">("sms");
+  const { session, setSession, toast, skipped } = useApp();
+  const authUser = UAT ? uat.user : session ? {username: localStorage.getItem("park-preview-username") || "preview_buyer"} : null;
+  const [mode, setMode] = useState<"sms" | "password">(ACCOUNT_LOGIN ? "password" : "sms");
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
   const [password, setPassword] = useState("");
@@ -62,10 +69,12 @@ export function AuthPanel({
     setError(null);
     setHint("");
     setPassword("");
+    setCurrentPassword("");
     setConfirm("");
     setOtp("");
   }, [current]);
   async function sendOtp() {
+    if (ACCOUNT_LOGIN) { setError("当前使用账号密码登录，未接通短信服务。"); return; }
     if (sending || cooldown) return;
     if (!validate(z.object({ phone: phoneSchema }), { phone })) return;
     setSending(true);
@@ -89,6 +98,26 @@ export function AuthPanel({
     event.preventDefault();
     if (lock.current) return;
     setError(null);
+    if (ACCOUNT_LOGIN) {
+      if (reset && !authUser) { setError("当前未接通短信或邮箱找回。登录后可在个人资料修改密码；无法登录时请联系管理员处理。"); return; }
+      const base = { password: z.string().min(12, "密码至少 12 位").max(128, "密码不能超过 128 位") };
+      const authSchema = reset ? z.object({ ...base, currentPassword: z.string().min(1, "请输入当前密码"), confirm: z.string().min(1, "请再次输入密码") }).refine(v => v.password === v.confirm, { path: ["confirm"], message: "两次输入的密码不一致" }) : z.object({ ...base, phone: z.string().regex(/^[A-Za-z0-9_.-]{3,40}$/, "用户名为 3–40 位字母、数字、下划线、短横线或点"), agreed: z.literal(true, { error: "请阅读并确认已了解测试使用说明和测试数据说明" }), ...(register ? { displayName: z.string().trim().min(1, "请输入姓名").max(60), confirm: z.string().min(1, "请再次输入密码") } : {}) }).refine(v => !register || v.password === v.confirm, { path: ["confirm"], message: "两次输入的密码不一致" });
+      if (!validate(authSchema, { phone: phone.trim(), password, currentPassword, confirm, agreed, displayName })) return;
+      lock.current = true; setPending(true);
+      try {
+        if (reset) {
+          await uatRequest("/auth/password", { method: "POST", body: JSON.stringify({ currentPassword, newPassword: password }) });
+          if(UAT) await uat.refreshSession(); toast("密码已修改"); onDone?.(from);
+        } else {
+          if(UAT) await uat.authenticate(register ? "register" : "login", { username: phone.trim(), password, ...(register ? { displayName: displayName.trim() } : {}) });
+          else if(__DEMO__) setSession(await (await import("../../dev/previewAuth")).authenticatePreview(phone.trim(),password,register ? displayName.trim() : undefined));
+          toast(register ? "账号注册成功" : "登录成功");
+          onDone?.(register && from === "/" ? "/onboarding?welcome=1" : from);
+        }
+        setPassword(""); setCurrentPassword(""); setConfirm("");
+      } catch (e) { setError(e); } finally { lock.current = false; setPending(false); }
+      return;
+    }
     const fields = { phone, otp, password, confirm, agreed };
     let schema: z.ZodType = loginSchema;
     if (reset || register) {
@@ -162,6 +191,8 @@ export function AuthPanel({
       {!reset && !register && (
         <div className="auth-tabs" role="group" aria-label="登录方式">
           <button
+            disabled={ACCOUNT_LOGIN}
+            title={ACCOUNT_LOGIN ? "当前使用账号密码登录，未接通短信服务" : undefined}
             aria-pressed={mode === "sms"}
             onClick={() => {
               setMode("sms");
@@ -182,24 +213,28 @@ export function AuthPanel({
         </div>
       )}
       <form noValidate onSubmit={submit}>
+        {__DEMO__ && <button type="button" className="text-button" onClick={() => {setPhone(register ? "preview_" + Date.now().toString(36) : "preview_buyer");setCurrentPassword("DemoPreview123!");setPassword("DemoPreview123!");setConfirm("DemoPreview123!");setDisplayName("演示采购员");setAgreed(true);}}>演示填入</button>}
         <Input
           id="phone"
           name="phone"
-          label="手机号"
-          autoComplete="tel-national"
-          type="tel"
-          inputMode="numeric"
-          maxLength={11}
-          placeholder="请输入手机号"
-          value={phone}
+          label={ACCOUNT_LOGIN ? "用户名" : "手机号"}
+          autoComplete={ACCOUNT_LOGIN ? "username" : "tel-national"}
+          type={ACCOUNT_LOGIN ? "text" : "tel"}
+          inputMode={ACCOUNT_LOGIN ? "text" : "numeric"}
+          maxLength={ACCOUNT_LOGIN ? 40 : 11}
+          placeholder={ACCOUNT_LOGIN ? "请输入用户名" : "请输入手机号"}
+          value={ACCOUNT_LOGIN && reset ? authUser?.username || phone : phone}
+          readOnly={ACCOUNT_LOGIN && reset && !!authUser}
           error={errors.phone}
           onChange={(e) => {
-            setPhone(e.target.value.replace(/\D/g, ""));
+            setPhone(ACCOUNT_LOGIN ? e.target.value : e.target.value.replace(/\D/g, ""));
             clear("phone");
             setHint("");
           }}
         />
-        {(mode === "sms" || reset || register) && (
+        {ACCOUNT_LOGIN && register && <Input id="display-name" label="姓名" autoComplete="name" value={displayName} maxLength={60} error={errors.displayName} onChange={e => { setDisplayName(e.target.value); clear("displayName"); }} placeholder="请输入姓名"/>}
+        {ACCOUNT_LOGIN && reset && <><p className="notice">{authUser ? "验证当前密码后可设置新密码。" : "当前未接通短信或邮箱找回。登录后可在个人资料修改密码，无法登录时请联系管理员。"}</p>{authUser && <Input id="current-password" label="当前密码" type="password" autoComplete="current-password" value={currentPassword} maxLength={128} error={errors.currentPassword} onChange={e => { setCurrentPassword(e.target.value); clear("currentPassword"); }}/>}</>}
+        {!ACCOUNT_LOGIN && (mode === "sms" || reset || register) && (
           <Field id="otp" label="短信验证码" error={errors.otp}>
             <div className="input-action">
               <input
@@ -237,7 +272,7 @@ export function AuthPanel({
               id="password"
               label={reset ? "新密码" : "密码"}
               error={errors.password}
-              hint={reset || register ? "8–64 位，包含字母和数字。" : undefined}
+              hint={reset || register ? (ACCOUNT_LOGIN ? "12–128 位。" : "8–64 位，包含字母和数字。") : undefined}
             >
               <div className="input-action">
                 <input
@@ -248,7 +283,7 @@ export function AuthPanel({
                   }
                   type={showPassword ? "text" : "password"}
                   value={password}
-                  maxLength={64}
+                  maxLength={ACCOUNT_LOGIN ? 128 : 64}
                   placeholder={
                     reset || register ? "设置登录密码" : "请输入密码"
                   }
@@ -280,7 +315,7 @@ export function AuthPanel({
                 label="确认密码"
                 type={showPassword ? "text" : "password"}
                 autoComplete="new-password"
-                maxLength={64}
+                maxLength={ACCOUNT_LOGIN ? 128 : 64}
                 value={confirm}
                 placeholder="请再次输入密码"
                 error={errors.confirm}
@@ -318,13 +353,13 @@ export function AuthPanel({
                 }}
               />
               <div>
-                <label htmlFor="agreed">我已阅读并同意</label>
+                <label htmlFor="agreed">{ACCOUNT_LOGIN ? "我已阅读并了解" : "我已阅读并同意"}</label>
                 <button type="button" onClick={() => setLegal("service")}>
-                  《服务协议》
+                  《{legalTitle("service")}》
                 </button>
                 和
                 <button type="button" onClick={() => setLegal("privacy")}>
-                  《隐私政策》
+                  《{legalTitle("privacy")}》
                 </button>
               </div>
             </div>
@@ -343,7 +378,7 @@ export function AuthPanel({
         )}
         <button
           className="button primary full-width auth-submit"
-          disabled={pending}
+          disabled={pending || (ACCOUNT_LOGIN && reset && !authUser)}
         >
           {pending
             ? "正在处理…"
@@ -386,7 +421,7 @@ export function AuthPanel({
           </>
         ) : (
           <>
-            希望设置密码？
+            {ACCOUNT_LOGIN ? "还没有账号？" : "希望设置密码？"}
             <button
               type="button"
               className="text-link"
@@ -400,7 +435,7 @@ export function AuthPanel({
       {!isV3 && (
         <p className="auth-safe">
           <ShieldCheck size={15} />
-          安全连接 · 信息保护
+          {ACCOUNT_LOGIN ? "学习测试 · 请使用虚构资料" : "安全连接 · 信息保护"}
         </p>
       )}
       <Modal
@@ -408,7 +443,7 @@ export function AuthPanel({
         onOpenChange={(v) => {
           if (!v) setLegal(null);
         }}
-        title={legal === "privacy" ? "隐私政策" : "服务协议"}
+        title={legalTitle(legal || "service")}
       >
         <LegalContent type={legal || "service"} />
         <button

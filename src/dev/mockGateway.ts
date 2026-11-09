@@ -21,6 +21,15 @@ const accountsSchema = z.record(
 );
 const accounts = () => readStored("accounts", accountsSchema, {});
 let current = readStored("session", sessionSchema.nullable(), null);
+if (import.meta.env.VITE_SHARED_API === '1' && !current) {
+  current = { id: 'shared-learning-buyer', phone: '13800000000', name: '演示采购员', enterprise: '联调演示企业', enterpriseStatus: 'approved' };
+  writeStored('session', current);
+}
+// Update only the old built-in demo identity; keep real and custom accounts intact.
+if (current?.id === "demo-enterprise-user" && current.name === "丁野") {
+  current = { ...current, name: "林远" };
+  writeStored("session", current);
+}
 const otpRecords = new Map<
   string,
   { expires: number; sentAt: number; attempts: number }

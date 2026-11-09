@@ -3,8 +3,8 @@ import { z } from "zod";
 // 客户端只接收可公开字段；成本、毛利和待审核资料不在此契约中。
 export const productSchema = z.object({
   id: z.string(),
-  supplierId: z.string(),
-  supplierName: z.string(),
+  supplierId: z.string().min(1),
+  supplierName: z.string().min(1),
   parkId: z.string(),
   name: z.string(),
   categoryId: z.string(),

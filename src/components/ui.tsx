@@ -33,12 +33,14 @@ export function Modal({
   title,
   description,
   children,
+  footer,
 }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
   title: string;
   description?: string;
   children: ReactNode;
+  footer?: ReactNode;
 }) {
   const { commerceVersion: version } = useDesignVersion();
   const withAcceptanceTools = __DEMO__ && version === "v3";
@@ -61,6 +63,7 @@ export function Modal({
             </Dialog.Description>
             {children}
           </div>
+          {footer}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

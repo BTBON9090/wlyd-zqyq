@@ -6,27 +6,34 @@ import {
   Minus,
   Plus,
   Package,
-  Storefront,
   Barcode,
   ShoppingCart,
   Trash,
+  ListChecks,
+  FileArrowDown,
+  WarningCircle,
 } from "@phosphor-icons/react";
 import { Breadcrumb } from "../../components/Shell";
 import { ContentImage } from "../../components/ContentImage";
-import { EmptyState } from "../../components/ui";
+import { EmptyState, Modal } from "../../components/ui";
+import { useApp } from "../../app/AppProvider";
+import { SkuClipboardInput } from "./SkuClipboardInput";
 import { currency } from "../../lib/money";
 import { useCart } from "./cart";
 import { validQuantity } from "./model";
+import { findProductByCode } from "./productCode";
 import { useProducts } from "./catalogue";
 import { MarketHeader } from "./MarketHeader";
 import { quote, totals, lineAmounts } from "./delivery";
-import { AddressPicker, useDelivery } from "./AddressPicker";
+import { useDelivery } from "./AddressPicker";
 
 export default function CartPage() {
   const cart = useCart();
   const query = useProducts();
   const [sku, setSku] = useState("");
   const [message, setMessage] = useState("");
+  const [removeIds, setRemoveIds] = useState<string[]>([]);
+  const { toast } = useApp();
   const delivery = useDelivery();
   const products = query.data?.map((p) => quote(p, delivery.region));
   const rows = cart.items.map((item) => ({
@@ -41,20 +48,17 @@ export default function CartPage() {
     );
   const amount = totals(selected);
   const suppliers = [...new Set(rows.map((r) => r.product?.supplierId))];
-  function addBySku() {
-    const product = products?.find((p) =>
-      [p.sku, p.code].some(
-        (value) => value?.toLowerCase() === sku.trim().toLowerCase(),
-      ),
-    );
-    if (!product) {
-      setMessage("未找到该商品编码，请检查后重试。");
-      return;
-    }
+  async function addBySku() {
     try {
-      cart.add(product, product.minimum);
+      const product = findProductByCode(products || [], sku);
+      if (!product) {
+        setMessage("未找到该商品编码，请检查后重试。");
+        return;
+      }
+      await cart.add(product, product.minimum);
       setSku("");
-      setMessage("已加入购物车。");
+      setMessage("");
+      toast("已将“" + product.name + "”加入购物车");
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "暂时无法加入购物车");
     }
@@ -122,7 +126,6 @@ export default function CartPage() {
             继续选购
           </Link>
         </header>
-        <AddressPicker delivery={delivery} />
         {query.isPending ? (
           <p>正在加载商品…</p>
         ) : query.isError ? (
@@ -139,7 +142,7 @@ export default function CartPage() {
             description="浏览集采商品，或通过商品编码添加物资。"
           />
         ) : (
-          <>
+          <section className="buyer-cart-panel">
             <div className="buyer-cart-tools">
               <label>
                 <input
@@ -152,25 +155,20 @@ export default function CartPage() {
               <button
                 disabled={!selected.length}
                 onClick={() =>
-                  cart.remove(selected.map((r) => r.item.productId))
+                  setRemoveIds(selected.map((r) => r.item.productId))
                 }
               >
-                删除所选
+                <Trash size={16} aria-hidden="true" /> 删除所选
               </button>
               <button disabled={!valid} onClick={() => exportRows(false)}>
-                导出清单
+                <ListChecks size={16} aria-hidden="true" /> 导出清单
               </button>
               <button disabled={!valid} onClick={() => exportRows(true)}>
-                导出报价单
+                <FileArrowDown size={16} aria-hidden="true" /> 导出报价单
               </button>
             </div>
             {suppliers.map((id) => (
               <section className="buyer-supplier" key={id || "unavailable"}>
-                <header>
-                  <Storefront size={19} />
-                  {rows.find((r) => r.product?.supplierId === id)?.product
-                    ?.supplierName || "不可用商品"}
-                </header>
                 {rows
                   .filter((r) => r.product?.supplierId === id)
                   .map(({ item, product: p }) => (
@@ -203,16 +201,6 @@ export default function CartPage() {
                             .join(" · ")}
                         </small>
                         <small>商品编码　{p?.code || p?.sku || "—"}</small>
-                        <textarea
-                          rows={2}
-                          aria-label={(p?.name || "商品") + "需求描述"}
-                          placeholder="添加采购备注（选填）"
-                          maxLength={200}
-                          value={item.remark}
-                          onChange={(e) =>
-                            cart.remark(item.productId, e.target.value)
-                          }
-                        />
                       </div>
                       <div className="buyer-line-price">
                         <small>含税单价</small>
@@ -288,15 +276,15 @@ export default function CartPage() {
                       <button
                         className="buyer-remove"
                         aria-label={"移除" + (p?.name || "商品")}
-                        onClick={() => cart.remove([item.productId])}
+                        onClick={() => setRemoveIds([item.productId])}
                       >
-                        <Trash size={17} />
+                        <Trash size={17} /> 移除
                       </button>
                     </article>
                   ))}
               </section>
             ))}
-          </>
+          </section>
         )}
         <form
           className="buyer-quick"
@@ -309,12 +297,7 @@ export default function CartPage() {
             <Barcode size={20} />
             快速添加
           </label>
-          <input
-            id="quick-sku"
-            value={sku}
-            onChange={(e) => setSku(e.target.value)}
-            placeholder="输入商品编码或 SKU"
-          />
+          <SkuClipboardInput value={sku} onChange={value=>{setSku(value);setMessage('')}} products={products||[]}/>
           <button
             className="button secondary"
             disabled={!sku.trim() || !products}
@@ -323,7 +306,7 @@ export default function CartPage() {
             添加商品
           </button>
           <small>按起订量加入；已有商品会合并数量。</small>
-          {message && <span role="status">{message}</span>}
+          {message && <p className="buyer-quick-error" role="alert"><WarningCircle size={18}/>{message}</p>}
         </form>
         {!!rows.length && (
           <footer className="buyer-cart-footer">
@@ -347,6 +330,7 @@ export default function CartPage() {
           </footer>
         )}
       </div>
+      <Modal open={removeIds.length>0} onOpenChange={open=>{if(!open)setRemoveIds([])}} title={removeIds.length>1?'移除所选商品':'移除商品'} description={removeIds.length>1?`确认从购物车移除所选的 ${removeIds.length} 种商品？`:`确认从购物车移除“${products?.find(p=>p.id===removeIds[0])?.name||'该商品'}”？`} footer={<div className="buyer-remove-confirm-actions"><button className="button secondary" onClick={()=>setRemoveIds([])}>保留商品</button><button className="button primary" onClick={async()=>{const saved=await cart.remove(removeIds);setRemoveIds([]);toast(saved?'已从购物车移除':'移除操作尚未同步云端，请处理页面上方同步提示')}}>确认移除</button></div>}><p className="muted">移除后，可以回到商城重新添加。</p></Modal>
     </>
   );
 }

@@ -1,0 +1,25 @@
+.account-settings-content { display:grid; gap:20px; min-width:0; }
+.account-profile-panel { min-width:0; }
+.account-settings-section-heading { margin-bottom:24px; }
+.account-settings-section-heading h2 { display:flex; align-items:center; gap:8px; margin:0; font-size:17px; line-height:1.5; color:var(--color-text); }
+.account-settings-out-of-scope { font-size:13px; font-weight:400; color:var(--color-text-secondary); }
+.account-settings-section-heading p { margin:6px 0 0; font-size:13px; color:var(--color-text-secondary); }
+.account-profile-form { max-width:760px; }
+.account-profile-avatar-row { display:flex; align-items:center; gap:20px; margin-bottom:28px; }
+.account-profile-avatar { display:grid; place-items:center; width:80px; height:80px; flex:none; overflow:hidden; border-radius:50%; background:var(--color-primary-soft); color:var(--color-primary-deep); font-size:30px; }
+.account-profile-avatar-row p { margin:8px 0 0; font-size:12px; color:var(--color-text-secondary); }
+.account-profile-avatar-row .text-button { margin-top:5px; padding-left:0; }
+.account-profile-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 24px; }
+.account-profile-fields input[readonly] { color:var(--color-text-secondary); background:var(--color-surface-subtle); }
+.account-profile-actions { display:flex; padding-top:4px; }
+.account-profile-actions .button { min-width:140px; }
+.account-settings-success { display:flex; align-items:center; gap:8px; color:var(--color-success); font-size:14px; margin:0 0 16px; }
+.account-profile-panel .account-settings-row { gap:20px; }
+.account-profile-panel .account-settings-row > div { min-width:0; overflow-wrap:anywhere; }
+.account-profile-panel .account-settings-row .button { flex:none; }
+@media (max-width:700px) {
+  .account-profile-fields { grid-template-columns:minmax(0,1fr); }
+  .account-profile-avatar-row { gap:14px; align-items:flex-start; }
+  .account-profile-avatar { width:64px; height:64px; }
+  .account-profile-panel .account-settings-row { flex-wrap:wrap; }
+}

@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { PROCUREMENT_DEMO_ACTIONS } from "./sharedApi";
+import { useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 import { useApp } from "../../app/AppProvider";
 import { ordersGateway } from "./orders/gateway";
-import type { NewOrder } from "./orders/types";
+import { buildSupplierOrders } from "./orders/buildSupplierOrders";
 import {
   ArrowLeft,
   ClipboardText,
   Package,
-  Storefront,
 } from "@phosphor-icons/react";
 import { Breadcrumb } from "../../components/Shell";
 import { ContentImage } from "../../components/ContentImage";
@@ -31,9 +31,11 @@ export default function CheckoutPage() {
   const { session, openAuth, toast } = useApp();
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
+  const submission = useRef<{payload: string; key: string} | null>(null);
   const delivery = useDelivery();
   const active = delivery.active;
   const [note, setNote] = useState("");
+  const [remarks, setRemarks] = useState<Record<string,string>>({});
   const direct = params.get("product");
   const quantity = Number(params.get("quantity"));
   const checkoutItems = direct
@@ -53,9 +55,13 @@ export default function CheckoutPage() {
     free = rows.every((r) => r.product?.freightMode === "免运费");
   const suppliers = [...new Set(rows.map((r) => r.product?.supplierId))];
   async function submitOrder() {
-    if (!__DEMO__ || pending || !allValid) return;
+    if (!PROCUREMENT_DEMO_ACTIONS || pending || !allValid) return;
     if (!session) {
       openAuth({ returnTo: window.location.pathname + window.location.search });
+      return;
+    }
+    if (!cart.synced || !delivery.synced) {
+      setError("请等待购物车和地址保存到云端，并处理上方同步提示后提交订单。");
       return;
     }
     if (!active) {
@@ -65,43 +71,16 @@ export default function CheckoutPage() {
     setPending(true);
     setError("");
     try {
-      const groups = new Map<string, NewOrder>();
-      for (const { item, product } of rows) {
-        if (!product) continue;
-        const supplier = product.supplierName;
-        let group = groups.get(product.supplierId);
-        if (!group) {
-          group = {
-            supplier,
-            receiver: active.receiver,
-            phone: active.phone,
-            address: active.region + " " + active.street,
-            note: note.trim(),
-            items: [],
-          };
-          groups.set(product.supplierId, group);
-        }
-        group.items.push({
-          id: product.id,
-          productId: product.id,
-          name: product.name,
-          sku: product.sku,
-          brand: product.brand,
-          model: product.model,
-          spec: product.spec,
-          unit: product.unit,
-          quantity: item.quantity,
-          price: product.price,
-          shipped: 0,
-          image: product.image,
-          remark: item.remark,
-        });
-      }
-      const ids = await ordersGateway.create(session.id, [...groups.values()]);
-      if (!direct) cart.remove(checkoutItems.map((item) => item.productId));
-      await client.invalidateQueries({
-        queryKey: ["procurement-orders", session.id],
-      });
+      const orders = buildSupplierOrders(rows, active, note, remarks);
+      const payload = JSON.stringify(orders);
+      if (submission.current?.payload !== payload) submission.current = { payload, key: crypto.randomUUID() };
+      const ids = await ordersGateway.create(session.id, orders, submission.current.key);
+      submission.current = null;
+      if (!direct) await cart.remove(checkoutItems.map((item) => item.productId));
+      await Promise.all([
+        client.invalidateQueries({ queryKey: ["procurement-orders", session.id] }),
+        client.invalidateQueries({ queryKey: ["procurement-products"] }),
+      ]);
       toast(ids.length > 1 ? "订单提交成功，已按供应商生成 "+ids.length+" 笔订单" : "订单提交成功");
       navigate(
         ids.length === 1
@@ -109,6 +88,7 @@ export default function CheckoutPage() {
           : "/account/orders/procurement",
       );
     } catch (e) {
+      void client.invalidateQueries({ queryKey: ["procurement-products"] });
       setError(e instanceof Error ? e.message : "订单暂时无法提交");
     } finally {
       setPending(false);
@@ -149,9 +129,9 @@ export default function CheckoutPage() {
           <div className="procurement-empty">
             <h2>购物车中的商品需要调整</h2>
             <p>部分商品已不可用或数量不符合当前配送区域的供货要求。</p>
-            <AddressPicker delivery={delivery} />
-            <Link className="button primary" to="/procurement/cart">
-              返回购物车
+            <AddressPicker delivery={delivery} checkout />
+            <Link className="button primary buyer-empty-back" to="/procurement/cart">
+              <ArrowLeft size={16} aria-hidden="true" /> 返回购物车
             </Link>
           </div>
         ) : (
@@ -168,13 +148,6 @@ export default function CheckoutPage() {
                 </div>
                 {suppliers.map((id) => (
                   <div className="buyer-check-group" key={id}>
-                    <h3>
-                      <Storefront size={17} />
-                      {
-                        rows.find((r) => r.product?.supplierId === id)?.product
-                          ?.supplierName
-                      }
-                    </h3>
                     {rows
                       .filter((r) => r.product?.supplierId === id)
                       .map(
@@ -195,11 +168,8 @@ export default function CheckoutPage() {
                                     .join(" · ")}
                                 </small>
                                 <small>商品编码　{p.code || p.sku}</small>
-                                {item.remark && (
-                                  <small>备注：{item.remark}</small>
-                                )}
                               </div>
-                              <div>
+                              <div className="buyer-check-price">
                                 <small>
                                   {currency(p.price)} × {item.quantity} {p.unit}
                                 </small>
@@ -209,6 +179,12 @@ export default function CheckoutPage() {
                                   )}
                                 </b>
                               </div>
+                              <label className="buyer-item-remark">
+                                <textarea rows={1} aria-label={p.name + "采购备注"} maxLength={200}
+                                  placeholder="填写此商品的采购要求（选填）"
+                                  value={remarks[item.productId] ?? item.remark}
+                                  onChange={(e)=>setRemarks({...remarks,[item.productId]:e.target.value})}/>
+                              </label>
                             </article>
                           ),
                       )}
@@ -249,12 +225,12 @@ export default function CheckoutPage() {
               {error && <p role="alert">{error}</p>}
               <button
                 className="button primary full-width"
-                disabled={!__DEMO__ || pending}
+                disabled={!PROCUREMENT_DEMO_ACTIONS || pending}
                 onClick={() => void submitOrder()}
               >
                 {pending ? "提交中…" : "提交订单"}
               </button>
-              {!__DEMO__ && <small>订单提交服务暂未开放</small>}
+              {!PROCUREMENT_DEMO_ACTIONS && <small>订单提交服务暂未开放</small>}
             </aside>
           </div>
         )}

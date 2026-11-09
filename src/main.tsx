@@ -6,6 +6,7 @@ import { IconContext } from "@phosphor-icons/react";
 import { AppProvider } from "./app/AppProvider";
 import { ErrorBoundary } from "./components/ui";
 import App from "./app/App";
+import { UatSessionProvider } from "./uat/UatSessionProvider";
 import { DesignVersionProvider } from "./app/DesignVersion";
 import "./styles/tokens.css";
 import "./styles/base.css";
@@ -36,9 +37,9 @@ createRoot(document.getElementById("root")!).render(
           <BrowserRouter
             basename={import.meta.env.BASE_URL.replace(/\/$/, "") || undefined}
           >
-            <AppProvider>
+            <UatSessionProvider><AppProvider>
               <DesignVersionProvider><App /></DesignVersionProvider>
-            </AppProvider>
+            </AppProvider></UatSessionProvider>
           </BrowserRouter>
         </IconContext.Provider>
       </QueryClientProvider>

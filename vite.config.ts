@@ -7,7 +7,8 @@ export default defineConfig(({ command, mode }) => ({
   define: {
     __DEMO__: JSON.stringify(
       (command === "serve" || mode === "preview") &&
-        loadEnv(mode, process.cwd()).VITE_DATA_MODE !== "api",
+        loadEnv(mode, process.cwd()).VITE_DATA_MODE !== "api" &&
+        loadEnv(mode, process.cwd()).VITE_UAT_API !== "1",
     ),
   },
   server: {
