@@ -18,6 +18,8 @@ import { useCart } from "./cart";
 import { validQuantity } from "./model";
 import { useProducts } from "./catalogue";
 import { MarketHeader } from "./MarketHeader";
+import { groupCartRows } from "./cartGroups";
+import { SingleSupplierCheckoutNotice } from "./SingleSupplierCheckoutNotice";
 
 import { AddressPicker, useDelivery } from "./AddressPicker";
 import { quote, totals, lineAmounts } from "./delivery";
@@ -54,8 +56,10 @@ export default function CheckoutPage() {
   const amount = totals(rows),
     free = rows.every((r) => r.product?.freightMode === "免运费");
   const suppliers = [...new Set(rows.map((r) => r.product?.supplierId))];
+  const selectedSupplierCount = groupCartRows(rows).filter(group => group.id !== null).length;
+  const multipleSuppliers = selectedSupplierCount > 1;
   async function submitOrder() {
-    if (!PROCUREMENT_DEMO_ACTIONS || pending || !allValid) return;
+    if (!PROCUREMENT_DEMO_ACTIONS || pending || !allValid || multipleSuppliers) return;
     if (!session) {
       openAuth({ returnTo: window.location.pathname + window.location.search });
       return;
@@ -81,7 +85,7 @@ export default function CheckoutPage() {
         client.invalidateQueries({ queryKey: ["procurement-orders", session.id] }),
         client.invalidateQueries({ queryKey: ["procurement-products"] }),
       ]);
-      toast(ids.length > 1 ? "订单提交成功，已按供应商生成 "+ids.length+" 笔订单" : "订单提交成功");
+      toast("订单提交成功");
       navigate(
         ids.length === 1
           ? `/account/orders/procurement?order=${encodeURIComponent(ids[0])}`
@@ -125,7 +129,7 @@ export default function CheckoutPage() {
             action="重新加载"
             onAction={() => void query.refetch()}
           />
-        ) : !allValid ? (
+        ) : multipleSuppliers ? null : !allValid ? (
           <div className="procurement-empty">
             <h2>购物车中的商品需要调整</h2>
             <p>部分商品已不可用或数量不符合当前配送区域的供货要求。</p>
@@ -235,6 +239,7 @@ export default function CheckoutPage() {
           </div>
         )}
       </div>
+      <SingleSupplierCheckoutNotice open={!query.isPending && !query.isError && multipleSuppliers} supplierCount={selectedSupplierCount} onClose={() => navigate("/procurement/cart", { replace: true })} />
     </>
   );
 }

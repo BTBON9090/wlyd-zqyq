@@ -615,9 +615,10 @@
 .buyer-item-remark span { padding-top:9px; white-space:nowrap; }
 .buyer-item-remark textarea { min-height:48px; width:100%; box-sizing:border-box; border:0; border-radius:8px; padding:8px 10px; resize:vertical; font:inherit; background:#fff; line-height:1.5; }
 @media(max-width:600px) { .buyer-check-item { grid-template-columns:48px minmax(0,1fr); } .buyer-check-item .buyer-check-price { grid-column:2; text-align:left; } .buyer-check-item .buyer-item-remark { grid-column:1 / -1; } }
-.buyer-cart-panel { border-radius:16px; background:#fff; box-shadow:0 6px 26px #35305908; padding:0 20px; margin-bottom:14px; }
-.buyer-cart-panel .buyer-cart-tools { margin:0; padding:16px 0; flex-wrap:wrap; }
-.buyer-cart-panel .buyer-supplier { padding:0; margin:0; background:transparent; border-radius:0; box-shadow:none; }
+.buyer-cart-panel { display:grid; gap:16px; margin-bottom:16px; }
+.buyer-cart-panel .buyer-cart-tools { margin:0; padding:16px 20px; flex-wrap:wrap; border-radius:16px; background:#fff; box-shadow:0 6px 26px #35305908; }
+.buyer-cart-panel .buyer-supplier { padding:0 20px; margin:0; }
+.buyer-cart-panel .buyer-cart-tools input, .buyer-cart-panel .buyer-cart-row > input { margin:0; }
 .buyer-address-card { background:#fff; border:1px solid #e8e6f0; }
 .buyer-check-item { background:#fff; border-radius:0; border-bottom:1px solid #eeecf3; padding:16px 0; margin:0; }
 .buyer-check-item .buyer-item-remark { display:block; margin:0; }
@@ -642,3 +643,15 @@
 .buyer-address-confirm > p { color:var(--color-text-secondary); font-size:14px; line-height:1.6; }
 .buyer-address-confirm > div:not(.buyer-address-actions) { margin:20px 0; padding:16px; border-radius:10px; background:var(--color-primary-soft); font-size:14px; }
 .buyer-address-confirm > div > p { margin:8px 0 0; color:var(--color-text-secondary); line-height:1.6; overflow-wrap:anywhere; }
+
+/* Supplier ownership stays visible across the cart and checkout. */
+.buyer-cart-panel .buyer-supplier-heading { gap:12px; flex-wrap:wrap; padding:18px 0; }
+.buyer-supplier-heading label { display:grid; grid-template-columns:18px 19px minmax(0,1fr); align-items:center; gap:16px; min-width:0; cursor:pointer; }
+.buyer-supplier-heading input { width:16px; height:16px; margin:0; flex:none; accent-color:var(--color-primary); }
+.buyer-supplier-heading svg { flex:none; }
+.buyer-supplier-name { overflow-wrap:anywhere; }
+.buyer-supplier-heading small, .buyer-supplier-total { color:var(--color-text-secondary); font-size:12px; font-weight:400; }
+.buyer-supplier-total { margin-left:auto; white-space:nowrap; }
+.buyer-supplier-total b { color:var(--color-primary); font-size:14px; }
+.buyer-check-group + .buyer-check-group { margin-top:24px; }
+@media(max-width:600px) { .buyer-supplier-total { width:100%; margin-left:26px; } }

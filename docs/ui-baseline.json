@@ -137,11 +137,19 @@
     "src/features/auth/AuthPage.tsx": "43538d9dfb434eb48de9f3c630e16d00985fb2f6c9351e7c972a03ac715f8026",
     "src/uat/BuyerDataControls.tsx": "961c38cd5362fea9b137e0279424fa95d38110aee063e82488cd0b859e2dd96a",
     "src/uat/UatSessionProvider.tsx": "a16b9d0ce48b0c21e5eb8652c1c663d90d0e21aca23c87531f6b66eebe26c226",
-    "src/uat/api.ts": "36a94823e4eea7ac6b7fc3874c39919d3a3dd73fb1534bec955b1f60016204a6"
+    "src/uat/api.ts": "36a94823e4eea7ac6b7fc3874c39919d3a3dd73fb1534bec955b1f60016204a6",
+    "src/dev/procurement/supplierFixture.ts": "93f5100ef8710c86203b9826ee0662fde816eec59557479785e7576cc04e6a99",
+    "src/features/procurement/CartPage.tsx": "b702bcd0bfa029f11bc12ab7bbf700139a924aebee64282bd71976aaebcb3151",
+    "src/features/procurement/CheckoutPage.tsx": "95b4b86d3e2537a685f1ad1b22137007b050d73f0ae42cf362dc5cad689fde5c",
+    "src/features/procurement/buyer-flow.css": "909dfdeecb784b4ee0e9d4768e0297d3338da956e28aaae2146fa4406c2d8ff6",
+    "src/features/procurement/cart.ts": "faf837cf0ce0c13216ba6d949fad03a950c9c3234255d5ca6d519f5fd0a1e5ab",
+    "src/features/procurement/orders/buildSupplierOrders.ts": "0db79f860ef0b60e97ec0078b0ddaf824b597d0446bf322c6ad7d0b5bce2c8e0"
   },
   "prototypeOnly": {
     "src/dev/AccountPreviewProvider.tsx": "43ea90877bc2a8c3b5725a98f84e0ef10cf988802f743066f4c9555f4337b867",
     "src/dev/accountPreviewApi.ts": "d76b29e6f7edf9812ae8e6027607240b6ed935a112442f622b401133ff918e0e",
-    "src/dev/previewAuth.ts": "a19f0b7d07bfa76b22b61501421ebefb49e880af398a4626b279a3009cf6a32d"
+    "src/dev/previewAuth.ts": "a19f0b7d07bfa76b22b61501421ebefb49e880af398a4626b279a3009cf6a32d",
+    "src/features/procurement/cartGroups.ts": "7d0d71e17486cb4d95a6e3fdc690b0c4b0499875ef8f0545fa09aae1adc77ff6",
+    "src/features/procurement/SingleSupplierCheckoutNotice.tsx": "dd511cfbaa5c39915d5cbae5e2f240e1c57b7052fe1d5c7281b82c9d353f49dd"
   }
 }

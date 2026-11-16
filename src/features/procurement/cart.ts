@@ -1,3 +1,4 @@
+import { selectCartItems } from "./cartGroups";
 import { UAT } from "../../uat/api";
 import { useUat } from "../../uat/UatSessionProvider";
 import { useEffect, useState } from "react";
@@ -46,8 +47,9 @@ export function useCart() {
   };
   const update = (productId: string, quantity: number) => mutate(now => now.map(i => i.productId === productId ? { ...i, quantity } : i));
   const select = (productId: string, selected: boolean) => mutate(now => now.map(i => i.productId === productId ? { ...i, selected } : i));
+  const selectMany = (ids: string[], selected: boolean) => mutate(now => selectCartItems(now, ids, selected));
   const selectAll = (selected: boolean) => mutate(now => now.map(i => ({ ...i, selected })));
   const remark = (productId: string, remark: string) => mutate(now => now.map(i => i.productId === productId ? { ...i, remark: remark.slice(0, 200) } : i));
   const remove = (ids: string[]) => mutate(now => now.filter(i => !ids.includes(i.productId)));
-  return { items, add, update, select, selectAll, remark, remove, synced: !UAT || (uat.entries.cart.loaded && !uat.entries.cart.saving && !uat.entries.cart.revision), count: items.reduce((n, i) => n + i.quantity, 0) };
+  return { items, add, update, select, selectMany, selectAll, remark, remove, synced: !UAT || (uat.entries.cart.loaded && !uat.entries.cart.saving && !uat.entries.cart.revision), count: items.reduce((n, i) => n + i.quantity, 0) };
 }

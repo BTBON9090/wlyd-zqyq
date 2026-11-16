@@ -4,7 +4,7 @@ import type { NewOrder } from "./types";
 type CheckoutRow = { item: CartItem; product: Product | undefined };
 type Recipient = { receiver: string; phone: string; region: string; street: string };
 
-/** Group by server-issued supplier ID, never by a possibly shared shop name. */
+/** One checkout may contain only one server-issued supplier ID. */
 export function buildSupplierOrders(
   rows: CheckoutRow[], recipient: Recipient, note: string,
   remarks: Record<string, string> = {},
@@ -16,6 +16,7 @@ export function buildSupplierOrders(
     }
     let group = groups.get(product.supplierId);
     if (!group) {
+      if (groups.size) throw new Error("一次仅允许结算一个供应商");
       group = {
         supplier: product.supplierName,
         receiver: recipient.receiver,

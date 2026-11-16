@@ -26,9 +26,10 @@ export function toPublicProduct(source:SupplierProduct, activeParkId:string):Pro
   // Demo SKUs use their actual product type, not a more specific technical grade.
   const ppeGroups:Record<string,string>={"安全防护帽":"头部面部与呼吸","防护手套":"手部与高空防坠","防滑安全鞋":"防护服与安全鞋","劳保工作服":"防护服与安全鞋"};
   const group=source.categoryId==="safety_ppe"?ppeGroups[source.name]:source.name==="工业清洁剂"?"厂房清洁与保养":undefined;
+  const secondSupplier = ["JC-PRODUCT-007","JC-PRODUCT-008","JC-PRODUCT-009"].includes(source.id);
   return productSchema.parse({ ...(source.id==="JC-PRODUCT-001"?{
     images:["helmet-side","helmet-top","helmet-liner","helmet-brim"].map(n=>"media/procurement/"+n+".svg"),
     deliveryOffers:[{region:"苏州市工业园区",price:51.11,stock:86},{region:"上海市浦东新区临港",price:round(sale*(1+current.tax/100)),stock:current.stock}],
-  }:{}), categoryGroup:group,categoryLeaf:group?source.name:undefined,id:source.id, supplierId:"SUP-DEMO-001",supplierName:"园区集采供应商",parkId:activeParkId,name:source.name,categoryId:source.categoryId,category:source.category,brand:source.brand,sku:source.sku,code:source.code,model:source.model,sales:source.sales,features:source.features,freightMode:"免运费",spec:"标准款",unit:source.unit,image:source.image,description:"商品规格与供货信息以供应商发布为准。",price:round(sale*(1+current.tax/100)),originalPrice:round(current.original*(1+current.tax/100)),taxRate:current.tax,minimum:current.minimum,increment:current.increment,stock:current.stock,leadDays:current.leadDays,updatedAt:source.updatedAt });
+  }:{}), categoryGroup:group,categoryLeaf:group?source.name:undefined,id:source.id, supplierId:secondSupplier?"SUP-DEMO-002":"SUP-DEMO-001",supplierName:secondSupplier?"演示劳保用品供应商":"园区集采供应商",parkId:activeParkId,name:source.name,categoryId:source.categoryId,category:source.category,brand:source.brand,sku:source.sku,code:source.code,model:source.model,sales:source.sales,features:source.features,freightMode:"免运费",spec:"标准款",unit:source.unit,image:source.image,description:"商品规格与供货信息以供应商发布为准。",price:round(sale*(1+current.tax/100)),originalPrice:round(current.original*(1+current.tax/100)),taxRate:current.tax,minimum:current.minimum,increment:current.increment,stock:current.stock,leadDays:current.leadDays,updatedAt:source.updatedAt });
 }
 export const publishedProducts = supplierProducts.map((item)=>toPublicProduct(item,parkId)).filter((item):item is Product=>item!==null);

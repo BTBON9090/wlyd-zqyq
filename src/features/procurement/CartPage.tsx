@@ -8,6 +8,7 @@ import {
   Package,
   Barcode,
   ShoppingCart,
+  Storefront,
   Trash,
   ListChecks,
   FileArrowDown,
@@ -20,6 +21,8 @@ import { useApp } from "../../app/AppProvider";
 import { SkuClipboardInput } from "./SkuClipboardInput";
 import { currency } from "../../lib/money";
 import { useCart } from "./cart";
+import { groupCartRows } from "./cartGroups";
+import { SingleSupplierCheckoutNotice } from "./SingleSupplierCheckoutNotice";
 import { validQuantity } from "./model";
 import { findProductByCode } from "./productCode";
 import { useProducts } from "./catalogue";
@@ -33,6 +36,7 @@ export default function CartPage() {
   const [sku, setSku] = useState("");
   const [message, setMessage] = useState("");
   const [removeIds, setRemoveIds] = useState<string[]>([]);
+  const [checkoutBlocked, setCheckoutBlocked] = useState(false);
   const { toast } = useApp();
   const delivery = useDelivery();
   const products = query.data?.map((p) => quote(p, delivery.region));
@@ -47,7 +51,8 @@ export default function CartPage() {
       ({ item, product }) => product && validQuantity(product, item.quantity),
     );
   const amount = totals(selected);
-  const suppliers = [...new Set(rows.map((r) => r.product?.supplierId))];
+  const suppliers = groupCartRows(rows);
+  const selectedSupplierCount = groupCartRows(selected).filter(group => group.id !== null).length;
   async function addBySku() {
     try {
       const product = findProductByCode(products || [], sku);
@@ -148,6 +153,7 @@ export default function CartPage() {
                 <input
                   type="checkbox"
                   checked={selected.length === rows.length}
+                  ref={node => { if (node) node.indeterminate = selected.length > 0 && selected.length < rows.length; }}
                   onChange={(e) => cart.selectAll(e.target.checked)}
                 />
                 全选
@@ -167,11 +173,23 @@ export default function CartPage() {
                 <FileArrowDown size={16} aria-hidden="true" /> 导出报价单
               </button>
             </div>
-            {suppliers.map((id) => (
-              <section className="buyer-supplier" key={id || "unavailable"}>
-                {rows
-                  .filter((r) => r.product?.supplierId === id)
-                  .map(({ item, product: p }) => (
+            {suppliers.map((group) => {
+              const groupSelected = group.rows.filter(row => row.item.selected);
+              return (
+              <section className="buyer-supplier" key={group.id ? "supplier:" + group.id : "unavailable"} aria-label={group.name}>
+                <header className="buyer-supplier-heading">
+                  <label>
+                    <input type="checkbox" aria-label={"选择" + group.name + "的全部商品"}
+                      checked={groupSelected.length === group.rows.length}
+                      ref={node => { if (node) node.indeterminate = groupSelected.length > 0 && groupSelected.length < group.rows.length; }}
+                      onChange={e => void cart.selectMany(group.rows.map(row => row.item.productId), e.target.checked)} />
+                    <Storefront size={19} aria-hidden="true" />
+                    <span className="buyer-supplier-name">{group.name}</span>
+                  </label>
+                  <small>{group.rows.length} 种商品</small>
+                  {group.id && <span className="buyer-supplier-total">已选 {groupSelected.length} 种 · 含税小计 <b>{currency(totals(groupSelected).gross / 100)}</b></span>}
+                </header>
+                {group.rows.map(({ item, product: p }) => (
                     <article className="buyer-cart-row" key={item.productId}>
                       <input
                         type="checkbox"
@@ -283,7 +301,8 @@ export default function CartPage() {
                     </article>
                   ))}
               </section>
-            ))}
+              );
+            })}
           </section>
         )}
         <form
@@ -318,11 +337,14 @@ export default function CartPage() {
               <strong>{currency(amount.gross / 100)}</strong>
             </div>
             <Link
-              className={"button primary" + (valid ? "" : " is-disabled")}
-              aria-disabled={!valid}
+              className={"button primary" + (valid || selectedSupplierCount > 1 ? "" : " is-disabled")}
+              aria-disabled={!valid && selectedSupplierCount <= 1}
               to={valid ? "/procurement/checkout" : "#"}
               onClick={(e) => {
-                if (!valid) e.preventDefault();
+                if (selectedSupplierCount > 1) {
+                  e.preventDefault();
+                  setCheckoutBlocked(true);
+                } else if (!valid) e.preventDefault();
               }}
             >
               去结算 <ArrowRight size={16} />
@@ -330,6 +352,7 @@ export default function CartPage() {
           </footer>
         )}
       </div>
+      <SingleSupplierCheckoutNotice open={checkoutBlocked && selectedSupplierCount > 1} supplierCount={selectedSupplierCount} onClose={() => setCheckoutBlocked(false)} />
       <Modal open={removeIds.length>0} onOpenChange={open=>{if(!open)setRemoveIds([])}} title={removeIds.length>1?'移除所选商品':'移除商品'} description={removeIds.length>1?`确认从购物车移除所选的 ${removeIds.length} 种商品？`:`确认从购物车移除“${products?.find(p=>p.id===removeIds[0])?.name||'该商品'}”？`} footer={<div className="buyer-remove-confirm-actions"><button className="button secondary" onClick={()=>setRemoveIds([])}>保留商品</button><button className="button primary" onClick={async()=>{const saved=await cart.remove(removeIds);setRemoveIds([]);toast(saved?'已从购物车移除':'移除操作尚未同步云端，请处理页面上方同步提示')}}>确认移除</button></div>}><p className="muted">移除后，可以回到商城重新添加。</p></Modal>
     </>
   );
